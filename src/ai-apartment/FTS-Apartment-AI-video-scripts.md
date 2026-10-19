@@ -220,7 +220,7 @@ Mau untuk gedung Anda? [ISI: WhatsApp/kontak Miftah]
 
 ### Scene 8 (83–90 dtk)
 - Visual: URL demo, tombol kontak, dan logo.
-- Teks: "Coba demo: apartment-ai.fts-tech.co.id" dan "[ISI: kontak Miftah]"
+- Teks: "Coba demo: apartment-ai.fts-tech.co.id" dan "[ISI: info@fts-tech.co.id]"
 - VO: "Coba demonya sekarang, link di deskripsi. Mau untuk gedung Anda? Hubungi kami."
 - Musik: resolve ke satu nada akhir.
 
