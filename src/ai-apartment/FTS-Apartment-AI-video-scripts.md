@@ -21,7 +21,7 @@ Isi file:
 
 **Arah:** B2B. Yang dijual adalah platformnya ke pengelola apartemen. Website demo adalah buktinya.
 
-**Arahan voice-over:** Gunakan suara perempuan berbahasa Indonesia yang hangat, tenang, jelas, dan profesional. Pilih suara final saat menyiapkan audio VO; Remotion dipakai untuk memasukkan dan menyelaraskan file audio dengan video, bukan untuk memilih atau membuat suara. Buat/unduh audio per scene agar mudah mengatur timing.
+**Arahan voice-over:** Gunakan suara perempuan berbahasa Indonesia yang hangat, tenang, jelas, dan profesional. Pilih suara final saat menyiapkan audio VO; Remotion dipakai untuk memasukkan dan menyelaraskan file audio dengan video, bukan untuk memilih atau membuat suara.
 
 **Gaya visual (dari website asli, dark mode):**
 - Latar: navy gelap, sekitar `#0B1120` sampai `#0F172A`
