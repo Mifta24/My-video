@@ -1,9 +1,189 @@
-import { MyComposition } from "./Composition";
+import { Composition, Folder } from "remotion";
+import { LeadsVideo30 } from "./ai-apartment/LeadsVideo30";
+import { ChatPair } from "./ai-apartment/elements/ChatPair";
+import { FloorIndicator } from "./ai-apartment/elements/FloorIndicator";
+import { IncomingBubble, NightClock } from "./ai-apartment/elements/NightChat";
+import { RequestForm } from "./ai-apartment/elements/RequestForm";
+import { Wordmark } from "./ai-apartment/elements/Wordmark";
+import { AnswersScene } from "./ai-apartment/scenes/AnswersScene";
+import { CtaScene } from "./ai-apartment/scenes/CtaScene";
+import { LiftRequestScene } from "./ai-apartment/scenes/LiftRequestScene";
+import { ProblemScene } from "./ai-apartment/scenes/ProblemScene";
+import { RevealScene } from "./ai-apartment/scenes/RevealScene";
+import { UnansweredScene } from "./ai-apartment/scenes/UnansweredScene";
 
 export const RemotionRoot: React.FC = () => {
   return (
-    <>
-      <MyComposition />
-    </>
+    <Folder name="FTS-Apartment-AI">
+      <Composition
+        id="Leads30-Vertical"
+        component={LeadsVideo30}
+        durationInFrames={1170}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Folder name="Scenes-30s">
+        <Composition
+          id="Scene1-Masalah"
+          component={ProblemScene}
+          durationInFrames={168}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ style: { backgroundColor: "#16171a" } }}
+        />
+        <Composition
+          id="Scene2-TidakDibalas"
+          component={UnansweredScene}
+          durationInFrames={171}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ style: { backgroundColor: "#16171a" } }}
+        />
+        <Composition
+          id="Scene3-ProdukMuncul"
+          component={RevealScene}
+          durationInFrames={252}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+        <Composition
+          id="Scene4-AIMenjawab"
+          component={AnswersScene}
+          durationInFrames={237}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+        <Composition
+          id="Scene5-LiftPermintaan"
+          component={LiftRequestScene}
+          durationInFrames={207}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+        <Composition
+          id="Scene6-CTA"
+          component={CtaScene}
+          durationInFrames={135}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+      </Folder>
+      <Folder name="Elements">
+        <Composition
+          id="Wordmark"
+          component={Wordmark}
+          durationInFrames={60}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{
+            size: 72,
+            style: {
+              position: "absolute",
+              top: 900,
+              left: 0,
+              right: 0,
+              justifyContent: "center",
+            },
+          }}
+        />
+        <Composition
+          id="NightClock"
+          component={NightClock}
+          durationInFrames={90}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{
+            fromMinutes: 120,
+            toMinutes: 540,
+            runStart: 0.3,
+            runEnd: 2.2,
+            style: {
+              position: "absolute",
+              top: 300,
+              left: 0,
+              right: 0,
+              textAlign: "center",
+            },
+          }}
+        />
+        <Composition
+          id="IncomingBubble"
+          component={IncomingBubble}
+          durationInFrames={60}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{
+            children: "Sewa bulanan berapa?",
+            status: "✓ Belum dibalas",
+            style: { position: "absolute", top: 760, left: 100, right: 100 },
+          }}
+        />
+        <Composition
+          id="ChatPair"
+          component={ChatPair}
+          durationInFrames={72}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{
+            question: "Ada gym 24 jam?",
+            answer:
+              "Ada. Gym di lantai 5 buka 24 jam, pakai kartu akses penghuni.",
+            answerAt: 0.55,
+            style: {
+              position: "absolute",
+              top: 780,
+              left: 110,
+              right: 110,
+              width: "auto",
+            },
+          }}
+        />
+        <Composition
+          id="FloorIndicator"
+          component={FloorIndicator}
+          durationInFrames={90}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{
+            arrivals: [0.6, 2.4],
+            floors: [
+              { code: "L", label: "Lobi" },
+              { code: "02", label: "Unit Hunian" },
+              { code: "05", label: "Rencanakan menginap" },
+            ],
+            style: { position: "absolute", top: 170, left: 80, right: 80 },
+          }}
+        />
+        <Composition
+          id="RequestForm"
+          component={RequestForm}
+          durationInFrames={120}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{
+            stepTimes: [0.4, 0.8, 1.2, 1.6],
+            sentAt: 2.6,
+            style: { position: "absolute", top: 600, left: 80, right: 80 },
+          }}
+        />
+      </Folder>
+    </Folder>
   );
 };
