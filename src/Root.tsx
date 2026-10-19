@@ -11,6 +11,15 @@ import { LiftRequestScene } from "./ai-apartment/scenes/LiftRequestScene";
 import { ProblemScene } from "./ai-apartment/scenes/ProblemScene";
 import { RevealScene } from "./ai-apartment/scenes/RevealScene";
 import { UnansweredScene } from "./ai-apartment/scenes/UnansweredScene";
+import { YoutubeVideo } from "./ai-apartment/youtube/YoutubeVideo";
+import { YtBrochureScene } from "./ai-apartment/youtube/YtBrochureScene";
+import { YtChatScene } from "./ai-apartment/youtube/YtChatScene";
+import { YtCtaScene } from "./ai-apartment/youtube/YtCtaScene";
+import { YtCustomScene } from "./ai-apartment/youtube/YtCustomScene";
+import { YtFormScene } from "./ai-apartment/youtube/YtFormScene";
+import { YtLiftTourScene } from "./ai-apartment/youtube/YtLiftTourScene";
+import { YtProblemScene } from "./ai-apartment/youtube/YtProblemScene";
+import { YtRevealScene } from "./ai-apartment/youtube/YtRevealScene";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -23,6 +32,88 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      <Composition
+        id="YouTube-16x9"
+        component={YoutubeVideo}
+        durationInFrames={3447}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Folder name="Scenes-YouTube">
+        <Composition
+          id="YT1-Jam0200"
+          component={YtProblemScene}
+          durationInFrames={378}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{ style: { backgroundColor: "#16171a" } }}
+        />
+        <Composition
+          id="YT2-BrosurOnline"
+          component={YtBrochureScene}
+          durationInFrames={489}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{ style: { backgroundColor: "#16171a" } }}
+        />
+        <Composition
+          id="YT3-ProdukMuncul"
+          component={YtRevealScene}
+          durationInFrames={453}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+        <Composition
+          id="YT4-NaikLift"
+          component={YtLiftTourScene}
+          durationInFrames={432}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+        <Composition
+          id="YT5-TanyaAI"
+          component={YtChatScene}
+          durationInFrames={486}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+        <Composition
+          id="YT6-PermintaanSewa"
+          component={YtFormScene}
+          durationInFrames={642}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+        <Composition
+          id="YT7-GedungAnda"
+          component={YtCustomScene}
+          durationInFrames={291}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+        <Composition
+          id="YT8-CTA"
+          component={YtCtaScene}
+          durationInFrames={276}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{ style: { backgroundColor: "#0d121c" } }}
+        />
+      </Folder>
       <Folder name="Scenes-30s">
         <Composition
           id="Scene1-Masalah"
