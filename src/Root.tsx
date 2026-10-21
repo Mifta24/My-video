@@ -1,5 +1,5 @@
 import { Composition, Folder } from "remotion";
-import { LeadsVideo30 } from "./ai-apartment/LeadsVideo30";
+import { LeadsVideo30, leadsTotalSeconds } from "./ai-apartment/LeadsVideo30";
 import { ChatPair } from "./ai-apartment/elements/ChatPair";
 import { FloorIndicator } from "./ai-apartment/elements/FloorIndicator";
 import { IncomingBubble, NightClock } from "./ai-apartment/elements/NightChat";
@@ -11,7 +11,10 @@ import { LiftRequestScene } from "./ai-apartment/scenes/LiftRequestScene";
 import { ProblemScene } from "./ai-apartment/scenes/ProblemScene";
 import { RevealScene } from "./ai-apartment/scenes/RevealScene";
 import { UnansweredScene } from "./ai-apartment/scenes/UnansweredScene";
-import { YoutubeVideo } from "./ai-apartment/youtube/YoutubeVideo";
+import {
+  YoutubeVideo,
+  youtubeTotalSeconds,
+} from "./ai-apartment/youtube/YoutubeVideo";
 import { YtBrochureScene } from "./ai-apartment/youtube/YtBrochureScene";
 import { YtChatScene } from "./ai-apartment/youtube/YtChatScene";
 import { YtCtaScene } from "./ai-apartment/youtube/YtCtaScene";
@@ -39,6 +42,24 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="Leads30-Vertical-EN"
+        component={LeadsVideo30}
+        durationInFrames={Math.round(leadsTotalSeconds("en") * 30)}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ lang: "en" as const }}
+      />
+      <Composition
+        id="YouTube-16x9-EN"
+        component={YoutubeVideo}
+        durationInFrames={Math.round(youtubeTotalSeconds("en") * 30)}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{ lang: "en" as const }}
       />
       <Folder name="Scenes-YouTube">
         <Composition
