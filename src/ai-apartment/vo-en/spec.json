@@ -1,0 +1,267 @@
+{
+  "voice": "en-US-AvaNeural",
+  "rate": "+0%",
+  "scenes": {
+    "p1": [
+      {
+        "id": "p1a",
+        "text": "2 a.m. A prospective tenant asks about the monthly rent.",
+        "say": "Two a.m. A prospective tenant asks about the monthly rent.",
+        "at": 0.2
+      },
+      {
+        "id": "p1b",
+        "text": "Who answers?",
+        "at": 4.2
+      }
+    ],
+    "p2": [
+      {
+        "id": "p2a",
+        "text": "Usually, it waits until morning.",
+        "at": 1.0
+      },
+      {
+        "id": "p2b",
+        "text": "By then, they've moved on.",
+        "at": 3.9
+      }
+    ],
+    "p3": [
+      {
+        "id": "p3a",
+        "text": "Meet FTS Apartment AI.",
+        "say": "Meet F T S Apartment A I.",
+        "at": 0.2
+      },
+      {
+        "id": "p3b",
+        "text": "An apartment website with a 24-hour AI Concierge.",
+        "say": "An apartment website with a twenty-four hour A I Concierge.",
+        "at": 2.6
+      }
+    ],
+    "p4": [
+      {
+        "id": "p4a",
+        "text": "It knows the units, rates, and house rules.",
+        "at": 0.1
+      },
+      {
+        "id": "p4b",
+        "text": "Answers in Indonesian, English, or Japanese.",
+        "at": 3.3
+      }
+    ],
+    "p5": [
+      {
+        "id": "p5a",
+        "text": "Guests ride the virtual lift, pick a unit,",
+        "at": 0.1
+      },
+      {
+        "id": "p5b",
+        "text": "send a request.",
+        "at": 2.9
+      },
+      {
+        "id": "p5c",
+        "text": "Leasing follows up.",
+        "at": 4.6
+      }
+    ],
+    "p6": [
+      {
+        "id": "p6a",
+        "text": "Want this for your building?",
+        "at": 0.2
+      },
+      {
+        "id": "p6b",
+        "text": "Try the demo.",
+        "at": 1.7
+      }
+    ],
+    "y1": [
+      {
+        "id": "y1a",
+        "text": "At two in the morning, a prospective tenant opens your apartment website.",
+        "at": 0.5
+      },
+      {
+        "id": "y1b",
+        "text": "They want to know the monthly rent, the deposit, and the amenities.",
+        "at": 5.0
+      },
+      {
+        "id": "y1c",
+        "text": "But there's no one to ask.",
+        "at": 9.9
+      }
+    ],
+    "y2": [
+      {
+        "id": "y2a",
+        "text": "Most apartment websites are just online brochures.",
+        "at": 0.2
+      },
+      {
+        "id": "y2b",
+        "text": "Photos, prices, a phone number.",
+        "at": 3.8
+      },
+      {
+        "id": "y2c",
+        "text": "If the answer isn't on the page, prospects wait for office hours.",
+        "at": 7.2
+      },
+      {
+        "id": "y2d",
+        "text": "And may be gone by then.",
+        "at": 11.8
+      }
+    ],
+    "y3": [
+      {
+        "id": "y3a",
+        "text": "Meet FTS Apartment AI.",
+        "say": "Meet F T S Apartment A I.",
+        "at": 0.4
+      },
+      {
+        "id": "y3b",
+        "text": "The apartment website with an AI Concierge on duty 24 hours.",
+        "say": "The apartment website with an A I Concierge on duty twenty-four hours.",
+        "at": 4.0
+      },
+      {
+        "id": "y3c",
+        "text": "Visitors don't scroll.",
+        "at": 9.2
+      },
+      {
+        "id": "y3d",
+        "text": "They ride the lift, floor by floor.",
+        "at": 11.6
+      }
+    ],
+    "y4": [
+      {
+        "id": "y4a",
+        "text": "In the lobby, the concierge greets them right away.",
+        "at": 0.2
+      },
+      {
+        "id": "y4b",
+        "text": "On the unit floor, they browse unit types, from studio to penthouse.",
+        "at": 3.7
+      },
+      {
+        "id": "y4c",
+        "text": "On the amenities floor: a rooftop pool, a gym, and a co-working space.",
+        "at": 8.7
+      }
+    ],
+    "y5": [
+      {
+        "id": "y5a",
+        "text": "Ask the AI Concierge anything.",
+        "say": "Ask the A I Concierge anything.",
+        "at": 0.2
+      },
+      {
+        "id": "y5b",
+        "text": "What time does the gym open?",
+        "at": 3.1
+      },
+      {
+        "id": "y5c",
+        "text": "Is there an airport shuttle?",
+        "at": 5.2
+      },
+      {
+        "id": "y5d",
+        "text": "Ask in English or Japanese, and it replies in the same language.",
+        "at": 7.2
+      },
+      {
+        "id": "y5e",
+        "text": "Rates, house rules, check-in times, everything.",
+        "at": 11.8
+      }
+    ],
+    "y6": [
+      {
+        "id": "y6a",
+        "text": "If interested, guests can send a rental request right there.",
+        "at": 0.2
+      },
+      {
+        "id": "y6b",
+        "text": "Five steps:",
+        "at": 4.3
+      },
+      {
+        "id": "y6c",
+        "text": "dates, guests, unit, details, summary.",
+        "at": 6.0
+      },
+      {
+        "id": "y6d",
+        "text": "Long-stay discounts are listed upfront:",
+        "at": 10.4
+      },
+      {
+        "id": "y6e",
+        "text": "10% from 7 nights,",
+        "say": "ten percent from seven nights,",
+        "at": 12.9
+      },
+      {
+        "id": "y6f",
+        "text": "25% from 28 nights.",
+        "say": "twenty-five percent from twenty-eight nights.",
+        "at": 15.0
+      },
+      {
+        "id": "y6g",
+        "text": "The leasing team confirms and follows up.",
+        "at": 18.0
+      }
+    ],
+    "y7": [
+      {
+        "id": "y7a",
+        "text": "What you just saw is a demo.",
+        "at": 0.2
+      },
+      {
+        "id": "y7b",
+        "text": "For your building, we tailor the content:",
+        "at": 2.8
+      },
+      {
+        "id": "y7c",
+        "text": "units, rates, and house rules.",
+        "at": 6.1
+      }
+    ],
+    "y8": [
+      {
+        "id": "y8a",
+        "text": "Try the demo now, link in the description.",
+        "at": 0.2
+      },
+      {
+        "id": "y8b",
+        "text": "Want this for your building?",
+        "at": 3.0
+      },
+      {
+        "id": "y8c",
+        "text": "Get in touch.",
+        "at": 4.7
+      }
+    ]
+  }
+}
