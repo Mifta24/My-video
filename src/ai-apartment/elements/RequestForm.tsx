@@ -7,6 +7,7 @@ import {
   useVideoConfig,
   type InteractivitySchema,
 } from "remotion";
+import { useL } from "../i18n";
 import { colors, fonts } from "../theme";
 
 type RequestFormProps = {
@@ -18,12 +19,19 @@ type RequestFormProps = {
 };
 
 // Label dan isi mengikuti form reservasi asli di website demo.
-const steps = ["Tanggal", "Penghuni", "Unit", "Data Anda", "Ringkasan"];
-const rows = [
+const stepsId = ["Tanggal", "Penghuni", "Unit", "Data Anda", "Ringkasan"];
+const stepsEn = ["Dates", "Guests", "Unit", "Your details", "Summary"];
+const rowsId = [
   { label: "Tanggal", value: "1 Nov – 1 Des · Bulanan" },
   { label: "Penghuni", value: "2 Dewasa" },
   { label: "Unit", value: "1 Bedroom Executive" },
   { label: "Data Anda", value: "Rina · WhatsApp" },
+];
+const rowsEn = [
+  { label: "Dates", value: "1 Nov – 1 Dec · Monthly" },
+  { label: "Guests", value: "2 Adults" },
+  { label: "Unit", value: "1 Bedroom Executive" },
+  { label: "Your details", value: "Rina · WhatsApp" },
 ];
 
 const RequestFormInner: React.FC<RequestFormProps> = ({
@@ -31,6 +39,9 @@ const RequestFormInner: React.FC<RequestFormProps> = ({
   sentAt,
   style,
 }) => {
+  const L = useL();
+  const steps = L(stepsId, stepsEn);
+  const rows = L(rowsId, rowsEn);
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -153,10 +164,13 @@ const RequestFormInner: React.FC<RequestFormProps> = ({
         }}
       >
         <div style={{ fontSize: 34, color: colors.signal }}>
-          Hemat 25% mulai 28 malam
+          {L("Hemat 25% mulai 28 malam", "Save 25% from 28 nights")}
         </div>
         <div style={{ fontSize: 30, lineHeight: 1.35, color: colors.muted }}>
-          Ini adalah permintaan sewa, bukan kontrak.
+          {L(
+            "Ini adalah permintaan sewa, bukan kontrak.",
+            "This is a rental request, not a contract.",
+          )}
         </div>
         <div
           style={{
@@ -171,7 +185,9 @@ const RequestFormInner: React.FC<RequestFormProps> = ({
             scale: press,
           }}
         >
-          {sent ? "✓ Permintaan diterima" : "Kirim permintaan sewa →"}
+          {sent
+            ? L("✓ Permintaan diterima", "✓ Request received")
+            : L("Kirim permintaan sewa →", "Send rental request →")}
         </div>
       </div>
     </div>

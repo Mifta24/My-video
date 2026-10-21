@@ -11,6 +11,8 @@ import { colors, fonts } from "../theme";
 
 type ChatPairProps = {
   readonly question: string;
+  // Terjemahan kecil di bawah pertanyaan (untuk video versi Inggris).
+  readonly gloss?: string;
   readonly answer: string;
   // Detik (relatif ke awal elemen) saat jawaban AI muncul.
   readonly answerAt: number;
@@ -22,6 +24,7 @@ type ChatPairProps = {
 // Satu pasang tanya-jawab: bubble tamu, indikator mengetik, lalu jawaban AI.
 const ChatPairInner: React.FC<ChatPairProps> = ({
   question,
+  gloss,
   answer,
   answerAt,
   fontSize = 50,
@@ -67,6 +70,18 @@ const ChatPairInner: React.FC<ChatPairProps> = ({
         }}
       >
         {question}
+        {gloss ? (
+          <div
+            style={{
+              marginTop: 8 * k,
+              fontSize: fontSize * 0.7,
+              fontWeight: 400,
+              opacity: 0.7,
+            }}
+          >
+            {gloss}
+          </div>
+        ) : null}
       </div>
       <div
         style={{
@@ -118,6 +133,11 @@ const chatPairSchema = {
     type: "string",
     default: "Ada gym 24 jam?",
     description: "Pertanyaan tamu",
+  },
+  gloss: {
+    type: "string",
+    default: "",
+    description: "Terjemahan kecil di bawah pertanyaan",
   },
   answer: {
     type: "string",

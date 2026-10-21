@@ -8,6 +8,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { IncomingBubble, NightClock } from "../elements/NightChat";
 import { sfx } from "../theme";
 
@@ -15,6 +17,8 @@ import { sfx } from "../theme";
 const ProblemSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
 
   return (
     <>
@@ -60,7 +64,7 @@ const ProblemSceneInner = () => {
           ),
         }}
       >
-        Sewa bulanan berapa?
+        {L("Sewa bulanan berapa?", "How much is the monthly rent?")}
       </IncomingBubble>
       <Audio
         name="Ping notifikasi"
@@ -68,6 +72,10 @@ const ProblemSceneInner = () => {
         src={sfx.ding}
         volume={0.35}
       />
+      {en ? (
+        <EnVo scene="p1" layout="vertical" />
+      ) : (
+        <>
       <Audio
         name="VO jam dua pagi"
         from={0.2 * fps}
@@ -101,6 +109,8 @@ const ProblemSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

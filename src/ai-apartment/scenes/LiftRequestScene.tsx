@@ -8,6 +8,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { FloorIndicator } from "../elements/FloorIndicator";
 import { RequestForm } from "../elements/RequestForm";
 import { colors, fonts, sfx } from "../theme";
@@ -16,6 +18,8 @@ import { colors, fonts, sfx } from "../theme";
 const LiftRequestSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
 
   return (
     <>
@@ -23,9 +27,9 @@ const LiftRequestSceneInner = () => {
         name="Indikator lantai"
         arrivals={[0.6, 2.9]}
         floors={[
-          { code: "L", label: "Lobi" },
-          { code: "02", label: "Unit Hunian" },
-          { code: "05", label: "Rencanakan menginap" },
+          { code: "L", label: L("Lobi", "Lobby") },
+          { code: "02", label: L("Unit Hunian", "Residences") },
+          { code: "05", label: L("Rencanakan menginap", "Plan your stay") },
         ]}
         style={{ position: "absolute", top: 170, left: 80, right: 80 }}
       />
@@ -48,8 +52,9 @@ const LiftRequestSceneInner = () => {
           ),
         }}
       >
-        Pilih unit <span style={{ color: colors.signal }}>→</span> Kirim
-        permintaan
+        {L("Pilih unit", "Pick a unit")}{" "}
+        <span style={{ color: colors.signal }}>→</span>{" "}
+        {L("Kirim permintaan", "Send a request")}
       </Interactive.Div>
       <Interactive.Div
         name="Teks tim leasing"
@@ -68,7 +73,7 @@ const LiftRequestSceneInner = () => {
           }),
         }}
       >
-        Tim leasing follow up
+        {L("Tim leasing follow up", "Leasing team follows up")}
       </Interactive.Div>
       <Interactive.Div
         name="Kartu unit"
@@ -112,17 +117,17 @@ const LiftRequestSceneInner = () => {
             color: colors.muted,
           }}
         >
-          02 · TIPE UNIT
+          {L("02 · TIPE UNIT", "02 · UNIT TYPE")}
         </div>
         <div style={{ fontSize: 84, fontWeight: 700, lineHeight: 1.05 }}>
           1 Bedroom Executive
         </div>
         <div style={{ fontSize: 40, color: colors.muted }}>
-          48 m² · 1 kamar tidur · 1 kamar mandi
+          {L("48 m² · 1 kamar tidur · 1 kamar mandi", "48 m² · 1 bedroom · 1 bathroom")}
         </div>
         <div style={{ fontSize: 48, fontWeight: 500 }}>
-          mulai IDR 1.050.000{" "}
-          <span style={{ color: colors.muted }}>/ malam</span>
+          {L("mulai IDR 1.050.000", "from IDR 1,050,000")}{" "}
+          <span style={{ color: colors.muted }}>{L("/ malam", "/ night")}</span>
         </div>
         <div
           style={{
@@ -146,7 +151,7 @@ const LiftRequestSceneInner = () => {
             ),
           }}
         >
-          Pilih unit ini →
+          {L("Pilih unit ini →", "Select this unit →")}
         </div>
       </Interactive.Div>
       <RequestForm
@@ -194,6 +199,10 @@ const LiftRequestSceneInner = () => {
         volume={0.5}
       />
       <Audio name="Klik kirim" from={5.5 * fps} src={sfx.click} volume={0.7} />
+      {en ? (
+        <EnVo scene="p5" layout="vertical" />
+      ) : (
+        <>
       <Audio
         name="VO tamu naik lift"
         from={0.1 * fps}
@@ -240,6 +249,8 @@ const LiftRequestSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

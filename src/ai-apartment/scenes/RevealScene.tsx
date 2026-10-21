@@ -9,6 +9,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { LimeFlash } from "../elements/LimeFlash";
 import { Wordmark } from "../elements/Wordmark";
 import { colors, fonts, sfx } from "../theme";
@@ -17,6 +19,8 @@ import { colors, fonts, sfx } from "../theme";
 const RevealSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
 
   return (
     <>
@@ -98,7 +102,15 @@ const RevealSceneInner = () => {
           }),
         }}
       >
-        Lobi <span style={{ color: colors.signal }}>virtual</span> Anda.
+        {en ? (
+          <>
+            Your <span style={{ color: colors.signal }}>virtual</span> lobby.
+          </>
+        ) : (
+          <>
+            Lobi <span style={{ color: colors.signal }}>virtual</span> Anda.
+          </>
+        )}
       </Interactive.Div>
       <Interactive.Div
         name="Chip concierge 24 jam"
@@ -148,11 +160,15 @@ const RevealSceneInner = () => {
               opacity: Math.floor(frame / 15) % 2 === 0 ? 1 : 0.4,
             }}
           />
-          AI Concierge siaga 24 jam
+          {L("AI Concierge siaga 24 jam", "AI Concierge on duty 24/7")}
         </div>
       </Interactive.Div>
       <LimeFlash name="Flash lime" />
       <Audio name="Ding lift" src={sfx.ding} volume={0.5} />
+      {en ? (
+        <EnVo scene="p3" layout="vertical" />
+      ) : (
+        <>
       <Audio
         name="VO kenalkan"
         from={0.2 * fps}
@@ -186,6 +202,8 @@ const RevealSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

@@ -8,6 +8,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { ChatPair } from "../elements/ChatPair";
 import { colors, fonts, sfx } from "../theme";
 
@@ -19,6 +21,8 @@ const jaStart = 5.2;
 const AnswersSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
   const t = frame / fps;
   const activeLang = t >= jaStart ? "JA" : t >= enStart ? "EN" : "ID";
 
@@ -43,9 +47,11 @@ const AnswersSceneInner = () => {
           }),
         }}
       >
-        Unit. Tarif.
+        {L("Unit. Tarif.", "Units. Rates.")}
         <br />
-        <span style={{ color: colors.signal }}>Aturan gedung.</span>
+        <span style={{ color: colors.signal }}>
+          {L("Aturan gedung.", "House rules.")}
+        </span>
       </Interactive.Div>
       <Interactive.Div
         name="Badge bahasa"
@@ -139,7 +145,7 @@ const AnswersSceneInner = () => {
               color: colors.muted,
             }}
           >
-            Online · 24 jam
+            {L("Online · 24 jam", "Online · 24/7")}
           </div>
         </div>
       </Interactive.Div>
@@ -150,6 +156,7 @@ const AnswersSceneInner = () => {
         from={0.3 * fps}
         durationInFrames={2.4 * fps}
         question="Ada gym 24 jam?"
+        gloss={en ? "Is there a 24-hour gym?" : ""}
         answer="Ada. Gym di lantai 5 buka 24 jam, pakai kartu akses penghuni."
         answerAt={0.55}
         style={{
@@ -180,6 +187,7 @@ const AnswersSceneInner = () => {
         from={jaStart * fps}
         durationInFrames={2.7 * fps}
         question="空港送迎はありますか？"
+        gloss={en ? "Is there an airport shuttle?" : ""}
         answer="はい。スカルノ・ハッタ空港から片道Rp450.000です。"
         answerAt={0.55}
         style={{
@@ -208,6 +216,10 @@ const AnswersSceneInner = () => {
         src={sfx.click}
         volume={0.5}
       />
+      {en ? (
+        <EnVo scene="p4" layout="vertical" />
+      ) : (
+        <>
       <Audio
         name="VO ia hafal unit"
         from={0.1 * fps}
@@ -241,6 +253,8 @@ const AnswersSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

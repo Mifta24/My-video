@@ -7,6 +7,7 @@ import {
   useVideoConfig,
   type InteractivitySchema,
 } from "remotion";
+import { useL } from "../i18n";
 import { colors, fonts } from "../theme";
 
 type NightClockProps = {
@@ -114,6 +115,7 @@ const IncomingBubbleInner: React.FC<IncomingBubbleProps> = ({
   status,
   style,
 }) => {
+  const L = useL();
   return (
     <div
       style={{
@@ -131,7 +133,7 @@ const IncomingBubbleInner: React.FC<IncomingBubbleProps> = ({
           color: colors.grayText,
         }}
       >
-        Calon penyewa · 02:00
+        {L("Calon penyewa · 02:00", "Prospective tenant · 02:00")}
       </div>
       <div
         style={{

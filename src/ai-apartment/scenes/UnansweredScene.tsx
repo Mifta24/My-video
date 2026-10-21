@@ -8,6 +8,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { IncomingBubble, NightClock } from "../elements/NightChat";
 import { colors, fonts } from "../theme";
 
@@ -15,6 +17,8 @@ import { colors, fonts } from "../theme";
 const UnansweredSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
 
   return (
     <>
@@ -32,7 +36,7 @@ const UnansweredSceneInner = () => {
         }}
         hidden
       >
-        ILUSTRASI
+        {L("ILUSTRASI", "ILLUSTRATION")}
       </Interactive.Div>
       <NightClock
         name="Jam berjalan"
@@ -50,7 +54,7 @@ const UnansweredSceneInner = () => {
       />
       <IncomingBubble
         name="Bubble belum dibalas"
-        status="✓ Belum dibalas"
+        status={L("✓ Belum dibalas", "✓ Unanswered")}
         style={{
           position: "absolute",
           top: 760,
@@ -62,7 +66,7 @@ const UnansweredSceneInner = () => {
           }),
         }}
       >
-        Sewa bulanan berapa?
+        {L("Sewa bulanan berapa?", "How much is the monthly rent?")}
       </IncomingBubble>
       <Interactive.Div
         name="Teks dibalas besok"
@@ -92,7 +96,7 @@ const UnansweredSceneInner = () => {
           ),
         }}
       >
-        Dibalas besok.
+        {L("Dibalas besok.", "Answered tomorrow.")}
       </Interactive.Div>
       <Interactive.Div
         name="Teks penyewa pergi"
@@ -122,8 +126,12 @@ const UnansweredSceneInner = () => {
           ),
         }}
       >
-        Penyewa sudah pergi.
+        {L("Penyewa sudah pergi.", "The tenant is gone.")}
       </Interactive.Div>
+      {en ? (
+        <EnVo scene="p2" layout="vertical" />
+      ) : (
+        <>
       <Audio
         name="VO biasanya"
         src={staticFile("ai-apartment/vo/s2a.wav")}
@@ -156,6 +164,8 @@ const UnansweredSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

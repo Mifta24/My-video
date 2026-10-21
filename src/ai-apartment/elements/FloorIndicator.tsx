@@ -7,6 +7,7 @@ import {
   useVideoConfig,
   type InteractivitySchema,
 } from "remotion";
+import { useL } from "../i18n";
 import { colors, fonts } from "../theme";
 
 type Floor = {
@@ -27,6 +28,7 @@ const FloorIndicatorInner: React.FC<FloorIndicatorProps> = ({
   floors,
   style,
 }) => {
+  const L = useL();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -102,7 +104,7 @@ const FloorIndicatorInner: React.FC<FloorIndicatorProps> = ({
             color: colors.muted,
           }}
         >
-          LANTAI
+          {L("LANTAI", "FLOOR")}
         </div>
         <div
           style={{

@@ -9,6 +9,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { LimeFlash } from "../elements/LimeFlash";
 import { Wordmark } from "../elements/Wordmark";
 import { colors, fonts } from "../theme";
@@ -17,6 +19,8 @@ import { colors, fonts } from "../theme";
 const CtaSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
 
   return (
     <>
@@ -57,7 +61,17 @@ const CtaSceneInner = () => {
           }),
         }}
       >
-        Mau gedung Anda <span style={{ color: colors.signal }}>punya ini?</span>
+        {en ? (
+          <>
+            Want this for{" "}
+            <span style={{ color: colors.signal }}>your building?</span>
+          </>
+        ) : (
+          <>
+            Mau gedung Anda{" "}
+            <span style={{ color: colors.signal }}>punya ini?</span>
+          </>
+        )}
       </Interactive.Div>
       <Wordmark
         name="Logo CTA"
@@ -132,9 +146,13 @@ const CtaSceneInner = () => {
           ),
         }}
       >
-        Coba demonya →
+        {L("Coba demonya →", "Try the demo →")}
       </Interactive.Div>
       <LimeFlash name="Flash lime CTA" />
+      {en ? (
+        <EnVo scene="p6" layout="vertical" />
+      ) : (
+        <>
       <Audio
         name="VO mau gedung Anda"
         from={0.2 * fps}
@@ -168,6 +186,8 @@ const CtaSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

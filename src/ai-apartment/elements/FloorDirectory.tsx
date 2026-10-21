@@ -6,16 +6,17 @@ import {
   useVideoConfig,
   type InteractivitySchema,
 } from "remotion";
+import { useL } from "../i18n";
 import { colors, fonts } from "../theme";
 
 // Lantai sesuai "Direktori gedung" di website demo, dari bawah (L) ke atas (06).
 const floors = [
-  { code: "L", label: "Lobi" },
-  { code: "02", label: "Unit Hunian" },
-  { code: "03", label: "Fasilitas bersama" },
-  { code: "04", label: "Informasi gedung" },
-  { code: "05", label: "Rencanakan menginap" },
-  { code: "06", label: "Bicara dengan tim" },
+  { code: "L", label: "Lobi", labelEn: "Lobby" },
+  { code: "02", label: "Unit Hunian", labelEn: "Residences" },
+  { code: "03", label: "Fasilitas bersama", labelEn: "Shared amenities" },
+  { code: "04", label: "Informasi gedung", labelEn: "Building info" },
+  { code: "05", label: "Rencanakan menginap", labelEn: "Plan your stay" },
+  { code: "06", label: "Bicara dengan tim", labelEn: "Talk to the team" },
 ];
 
 type FloorDirectoryProps = {
@@ -29,6 +30,7 @@ const FloorDirectoryInner: React.FC<FloorDirectoryProps> = ({
   floorTimes,
   style,
 }) => {
+  const L = useL();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -65,7 +67,7 @@ const FloorDirectoryInner: React.FC<FloorDirectoryProps> = ({
           marginBottom: 6,
         }}
       >
-        DIREKTORI GEDUNG
+        {L("DIREKTORI GEDUNG", "BUILDING DIRECTORY")}
       </div>
       {[...floors].reverse().map((floor) => {
         const isActive = floor.code === floors[active].code;
@@ -96,7 +98,7 @@ const FloorDirectoryInner: React.FC<FloorDirectoryProps> = ({
               {floor.code}
             </div>
             <div style={{ fontFamily: fonts.heading, fontWeight: 500, fontSize: 28 }}>
-              {floor.label}
+              {L(floor.label, floor.labelEn)}
             </div>
           </div>
         );

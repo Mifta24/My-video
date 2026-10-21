@@ -8,6 +8,7 @@ import {
   useVideoConfig,
   type InteractivitySchema,
 } from "remotion";
+import { useL } from "../i18n";
 import { fonts } from "../theme";
 
 type SiteMockupProps = {
@@ -21,6 +22,7 @@ const SiteMockupInner: React.FC<SiteMockupProps> = ({
   highlightTimes,
   style,
 }) => {
+  const L = useL();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -75,7 +77,7 @@ const SiteMockupInner: React.FC<SiteMockupProps> = ({
             color: "#6d7076",
           }}
         >
-          www.apartemen-kota.com
+          {L("www.apartemen-kota.com", "www.city-apartments.com")}
         </div>
       </div>
       <div style={{ display: "flex", gap: 36, padding: 40 }}>
@@ -92,12 +94,14 @@ const SiteMockupInner: React.FC<SiteMockupProps> = ({
           />
         </div>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 22 }}>
-          <div style={{ fontSize: 40, fontWeight: 700 }}>Apartemen Kota</div>
+          <div style={{ fontSize: 40, fontWeight: 700 }}>
+            {L("Apartemen Kota", "City Apartments")}
+          </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 12, padding: 6, ...ring(1) }}>
             {[
-              ["Studio", "Rp 650.000 / malam"],
-              ["1 Bedroom", "Rp 1.050.000 / malam"],
-              ["2 Bedroom", "Rp 1.750.000 / malam"],
+              ["Studio", L("Rp 650.000 / malam", "IDR 650,000 / night")],
+              ["1 Bedroom", L("Rp 1.050.000 / malam", "IDR 1,050,000 / night")],
+              ["2 Bedroom", L("Rp 1.750.000 / malam", "IDR 1,750,000 / night")],
             ].map(([unit, price]) => (
               <div
                 key={unit}
@@ -117,7 +121,7 @@ const SiteMockupInner: React.FC<SiteMockupProps> = ({
             ))}
           </div>
           <div style={{ fontSize: 26, padding: 6, ...ring(2) }}>
-            ☎ Hubungi: (021) 555-0100
+            {L("☎ Hubungi: (021) 555-0100", "☎ Call: (021) 555-0100")}
           </div>
         </div>
       </div>
