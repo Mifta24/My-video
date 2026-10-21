@@ -8,6 +8,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { Cursor } from "../elements/Cursor";
 import { NightClock } from "../elements/NightChat";
 import { SiteMockup } from "../elements/SiteMockup";
@@ -29,6 +31,8 @@ const chipStyle = {
 const YtProblemSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
   // Pertanyaan meredup saat VO "Tapi tidak ada yang bisa ditanya."
   const dimAfter = interpolate(frame, [10 * fps, 10.6 * fps], [1, 0.35], {
     extrapolateLeft: "clamp",
@@ -91,7 +95,7 @@ const YtProblemSceneInner = () => {
             }) * dimAfter,
         }}
       >
-        Sewa bulanan?
+        {L("Sewa bulanan?", "Monthly rent?")}
       </Interactive.Div>
       <Interactive.Div
         name="Tanya deposit"
@@ -121,7 +125,7 @@ const YtProblemSceneInner = () => {
             }) * dimAfter,
         }}
       >
-        Fasilitas?
+        {L("Fasilitas?", "Amenities?")}
       </Interactive.Div>
       <Cursor
         name="Kursor bingung"
@@ -152,6 +156,10 @@ const YtProblemSceneInner = () => {
           ),
         }}
       />
+      {en ? (
+        <EnVo scene="y1" layout="horizontal" />
+      ) : (
+        <>
       <Audio
         name="VO s1a"
         from={0.5 * fps}
@@ -215,6 +223,8 @@ const YtProblemSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

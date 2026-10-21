@@ -8,6 +8,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { Cursor } from "../elements/Cursor";
 import { SiteMockup } from "../elements/SiteMockup";
 import { fonts, sfx } from "../theme";
@@ -16,6 +18,8 @@ import { fonts, sfx } from "../theme";
 const YtBrochureSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
 
   return (
     <>
@@ -35,7 +39,7 @@ const YtBrochureSceneInner = () => {
           }),
         }}
       >
-        Brosur online.
+        {L("Brosur online.", "Online brochure.")}
       </Interactive.Div>
       <SiteMockup
         name="Website brosur"
@@ -81,7 +85,7 @@ const YtBrochureSceneInner = () => {
           }),
         }}
       >
-        Dibalas jam kerja
+        {L("Dibalas jam kerja", "Answered in office hours")}
         <span style={{ fontFamily: fonts.mono, fontWeight: 500, fontSize: 32 }}>
           09.00–17.00
         </span>
@@ -125,6 +129,10 @@ const YtBrochureSceneInner = () => {
         }}
       />
       <Audio name="Klik kursor" from={1 * fps} src={sfx.click} volume={0.6} />
+      {en ? (
+        <EnVo scene="y2" layout="horizontal" />
+      ) : (
+        <>
       <Audio
         name="VO s2a"
         from={0.2 * fps}
@@ -209,6 +217,8 @@ const YtBrochureSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

@@ -9,6 +9,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { FloorDirectory } from "../elements/FloorDirectory";
 import { colors, fonts, sfx } from "../theme";
 
@@ -22,9 +24,27 @@ const units = [
 const unitTimes = [4.1, 4.5, 4.9, 7.2];
 
 const facilities = [
-  { code: "03.01", name: "Kolam renang infinity rooftop", info: "Lantai 32 · 06:00–21:00" },
-  { code: "03.02", name: "Gym 24 jam", info: "Lantai 5 · kartu akses penghuni" },
-  { code: "03.03", name: "Co-working lounge", info: "Wi-Fi 1 Gbps · 07:00–23:00" },
+  {
+    code: "03.01",
+    name: "Kolam renang infinity rooftop",
+    nameEn: "Rooftop infinity pool",
+    info: "Lantai 32 · 06:00–21:00",
+    infoEn: "Floor 32 · 06:00–21:00",
+  },
+  {
+    code: "03.02",
+    name: "Gym 24 jam",
+    nameEn: "24-hour gym",
+    info: "Lantai 5 · kartu akses penghuni",
+    infoEn: "Floor 5 · resident access card",
+  },
+  {
+    code: "03.03",
+    name: "Co-working lounge",
+    nameEn: "Co-working lounge",
+    info: "Wi-Fi 1 Gbps · 07:00–23:00",
+    infoEn: "Wi-Fi 1 Gbps · 07:00–23:00",
+  },
 ];
 const facilityTimes = [10.6, 12.05, 12.7];
 
@@ -39,6 +59,8 @@ const panelHeader = {
 const YtLiftTourSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
   const t = frame / fps;
   const appear = (at: number) => ({
     opacity: interpolate(t, [at, at + 0.3], [0, 1], {
@@ -71,7 +93,7 @@ const YtLiftTourSceneInner = () => {
           color: colors.muted,
         }}
       >
-        CONTOH DATA DEMO
+        {L("CONTOH DATA DEMO", "DEMO DATA SAMPLE")}
       </Interactive.Div>
       <Interactive.Div
         name="Panel lobi"
@@ -126,7 +148,10 @@ const YtLiftTourSceneInner = () => {
             }),
           }}
         >
-          Selamat datang! Naik lift ke lantai mana pun, saya ikut menemani.
+          {L(
+            "Selamat datang! Naik lift ke lantai mana pun, saya ikut menemani.",
+            "Welcome! Take the lift to any floor. I'll come along.",
+          )}
         </div>
       </Interactive.Div>
       <Interactive.Div
@@ -143,7 +168,9 @@ const YtLiftTourSceneInner = () => {
           gap: 28,
         }}
       >
-        <div style={panelHeader}>02 · UNIT HUNIAN · 7 TIPE UNIT</div>
+        <div style={panelHeader}>
+          {L("02 · UNIT HUNIAN · 7 TIPE UNIT", "02 · RESIDENCES · 7 UNIT TYPES")}
+        </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
           {units.map((unit, i) => (
             <div
@@ -174,8 +201,8 @@ const YtLiftTourSceneInner = () => {
                 {unit.name}
               </div>
               <div style={{ fontFamily: fonts.heading, fontSize: 30, color: colors.white }}>
-                mulai {unit.price}{" "}
-                <span style={{ color: colors.muted }}>/ malam</span>
+                {L("mulai", "from")} {L(unit.price, unit.price.replace(/\./g, ","))}{" "}
+                <span style={{ color: colors.muted }}>{L("/ malam", "/ night")}</span>
               </div>
             </div>
           ))}
@@ -194,7 +221,9 @@ const YtLiftTourSceneInner = () => {
           gap: 24,
         }}
       >
-        <div style={panelHeader}>03 · FASILITAS BERSAMA · 8 LAYANAN</div>
+        <div style={panelHeader}>
+          {L("03 · FASILITAS BERSAMA · 8 LAYANAN", "03 · SHARED AMENITIES · 8 SERVICES")}
+        </div>
         {facilities.map((item, i) => (
           <div
             key={item.code}
@@ -228,10 +257,10 @@ const YtLiftTourSceneInner = () => {
                   color: colors.white,
                 }}
               >
-                {item.name}
+                {L(item.name, item.nameEn)}
               </div>
               <div style={{ fontFamily: fonts.heading, fontSize: 30, color: colors.muted }}>
-                {item.info}
+                {L(item.info, item.infoEn)}
               </div>
             </div>
           </div>
@@ -239,6 +268,10 @@ const YtLiftTourSceneInner = () => {
       </Interactive.Div>
       <Audio name="Ding lantai 02" from={3.8 * fps} src={sfx.ding} volume={0.4} />
       <Audio name="Ding lantai 03" from={8.7 * fps} src={sfx.ding} volume={0.4} />
+      {en ? (
+        <EnVo scene="y4" layout="horizontal" />
+      ) : (
+        <>
       <Audio
         name="VO s4a"
         from={0.2 * fps}
@@ -302,6 +335,8 @@ const YtLiftTourSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

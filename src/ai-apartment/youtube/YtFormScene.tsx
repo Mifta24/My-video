@@ -8,6 +8,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { RequestForm } from "../elements/RequestForm";
 import { colors, fonts, sfx } from "../theme";
 
@@ -26,6 +28,8 @@ const bannerStyle = {
 const YtFormSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
 
   return (
     <>
@@ -53,7 +57,7 @@ const YtFormSceneInner = () => {
             color: colors.muted,
           }}
         >
-          LANTAI 05 · RENCANAKAN MENGINAP
+          {L("LANTAI 05 · RENCANAKAN MENGINAP", "FLOOR 05 · PLAN YOUR STAY")}
         </div>
         <div
           style={{
@@ -65,8 +69,18 @@ const YtFormSceneInner = () => {
             color: colors.white,
           }}
         >
-          Permintaan sewa,{" "}
-          <span style={{ color: colors.signal }}>5 langkah.</span>
+          {en ? (
+            <>
+              Rental request,
+              <br />
+              <span style={{ color: colors.signal }}>5 steps.</span>
+            </>
+          ) : (
+            <>
+              Permintaan sewa,{" "}
+              <span style={{ color: colors.signal }}>5 langkah.</span>
+            </>
+          )}
         </div>
       </Interactive.Div>
       <Interactive.Div
@@ -93,9 +107,9 @@ const YtFormSceneInner = () => {
         }}
       >
         <span style={{ fontWeight: 700, fontSize: 64, color: colors.signal }}>
-          Hemat 10%
+          {L("Hemat 10%", "Save 10%")}
         </span>
-        <span style={{ fontSize: 38 }}>mulai 7 malam</span>
+        <span style={{ fontSize: 38 }}>{L("mulai 7 malam", "from 7 nights")}</span>
       </Interactive.Div>
       <Interactive.Div
         name="Banner diskon 28 malam"
@@ -121,9 +135,9 @@ const YtFormSceneInner = () => {
         }}
       >
         <span style={{ fontWeight: 700, fontSize: 64, color: colors.signal }}>
-          Hemat 25%
+          {L("Hemat 25%", "Save 25%")}
         </span>
-        <span style={{ fontSize: 38 }}>mulai 28 malam</span>
+        <span style={{ fontSize: 38 }}>{L("mulai 28 malam", "from 28 nights")}</span>
       </Interactive.Div>
       <Interactive.Div
         name="Catatan bukan kontrak"
@@ -142,8 +156,13 @@ const YtFormSceneInner = () => {
           }),
         }}
       >
-        Ini permintaan sewa, bukan kontrak.{" "}
-        <span style={{ color: colors.white }}>Tim leasing yang mengonfirmasi.</span>
+        {L(
+          "Ini permintaan sewa, bukan kontrak.",
+          "This is a rental request, not a contract.",
+        )}{" "}
+        <span style={{ color: colors.white }}>
+          {L("Tim leasing yang mengonfirmasi.", "The leasing team confirms.")}
+        </span>
       </Interactive.Div>
       <RequestForm
         name="Form permintaan sewa"
@@ -168,6 +187,10 @@ const YtFormSceneInner = () => {
       <Audio name="Klik langkah 4" from={8.3 * fps} src={sfx.click} volume={0.5} />
       <Audio name="Klik langkah 5" from={9.2 * fps} src={sfx.click} volume={0.5} />
       <Audio name="Ding terkirim" from={18.1 * fps} src={sfx.ding} volume={0.4} />
+      {en ? (
+        <EnVo scene="y6" layout="horizontal" />
+      ) : (
+        <>
       <Audio
         name="VO s6a"
         from={0.2 * fps}
@@ -268,6 +291,8 @@ const YtFormSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

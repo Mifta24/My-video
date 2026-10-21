@@ -9,6 +9,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { Wordmark } from "../elements/Wordmark";
 import { colors, fonts } from "../theme";
 
@@ -19,6 +21,8 @@ const rowTimes = [6.3, 6.9, 7.6];
 const YtCustomSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
   const t = frame / fps;
 
   return (
@@ -42,7 +46,17 @@ const YtCustomSceneInner = () => {
           }),
         }}
       >
-        Disesuaikan untuk <span style={{ color: colors.signal }}>gedung Anda.</span>
+        {en ? (
+          <>
+            Tailored for{" "}
+            <span style={{ color: colors.signal }}>your building.</span>
+          </>
+        ) : (
+          <>
+            Disesuaikan untuk{" "}
+            <span style={{ color: colors.signal }}>gedung Anda.</span>
+          </>
+        )}
       </Interactive.Div>
       <Interactive.Div
         name="Kartu demo"
@@ -151,10 +165,13 @@ const YtCustomSceneInner = () => {
               color: colors.white,
             }}
           >
-            Gedung Anda
+            {L("Gedung Anda", "Your building")}
           </div>
         </div>
-        {["Unit", "Tarif", "Aturan gedung"].map((row, i) => {
+        {L(
+          ["Unit", "Tarif", "Aturan gedung"],
+          ["Units", "Rates", "House rules"],
+        ).map((row, i) => {
           const on = t >= rowTimes[i];
           return (
             <div
@@ -179,6 +196,10 @@ const YtCustomSceneInner = () => {
           );
         })}
       </Interactive.Div>
+      {en ? (
+        <EnVo scene="y7" layout="horizontal" />
+      ) : (
+        <>
       <Audio
         name="VO s7a"
         from={0.2 * fps}
@@ -221,6 +242,8 @@ const YtCustomSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

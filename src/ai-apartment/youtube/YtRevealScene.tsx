@@ -9,6 +9,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { FloorDirectory } from "../elements/FloorDirectory";
 import { LimeFlash } from "../elements/LimeFlash";
 import { Wordmark } from "../elements/Wordmark";
@@ -18,6 +20,8 @@ import { colors, fonts, sfx } from "../theme";
 const YtRevealSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
 
   return (
     <>
@@ -121,7 +125,7 @@ const YtRevealSceneInner = () => {
             color: colors.muted,
           }}
         >
-          FTS APARTMENT AI · JAKARTA SELATAN
+          {L("FTS APARTMENT AI · JAKARTA SELATAN", "FTS APARTMENT AI · SOUTH JAKARTA")}
         </div>
         <div
           style={{
@@ -133,8 +137,17 @@ const YtRevealSceneInner = () => {
             color: colors.white,
           }}
         >
-          Selamat datang di lobi{" "}
-          <span style={{ color: colors.signal }}>virtual</span> Anda.
+          {en ? (
+            <>
+              Welcome to your{" "}
+              <span style={{ color: colors.signal }}>virtual</span> lobby.
+            </>
+          ) : (
+            <>
+              Selamat datang di lobi{" "}
+              <span style={{ color: colors.signal }}>virtual</span> Anda.
+            </>
+          )}
         </div>
         <div
           style={{
@@ -155,7 +168,7 @@ const YtRevealSceneInner = () => {
             }),
           }}
         >
-          ● AI Concierge siaga 24 jam
+          {L("● AI Concierge siaga 24 jam", "● AI Concierge on duty 24/7")}
         </div>
       </Interactive.Div>
       <FloorDirectory
@@ -186,6 +199,10 @@ const YtRevealSceneInner = () => {
       <LimeFlash name="Flash lime" from={0.3 * fps} />
       <Audio name="Ding produk" from={0.3 * fps} src={sfx.ding} volume={0.5} />
       <Audio name="Ding lift" from={11.9 * fps} src={sfx.ding} volume={0.4} />
+      {en ? (
+        <EnVo scene="y3" layout="horizontal" />
+      ) : (
+        <>
       <Audio
         name="VO s3a"
         from={0.4 * fps}
@@ -254,6 +271,8 @@ const YtRevealSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

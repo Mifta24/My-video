@@ -8,6 +8,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { ChatPair } from "../elements/ChatPair";
 import { colors, fonts, sfx } from "../theme";
 
@@ -20,6 +22,8 @@ const topicTimes = [11.6, 12.3, 13.3];
 const YtChatSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
   const t = frame / fps;
   const activeLang = t >= jaStart ? "JA" : t >= enStart ? "EN" : "ID";
 
@@ -44,7 +48,15 @@ const YtChatSceneInner = () => {
           }),
         }}
       >
-        Tanya <span style={{ color: colors.signal }}>apa saja.</span>
+        {en ? (
+          <>
+            Ask <span style={{ color: colors.signal }}>anything.</span>
+          </>
+        ) : (
+          <>
+            Tanya <span style={{ color: colors.signal }}>apa saja.</span>
+          </>
+        )}
       </Interactive.Div>
       <Interactive.Div
         name="Badge bahasa"
@@ -85,7 +97,10 @@ const YtChatSceneInner = () => {
           gap: 18,
         }}
       >
-        {["Tarif", "Aturan gedung", "Jam check-in"].map((topic, i) => (
+        {L(
+          ["Tarif", "Aturan gedung", "Jam check-in"],
+          ["Rates", "House rules", "Check-in times"],
+        ).map((topic, i) => (
           <div
             key={topic}
             style={{
@@ -169,7 +184,7 @@ const YtChatSceneInner = () => {
               color: colors.muted,
             }}
           >
-            Online · 24 jam
+            {L("Online · 24 jam", "Online · 24/7")}
           </div>
         </div>
       </Interactive.Div>
@@ -179,6 +194,7 @@ const YtChatSceneInner = () => {
         name="Chat ID"
         from={3.2 * fps}
         question="Gym buka jam berapa?"
+        gloss={en ? "What time does the gym open?" : ""}
         answer="Gym di lantai 5 buka 24 jam dengan kartu akses penghuni."
         answerAt={0.7}
         fontSize={34}
@@ -197,6 +213,7 @@ const YtChatSceneInner = () => {
         name="Chat JA"
         from={jaStart * fps}
         question="空港送迎はありますか？"
+        gloss={en ? "Is there an airport shuttle?" : ""}
         answer="はい。スカルノ・ハッタ空港から片道Rp450.000です。"
         answerAt={0.7}
         fontSize={34}
@@ -205,6 +222,10 @@ const YtChatSceneInner = () => {
       <Audio name="Tik jawaban ID" from={3.9 * fps} src={sfx.click} volume={0.5} />
       <Audio name="Tik jawaban EN" from={8 * fps} src={sfx.click} volume={0.5} />
       <Audio name="Tik jawaban JA" from={10 * fps} src={sfx.click} volume={0.5} />
+      {en ? (
+        <EnVo scene="y5" layout="horizontal" />
+      ) : (
+        <>
       <Audio
         name="VO s5a"
         from={0.2 * fps}
@@ -281,6 +302,8 @@ const YtChatSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };

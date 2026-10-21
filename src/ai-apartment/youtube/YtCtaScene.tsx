@@ -9,6 +9,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import { BasicCaptions } from "../basic-captions";
+import { EnVo } from "../elements/EnVo";
+import { useL, useLang } from "../i18n";
 import { LimeFlash } from "../elements/LimeFlash";
 import { Wordmark } from "../elements/Wordmark";
 import { colors, fonts } from "../theme";
@@ -17,6 +19,8 @@ import { colors, fonts } from "../theme";
 const YtCtaSceneInner = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const L = useL();
+  const en = useLang() === "en";
 
   return (
     <>
@@ -85,7 +89,7 @@ const YtCtaSceneInner = () => {
         }}
       >
         <div style={{ fontFamily: fonts.heading, fontSize: 40, color: colors.muted }}>
-          Coba demo:
+          {L("Coba demo:", "Try the demo:")}
         </div>
         <div
           style={{
@@ -128,7 +132,7 @@ const YtCtaSceneInner = () => {
           ),
         }}
       >
-        Coba demonya →
+        {L("Coba demonya →", "Try the demo →")}
       </Interactive.Div>
       {/* TODO: ganti dengan kontak Miftah (WhatsApp/email) dari script. */}
       <Interactive.Div
@@ -150,9 +154,13 @@ const YtCtaSceneInner = () => {
           }),
         }}
       >
-        Hubungi kami
+        {L("Hubungi kami", "Get in touch")}
       </Interactive.Div>
       <LimeFlash name="Flash lime CTA" />
+      {en ? (
+        <EnVo scene="y8" layout="horizontal" />
+      ) : (
+        <>
       <Audio
         name="VO s8a"
         from={0.2 * fps}
@@ -187,6 +195,8 @@ const YtCtaSceneInner = () => {
           },
         ]}
       />
+        </>
+      )}
     </>
   );
 };
