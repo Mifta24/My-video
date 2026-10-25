@@ -2,26 +2,32 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { WorldMap } from "../elements/WorldMap";
 import { Subtitle } from "../elements/Subtitle";
-import { Tag, clamp, easeOut, useSceneTime } from "../elements/common";
+import { clamp, easeOut, useSceneTime } from "../elements/common";
 import { SUMBAWA_VIEW, TAMBORA, WORLD_VIEW, mixView } from "../geo";
 import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
 
-// S5 · Janji + CTA. Peta zoom balik ke Sumbawa, "Siapa yang paling parah?", lalu penutup.
-// Logo asli Suhuf Pengetahuan belum ada: pakai wordmark teks sebagai placeholder.
+// S5 · Janji + CTA. Narasi: "Tapi korban terberatnya bukan di Eropa. Ceritanya bersambung. Follow Suhuf Pengetahuan."
+// Logo asli belum ada: wordmark teks sebagai placeholder. Semua teks di area tengah (aman dari 250 px atas/bawah).
 export const SceneS5: React.FC = () => {
   const total = sceneFrames("s5");
   const { t, opacity } = useSceneTime(total);
-  const z = interpolate(t, [0, 2.2], [0, 1], { ...clamp, easing: easeOut });
+  const z = interpolate(t, [0, 2.0], [0, 1], { ...clamp, easing: easeOut });
   const view = mixView(WORLD_VIEW, SUMBAWA_VIEW, z);
   const pulse = 0.7 + 0.3 * Math.sin(t * 4);
-  const q = interpolate(t, [1.6, 2.2], [0, 1], clamp);
-  const qOut = interpolate(t, [6.2, 6.8], [1, 0], clamp);
-  const end = interpolate(t, [6.6, 7.4], [0, 1], { ...clamp, easing: easeOut });
+  const q = interpolate(t, [1.0, 1.5], [0, 1], clamp);
+  const qOut = interpolate(t, [4.2, 4.7], [1, 0], clamp);
+  const end = interpolate(t, [4.7, 5.5], [0, 1], { ...clamp, easing: easeOut });
 
   return (
     <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
-      <WorldMap view={view} landOpacity={1 - 0.6 * end}>
+      <WorldMap
+        view={view}
+        landOpacity={1 - 0.65 * end}
+        landFill="#2C4372"
+        landStroke="#9DBBEE"
+        strokeWidth={2}
+      >
         {(s) => {
           const [x, y] = s(TAMBORA.lon, TAMBORA.lat);
           return (
@@ -50,11 +56,11 @@ export const SceneS5: React.FC = () => {
           position: "absolute",
           left: 80,
           right: 80,
-          top: 560,
+          top: 480,
           textAlign: "center",
           fontFamily: fonts.heading,
           fontWeight: 700,
-          fontSize: 100,
+          fontSize: 108,
           lineHeight: 1.1,
           color: colors.text,
           opacity: Math.min(q, qOut),
@@ -70,63 +76,76 @@ export const SceneS5: React.FC = () => {
           position: "absolute",
           left: 80,
           right: 80,
-          top: 720,
+          top: 560,
           textAlign: "center",
           opacity: end,
           translate: `0px ${(1 - end) * 30}px`,
+          fontFamily: fonts.heading,
         }}
       >
         <div
           style={{
-            fontFamily: fonts.mono,
-            fontSize: 36,
-            letterSpacing: 6,
-            color: colors.cold,
+            fontWeight: 700,
+            fontSize: 112,
+            lineHeight: 1.05,
+            color: colors.text,
           }}
         >
-          SUHUF
+          Suhuf
         </div>
         <div
           style={{
-            fontFamily: fonts.heading,
             fontWeight: 700,
-            fontSize: 104,
+            fontSize: 112,
             lineHeight: 1.05,
-            color: colors.text,
+            color: colors.cold,
           }}
         >
           Pengetahuan
         </div>
         <div
           style={{
-            marginTop: 48,
-            fontFamily: fonts.heading,
+            marginTop: 56,
             fontWeight: 500,
-            fontSize: 56,
+            fontSize: 58,
             color: colors.text,
           }}
         >
-          Ceritanya bersambung
+          Video lengkap di YouTube
+        </div>
+        <div
+          style={{
+            display: "inline-block",
+            marginTop: 36,
+            padding: "16px 40px",
+            borderRadius: 999,
+            background: colors.warm,
+            color: colors.bg,
+            fontWeight: 700,
+            fontSize: 54,
+          }}
+        >
+          Follow @suhufpengetahuan
         </div>
       </div>
 
+      {/* Atribusi peta: di atas zona UI bawah (250 px), di bawah subtitle. */}
       <div
         style={{
           position: "absolute",
-          top: 245,
+          bottom: 290,
           left: 0,
           right: 0,
           textAlign: "center",
           fontFamily: fonts.mono,
-          fontSize: 28,
-          color: colors.muted,
-          opacity: end * 0.9,
+          fontSize: 30,
+          color: colors.text,
+          opacity: end * 0.85,
         }}
       >
         Peta: Natural Earth (domain publik)
       </div>
 
-      <Tag text="Skema" />
       <Audio
         name="VO s5"
         from={Math.round(LEAD * 30)}

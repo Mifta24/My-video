@@ -5,16 +5,22 @@ import { colors } from "../theme";
 type WorldMapProps = {
   readonly view: MapView;
   readonly landOpacity?: number;
+  readonly landFill?: string;
+  readonly landStroke?: string;
+  readonly strokeWidth?: number;
   readonly children?: (
     screen: (lon: number, lat: number) => [number, number],
   ) => React.ReactNode;
 };
 
-// Peta dunia vektor. Daratan ikut di-zoom lewat transform, overlay (titik, garis, label)
+// Peta dunia vektor (Natural Earth). Daratan di-zoom lewat transform; overlay (titik, garis, label)
 // digambar di koordinat layar lewat fungsi `screen` supaya ukurannya tidak ikut membesar.
 export const WorldMap: React.FC<WorldMapProps> = ({
   view,
   landOpacity = 1,
+  landFill = colors.land,
+  landStroke = colors.landLine,
+  strokeWidth = 1.2,
   children,
 }) => {
   const [fx, fy] = project(view.lon, view.lat);
@@ -35,9 +41,9 @@ export const WorldMap: React.FC<WorldMapProps> = ({
         <path d={SPHERE_D} fill={colors.ocean} />
         <path
           d={LAND_D}
-          fill={colors.land}
-          stroke={colors.landLine}
-          strokeWidth={1.2}
+          fill={landFill}
+          stroke={landStroke}
+          strokeWidth={strokeWidth}
           vectorEffect="non-scaling-stroke"
         />
       </g>

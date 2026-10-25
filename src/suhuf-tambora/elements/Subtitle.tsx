@@ -73,7 +73,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
         position: "absolute",
         left: 0,
         right: 0,
-        bottom: 290,
+        bottom: 440,
         display: "flex",
         justifyContent: "center",
         opacity,

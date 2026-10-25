@@ -2,23 +2,37 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { WorldMap } from "../elements/WorldMap";
 import { Subtitle } from "../elements/Subtitle";
-import { Tag, clamp, easeOut, useSceneTime } from "../elements/common";
+import { clamp, easeOut, useSceneTime } from "../elements/common";
 import { NEW_ENGLAND, SWISS, WORLD_VIEW } from "../geo";
 import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
 
-// S4 · Tiga kartu teks cepat di atas peta yang menggelap-dingin.
+// S4 · Kartu teks mengikuti narasi (waktu relatif terhadap awal scene, VO mulai di LEAD):
+//   "Hasilnya, 1816 dijuluki Tahun Tanpa Musim Panas."  → kartu 1816
+//   "Di banyak wilayah Eropa ..."                        → kartu Eropa
+//   "... panen gagal, dan harga pangan melonjak."        → kartu panen gagal
 // Tidak ada grafik suhu/harga: belum ada data rekonstruksi yang diverifikasi (aturan script).
 const CARDS = [
-  { head: "BANYAK WILAYAH EROPA", body: "hujan & dingin", at: 0.5 },
-  { head: "AMERIKA UTARA", body: "embun beku", at: 2.9 },
-  { head: "PANEN GAGAL", body: "harga pangan naik", at: 5.3 },
+  {
+    head: "1816",
+    body: "Tahun Tanpa Musim Panas",
+    at: 0.4,
+    color: colors.cold,
+  },
+  { head: "EROPA", body: "hujan & dingin", at: 4.1, color: colors.cold },
+  {
+    head: "PANEN GAGAL",
+    body: "harga pangan naik",
+    at: 6.0,
+    color: colors.warm,
+  },
 ];
 
 export const SceneS4: React.FC = () => {
   const total = sceneFrames("s4");
   const { t, opacity } = useSceneTime(total);
-  const cold = interpolate(t, [0, 4], [0, 1], clamp);
+  const coldUS = interpolate(t, [0.6, 3.6], [0, 1], clamp);
+  const coldEU = interpolate(t, [4.1, 6.0], [0, 1], clamp);
 
   return (
     <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
@@ -29,26 +43,38 @@ export const SceneS4: React.FC = () => {
           return (
             <>
               <circle
+                cx={cx}
+                cy={cy}
+                r={30 + 170 * coldUS}
+                fill={colors.coldDeep}
+                opacity={0.35 * coldUS}
+              />
+              <circle
                 cx={bx}
                 cy={by}
-                r={30 + 150 * cold}
+                r={30 + 150 * coldEU}
                 fill={colors.coldDeep}
-                opacity={0.35 * cold}
+                opacity={0.4 * coldEU}
               />
               <circle
                 cx={cx}
                 cy={cy}
-                r={30 + 170 * cold}
-                fill={colors.coldDeep}
-                opacity={0.35 * cold}
+                r={9}
+                fill={colors.cold}
+                opacity={coldUS}
               />
-              <circle cx={bx} cy={by} r={9} fill={colors.cold} />
-              <circle cx={cx} cy={cy} r={9} fill={colors.cold} />
+              <circle
+                cx={bx}
+                cy={by}
+                r={9}
+                fill={colors.cold}
+                opacity={coldEU}
+              />
             </>
           );
         }}
       </WorldMap>
-      <AbsoluteFill style={{ backgroundColor: colors.bg, opacity: 0.45 }} />
+      <AbsoluteFill style={{ backgroundColor: colors.bg, opacity: 0.4 }} />
 
       {CARDS.map((c, i) => {
         const next = CARDS[i + 1]?.at ?? 99;
@@ -61,6 +87,7 @@ export const SceneS4: React.FC = () => {
         if (o <= 0) {
           return null;
         }
+        // Kartu di atas peta (peta mulai y≈735), jauh dari titik dan subtitle.
         return (
           <div
             key={c.head}
@@ -68,7 +95,7 @@ export const SceneS4: React.FC = () => {
               position: "absolute",
               left: 80,
               right: 80,
-              top: 620,
+              top: 380,
               opacity: o,
               translate: `0px ${(1 - inP) * 40}px`,
               textAlign: "center",
@@ -76,23 +103,22 @@ export const SceneS4: React.FC = () => {
               fontWeight: 700,
             }}
           >
-            <div
-              style={{
-                fontSize: c.head.length > 14 ? 78 : 104,
-                lineHeight: 1.05,
-                color: i === 2 ? colors.warm : colors.cold,
-              }}
-            >
+            <div style={{ fontSize: 112, lineHeight: 1.05, color: c.color }}>
               {c.head}
             </div>
-            <div style={{ fontSize: 76, color: colors.text, marginTop: 12 }}>
+            <div
+              style={{
+                fontSize: c.body.length > 20 ? 62 : 76,
+                color: colors.text,
+                marginTop: 12,
+              }}
+            >
               {c.body}
             </div>
           </div>
         );
       })}
 
-      <Tag text="Skema" />
       <Audio
         name="VO s4"
         from={Math.round(LEAD * 30)}

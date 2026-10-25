@@ -2,7 +2,7 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { WorldMap } from "../elements/WorldMap";
 import { Subtitle } from "../elements/Subtitle";
-import { Tag, clamp, easeOut, useSceneTime } from "../elements/common";
+import { clamp, easeOut, useSceneTime } from "../elements/common";
 import { SUMBAWA_VIEW, TAMBORA, WORLD_VIEW, mixView } from "../geo";
 import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
@@ -17,7 +17,12 @@ export const SceneS2: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
-      <WorldMap view={view}>
+      <WorldMap
+        view={view}
+        landFill="#2C4372"
+        landStroke="#9DBBEE"
+        strokeWidth={2}
+      >
         {(s) => {
           const [x, y] = s(TAMBORA.lon, TAMBORA.lat);
           const rings = [0, 1, 2].map((i) => {
@@ -78,7 +83,6 @@ export const SceneS2: React.FC = () => {
           );
         }}
       </WorldMap>
-      <Tag text="Skema" />
       <Audio
         name="VO s2"
         from={Math.round(LEAD * 30)}

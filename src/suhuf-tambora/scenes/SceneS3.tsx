@@ -91,9 +91,8 @@ export const SceneS3: React.FC = () => {
 
         <rect x={0} y={GROUND_Y} width={1080} height={14} fill="#1F2A44" />
         <text
-          x={540}
-          y={GROUND_Y + 70}
-          textAnchor="middle"
+          x={60}
+          y={GROUND_Y - 30}
           fill={colors.text}
           fontFamily={fonts.heading}
           fontWeight={700}

@@ -7,13 +7,13 @@ export type ClipId = "s1" | "s2" | "s3" | "s4" | "s5";
 export const clipIds: ClipId[] = ["s1", "s2", "s3", "s4", "s5"];
 
 // Jeda sebelum VO mulai di tiap scene, dan jeda sesudah VO selesai.
-export const LEAD = 0.4;
+export const LEAD = 0.3;
 const TAIL: Record<ClipId, number> = {
-  s1: 0.5,
-  s2: 0.5,
-  s3: 0.6,
-  s4: 0.6,
-  s5: 2.0,
+  s1: 0.3,
+  s2: 0.3,
+  s3: 0.4,
+  s4: 0.4,
+  s5: 1.3,
 };
 
 const dur = durations as Record<string, number>;

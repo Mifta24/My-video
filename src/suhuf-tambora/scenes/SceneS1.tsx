@@ -2,7 +2,7 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { WorldMap } from "../elements/WorldMap";
 import { Subtitle } from "../elements/Subtitle";
-import { Tag, clamp, easeOut, useSceneTime } from "../elements/common";
+import { clamp, easeOut, useSceneTime } from "../elements/common";
 import { NEW_ENGLAND, SWISS, TAMBORA, WORLD_VIEW } from "../geo";
 import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
@@ -36,15 +36,21 @@ export const SceneS1: React.FC = () => {
           const [ax, ay] = s(TAMBORA.lon, TAMBORA.lat);
           const [bx, by] = s(SWISS.lon, SWISS.lat);
           const [cx, cy] = s(NEW_ENGLAND.lon, NEW_ENGLAND.lat);
-          const arc = (x1: number, y1: number, x2: number, y2: number) => {
+          const arc = (
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+            lift: number,
+          ) => {
             const mx = (x1 + x2) / 2;
-            const my = Math.min(y1, y2) - 150;
+            const my = Math.min(y1, y2) - lift;
             return `M ${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`;
           };
           return (
             <>
               <path
-                d={arc(ax, ay, bx, by)}
+                d={arc(ax, ay, bx, by, 110)}
                 fill="none"
                 stroke={colors.cold}
                 strokeWidth={4}
@@ -53,7 +59,7 @@ export const SceneS1: React.FC = () => {
                 style={{ clipPath: `inset(0 ${100 - line1 * 100}% 0 0)` }}
               />
               <path
-                d={arc(ax, ay, cx, cy)}
+                d={arc(ax, ay, cx, cy, 400)}
                 fill="none"
                 stroke={colors.cold}
                 strokeWidth={4}
@@ -131,7 +137,6 @@ export const SceneS1: React.FC = () => {
         </div>
       </div>
 
-      <Tag text="Skema" />
       <Audio
         name="VO s1"
         from={Math.round(LEAD * 30)}
