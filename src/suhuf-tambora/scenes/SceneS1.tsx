@@ -137,6 +137,24 @@ export const SceneS1: React.FC = () => {
         </div>
       </div>
 
+      <div
+        style={{
+          position: "absolute",
+          top: 605,
+          left: 70,
+          right: 70,
+          textAlign: "center",
+          opacity: swap,
+          fontFamily: fonts.heading,
+          fontWeight: 700,
+          fontSize: 48,
+          color: colors.text,
+          textShadow: `0 3px 14px ${colors.bg}`,
+        }}
+      >
+        EMBUN BEKU · TIMUR LAUT AS
+      </div>
+
       <Audio
         name="VO s1"
         from={Math.round(LEAD * 30)}

@@ -11,16 +11,17 @@ import { colors, fonts } from "../theme";
 // Logo asli belum ada: wordmark teks sebagai placeholder. Semua teks di area tengah (aman dari 250 px atas/bawah).
 export const SceneS5: React.FC = () => {
   const total = sceneFrames("s5");
-  const { t, opacity } = useSceneTime(total);
+  const { t } = useSceneTime(total);
   const z = interpolate(t, [0, 2.0], [0, 1], { ...clamp, easing: easeOut });
   const view = mixView(WORLD_VIEW, SUMBAWA_VIEW, z);
   const pulse = 0.7 + 0.3 * Math.sin(t * 4);
   const q = interpolate(t, [1.0, 1.5], [0, 1], clamp);
   const qOut = interpolate(t, [4.2, 4.7], [1, 0], clamp);
   const end = interpolate(t, [4.7, 5.5], [0, 1], { ...clamp, easing: easeOut });
+  const endHold = interpolate(t, [5.2, 5.6], [0, 1], { ...clamp, easing: easeOut });
 
   return (
-    <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
+    <AbsoluteFill style={{ backgroundColor: colors.bg }}>
       <WorldMap
         view={view}
         landOpacity={1 - 0.65 * end}
@@ -78,7 +79,7 @@ export const SceneS5: React.FC = () => {
           right: 80,
           top: 560,
           textAlign: "center",
-          opacity: end,
+          opacity: endHold,
           translate: `0px ${(1 - end) * 30}px`,
           fontFamily: fonts.heading,
         }}
@@ -133,14 +134,16 @@ export const SceneS5: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          bottom: 290,
+          top: 190,
           left: 0,
           right: 0,
           textAlign: "center",
           fontFamily: fonts.mono,
-          fontSize: 30,
+          fontWeight: 700,
+          fontSize: 32,
           color: colors.text,
-          opacity: end * 0.85,
+          backgroundColor: "rgba(7,11,20,0.82)",
+          opacity: end,
         }}
       >
         Peta: Natural Earth (domain publik)

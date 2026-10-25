@@ -3,7 +3,7 @@ import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { WorldMap } from "../elements/WorldMap";
 import { Subtitle } from "../elements/Subtitle";
 import { clamp, easeOut, useSceneTime } from "../elements/common";
-import { NEW_ENGLAND, SWISS, WORLD_VIEW } from "../geo";
+import { WORLD_VIEW } from "../geo";
 import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
 
@@ -19,10 +19,15 @@ const CARDS = [
     at: 0.4,
     color: colors.cold,
   },
-  { head: "EROPA", body: "hujan & dingin", at: 4.1, color: colors.cold },
   {
-    head: "PANEN GAGAL",
-    body: "harga pangan naik",
+    head: "BANYAK WILAYAH EROPA",
+    body: "hujan & dingin",
+    at: 4.1,
+    color: colors.cold,
+  },
+  {
+    head: "HARGA PANGAN NAIK",
+    body: "panen gagal",
     at: 6.0,
     color: colors.warm,
   },
@@ -31,49 +36,9 @@ const CARDS = [
 export const SceneS4: React.FC = () => {
   const total = sceneFrames("s4");
   const { t, opacity } = useSceneTime(total);
-  const coldUS = interpolate(t, [0.6, 3.6], [0, 1], clamp);
-  const coldEU = interpolate(t, [4.1, 6.0], [0, 1], clamp);
-
   return (
     <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
-      <WorldMap view={WORLD_VIEW}>
-        {(s) => {
-          const [bx, by] = s(SWISS.lon, SWISS.lat);
-          const [cx, cy] = s(NEW_ENGLAND.lon, NEW_ENGLAND.lat);
-          return (
-            <>
-              <circle
-                cx={cx}
-                cy={cy}
-                r={30 + 170 * coldUS}
-                fill={colors.coldDeep}
-                opacity={0.35 * coldUS}
-              />
-              <circle
-                cx={bx}
-                cy={by}
-                r={30 + 150 * coldEU}
-                fill={colors.coldDeep}
-                opacity={0.4 * coldEU}
-              />
-              <circle
-                cx={cx}
-                cy={cy}
-                r={9}
-                fill={colors.cold}
-                opacity={coldUS}
-              />
-              <circle
-                cx={bx}
-                cy={by}
-                r={9}
-                fill={colors.cold}
-                opacity={coldEU}
-              />
-            </>
-          );
-        }}
-      </WorldMap>
+      <WorldMap view={WORLD_VIEW} />
       <AbsoluteFill style={{ backgroundColor: colors.bg, opacity: 0.4 }} />
 
       {CARDS.map((c, i) => {
