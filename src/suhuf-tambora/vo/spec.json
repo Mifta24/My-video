@@ -1,0 +1,32 @@
+{
+  "voice": "id-ID-ArdiNeural",
+  "rate": "+0%",
+  "note": "Narator sementara (AI). Teks sudah bersih dari penanda [VERIFIKASI]. Ganti dengan rekaman Miftah nanti: cukup timpa mp3 dengan nama sama lalu jalankan ulang scripts/gen-vo-suhuf.py --measure-only.",
+  "clips": [
+    {
+      "id": "s1",
+      "scene": "S1",
+      "text": "April 1815, gunung di Sumbawa meledak. Setahun kemudian, embun beku muncul di Amerika Utara, bulan Juni."
+    },
+    {
+      "id": "s2",
+      "scene": "S2",
+      "text": "Gunung itu Tambora. Salah satu letusan terbesar yang pernah tercatat."
+    },
+    {
+      "id": "s3",
+      "scene": "S3",
+      "text": "Yang menyebar ke dunia bukan cuma abu. Gas belerang naik ke stratosfer, jadi kabut partikel halus yang memantulkan sinar Matahari."
+    },
+    {
+      "id": "s4",
+      "scene": "S4",
+      "text": "Hasilnya, 1816 dijuluki Tahun Tanpa Musim Panas. Di banyak wilayah Eropa panen gagal, dan harga pangan melonjak."
+    },
+    {
+      "id": "s5",
+      "scene": "S5",
+      "text": "Tapi korban terberatnya bukan di Eropa. Ceritanya bersambung. Follow Suhuf Pengetahuan."
+    }
+  ]
+}

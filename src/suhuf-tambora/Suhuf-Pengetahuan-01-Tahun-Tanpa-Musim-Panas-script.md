@@ -3,6 +3,7 @@ TAHUN TANPA MUSIM PANAS: GUNUNG DI SUMBAWA YANG MENGACAUKAN CUACA DUNIA
 Penulis script: Don | Narator: Miftah | Bahasa: Indonesia | Build: Remotion (repo My-video)
 
 CARA BACA
+
 - Teks "[VERIFIKASI ...]" di dalam NARASI adalah penanda untuk tim, TIDAK dibaca keras dan tidak dihitung sebagai kata narasi. Hapus dari subtitle final setelah angkanya dicek.
 - Semua gambar/ilustrasi buatan AI wajib diberi label "Ilustrasi (dibuat AI)" di layar. Jangan buat gambar AI yang tampak seperti foto asli kejadian 1815/1816 (belum ada fotografi; tidak ada foto letusan).
 - Grafik suhu: pakai data rekonstruksi yang bisa dikutip (cek sumber di daftar rujukan) atau gambar SKEMATIS dengan label "Skema, bukan data presisi". Jangan menggambar kurva karangan sebagai data.
@@ -10,45 +11,58 @@ CARA BACA
 - Gaya narasi: bahasa lisan, kalimat pendek, ada jeda napas. Angka sudah ditulis dalam bentuk yang mudah diucapkan.
 
 ==================================================
-VERSI A - SHORTS 9:16 (target 50-55 detik)
+VERSI A - SHORTS 9:16 (target 50-55 detik) - REVISI disetujui Miftah
 ==================================================
 
 Big idea: Satu letusan di Nusantara mengubah cuaca dua benua.
 Pesan yang harus diingat: Tambora 1815 membuat musim panas 1816 hilang, dan itu dimulai dari Sumbawa.
+Revisi: A5 (Frankenstein) dihapus dari Shorts; durasinya digabung ke A4 dan A6. Frankenstein hanya ada di Versi B (opsional).
 
-ADEGAN A1 | 0-5 dtk
-NARASI: "April 1815, satu gunung di Sumbawa meledak. Setahun kemudian, Eropa gagal panen."
+ADEGAN A1 | 0-6 dtk
+NARASI: "April 1815, satu gunung di Sumbawa meledak. Setahun kemudian, banyak wilayah Eropa gagal panen."
 VISUAL: Layar hitam. Teks besar "APRIL 1815" muncul di detik 0, lalu berganti "1816" dengan efek geser. Peta dunia gelap, titik Sumbawa menyala lalu garis putus-putus melompat ke Eropa. Teks hook center, aman dari 250 px bawah dan 150 px atas.
-CATATAN: Peta = data terbuka. Hook diucapkan agak cepat supaya masuk ~4 detik.
+CATATAN: Peta = data terbuka. Hook diucapkan agak cepat supaya masuk ~5,5 detik. Kata "banyak wilayah" wajib tampil di subtitle; jangan "seluruh Eropa".
 
-ADEGAN A2 | 5-13 dtk
-NARASI: "Gunung itu Tambora. Letusannya terdengar sampai Sumatra. Kerajaan Tambora hilang tertimbun, dan Sanggar rusak parah. [VERIFIKASI: nasib Sanggar]"
-VISUAL: Zoom peta ke pulau Sumbawa, Gunung Tambora ditandai. Label kerajaan Tambora (memudar/hilang), Sanggar (berkedip). Ikon suara melebar sampai Sumatra.
+ADEGAN A2 | 6-14 dtk
+NARASI: "Gunung itu Tambora. Letusannya terdengar sampai Sumatra. Desa-desa di lerengnya musnah, dan tsunami menghantam pesisir sekitarnya."
+VISUAL: Zoom peta ke pulau Sumbawa, Gunung Tambora ditandai. Ikon suara melebar sampai Sumatra (Trumon, >2.600 km). Lalu gelombang skematis menyebar ke pesisir sekitar Tambora. Tanpa label kerajaan.
 CATATAN: Tidak ada gambar kejadian. Kalau butuh ilustrasi letusan, pakai gaya grafis flat dan label "Ilustrasi (dibuat AI)".
 
-ADEGAN A3 | 13-24 dtk
+ADEGAN A3 | 14-24 dtk
 NARASI: "Yang menyebar ke dunia bukan cuma abu. Gas belerang naik sampai stratosfer, berubah jadi kabut partikel halus, lalu memantulkan sinar Matahari kembali ke angkasa."
 VISUAL: Animasi penampang atmosfer: kolom naik dari gunung, lapisan "troposfer" lalu "stratosfer" terlabel. Partikel kecil menyebar mengelilingi bola bumi. Panah sinar Matahari memantul.
 CATATAN: Animasi skematis buatan Remotion. Beri label "Skema".
 
-ADEGAN A4 | 24-38 dtk
-NARASI: "Hasilnya, 1816 dijuluki Tahun Tanpa Musim Panas. Di Eropa, hujan dan dingin tak habis-habis. Di Amerika Utara, embun beku muncul di bulan Juni. Panen gagal, harga pangan melonjak."
-VISUAL: Tiga kartu teks berganti cepat: "EROPA: hujan & dingin", "AMERIKA UTARA: embun beku, Juni 1816", "PANEN GAGAL, HARGA NAIK". Latar peta dengan warna biru dingin menyebar.
-CATATAN: Tidak ada foto. Boleh pakai ikon gandum (grafis).
+ADEGAN A4 | 24-42 dtk
+NARASI: "Hasilnya, 1816 dijuluki Tahun Tanpa Musim Panas. Di banyak wilayah Eropa, hujan dan dingin tak habis-habis. Di Amerika Utara, embun beku muncul di bulan Juni. Panen gagal, harga pangan melonjak."
+VISUAL: Tiga kartu teks berganti cepat: "BANYAK WILAYAH EROPA: hujan & dingin", "AMERIKA UTARA: embun beku, Juni 1816", "PANEN GAGAL, HARGA NAIK". Latar peta dengan warna biru dingin menyebar. Durasi 18 dtk (termasuk bekas jendela A5) memberi ruang tiap kartu tampil lebih lama.
+CATATAN: Tidak ada foto. Boleh pakai ikon gandum (grafis). Subtitle tetap "banyak wilayah Eropa".
 
-ADEGAN A5 | 38-46 dtk
-NARASI: "Di Swiss, cuaca muram itu mengurung sekelompok penulis di dalam rumah. Dari suasana itu lahir ide Frankenstein."
-VISUAL: Potret Mary Shelley (lukisan Richard Rothwell, domain publik; cek lisensi di Wikimedia Commons) + judul "FRANKENSTEIN, 1818". Hujan tipis animasi di atasnya.
-CATATAN: Lukisan asli, cantumkan kredit. Bukan gambar AI.
-
-ADEGAN A6 | 46-55 dtk
-NARASI: "Satu letusan di Nusantara, dampaknya sampai ke dua benua. Cerita lengkapnya ada di video panjang kami. Follow Suhuf Pengetahuan."
-VISUAL: Peta dunia dengan titik Sumbawa memancar, lalu logo Suhuf Pengetahuan + teks "Video lengkap di YouTube" + "Follow @suhufpengetahuan".
-CATATAN: Taruh CTA di area tengah, bukan di 250 px bawah.
+ADEGAN A6 | 42-55 dtk
+NARASI: "Satu letusan di Nusantara, dampaknya sampai ke dua benua. Ceritanya bersambung. Follow Suhuf Pengetahuan."
+VISUAL: Peta dunia dengan titik Sumbawa memancar, lalu logo Suhuf Pengetahuan + teks "Bersambung" + "Follow @suhufpengetahuan". Tanpa janji video YouTube.
+CATATAN: Taruh CTA di area tengah, bukan di 250 px bawah. Video panjang belum ada, jadi jangan menyebut "video lengkap" atau "YouTube" di narasi maupun layar sampai video itu tayang.
 
 Musik/SFX (Shorts): dentuman rendah di A1, whoosh tipis di transisi peta, musik ambient gelap yang naik pelan, turun saat CTA.
 
-CATATAN FAKTA SHORTS: "Eropa gagal panen" = di banyak wilayah, bukan seluruh Eropa. Kalau mau lebih aman di subtitle: "banyak wilayah Eropa gagal panen".
+CEK DURASI VERSI A: 14 + 16 + 24 + 30 + 14 = 98 kata narasi (tanda [VERIFIKASI] tidak dibaca) [A1 14, A2 16, A3 24, A4 30, A6 14], sekitar 39 detik bicara dari 55 detik total. Tiap adegan muat di jendelanya.
+
+CATATAN FAKTA SHORTS (status per revisi; verifikasi oleh Kim)
+Terverifikasi:
+
+- Letusan 5 dan 10 April 1815.
+- VEI 7.
+- Kolom letusan hingga 43 km (bukan 40).
+- Korban jiwa lebih dari 71.000 (Oppenheimer 2003).
+- Sekitar 60 Mt sulfur.
+- Embun beku Juni 1816 di timur laut Amerika Serikat.
+- Letusan terdengar sampai Sumatra (Trumon, lebih dari 2.600 km).
+  Belum terverifikasi (jangan dijadikan klaim di layar/narasi Shorts):
+- Nama kerajaan (Tambora, Pekat, Sanggar) dan nasib masing-masing.
+- Jumlah penduduk.
+- Frankenstein (klaim 30-32).
+- Kolera India (klaim 28).
+  Aturan kata: "banyak wilayah Eropa" (bukan "seluruh Eropa" atau "Eropa" polos) di narasi dan subtitle.
 
 ==================================================
 VERSI B - VIDEO PANJANG 16:9 (target 9-10 menit)
@@ -58,7 +72,7 @@ Big idea: Mengikuti rantai sebab-akibat dari satu gunung di Sumbawa, ke atmosfer
 Pesan yang harus diingat: Dunia saling terhubung, dan korban paling berat sering ada di tempat yang paling jarang kita ceritakan.
 
 ADEGAN B1 | 0:00-0:25 | HOOK
-NARASI: "April 1815. Satu gunung di Sumbawa meledak. Setahun kemudian, Eropa gagal panen. Jaraknya lebih dari sepuluh ribu kilometer. Tidak ada pasukan yang menyeberang, tidak ada kapal perang. Yang menyeberang adalah sesuatu yang jauh lebih halus: partikel di langit. Dan di tahun 1816, orang di dua benua melihat embun beku di bulan Juni."
+NARASI: "April 1815. Satu gunung di Sumbawa meledak. Setahun kemudian, banyak wilayah Eropa gagal panen. Jaraknya lebih dari sepuluh ribu kilometer. Tidak ada pasukan yang menyeberang, tidak ada kapal perang. Yang menyeberang adalah sesuatu yang jauh lebih halus: partikel di langit. Dan di tahun 1816, orang di dua benua melihat embun beku di bulan Juni."
 VISUAL: Layar gelap, teks besar "APRIL 1815" lalu "1816". Peta dunia: garis dari Sumbawa melengkung ke Eropa dan Amerika Utara, angka jarak "10.000+ km" muncul. Cut ke teks "Embun beku. Juni 1816."
 CATATAN: Peta dari data terbuka. Tidak pakai gambar AI di adegan ini.
 
@@ -73,7 +87,7 @@ VISUAL: Peta Indonesia zoom ke Nusa Tenggara, lalu ke Sumbawa; Gunung Tambora di
 CATATAN: Batas kerajaan = perkiraan, beri label "Perkiraan lokasi". Tidak ada foto kerajaan; kalau pakai ilustrasi suasana desa, wajib "Ilustrasi (dibuat AI)" dan gaya grafis, bukan fotorealistis.
 
 ADEGAN B4 | 2:20-4:10 | LETUSAN APRIL 1815
-NARASI: "Pada 5 April 1815, Tambora meletus dengan keras untuk pertama kalinya. Dentumannya terdengar sampai Jawa dan Sumatra. Sebagian orang mengira itu tembakan meriam, sampai pasukan di beberapa tempat disiagakan [VERIFIKASI: catatan Raffles/History of Java]. Lima hari kemudian, tanggal 10 April, datang puncaknya. Letusan malam itu jauh lebih besar. Kolom abu menjulang sampai sekitar 40 kilometer ke langit [VERIFIKASI: perkiraan sekitar 33 sampai 43 km]. Awan panas, campuran gas, abu, dan batu yang sangat panas, meluncur menuruni lereng sampai ke laut. Kampung-kampung di kaki gunung tertimbun. Laut terdorong, dan tsunami menghantam pantai di sekitarnya. Di Sanggar, tingginya dilaporkan sekitar 4 meter [VERIFIKASI]. Abu jatuh sampai ratusan kilometer jauhnya. Siang hari gelap berhari-hari. Seorang perwira Inggris, Letnan Owen Phillips, dikirim oleh Thomas Stamford Raffles, penguasa Inggris di Jawa waktu itu, membawa bantuan beras ke Sumbawa. Ia mencatat desa-desa yang rusak dan penduduk yang kelaparan [VERIFIKASI: isi laporan Phillips]. Setelah semuanya reda, puncak gunung itu tidak ada lagi. Tingginya turun dari sekitar 4.300 meter menjadi sekitar 2.850 meter [VERIFIKASI]. Di puncaknya terbuka kaldera selebar sekitar 6 sampai 7 kilometer, sedalam lebih dari 600 meter [VERIFIKASI]. Para ahli menggolongkannya VEI 7, di skala yang maksimumnya 8. Ini letusan terbesar dalam sejarah tercatat, dan jauh lebih besar dari Krakatau 1883 yang lebih terkenal."
+NARASI: "Pada 5 April 1815, Tambora meletus dengan keras untuk pertama kalinya. Dentumannya terdengar sampai Jawa dan Sumatra. Sebagian orang mengira itu tembakan meriam, sampai pasukan di beberapa tempat disiagakan [VERIFIKASI: catatan Raffles/History of Java]. Lima hari kemudian, tanggal 10 April, datang puncaknya. Letusan malam itu jauh lebih besar. Kolom abu menjulang hingga sekitar 43 kilometer ke langit [Oppenheimer 2003, terverifikasi Kim]. Awan panas, campuran gas, abu, dan batu yang sangat panas, meluncur menuruni lereng sampai ke laut. Kampung-kampung di kaki gunung tertimbun. Laut terdorong, dan tsunami menghantam pantai di sekitarnya. Di Sanggar, tingginya dilaporkan sekitar 4 meter [VERIFIKASI]. Abu jatuh sampai ratusan kilometer jauhnya. Siang hari gelap berhari-hari. Seorang perwira Inggris, Letnan Owen Phillips, dikirim oleh Thomas Stamford Raffles, penguasa Inggris di Jawa waktu itu, membawa bantuan beras ke Sumbawa. Ia mencatat desa-desa yang rusak dan penduduk yang kelaparan [VERIFIKASI: isi laporan Phillips]. Setelah semuanya reda, puncak gunung itu tidak ada lagi. Tingginya turun dari sekitar 4.300 meter menjadi sekitar 2.850 meter [VERIFIKASI]. Di puncaknya terbuka kaldera selebar sekitar 6 sampai 7 kilometer, sedalam lebih dari 600 meter [VERIFIKASI]. Para ahli menggolongkannya VEI 7, di skala yang maksimumnya 8. Ini letusan terbesar dalam sejarah tercatat, dan jauh lebih besar dari Krakatau 1883 yang lebih terkenal."
 VISUAL: Timeline tanggal "5 APRIL" dan "10 APRIL (puncak)". Peta Sumbawa dengan lingkaran suara membesar sampai Jawa & Sumatra. Animasi skematis aliran awan panas dan gelombang tsunami dari Tambora. Animasi siluet gunung: tinggi 4.300 m turun jadi 2.850 m, kaldera terbuka. Skala VEI 0-8 dengan marker di 7, Krakatau 1883 di VEI 6 [VERIFIKASI].
 CATATAN: Semua animasi = skema, beri label "Skema". Jangan buat gambar "foto" letusan. Kutipan Phillips: tampilkan teks saja bila sudah diverifikasi, sumber dicantumkan.
 
@@ -92,10 +106,10 @@ NARASI: "Di seberang Atlantik, 1816 dikenang dengan julukan yang lebih blak-blak
 VISUAL: Peta Amerika Utara dengan titik New England, Quebec; teks "Juni 1816: embun beku". Teks julukan "Eighteen Hundred and Froze to Death" pada tipografi tua. Peta Asia kecil dengan India dan Yunnan ditandai "dikaitkan sebagian peneliti".
 CATATAN: Tegaskan di subtitle bahwa India dan Tiongkok = "dikaitkan, masih diperdebatkan".
 
-ADEGAN B8 | 7:45-8:30 | KAITAN: FRANKENSTEIN (versi ringkas)
+ADEGAN B8 | 7:45-8:30 | KAITAN: FRANKENSTEIN (versi ringkas) - OPSIONAL
 NARASI: "Sekarang bagian yang sering diceritakan, dan di sini kita perlu hati-hati. Juni 1816, di tepi Danau Jenewa, Swiss, Lord Byron menyewa sebuah vila. Bersamanya ada penyair Percy Shelley, Mary Godwin yang kelak dikenal sebagai Mary Shelley, dan dokter Byron, John Polidori. Hujan dan badai membuat mereka terkurung berhari-hari, jadi mereka berlomba menulis cerita hantu. Dari situ lahir ide Frankenstein, yang terbit tahun 1818. Byron sendiri menulis puisi Darkness, tentang matahari yang padam. Apakah Tambora menyebabkan Frankenstein? Tidak sesederhana itu. Mary Shelley menulis di pengantar 1831 bahwa musim panas itu basah dan tidak ramah. Yang aman kita katakan: cuaca buruk 1816, yang kini dikaitkan dengan Tambora, ikut membentuk suasana tempat ide itu lahir."
 VISUAL: Potret Lord Byron (lukisan, domain publik), potret Mary Shelley (Rothwell), foto Villa Diodati masa kini (cek lisensi). Teks kutipan pengantar 1831 (kutipan Inggris asli dengan terjemahan) HANYA setelah diverifikasi ke teks aslinya. Animasi hujan tipis di atas lukisan.
-CATATAN: Karya lukisan asli, bukan AI. Jangan menampilkan adegan "Mary menulis di malam badai" sebagai gambar fotorealistis; kalau pakai ilustrasi, gaya lukisan/grafis + label "Ilustrasi (dibuat AI)".
+CATATAN: OPSIONAL; boleh dipotong utuh (sesuaikan timeline B2 dan teks B10). Framing hanya "ikut menciptakan suasana", bukan "Tambora menyebabkan". Kutipan pengantar 1831 hanya setelah dicek ke teks aslinya; klaim Frankenstein (30-32) belum diverifikasi Kim. Karya lukisan asli, bukan AI. Jangan menampilkan adegan "Mary menulis di malam badai" sebagai gambar fotorealistis; kalau pakai ilustrasi, gaya lukisan/grafis + label "Ilustrasi (dibuat AI)".
 
 ADEGAN B9 | 8:30-9:35 | NUSANTARA: SUMBAWA DAN SEKITARNYA
 NARASI: "Sekarang kita kembali ke tempat letusan itu, karena di sinilah dampak paling berat. Kerajaan Tambora dan Pekat tertimbun, dan Sanggar rusak parah [VERIFIKASI: status tiap kerajaan]. Mereka yang selamat dari awan panas dan tsunami menghadapi hal yang lebih lama: sawah tertutup abu, ternak mati, air tercemar, dan persediaan makanan habis. Kelaparan dan penyakit menyusul, di Sumbawa dan pulau tetangga seperti Lombok [VERIFIKASI]. Banyak orang mengungsi atau meninggal di perjalanan. Estimasi korban yang paling sering dikutip sekitar 70.000 jiwa [VERIFIKASI: kisaran dan sumber], dengan kira-kira 10 sampai 12 ribu tewas langsung oleh letusan, sisanya karena kelaparan dan penyakit [VERIFIKASI]. Ada catatan lama dengan angka lebih tinggi, sekitar 90.000 [VERIFIKASI]. Tidak ada sensus pada waktu itu, jadi anggap semuanya perkiraan, bukan hitungan pasti. Dua abad kemudian, tahun 2004, tim yang dipimpin vulkanolog Haraldur Sigurdsson menggali di lereng Tambora dan menemukan sisa permukiman yang tertimbun abu, dengan peralatan rumah tangga dan sisa manusia di bawah endapan setebal beberapa meter [VERIFIKASI]. Media menjulukinya Pompeii dari Timur. Dari situ kita tahu, kerajaan Tambora bukan sekadar nama di catatan Eropa. Ada manusia, rumah, dan budaya yang hilang dalam satu malam. Hari ini Tambora masih gunung api aktif dan dipantau oleh Badan Geologi [VERIFIKASI: status dan letusan kecil terakhir]."
@@ -153,9 +167,10 @@ Setahun setelah satu gunung di Sumbawa meledak, embun beku muncul di bulan Juni 
 #Tambora #SejarahIndonesia #TahunTanpaMusimPanas #FaktaSains #SuhufPengetahuan
 
 URUTAN RILIS
+
 1. Shorts #1 (teaser ini) tayang lebih dulu atau bersamaan dengan video YouTube. Link di komentar pin.
 2. Video YouTube 16:9 (Versi B).
-3. Shorts #2 "Gunung yang mengilhami Frankenstein" (bahan dari Versi A, A5, dan B8).
+3. Shorts #2 "Gunung yang mengilhami Frankenstein" (bahan dari B8; A5 sudah dihapus dari Versi A). Hanya setelah klaim 30-32 diverifikasi, framing "ikut menciptakan suasana".
 4. Shorts #3 "Sumbawa yang terlupakan" (bahan dari B3 dan B9; tulis setelah klaim korban dan kerajaan diverifikasi).
 
 ==================================================
@@ -163,6 +178,7 @@ PAKET PUBLIKASI
 ==================================================
 
 3 OPSI JUDUL YOUTUBE
+
 1. Tahun Tanpa Musim Panas: Gunung di Sumbawa yang Mengacaukan Cuaca Dunia (rekomendasi, jelas dan mencakup kata kunci)
 2. Tambora 1815: Letusan Terbesar dalam Sejarah yang Membuat Eropa Gagal Panen
 3. Bagaimana Satu Gunung di Sumbawa Mengubah Cuaca Dua Benua?
@@ -177,53 +193,29 @@ HASHTAG TIKTOK (5)
 KLAIM YANG HARUS DICEK (sebelum produksi)
 ==================================================
 Tanggal dan peristiwa
-1. Letusan pertama keras 5 April 1815 dan puncaknya 10 April 1815 (malam). Cek: Smithsonian GVP; Oppenheimer 2003.
-2. Dentuman terdengar sampai Jawa dan Sumatra; sebagian mengira tembakan meriam / pasukan disiagakan. Cek: Raffles, History of Java (1817).
+
+1. [TERVERIFIKASI Kim] Letusan pertama keras 5 April 1815 dan puncaknya 10 April 1815 (malam). Cek: Smithsonian GVP; Oppenheimer 2003.
+2. [Sumatra TERVERIFIKASI Kim: Trumon, >2.600 km; Jawa dan kisah meriam belum] Dentuman terdengar sampai Jawa dan Sumatra; sebagian mengira tembakan meriam / pasukan disiagakan. Cek: Raffles, History of Java (1817).
 3. Tsunami sekitar 4 m di Sanggar. Cek: Smithsonian GVP / Stothers 1984.
 4. Letnan Owen Phillips dikirim Raffles membawa beras ke Sumbawa; isi laporannya. Cek: Raffles 1817; Wood 2014.
 5. Penggalian 2004 oleh Haraldur Sigurdsson menemukan permukiman tertimbun ("Pompeii dari Timur"), ketebalan endapan. Cek: publikasi/liputan resmi University of Rhode Island.
 6. Waterloo: Juni 1815 (18 Juni).
 
-Angka geologi
-7. Tinggi sebelum letusan sekitar 4.300 m dan sesudah sekitar 2.850 m. Cek: Smithsonian GVP; Sigurdsson & Carey 1989.
-8. Kaldera sekitar 6-7 km lebar, 600+ m dalam. Cek: Smithsonian GVP.
-9. Tinggi kolom letusan sekitar 40 km (rentang studi 33-43 km). Cek: Sigurdsson & Carey 1989; Self dkk. 1984.
-10. VEI 7; Krakatau 1883 = VEI 6. Cek: Smithsonian GVP.
-11. "Letusan terbesar dalam sejarah tercatat." Cek: Oppenheimer 2003 (judul makalah memakai frasa serupa).
-12. Rinjani 3.726 m (pembanding).
-13. Letusan besar sebelumnya sangat lama (berabad-abad). Cek: Smithsonian GVP.
+Angka geologi 7. Tinggi sebelum letusan sekitar 4.300 m dan sesudah sekitar 2.850 m. Cek: Smithsonian GVP; Sigurdsson & Carey 1989. 8. Kaldera sekitar 6-7 km lebar, 600+ m dalam. Cek: Smithsonian GVP. 9. [TERVERIFIKASI Kim] Tinggi kolom letusan hingga sekitar 43 km (Oppenheimer 2003); sebelumnya tertulis 40 km (33-43), sudah diganti. 10. [VEI 7 TERVERIFIKASI Kim; Krakatau VI belum dicek] VEI 7; Krakatau 1883 = VEI 6. Cek: Smithsonian GVP. 11. "Letusan terbesar dalam sejarah tercatat." Cek: Oppenheimer 2003 (judul makalah memakai frasa serupa). 12. Rinjani 3.726 m (pembanding). 13. Letusan besar sebelumnya sangat lama (berabad-abad). Cek: Smithsonian GVP.
 
-Sosial dan budaya
-14. Kerajaan Tambora, Pekat, Sanggar: letak dan nasib masing-masing. Cek: Wood 2014; Oppenheimer 2003.
-15. Bahasa Tambora dan Pekat sudah punah. Cek: Ethnologue / catatan linguistik.
-16. Komoditas Sumbawa: kuda, madu, kayu sepang. Cek: Wood 2014; Raffles.
-17. Korban sekitar 70.000 (10-12 ribu langsung); angka lama sekitar 90.000. Cek: Oppenheimer 2003 (membahas rentang); Stothers 1984; Petroeschevsky 1949.
-18. Dampak di Lombok dan pulau tetangga. Cek: Oppenheimer 2003.
-19. Status Tambora saat ini dan erupsi kecil terakhir. Cek: PVMBG / Badan Geologi; Smithsonian GVP.
+Sosial dan budaya 14. [BELUM TERVERIFIKASI; nama kerajaan dan jumlah penduduk jangan dipakai di Shorts] Kerajaan Tambora, Pekat, Sanggar: letak dan nasib masing-masing. Cek: Wood 2014; Oppenheimer 2003. 15. Bahasa Tambora dan Pekat sudah punah. Cek: Ethnologue / catatan linguistik. 16. Komoditas Sumbawa: kuda, madu, kayu sepang. Cek: Wood 2014; Raffles. 17. [TERVERIFIKASI Kim: >71.000, Oppenheimer 2003; B9 masih menulis "sekitar 70.000", selaraskan saat revisi B9] Korban sekitar 70.000 (10-12 ribu langsung); angka lama sekitar 90.000. Cek: Oppenheimer 2003 (membahas rentang); Stothers 1984; Petroeschevsky 1949. 18. Dampak di Lombok dan pulau tetangga. Cek: Oppenheimer 2003. 19. Status Tambora saat ini dan erupsi kecil terakhir. Cek: PVMBG / Badan Geologi; Smithsonian GVP.
 
-Atmosfer dan iklim
-20. Aerosol sulfat di stratosfer bertahan berbulan hingga beberapa tahun.
-21. Lonjakan sulfat di inti es sekitar 1809 dan 1815. Cek: Cole-Dai dkk. 2009.
-22. Penurunan suhu musim panas belahan bumi utara 1816 sekitar 0,4-0,7 derajat. Cek: Raible dkk. 2016; Oppenheimer 2003.
-23. Pengaruh Dalton Minimum (aktivitas Matahari rendah). Cek: Raible dkk. 2016.
+Atmosfer dan iklim 20. [Sekitar 60 Mt sulfur TERVERIFIKASI Kim] Aerosol sulfat di stratosfer bertahan berbulan hingga beberapa tahun. 21. Lonjakan sulfat di inti es sekitar 1809 dan 1815. Cek: Cole-Dai dkk. 2009. 22. Penurunan suhu musim panas belahan bumi utara 1816 sekitar 0,4-0,7 derajat. Cek: Raible dkk. 2016; Oppenheimer 2003. 23. Pengaruh Dalton Minimum (aktivitas Matahari rendah). Cek: Raible dkk. 2016.
 
-Dampak 1816
-24. Panen jatuh di Swiss, Jerman, Prancis, Inggris, Irlandia; besaran penurunan. Cek: Post 1977; Behringer 2015.
-25. Harga gandum naik "berlipat" di beberapa tempat; angka pastinya per wilayah. Cek: Post 1977. Jika tidak ada data, jangan tampilkan angka.
-26. Kerusuhan pangan dan emigrasi dari Jerman barat daya/Swiss. Cek: Post 1977; Behringer 2015.
-27. Julukan "Eighteen Hundred and Froze to Death"; embun beku Mei-Agustus di New England dan Kanada; salju awal Juni di beberapa lokasi; migrasi ke barat. Cek: Klingaman & Klingaman 2013; Oppenheimer 2003.
-28. Gangguan monsun India dan kelaparan Yunnan: dikaitkan peneliti, masih diperdebatkan. Cek: Wood 2014.
-29. "Krisis pangan besar terakhir di dunia Barat" = judul buku John D. Post (1977).
+Dampak 1816 24. Panen jatuh di Swiss, Jerman, Prancis, Inggris, Irlandia; besaran penurunan. Cek: Post 1977; Behringer 2015. 25. Harga gandum naik "berlipat" di beberapa tempat; angka pastinya per wilayah. Cek: Post 1977. Jika tidak ada data, jangan tampilkan angka. 26. Kerusuhan pangan dan emigrasi dari Jerman barat daya/Swiss. Cek: Post 1977; Behringer 2015. 27. [Embun beku Juni 1816 di AS timur laut TERVERIFIKASI Kim; sisanya belum] Julukan "Eighteen Hundred and Froze to Death"; embun beku Mei-Agustus di New England dan Kanada; salju awal Juni di beberapa lokasi; migrasi ke barat. Cek: Klingaman & Klingaman 2013; Oppenheimer 2003. 28. [BELUM TERVERIFIKASI: kolera India dan monsun] Gangguan monsun India dan kelaparan Yunnan: dikaitkan peneliti, masih diperdebatkan. Cek: Wood 2014. 29. "Krisis pangan besar terakhir di dunia Barat" = judul buku John D. Post (1977).
 
-Frankenstein
-30. Juni 1816, Danau Jenewa; Byron, Percy Shelley, Mary Godwin, Polidori; tantangan cerita hantu; Frankenstein terbit 1818; The Vampyre (Polidori, terbit 1819); puisi Darkness (Byron, 1816). Cek: pengantar Frankenstein edisi 1831; biografi Mary Shelley.
-31. Kutipan pengantar 1831 tentang musim panas "basah dan tidak ramah" dan hujan mengurung. Cek: teks asli edisi 1831.
-32. Peran cuaca dalam lahirnya Frankenstein: framing hati-hati ("ikut menciptakan suasana"), bukan "Tambora menyebabkan".
+Frankenstein 30. [BELUM TERVERIFIKASI] Juni 1816, Danau Jenewa; Byron, Percy Shelley, Mary Godwin, Polidori; tantangan cerita hantu; Frankenstein terbit 1818; The Vampyre (Polidori, terbit 1819); puisi Darkness (Byron, 1816). Cek: pengantar Frankenstein edisi 1831; biografi Mary Shelley. 31. [BELUM TERVERIFIKASI] Kutipan pengantar 1831 tentang musim panas "basah dan tidak ramah" dan hujan mengurung. Cek: teks asli edisi 1831. 32. Peran cuaca dalam lahirnya Frankenstein: framing hati-hati ("ikut menciptakan suasana"), bukan "Tambora menyebabkan".
 
 ==================================================
 DAFTAR SUMBER RUJUKAN
 ==================================================
 Judul, penulis, tahun (cek ulang volume/halaman/DOI sebelum dicantumkan di deskripsi)
+
 1. "Climatic, environmental and human consequences of the largest known historic eruption: Tambora volcano (Indonesia) 1815" - Clive Oppenheimer, Progress in Physical Geography, 2003.
 2. "The Great Tambora Eruption in 1815 and Its Aftermath" - Richard B. Stothers, Science, 1984.
 3. "Plinian and co-ignimbrite tephra fall from the 1815 eruption of Tambora volcano" - Haraldur Sigurdsson & Steven Carey, Bulletin of Volcanology, 1989.
@@ -238,14 +230,15 @@ Judul, penulis, tahun (cek ulang volume/halaman/DOI sebelum dicantumkan di deskr
 12. Tambora, Global Volcanism Program - Smithsonian Institution (halaman gunung Tambora, volcano.si.edu).
 13. Frankenstein; or, The Modern Prometheus, kata pengantar edisi 1831 - Mary Shelley.
 14. Informasi Gunung Tambora - Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG), Badan Geologi, ESDM.
-[Catatan: judul, tahun, dan penulis di atas berasal dari ingatan Don dan harus dicek ulang di katalog/Google Scholar sebelum dipakai sebagai kredit di video.]
+    [Catatan: judul, tahun, dan penulis di atas berasal dari ingatan Don dan harus dicek ulang di katalog/Google Scholar sebelum dipakai sebagai kredit di video.]
 
 ==================================================
 CATATAN HAND-OFF (Dex & Stark)
 ==================================================
+
 - Shorts 9:16: teks besar tengah, sisakan ~250 px bawah dan ~150 px atas kosong; subtitle tengah-bawah.
 - Video panjang 16:9: layout peta kiri/teks kanan, subtitle satu baris, chapter YouTube mengikuti B1-B10.
 - Palet: gelap (biru-hitam) dengan aksen dingin untuk 1816 dan hangat (oranye) hanya untuk letusan. [ISI: palet resmi Suhuf Pengetahuan bila sudah ada]
 - Aset: peta (Natural Earth/OSM), skema atmosfer (buat di Remotion), potret Byron & Mary Shelley (domain publik), foto Villa Diodati dan kaldera Tambora (cek lisensi), logo Suhuf Pengetahuan.
 - Wajib: label "Ilustrasi (dibuat AI)" pada semua gambar AI; label "Skema" pada animasi non-data; credit & atribusi di akhir video.
-- Keputusan Miftah (sudah dijawab): (1) Grafik suhu rekonstruksi BOLEH dipakai, asal dari data yang bisa dikutip (Raible dkk. 2016 / Cole-Dai dkk. 2009), sumber tampil di layar; jangan menggambar kurva karangan. (2) Adegan Frankenstein (B8) DIPAKAI dalam versi ringkas; keputusan akhir diserahkan ke Don. Kalau durasi akhir terlalu panjang, B8 boleh dipotong utuh, tapi titik "Frankenstein" di timeline B2 dan teks B10 harus ikut disesuaikan.
+- Keputusan Miftah (sudah dijawab): (1) Grafik suhu rekonstruksi BOLEH dipakai, asal dari data yang bisa dikutip (Raible dkk. 2016 / Cole-Dai dkk. 2009), sumber tampil di layar; jangan menggambar kurva karangan. (2) Adegan Frankenstein (B8) DIPAKAI dalam versi ringkas; keputusan akhir diserahkan ke Don. Update: Frankenstein dihapus dari Shorts Versi A (A5), hanya opsional di Versi B. Kalau durasi akhir terlalu panjang, B8 boleh dipotong utuh, tapi titik "Frankenstein" di timeline B2 dan teks B10 harus ikut disesuaikan.
