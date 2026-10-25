@@ -1,0 +1,562 @@
+{
+  "voice": "id-ID-ArdiNeural",
+  "rate": "+0%",
+  "scenes": [
+    {
+      "id": "b1",
+      "title": "HOOK",
+      "clips": [
+        {
+          "id": "b01_01",
+          "text": "April 1815."
+        },
+        {
+          "id": "b01_02",
+          "text": "Satu gunung di Sumbawa meledak."
+        },
+        {
+          "id": "b01_03",
+          "text": "Setahun kemudian, banyak wilayah Eropa gagal panen."
+        },
+        {
+          "id": "b01_04",
+          "text": "Jaraknya sekitar dua belas ribu kilometer."
+        },
+        {
+          "id": "b01_05",
+          "text": "Tidak ada pasukan yang menyeberang, tidak ada kapal perang."
+        },
+        {
+          "id": "b01_06",
+          "text": "Yang menyeberang adalah sesuatu yang jauh lebih halus: partikel di langit."
+        },
+        {
+          "id": "b01_07",
+          "text": "Dan di tahun 1816, orang di dua benua melihat embun beku di bulan Juni."
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "title": "PEMBUKA & PETA JALAN",
+      "clips": [
+        {
+          "id": "b02_01",
+          "text": "Halo, selamat datang di Suhuf Pengetahuan."
+        },
+        {
+          "id": "b02_02",
+          "text": "Hari ini kita ikuti satu rantai sebab-akibat yang panjang."
+        },
+        {
+          "id": "b02_03",
+          "text": "Dari sebuah gunung di Nusa Tenggara, naik ke lapisan atas atmosfer, turun ke ladang gandum di Eropa, sampai ke sebuah malam bercerita hantu yang kemudian jadi novel terkenal."
+        },
+        {
+          "id": "b02_04",
+          "text": "Dan kita akan kembali ke Sumbawa di akhir, karena orang yang paling parah menanggung akibatnya justru yang paling dekat dengan gunung itu."
+        },
+        {
+          "id": "b02_05",
+          "text": "Ceritanya jarang kita dengar."
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "title": "KONTEKS: SUMBAWA DAN TAMBORA",
+      "clips": [
+        {
+          "id": "b03_01",
+          "text": "Mari mulai dari tempatnya."
+        },
+        {
+          "id": "b03_02",
+          "text": "Sumbawa adalah pulau di Nusa Tenggara Barat, di antara Lombok dan Flores."
+        },
+        {
+          "id": "b03_03",
+          "text": "Di bagian utaranya ada semenanjung yang menjorok ke Laut Flores, dan di sanalah berdiri Gunung Tambora."
+        },
+        {
+          "id": "b03_04",
+          "text": "Sebelum 1815, tingginya diperkirakan sekitar 4300 meter."
+        },
+        {
+          "id": "b03_05",
+          "text": "Itu lebih tinggi dari Rinjani yang sekarang."
+        },
+        {
+          "id": "b03_06",
+          "text": "Gunung ini sudah berabad-abad tidak meletus besar."
+        },
+        {
+          "id": "b03_07",
+          "text": "Di lerengnya hidup beberapa kerajaan kecil."
+        },
+        {
+          "id": "b03_08",
+          "text": "Ada Kerajaan Tambora, Kerajaan Pekat, dan Kerajaan Sanggar."
+        },
+        {
+          "id": "b03_09",
+          "text": "Mereka hidup dari bertani, beternak, dan berdagang."
+        },
+        {
+          "id": "b03_10",
+          "text": "Sumbawa dikenal lewat kuda, madu, dan kayu sepang, bahan pewarna merah."
+        },
+        {
+          "id": "b03_11",
+          "text": "Bahasa Tambora dan Pekat juga punya identitas sendiri."
+        },
+        {
+          "id": "b03_12",
+          "text": "Sekarang keduanya sudah punah, dan yang tersisa hanya daftar kata yang sangat sedikit."
+        },
+        {
+          "id": "b03_13",
+          "text": "Jadi kalau kita bicara tentang letusan 1815, kita bicara tentang tempat yang berpenghuni, punya kerajaan, punya bahasa, punya perdagangan."
+        }
+      ]
+    },
+    {
+      "id": "b4",
+      "title": "LETUSAN APRIL 1815",
+      "clips": [
+        {
+          "id": "b04_01",
+          "text": "Pada 5 April 1815, Tambora meletus dengan keras untuk pertama kalinya."
+        },
+        {
+          "id": "b04_02",
+          "text": "Dentumannya terdengar sampai Jawa dan Sumatra."
+        },
+        {
+          "id": "b04_03",
+          "text": "Sebagian orang mengira itu tembakan meriam, sampai pasukan di beberapa tempat disiagakan."
+        },
+        {
+          "id": "b04_04",
+          "text": "Lima hari kemudian, tanggal 10 April, datang puncaknya."
+        },
+        {
+          "id": "b04_05",
+          "text": "Letusan malam itu jauh lebih besar."
+        },
+        {
+          "id": "b04_06",
+          "text": "Kolom abu menjulang hingga sekitar 43 kilometer ke langit [Oppenheimer 2003, terverifikasi Kim]."
+        },
+        {
+          "id": "b04_07",
+          "text": "Awan panas, campuran gas, abu, dan batu yang sangat panas, meluncur menuruni lereng sampai ke laut."
+        },
+        {
+          "id": "b04_08",
+          "text": "Kampung-kampung di kaki gunung tertimbun."
+        },
+        {
+          "id": "b04_09",
+          "text": "Laut terdorong, dan tsunami menghantam pantai di sekitarnya."
+        },
+        {
+          "id": "b04_10",
+          "text": "Di Sanggar, tingginya dilaporkan sekitar 4 meter."
+        },
+        {
+          "id": "b04_11",
+          "text": "Abu jatuh sampai ratusan kilometer jauhnya."
+        },
+        {
+          "id": "b04_12",
+          "text": "Siang hari gelap berhari-hari."
+        },
+        {
+          "id": "b04_13",
+          "text": "Seorang perwira Inggris, Letnan Owen Phillips, dikirim oleh Thomas Stamford Raffles, penguasa Inggris di Jawa waktu itu, membawa bantuan beras ke Sumbawa."
+        },
+        {
+          "id": "b04_14",
+          "text": "Ia mencatat desa-desa yang rusak dan penduduk yang kelaparan."
+        },
+        {
+          "id": "b04_15",
+          "text": "Setelah semuanya reda, puncak gunung itu tidak ada lagi."
+        },
+        {
+          "id": "b04_16",
+          "text": "Tingginya turun dari sekitar 4300 meter menjadi sekitar 2850 meter."
+        },
+        {
+          "id": "b04_17",
+          "text": "Di puncaknya terbuka kaldera selebar sekitar 6 sampai 7 kilometer, sedalam lebih dari 600 meter."
+        },
+        {
+          "id": "b04_18",
+          "text": "Para ahli menggolongkannya VEI 7, di skala yang maksimumnya 8."
+        },
+        {
+          "id": "b04_19",
+          "text": "Ini letusan terbesar dalam sejarah tercatat, dan jauh lebih besar dari Krakatau 1883 yang lebih terkenal."
+        }
+      ]
+    },
+    {
+      "id": "b5",
+      "title": "APA YANG DILEMPARKAN KE ATMOSFER",
+      "clips": [
+        {
+          "id": "b05_01",
+          "text": "Sekarang bagian yang membuat Tambora berpengaruh sampai ke Eropa."
+        },
+        {
+          "id": "b05_02",
+          "text": "Bukan abunya."
+        },
+        {
+          "id": "b05_03",
+          "text": "Abu itu berat, dan jatuh kembali dalam hitungan hari sampai minggu."
+        },
+        {
+          "id": "b05_04",
+          "text": "Yang penting adalah gas belerang, yaitu sulfur dioksida."
+        },
+        {
+          "id": "b05_05",
+          "text": "Letusan sebesar ini cukup kuat untuk mendorong gas itu menembus troposfer, lapisan tempat cuaca terjadi, dan masuk ke stratosfer, lapisan di atasnya."
+        },
+        {
+          "id": "b05_06",
+          "text": "Di sana gas itu bereaksi dengan uap air dan berubah jadi butiran sangat halus asam sulfat, yang disebut aerosol sulfat."
+        },
+        {
+          "id": "b05_07",
+          "text": "Di stratosfer tidak ada hujan yang membersihkannya."
+        },
+        {
+          "id": "b05_08",
+          "text": "Aerosol itu bisa bertahan berbulan-bulan sampai beberapa tahun, dan menyebar mengelilingi bumi."
+        },
+        {
+          "id": "b05_09",
+          "text": "Butiran itu memantulkan sebagian sinar Matahari kembali ke luar angkasa."
+        },
+        {
+          "id": "b05_10",
+          "text": "Akibatnya, permukaan bumi menerima lebih sedikit panas."
+        },
+        {
+          "id": "b05_11",
+          "text": "Bagaimana kita tahu?"
+        },
+        {
+          "id": "b05_12",
+          "text": "Jejaknya tersimpan di es."
+        },
+        {
+          "id": "b05_13",
+          "text": "Para ilmuwan mengebor inti es di Greenland dan Antartika, dan menemukan lapisan dengan kadar sulfat yang melonjak di sekitar tahun 1815."
+        },
+        {
+          "id": "b05_14",
+          "text": "Ada satu lonjakan lagi di sekitar 1809, dari letusan lain yang sampai sekarang gunungnya belum dipastikan."
+        },
+        {
+          "id": "b05_15",
+          "text": "Jadi dekade 1810-an dingin karena dua letusan, bukan satu."
+        },
+        {
+          "id": "b05_16",
+          "text": "Tambora yang terbesar."
+        },
+        {
+          "id": "b05_17",
+          "text": "Pada saat yang sama, Matahari sedang dalam periode aktivitas rendah yang disebut Dalton Minimum, yang mungkin ikut menambah dingin."
+        },
+        {
+          "id": "b05_18",
+          "text": "Tapi kebanyakan peneliti menilai letusan adalah pemicu utamanya."
+        }
+      ]
+    },
+    {
+      "id": "b6",
+      "title": "1816 DI EROPA",
+      "clips": [
+        {
+          "id": "b06_01",
+          "text": "Sekarang kita masuk ke 1816."
+        },
+        {
+          "id": "b06_02",
+          "text": "Musim semi datang, lalu musim panas."
+        },
+        {
+          "id": "b06_03",
+          "text": "Tapi musim panasnya tidak pernah benar-benar datang."
+        },
+        {
+          "id": "b06_04",
+          "text": "Suhu rata-rata belahan bumi utara pada musim panas itu turun kira-kira setengah derajat Celsius."
+        },
+        {
+          "id": "b06_05",
+          "text": "Kedengarannya kecil."
+        },
+        {
+          "id": "b06_06",
+          "text": "Tapi pertanian tidak butuh perubahan besar untuk gagal."
+        },
+        {
+          "id": "b06_07",
+          "text": "Yang dibutuhkan hanya musim tumbuh yang meleset."
+        },
+        {
+          "id": "b06_08",
+          "text": "Dan di Eropa yang paling terasa adalah hujannya."
+        },
+        {
+          "id": "b06_09",
+          "text": "Berminggu-minggu mendung dan basah, di musim yang seharusnya hangat dan kering."
+        },
+        {
+          "id": "b06_10",
+          "text": "Gandum, jelai, dan kentang membusuk di ladang atau tidak sempat masak."
+        },
+        {
+          "id": "b06_11",
+          "text": "Panen di banyak wilayah, seperti Swiss, Jerman, Prancis, Inggris, dan Irlandia, jatuh jauh di bawah biasanya."
+        },
+        {
+          "id": "b06_12",
+          "text": "Waktunya juga sangat buruk."
+        },
+        {
+          "id": "b06_13",
+          "text": "Eropa baru keluar dari perang Napoleon yang berakhir di Waterloo, Juni 1815."
+        },
+        {
+          "id": "b06_14",
+          "text": "Persediaan pangan sudah tipis, dan kas banyak negara kosong."
+        },
+        {
+          "id": "b06_15",
+          "text": "Harga pangan melonjak."
+        },
+        {
+          "id": "b06_16",
+          "text": "Di beberapa tempat harga gandum naik berlipat."
+        },
+        {
+          "id": "b06_17",
+          "text": "Kerusuhan pangan pecah di sejumlah kota."
+        },
+        {
+          "id": "b06_18",
+          "text": "Banyak keluarga meninggalkan kampung untuk mencari makan, dan arus emigrasi dari Jerman bagian barat daya dan Swiss ke Amerika meningkat."
+        },
+        {
+          "id": "b06_19",
+          "text": "Sejarawan John Post menyebut krisis 1816 sampai 1817 ini sebagai krisis pangan besar terakhir di dunia Barat."
+        }
+      ]
+    },
+    {
+      "id": "b7",
+      "title": "AMERIKA UTARA DAN BAGIAN DUNIA LAIN",
+      "clips": [
+        {
+          "id": "b07_01",
+          "text": "Di seberang Atlantik, 1816 dikenang dengan julukan yang lebih blak-blakan: Eighteen Hundred and Froze to Death."
+        },
+        {
+          "id": "b07_02",
+          "text": "Kira-kira artinya, tahun 1800 yang membeku sampai mati."
+        },
+        {
+          "id": "b07_03",
+          "text": "Di New England dan Kanada bagian timur, embun beku datang berulang kali di musim yang seharusnya hangat, bahkan sampai Juni dan Juli."
+        },
+        {
+          "id": "b07_04",
+          "text": "Di beberapa tempat dilaporkan salju turun di awal Juni."
+        },
+        {
+          "id": "b07_05",
+          "text": "Jagung dan tanaman lain hangus, dan harga bahan pangan naik."
+        },
+        {
+          "id": "b07_06",
+          "text": "Banyak keluarga petani New England dikatakan pindah ke wilayah barat sesudahnya."
+        },
+        {
+          "id": "b07_07",
+          "text": "Sebagian peneliti juga mengaitkan gangguan musim hujan di India dan kelaparan di barat daya Tiongkok pada masa itu dengan dampak yang sama, walaupun hubungannya masih diperdebatkan."
+        }
+      ]
+    },
+    {
+      "id": "b8",
+      "title": "KAITAN: FRANKENSTEIN (versi ringkas) - OPSIONAL",
+      "clips": [
+        {
+          "id": "b08_01",
+          "text": "Sekarang bagian yang sering diceritakan, dan di sini kita perlu hati-hati."
+        },
+        {
+          "id": "b08_02",
+          "text": "Juni 1816, di tepi Danau Jenewa, Swiss, Lord Byron menyewa sebuah vila."
+        },
+        {
+          "id": "b08_03",
+          "text": "Bersamanya ada penyair Percy Shelley, Mary Godwin yang kelak dikenal sebagai Mary Shelley, dan dokter Byron, John Polidori."
+        },
+        {
+          "id": "b08_04",
+          "text": "Hujan dan badai membuat mereka terkurung berhari-hari, jadi mereka berlomba menulis cerita hantu."
+        },
+        {
+          "id": "b08_05",
+          "text": "Dari situ lahir ide Frankenstein, yang terbit tahun 1818."
+        },
+        {
+          "id": "b08_06",
+          "text": "Byron sendiri menulis puisi Darkness, tentang matahari yang padam."
+        },
+        {
+          "id": "b08_07",
+          "text": "Apakah Tambora menyebabkan Frankenstein?"
+        },
+        {
+          "id": "b08_08",
+          "text": "Tidak sesederhana itu."
+        },
+        {
+          "id": "b08_09",
+          "text": "Mary Shelley menulis di pengantar 1831 bahwa musim panas itu basah dan tidak ramah."
+        },
+        {
+          "id": "b08_10",
+          "text": "Yang aman kita katakan: cuaca buruk 1816, yang kini dikaitkan dengan Tambora, ikut membentuk suasana tempat ide itu lahir."
+        }
+      ]
+    },
+    {
+      "id": "b9",
+      "title": "NUSANTARA: SUMBAWA DAN SEKITARNYA",
+      "clips": [
+        {
+          "id": "b09_01",
+          "text": "Sekarang kita kembali ke tempat letusan itu, karena di sinilah dampak paling berat."
+        },
+        {
+          "id": "b09_02",
+          "text": "Desa Tambora musnah oleh awan panas, dan tsunami setinggi sekitar empat meter menghantam pesisir Sanggar."
+        },
+        {
+          "id": "b09_03",
+          "text": "Nasib tiap kerajaan di lereng gunung belum kami pastikan, jadi tidak kami sebut di sini."
+        },
+        {
+          "id": "b09_04",
+          "text": "Mereka yang selamat dari awan panas dan tsunami menghadapi hal yang lebih lama: sawah tertutup abu, ternak mati, air tercemar, dan persediaan makanan habis."
+        },
+        {
+          "id": "b09_05",
+          "text": "Kelaparan dan penyakit menyusul, di Sumbawa dan pulau tetangga seperti Lombok."
+        },
+        {
+          "id": "b09_06",
+          "text": "Banyak orang mengungsi atau meninggal di perjalanan."
+        },
+        {
+          "id": "b09_07",
+          "text": "Estimasi korban yang paling sering dikutip sekitar 70000 jiwa, dengan kira-kira 10 sampai 12 ribu tewas langsung oleh letusan, sisanya karena kelaparan dan penyakit."
+        },
+        {
+          "id": "b09_08",
+          "text": "Ada catatan lama dengan angka lebih tinggi, sekitar 90000."
+        },
+        {
+          "id": "b09_09",
+          "text": "Tidak ada sensus pada waktu itu, jadi anggap semuanya perkiraan, bukan hitungan pasti."
+        },
+        {
+          "id": "b09_10",
+          "text": "Dua abad kemudian, tahun 2004, tim yang dipimpin vulkanolog Haraldur Sigurdsson menggali di lereng Tambora dan menemukan sisa permukiman yang tertimbun abu, dengan peralatan rumah tangga dan sisa manusia di bawah endapan setebal beberapa meter."
+        },
+        {
+          "id": "b09_11",
+          "text": "Media menjulukinya Pompeii dari Timur."
+        },
+        {
+          "id": "b09_12",
+          "text": "Dari situ kita tahu, kerajaan Tambora bukan sekadar nama di catatan Eropa."
+        },
+        {
+          "id": "b09_13",
+          "text": "Ada manusia, rumah, dan budaya yang hilang dalam satu malam."
+        },
+        {
+          "id": "b09_14",
+          "text": "Hari ini Tambora masih gunung api aktif dan dipantau oleh Badan Geologi."
+        }
+      ]
+    },
+    {
+      "id": "b10",
+      "title": "PENUTUP, PELAJARAN, AJAKAN",
+      "clips": [
+        {
+          "id": "b10_01",
+          "text": "Jadi, apa pelajarannya?"
+        },
+        {
+          "id": "b10_02",
+          "text": "Pertama, dunia kita saling terhubung jauh lebih erat daripada yang terlihat."
+        },
+        {
+          "id": "b10_03",
+          "text": "Satu kejadian di satu pulau bisa menggeser iklim dan harga pangan di sisi lain bumi, dan orang waktu itu bahkan tidak tahu penyebabnya."
+        },
+        {
+          "id": "b10_04",
+          "text": "Kedua, pangan itu rapuh."
+        },
+        {
+          "id": "b10_05",
+          "text": "Satu musim buruk sudah cukup mengguncang harga dan ketenangan sosial."
+        },
+        {
+          "id": "b10_06",
+          "text": "Itu sebabnya ilmu iklim dan pemantauan gunung api bukan pelajaran yang jauh dari hidup kita."
+        },
+        {
+          "id": "b10_07",
+          "text": "Ketiga, korban terberat sering ada di tempat yang tidak masuk buku sejarah populer."
+        },
+        {
+          "id": "b10_08",
+          "text": "Cerita Tahun Tanpa Musim Panas biasanya mulai dari Eropa dan Amerika."
+        },
+        {
+          "id": "b10_09",
+          "text": "Padahal ceritanya mulai dari Sumbawa."
+        },
+        {
+          "id": "b10_10",
+          "text": "Kalau kamu suka video ini, subscribe Suhuf Pengetahuan."
+        },
+        {
+          "id": "b10_11",
+          "text": "Dan tulis di komentar: gunung atau peristiwa apa lagi yang ingin kamu lihat ceritanya?"
+        },
+        {
+          "id": "b10_12",
+          "text": "Sampai jumpa di video berikutnya."
+        }
+      ]
+    }
+  ]
+}

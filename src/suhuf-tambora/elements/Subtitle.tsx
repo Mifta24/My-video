@@ -33,17 +33,27 @@ type SubtitleProps = {
   readonly text: string;
   readonly startSec: number;
   readonly durationSec: number;
+  readonly bottom?: number;
+  readonly fontSize?: number;
+  readonly maxWidth?: number;
+  readonly maxChars?: number;
 };
+
+// Supports horizontal compositions through bottom/fontSize/maxWidth overrides.
 
 export const Subtitle: React.FC<SubtitleProps> = ({
   text,
   startSec,
   durationSec,
+  bottom = 440,
+  fontSize = 62,
+  maxWidth = 940,
+  maxChars = 26,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps - startSec;
-  const chunks = splitChunks(text);
+  const chunks = splitChunks(text, maxChars);
   const total = chunks.reduce((a, c) => a + c.length, 0);
 
   let acc = 0;
@@ -73,7 +83,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
         position: "absolute",
         left: 0,
         right: 0,
-        bottom: 440,
+        bottom,
         display: "flex",
         justifyContent: "center",
         opacity,
@@ -83,13 +93,13 @@ export const Subtitle: React.FC<SubtitleProps> = ({
         style={{
           fontFamily: fonts.heading,
           fontWeight: 700,
-          fontSize: 62,
+          fontSize,
           lineHeight: 1.15,
           color: colors.text,
           background: "rgba(7,11,20,0.78)",
           padding: "14px 30px",
           borderRadius: 20,
-          maxWidth: 940,
+          maxWidth,
           textAlign: "center",
         }}
       >

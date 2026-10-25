@@ -25,11 +25,21 @@ import { YtProblemScene } from "./ai-apartment/youtube/YtProblemScene";
 import { YtRevealScene } from "./ai-apartment/youtube/YtRevealScene";
 import { ShortsTeaser } from "./suhuf-tambora/ShortsTeaser";
 import { shortsTotalFrames } from "./suhuf-tambora/timing";
+import { LongVideo } from "./suhuf-tambora/long/LongVideo";
+import { longDurationFrames } from "./suhuf-tambora/long/timing";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Suhuf-Pengetahuan-01-Tambora">
+        <Composition
+          id="Tambora-YouTube-Long"
+          component={LongVideo}
+          durationInFrames={longDurationFrames}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
         <Composition
           id="Tambora-Shorts-Teaser"
           component={ShortsTeaser}
