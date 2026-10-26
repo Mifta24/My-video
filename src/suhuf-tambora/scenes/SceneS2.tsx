@@ -2,6 +2,7 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { WorldMap } from "../elements/WorldMap";
 import { Subtitle } from "../elements/Subtitle";
+import { PhotoCard } from "../elements/PhotoCard";
 import { clamp, easeOut, useSceneTime } from "../elements/common";
 import { SUMBAWA_VIEW, TAMBORA, WORLD_VIEW, mixView } from "../geo";
 import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
@@ -83,6 +84,16 @@ export const SceneS2: React.FC = () => {
           );
         }}
       </WorldMap>
+      <PhotoCard
+        src="suhuf-tambora/photos/tambora-nasa-iss.jpg"
+        caption="Kaldera Tambora hari ini · Foto: NASA (domain publik)"
+        t={t}
+        inAt={1.9}
+        top={190}
+        height={560}
+        zoomFrom={1.0}
+        zoomTo={1.1}
+      />
       <Audio
         name="VO s2"
         from={Math.round(LEAD * 30)}

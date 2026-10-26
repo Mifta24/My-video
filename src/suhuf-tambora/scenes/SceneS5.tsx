@@ -147,6 +147,8 @@ export const SceneS5: React.FC = () => {
         }}
       >
         Peta: Natural Earth (domain publik)
+        <br />
+        Foto: NASA; Giezendanner, 1817 (domain publik)
       </div>
 
       <Audio

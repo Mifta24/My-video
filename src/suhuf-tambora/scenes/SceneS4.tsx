@@ -2,6 +2,7 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { WorldMap } from "../elements/WorldMap";
 import { Subtitle } from "../elements/Subtitle";
+import { PhotoCard } from "../elements/PhotoCard";
 import { clamp, easeOut, useSceneTime } from "../elements/common";
 import { WORLD_VIEW } from "../geo";
 import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
@@ -84,6 +85,17 @@ export const SceneS4: React.FC = () => {
         );
       })}
 
+      <PhotoCard
+        src="suhuf-tambora/photos/hunger-1817.jpg"
+        caption="Kelaparan 1817 · Giezendanner (domain publik)"
+        t={t}
+        inAt={4.4}
+        top={760}
+        width={900}
+        height={540}
+        zoomFrom={1.0}
+        zoomTo={1.06}
+      />
       <Audio
         name="VO s4"
         from={Math.round(LEAD * 30)}
