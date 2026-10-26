@@ -243,7 +243,20 @@ export const Keyline: React.FC<{
   readonly top?: number;
   readonly from?: number;
   readonly to?: number;
-}> = ({ sceneId, t, lines, top = 770, from = 0, to = END }) => {
+  readonly x?: number; // kalau diisi: rata kiri pada x (lebar w), bukan di tengah layar
+  readonly w?: number;
+  readonly size?: number;
+}> = ({
+  sceneId,
+  t,
+  lines,
+  top = 770,
+  from = 0,
+  to = END,
+  x,
+  w,
+  size = 52,
+}) => {
   if (t < from || t > to) {
     return null;
   }
@@ -268,11 +281,11 @@ export const Keyline: React.FC<{
       key={cur.start}
       style={{
         position: "absolute",
-        left: 0,
-        right: 0,
+        left: x ?? 0,
+        ...(x === undefined ? { right: 0 } : { width: w }),
         top,
         display: "flex",
-        justifyContent: "center",
+        justifyContent: x === undefined ? "center" : "flex-start",
         opacity: p * interpolate(t, [to - 0.4, to], [1, 0], clamp),
         translate: `0px ${(1 - p) * 20}px`,
       }}
@@ -285,10 +298,10 @@ export const Keyline: React.FC<{
           border: `2px solid ${colors.landLine}`,
           fontFamily: fonts.heading,
           fontWeight: 700,
-          fontSize: 52,
+          fontSize: size,
           color: colors.text,
-          maxWidth: 1560,
-          textAlign: "center",
+          maxWidth: w ?? 1560,
+          textAlign: x === undefined ? "center" : "left",
         }}
       >
         {cur.text}

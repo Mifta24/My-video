@@ -242,3 +242,50 @@ CATATAN HAND-OFF (Dex & Stark)
 - Aset: peta (Natural Earth/OSM), skema atmosfer (buat di Remotion), potret Byron & Mary Shelley (domain publik), foto Villa Diodati dan kaldera Tambora (cek lisensi), logo Suhuf Pengetahuan.
 - Wajib: label "Ilustrasi (dibuat AI)" pada semua gambar AI; label "Skema" pada animasi non-data; credit & atribusi di akhir video.
 - Keputusan Miftah (sudah dijawab): (1) Grafik suhu rekonstruksi BOLEH dipakai, asal dari data yang bisa dikutip (Raible dkk. 2016 / Cole-Dai dkk. 2009), sumber tampil di layar; jangan menggambar kurva karangan. (2) Adegan Frankenstein (B8) DIPAKAI dalam versi ringkas; keputusan akhir diserahkan ke Don. Update: Frankenstein dihapus dari Shorts Versi A (A5), hanya opsional di Versi B. Kalau durasi akhir terlalu panjang, B8 boleh dipotong utuh, tapi titik "Frankenstein" di timeline B2 dan teks B10 harus ikut disesuaikan.
+
+==================================================
+TAMBAHAN VERSI DETAIL (video panjang B4-B7)
+==================================================
+Narasi di bawah SUDAH ada di long/spec.json (id klip b0N_xM) dan sudah disuarakan. Semua WAJIB diverifikasi sebelum publish;
+tandai klip yang gagal verifikasi dan kita ganti/hapus. spec.json sekarang diedit langsung; JANGAN jalankan ulang build-long-spec.py (akan menomori ulang klip).
+
+B4 | LETUSAN APRIL 1815
+- b04_x1: Tambora tidak meledak tanpa peringatan.
+- b04_x2: Sejak sekitar tahun 1812, gunung itu sudah mulai bergemuruh dan mengeluarkan awan gelap dari puncaknya. [VERIFIKASI: tahun 1812: gunung mulai bergemuruh dan mengeluarkan awan gelap (cek Smithsonian GVP / Oppenheimer 2003)]
+- b04_x3: Selama lima hari berikutnya, gunung itu terus menggelegar dan menyemburkan abu. [VERIFIKASI: lima hari antara 5 dan 10 April: gemuruh dan abu terus berlangsung (cek Oppenheimer 2003)]
+- b04_x4: Seorang saksi dari Sanggar menceritakan tiga lajur api yang menyembur dari puncak, lalu menyatu menjadi satu pilar api raksasa. [VERIFIKASI: catatan saksi dari Sanggar (tiga lajur api menyatu), dimuat Raffles, History of Java 1817]
+- b04_x5: Batu apung dalam jumlah besar jatuh ke laut dan mengapung, membentuk hamparan yang menyulitkan pelayaran. [VERIFIKASI: hamparan batu apung mengapung dan menyulitkan pelayaran (cek Raffles 1817; Oppenheimer 2003)]
+- b04_x6: Ruang magma di bawahnya terkuras, dan puncak yang tidak lagi tertopang runtuh ke dalam. [VERIFIKASI: keruntuhan puncak karena ruang magma terkuras (mekanisme kaldera; cek Self dkk. 1984)]
+- b04_x7: Krakatau 1883 dan Pinatubo 1991 sama-sama tergolong VEI 6. [VERIFIKASI: Krakatau 1883 dan Pinatubo 1991 sama-sama VEI 6 (cek Smithsonian GVP)]
+- b04_x8: Dalam volume material yang dilontarkan, Tambora kira-kira lima kali Krakatau, dan sepuluh kali Pinatubo. [VERIFIKASI: rasio volume 50 : 10 : 4,8 km3 sesuai diagram VolumeBalls (sumber USGS); cek definisi (bulk vs DRE)]
+
+B5 | APA YANG DILEMPARKAN KE ATMOSFER
+- b05_x1: Perkiraan terbaru menyebutkan jumlahnya sekitar 60 juta ton belerang. [VERIFIKASI: sekitar 60 Mt sulfur (sudah ditandai TERVERIFIKASI Kim di daftar fakta)]
+- b05_x2: Efeknya bahkan bisa dilihat dengan mata telanjang.
+- b05_x3: Pada tahun-tahun sesudah letusan, orang di Eropa mencatat senja yang berwarna merah menyala. [VERIFIKASI: senja merah di Eropa 1815-1816 (cek Wood 2014; Klingaman 2013)]
+- b05_x4: Lukisan-lukisan senja karya J. M. W. Turner kerap disebut sebagai salah satu jejaknya, walaupun tafsir itu masih diperdebatkan. [VERIFIKASI: lukisan senja Turner sebagai jejak aerosol: tafsir yang diperdebatkan (cek Zerefos dkk. 2014)]
+- b05_x5: Selain inti es, ada petunjuk lain.
+- b05_x6: Cincin pohon dari belahan bumi utara menunjukkan pertumbuhan yang tertekan pada tahun 1816. [VERIFIKASI: cincin pohon belahan bumi utara 1816 tertekan (cek Raible dkk. 2016)]
+- b05_x7: Catatan cuaca dari berbagai kota di Eropa juga menunjukkan musim panas yang dingin dan basah. [VERIFIKASI: catatan cuaca Eropa: musim panas 1816 dingin dan basah (cek Raible dkk. 2016; Behringer 2015)]
+- b05_x8: Kalau semua petunjuk ini digabungkan, hasilnya konsisten: musim panas 1816 termasuk yang terdingin dalam beberapa abad terakhir. [VERIFIKASI: "termasuk yang terdingin dalam beberapa abad" (cek rekonstruksi Eropa, Raible dkk. 2016)]
+
+B6 | 1816 DI EROPA
+- b06_x1: Mei sudah lebih dingin dari biasanya. [VERIFIKASI: Mei 1816 lebih dingin dari biasanya (cek Klingaman 2013)]
+- b06_x2: Juni dan Juli membawa hujan yang hampir tidak berhenti.
+- b06_x3: Sungai Rhine dan sungai-sungai lain meluap, dan banjir merendam ladang serta kota. [VERIFIKASI: banjir Rhine dan sungai lain, Juli 1816 (cek Behringer 2015)]
+- b06_x4: Panen anggur juga datang terlambat dengan hasil yang buruk. [VERIFIKASI: panen anggur terlambat dan buruk (cek Wood 2014)]
+- b06_x5: Di Swiss bagian timur, kelaparan begitu parah sampai ada catatan orang memakan rumput dan lumut. [VERIFIKASI: Swiss timur: kelaparan, orang makan rumput dan lumut (cek Post 1977; Behringer 2015)]
+- b06_x6: Di Irlandia, gagal panen diikuti wabah tifus yang berlangsung dari 1816 sampai 1819 dan diperkirakan menewaskan puluhan ribu orang. [VERIFIKASI: tifus Irlandia 1816-1819, korban "puluhan ribu" (cek Post 1977; sumber sejarah Irlandia)]
+- b06_x7: Krisis ini juga dikaitkan dengan satu penemuan.
+- b06_x8: Harga pakan melonjak, dan banyak kuda mati atau dijual.
+- b06_x9: Di Jerman, Karl Drais membuat sepeda tanpa pedal pada 1817, dan sebagian sejarawan mengaitkannya dengan kelangkaan kuda. [VERIFIKASI: Laufmaschine Karl Drais 1817; kaitan dengan kelangkaan kuda hanya dugaan (cek Wood 2014; Behringer 2015)]
+- b06_x10: Kaitan itu masuk akal, tapi masih berupa dugaan.
+
+B7 | AMERIKA UTARA DAN BAGIAN DUNIA LAIN
+- b07_x1: Pada 6 sampai 11 Juni, gelombang dingin membawa salju dan es tipis dari Kanada sampai ke New England dan New York bagian utara. [VERIFIKASI: 6-11 Juni 1816: salju/es dari Kanada sampai New England dan New York utara (cek Klingaman 2013; Wood 2014)]
+- b07_x2: Di beberapa tempat, petani dilaporkan menanam ulang jagung berkali-kali, dan tetap kehilangan panen. [VERIFIKASI: jagung ditanam ulang berkali-kali (dilaporkan; cek Klingaman 2013)]
+- b07_x3: Di India, musim hujan 1816 terlambat dan tidak teratur, dan itu dikaitkan dengan gangguan panen padi di Bengal. [VERIFIKASI: musim hujan India 1816 terlambat; panen padi Bengal (cek Wood 2014; masih diperdebatkan)]
+- b07_x4: Wabah kolera yang menyebar dari Bengal pada 1817 kadang dikaitkan dengan kekacauan musim itu, tapi penyebabnya jauh lebih rumit. [VERIFIKASI: kolera Bengal 1817 dikaitkan dengan kekacauan iklim: diperdebatkan (cek Wood 2014)]
+- b07_x5: Di Yunnan, barat daya Tiongkok, cuaca dingin dan basah yang tidak biasa pada tahun-tahun itu dikaitkan dengan gagal panen dan kelaparan. [VERIFIKASI: Yunnan: cuaca dingin/basah, gagal panen, kelaparan (cek Wood 2014; diperdebatkan)]
+- b07_x6: Para peneliti masih memperdebatkan seberapa besar peran Tambora dalam semua itu.
+- b07_x7: Cuaca selalu punya banyak penyebab, dan 1816 bukan pengecualian.

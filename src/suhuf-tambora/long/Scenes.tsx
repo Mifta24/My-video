@@ -23,6 +23,7 @@ import {
   clipStart,
 } from "./parts";
 import { AtmosphereLayer } from "../three/Atmosphere";
+import { Draisine, Proxies, RedSunset, SeasonTimeline } from "./detail";
 import { GlobeView } from "../three/Globe";
 import { REGION } from "./geo";
 import { SceneMap } from "./SceneMap";
@@ -363,7 +364,36 @@ const B4: React.FC<SceneProps> = ({ t }) => {
   const s = (id: string) => clipStart("b4", id);
   return (
     <>
-      <Shot t={t} from={0} to={s("b04_04")}>
+      <Shot t={t} from={0} to={s("b04_01")}>
+        {(lt) => (
+          <>
+            <Backdrop src="tambora-nasa-iss.jpg" lt={lt} brightness={0.34} />
+            {ash(lt, 30, 0.45)}
+            <TextBlock
+              lt={lt}
+              kicker="TANDA-TANDA SEBELUMNYA"
+              title="1812"
+              color={colors.warm}
+              titleSize={200}
+              x={0}
+              w={1920}
+              y={200}
+              align="center"
+            />
+            <TextBlock
+              lt={lt}
+              delay={s("b04_x2")}
+              title="Gunung mulai bergemuruh"
+              titleSize={66}
+              x={0}
+              w={1920}
+              y={520}
+              align="center"
+            />
+          </>
+        )}
+      </Shot>
+      <Shot t={t} from={s("b04_01")} to={s("b04_04")}>
         {(lt) => (
           <>
             <Backdrop src="tambora-nasa-iss.jpg" lt={lt} brightness={0.38} />
@@ -389,6 +419,8 @@ const B4: React.FC<SceneProps> = ({ t }) => {
               lines={{
                 b04_02: "Dentumannya terdengar sampai Jawa dan Sumatra",
                 b04_03: "Dikira tembakan meriam",
+                b04_x3:
+                  "Lima hari berikutnya: terus menggelegar, menyemburkan abu",
               }}
             />
           </>
@@ -422,6 +454,15 @@ const B4: React.FC<SceneProps> = ({ t }) => {
                 align="center"
               />
             </AbsoluteFill>
+            <Keyline
+              sceneId="b4"
+              t={t}
+              top={700}
+              lines={{
+                b04_x4:
+                  "Saksi di Sanggar: tiga lajur api menyatu jadi satu pilar",
+              }}
+            />
           </>
         )}
       </Shot>
@@ -451,6 +492,7 @@ const B4: React.FC<SceneProps> = ({ t }) => {
                 b04_08: "Kampung-kampung di kaki gunung tertimbun",
                 b04_09: "Laut terdorong · tsunami menghantam pantai",
                 b04_10: "Di Sanggar, sekitar 4 meter (dilaporkan)",
+                b04_x5: "Batu apung mengapung di laut, menyulitkan pelayaran",
               }}
             />
           </>
@@ -541,6 +583,14 @@ const B4: React.FC<SceneProps> = ({ t }) => {
               titleSize={70}
               align="center"
             />
+            <Keyline
+              sceneId="b4"
+              t={t}
+              top={225}
+              lines={{
+                b04_x6: "Ruang magma terkuras, puncak runtuh ke dalam",
+              }}
+            />
           </>
         )}
       </Shot>
@@ -580,9 +630,21 @@ const B4: React.FC<SceneProps> = ({ t }) => {
         {(lt) => (
           <>
             <VolumeBalls lt={lt} />
-            <Label x={960} y={150} align="center" size={44} color={colors.warm}>
+            <Label x={960} y={92} align="center" size={44} color={colors.warm}>
               Letusan terbesar dalam sejarah tercatat
             </Label>
+            <Keyline
+              sceneId="b4"
+              t={t}
+              x={1000}
+              w={800}
+              size={40}
+              top={350}
+              lines={{
+                b04_x7: "Krakatau 1883 dan Pinatubo 1991: sama-sama VEI 6",
+                b04_x8: "Tambora ≈ 5× Krakatau · ≈ 10× Pinatubo (volume)",
+              }}
+            />
           </>
         )}
       </Shot>
@@ -623,7 +685,7 @@ const B5: React.FC<SceneProps> = ({ t }) => {
           </>
         )}
       </Shot>
-      <Shot t={t} from={s("b05_04")} to={s("b05_11")}>
+      <Shot t={t} from={s("b05_04")} to={s("b05_x2")}>
         {() => (
           <>
             <AtmosphereLayer
@@ -671,6 +733,7 @@ const B5: React.FC<SceneProps> = ({ t }) => {
               t={t}
               top={790}
               lines={{
+                b05_x1: "Perkiraan: sekitar 60 juta ton belerang",
                 b05_05: "Menembus troposfer, naik ke stratosfer",
                 b05_06: "Jadi butiran asam sulfat: aerosol",
                 b05_07: "Di stratosfer tidak ada hujan yang membersihkannya",
@@ -682,7 +745,24 @@ const B5: React.FC<SceneProps> = ({ t }) => {
           </>
         )}
       </Shot>
-      <Shot t={t} from={s("b05_11")} to={s("b05_16")}>
+      <Shot t={t} from={s("b05_x2")} to={s("b05_11")}>
+        {(lt) => (
+          <>
+            <RedSunset lt={lt} />
+            <Keyline
+              sceneId="b5"
+              t={t}
+              top={790}
+              lines={{
+                b05_x3: "Di Eropa: senja merah menyala sesudah letusan",
+                b05_x4:
+                  "Lukisan senja Turner kerap disebut jejaknya (diperdebatkan)",
+              }}
+            />
+          </>
+        )}
+      </Shot>
+      <Shot t={t} from={s("b05_11")} to={s("b05_x5")}>
         {(lt) => (
           <>
             <IceCore lt={lt} />
@@ -696,6 +776,40 @@ const B5: React.FC<SceneProps> = ({ t }) => {
                 b05_13: "Lapisan es dengan kadar sulfat yang melonjak",
                 b05_14: "Ada satu lonjakan lagi sekitar 1809",
                 b05_15: "Dekade 1810-an dingin karena dua letusan",
+              }}
+            />
+          </>
+        )}
+      </Shot>
+      <Shot t={t} from={s("b05_x5")} to={s("b05_16")}>
+        {(lt) => (
+          <>
+            <Proxies
+              lt={lt}
+              cues={{
+                tree: s("b05_x6") - s("b05_x5"),
+                weather: s("b05_x7") - s("b05_x5"),
+                all: s("b05_x8") - s("b05_x5"),
+              }}
+            />
+            <TextBlock
+              lt={lt}
+              kicker="PETUNJUK LAIN"
+              title="Bukan hanya es"
+              x={0}
+              w={1920}
+              y={70}
+              titleSize={84}
+              align="center"
+            />
+            <Keyline
+              sceneId="b5"
+              t={t}
+              top={815}
+              lines={{
+                b05_x6: "Cincin pohon: pertumbuhan tertekan di 1816",
+                b05_x7: "Catatan cuaca: musim panas dingin dan basah",
+                b05_x8: "Digabung: 1816 termasuk yang terdingin",
               }}
             />
           </>
@@ -751,10 +865,32 @@ const B6: React.FC<SceneProps> = ({ t }) => {
               title="Musim panas yang tidak pernah datang"
               x={160}
               w={1600}
-              y={290}
-              titleSize={110}
+              y={130}
+              titleSize={100}
               align="center"
               color={colors.cold}
+            />
+            <SeasonTimeline
+              lt={lt}
+              y={600}
+              items={[
+                {
+                  label: "MEI",
+                  note: "lebih dingin dari biasanya",
+                  at: s("b06_x1"),
+                },
+                {
+                  label: "JUNI–JULI",
+                  note: "hujan nyaris tanpa henti",
+                  at: s("b06_x2"),
+                },
+                {
+                  label: "BANJIR",
+                  note: "Rhine dan sungai lain meluap",
+                  at: s("b06_x3"),
+                  color: colors.warm,
+                },
+              ]}
             />
           </>
         )}
@@ -835,8 +971,11 @@ const B6: React.FC<SceneProps> = ({ t }) => {
               lines={{
                 b06_09: "Di musim yang seharusnya hangat dan kering",
                 b06_10: "Gandum, jelai, dan kentang membusuk di ladang",
+                b06_x4: "Panen anggur terlambat, hasilnya buruk",
                 b06_11:
                   "Panen jatuh: Swiss, Jerman, Prancis, Inggris, Irlandia",
+                b06_x5:
+                  "Swiss timur: orang memakan rumput dan lumut (tercatat)",
               }}
             />
           </>
@@ -876,7 +1015,7 @@ const B6: React.FC<SceneProps> = ({ t }) => {
           </>
         )}
       </Shot>
-      <Shot t={t} from={s("b06_15")}>
+      <Shot t={t} from={s("b06_15")} to={s("b06_x6")}>
         {(lt) => (
           <>
             {frost(lt, 0.4)}
@@ -908,9 +1047,76 @@ const B6: React.FC<SceneProps> = ({ t }) => {
                 b06_16: "Di beberapa tempat harga gandum naik berlipat",
                 b06_17: "Kerusuhan pangan pecah di sejumlah kota",
                 b06_18: "Keluarga meninggalkan kampung, mencari makan",
-                b06_19:
-                  "Krisis pangan besar terakhir di dunia Barat (John Post)",
               }}
+            />
+          </>
+        )}
+      </Shot>
+      <Shot t={t} from={s("b06_x6")} to={s("b06_x7")}>
+        {(lt) => (
+          <>
+            {frost(lt, 0.4)}
+            <TextBlock
+              lt={lt}
+              kicker="IRLANDIA · 1816–1819"
+              title="Gagal panen, lalu wabah tifus"
+              x={0}
+              w={1920}
+              y={250}
+              titleSize={104}
+              align="center"
+              color={colors.warm}
+              body="diperkirakan menewaskan puluhan ribu orang"
+            />
+          </>
+        )}
+      </Shot>
+      <Shot t={t} from={s("b06_x7")} to={s("b06_19")}>
+        {(lt) => (
+          <>
+            <Draisine lt={lt} />
+            <TextBlock
+              lt={lt}
+              kicker="DARI KRISIS PAKAN?"
+              title="Sepeda tanpa pedal, 1817"
+              x={1000}
+              y={190}
+              w={830}
+              titleSize={70}
+              color={colors.cold}
+              body="Karl Drais · Jerman"
+            />
+            <Keyline
+              sceneId="b6"
+              t={t}
+              x={1000}
+              w={830}
+              size={38}
+              top={560}
+              lines={{
+                b06_x8: "Harga pakan melonjak, banyak kuda mati atau dijual",
+                b06_x9: "Drais membuat Laufmaschine tanpa pedal",
+                b06_x10: "Masuk akal, tapi masih dugaan",
+              }}
+            />
+          </>
+        )}
+      </Shot>
+      <Shot t={t} from={s("b06_19")}>
+        {(lt) => (
+          <>
+            {frost(lt, 0.4)}
+            <TextBlock
+              lt={lt}
+              kicker="SEJARAWAN JOHN POST"
+              title="Krisis pangan besar terakhir di dunia Barat"
+              x={160}
+              w={1600}
+              y={280}
+              titleSize={92}
+              align="center"
+              color={colors.warm}
+              body="1816–1817"
             />
           </>
         )}
@@ -953,7 +1159,7 @@ const B7: React.FC<SceneProps> = ({ t }) => {
           </>
         )}
       </Shot>
-      <Shot t={t} from={s("b07_03")} to={s("b07_05")}>
+      <Shot t={t} from={s("b07_03")} to={s("b07_x1")}>
         {(lt) => (
           <>
             <Thermometer lt={lt} />
@@ -971,6 +1177,25 @@ const B7: React.FC<SceneProps> = ({ t }) => {
               t={t}
               top={800}
               lines={{ b07_04: "Salju turun di awal Juni (dilaporkan)" }}
+            />
+          </>
+        )}
+      </Shot>
+      <Shot t={t} from={s("b07_x1")} to={s("b07_05")}>
+        {(lt) => (
+          <>
+            {frost(lt, 0.7)}
+            <TextBlock
+              lt={lt}
+              kicker="6–11 JUNI 1816"
+              title="Salju di bulan Juni"
+              x={0}
+              w={1920}
+              y={230}
+              titleSize={130}
+              align="center"
+              color={colors.cold}
+              body="Kanada · New England · New York bagian utara"
             />
           </>
         )}
@@ -999,6 +1224,15 @@ const B7: React.FC<SceneProps> = ({ t }) => {
               y={520}
               titleSize={64}
               align="center"
+            />
+            <Keyline
+              sceneId="b7"
+              t={t}
+              top={760}
+              lines={{
+                b07_x2:
+                  "Jagung ditanam ulang berkali-kali, tetap gagal (dilaporkan)",
+              }}
             />
           </>
         )}
@@ -1065,6 +1299,23 @@ const B7: React.FC<SceneProps> = ({ t }) => {
             <Label x={110} y={560} mono size={28} color={colors.muted}>
               sebagian peneliti mengaitkannya dengan Tambora
             </Label>
+            <Keyline
+              sceneId="b7"
+              t={t}
+              x={110}
+              w={950}
+              size={40}
+              top={660}
+              lines={{
+                b07_x3:
+                  "India 1816: hujan terlambat, panen padi Bengal terganggu",
+                b07_x4:
+                  "Kolera 1817 dari Bengal: kaitannya masih diperdebatkan",
+                b07_x5: "Yunnan: dingin dan basah, gagal panen, kelaparan",
+                b07_x6: "Peran Tambora di semua itu: masih diperdebatkan",
+                b07_x7: "Cuaca selalu punya banyak penyebab",
+              }}
+            />
           </>
         )}
       </Shot>

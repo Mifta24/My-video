@@ -4,6 +4,9 @@
 - Removes Indonesian thousand separators (4.300 -> 4300) so TTS reads them as numbers.
 - Splits narration into sentences; each sentence becomes one VO clip (id like b04_03).
 Run: python3 scripts/build-long-spec.py
+
+PERINGATAN: sejak versi detail (klip b0N_xM di B4-B7) spec.json diedit langsung dan MENJADI sumber utama.
+Menjalankan skrip ini lagi akan menimpa spec.json dan menomori ulang klip (merusak Scenes.tsx, sfx.tsx, VO).
 """
 import json
 import re

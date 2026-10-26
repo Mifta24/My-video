@@ -125,6 +125,14 @@
       "title": "LETUSAN APRIL 1815",
       "clips": [
         {
+          "id": "b04_x1",
+          "text": "Tambora tidak meledak tanpa peringatan."
+        },
+        {
+          "id": "b04_x2",
+          "text": "Sejak sekitar tahun 1812, gunung itu sudah mulai bergemuruh dan mengeluarkan awan gelap dari puncaknya."
+        },
+        {
           "id": "b04_01",
           "text": "Pada 5 April 1815, Tambora meletus dengan keras untuk pertama kalinya."
         },
@@ -137,12 +145,20 @@
           "text": "Sebagian orang mengira itu tembakan meriam, sampai pasukan di beberapa tempat disiagakan."
         },
         {
+          "id": "b04_x3",
+          "text": "Selama lima hari berikutnya, gunung itu terus menggelegar dan menyemburkan abu."
+        },
+        {
           "id": "b04_04",
           "text": "Lima hari kemudian, tanggal 10 April, datang puncaknya."
         },
         {
           "id": "b04_05",
           "text": "Letusan malam itu jauh lebih besar."
+        },
+        {
+          "id": "b04_x4",
+          "text": "Seorang saksi dari Sanggar menceritakan tiga lajur api yang menyembur dari puncak, lalu menyatu menjadi satu pilar api raksasa."
         },
         {
           "id": "b04_06",
@@ -165,6 +181,10 @@
           "text": "Di Sanggar, tingginya dilaporkan sekitar 4 meter."
         },
         {
+          "id": "b04_x5",
+          "text": "Batu apung dalam jumlah besar jatuh ke laut dan mengapung, membentuk hamparan yang menyulitkan pelayaran."
+        },
+        {
           "id": "b04_11",
           "text": "Abu jatuh sampai ratusan kilometer jauhnya."
         },
@@ -185,6 +205,10 @@
           "text": "Setelah semuanya reda, puncak gunung itu tidak ada lagi."
         },
         {
+          "id": "b04_x6",
+          "text": "Ruang magma di bawahnya terkuras, dan puncak yang tidak lagi tertopang runtuh ke dalam."
+        },
+        {
           "id": "b04_16",
           "text": "Tingginya turun dari sekitar 4300 meter menjadi sekitar 2850 meter."
         },
@@ -199,6 +223,14 @@
         {
           "id": "b04_19",
           "text": "Ini letusan terbesar dalam sejarah tercatat, dan jauh lebih besar dari Krakatau 1883 yang lebih terkenal."
+        },
+        {
+          "id": "b04_x7",
+          "text": "Krakatau 1883 dan Pinatubo 1991 sama-sama tergolong VEI 6."
+        },
+        {
+          "id": "b04_x8",
+          "text": "Dalam volume material yang dilontarkan, Tambora kira-kira lima kali Krakatau, dan sepuluh kali Pinatubo."
         }
       ]
     },
@@ -221,6 +253,10 @@
         {
           "id": "b05_04",
           "text": "Yang penting adalah gas belerang, yaitu sulfur dioksida."
+        },
+        {
+          "id": "b05_x1",
+          "text": "Perkiraan terbaru menyebutkan jumlahnya sekitar 60 juta ton belerang."
         },
         {
           "id": "b05_05",
@@ -247,6 +283,18 @@
           "text": "Akibatnya, permukaan bumi menerima lebih sedikit panas."
         },
         {
+          "id": "b05_x2",
+          "text": "Efeknya bahkan bisa dilihat dengan mata telanjang."
+        },
+        {
+          "id": "b05_x3",
+          "text": "Pada tahun-tahun sesudah letusan, orang di Eropa mencatat senja yang berwarna merah menyala."
+        },
+        {
+          "id": "b05_x4",
+          "text": "Lukisan-lukisan senja karya J. M. W. Turner kerap disebut sebagai salah satu jejaknya, walaupun tafsir itu masih diperdebatkan."
+        },
+        {
           "id": "b05_11",
           "text": "Bagaimana kita tahu?"
         },
@@ -265,6 +313,22 @@
         {
           "id": "b05_15",
           "text": "Jadi dekade 1810-an dingin karena dua letusan, bukan satu."
+        },
+        {
+          "id": "b05_x5",
+          "text": "Selain inti es, ada petunjuk lain."
+        },
+        {
+          "id": "b05_x6",
+          "text": "Cincin pohon dari belahan bumi utara menunjukkan pertumbuhan yang tertekan pada tahun 1816."
+        },
+        {
+          "id": "b05_x7",
+          "text": "Catatan cuaca dari berbagai kota di Eropa juga menunjukkan musim panas yang dingin dan basah."
+        },
+        {
+          "id": "b05_x8",
+          "text": "Kalau semua petunjuk ini digabungkan, hasilnya konsisten: musim panas 1816 termasuk yang terdingin dalam beberapa abad terakhir."
         },
         {
           "id": "b05_16",
@@ -297,6 +361,18 @@
           "text": "Tapi musim panasnya tidak pernah benar-benar datang."
         },
         {
+          "id": "b06_x1",
+          "text": "Mei sudah lebih dingin dari biasanya."
+        },
+        {
+          "id": "b06_x2",
+          "text": "Juni dan Juli membawa hujan yang hampir tidak berhenti."
+        },
+        {
+          "id": "b06_x3",
+          "text": "Sungai Rhine dan sungai-sungai lain meluap, dan banjir merendam ladang serta kota."
+        },
+        {
           "id": "b06_04",
           "text": "Suhu rata-rata belahan bumi utara pada musim panas itu turun kira-kira setengah derajat Celsius."
         },
@@ -325,8 +401,16 @@
           "text": "Gandum, jelai, dan kentang membusuk di ladang atau tidak sempat masak."
         },
         {
+          "id": "b06_x4",
+          "text": "Panen anggur juga datang terlambat dengan hasil yang buruk."
+        },
+        {
           "id": "b06_11",
           "text": "Panen di banyak wilayah, seperti Swiss, Jerman, Prancis, Inggris, dan Irlandia, jatuh jauh di bawah biasanya."
+        },
+        {
+          "id": "b06_x5",
+          "text": "Di Swiss bagian timur, kelaparan begitu parah sampai ada catatan orang memakan rumput dan lumut."
         },
         {
           "id": "b06_12",
@@ -357,6 +441,26 @@
           "text": "Banyak keluarga meninggalkan kampung untuk mencari makan, dan arus emigrasi dari Jerman bagian barat daya dan Swiss ke Amerika meningkat."
         },
         {
+          "id": "b06_x6",
+          "text": "Di Irlandia, gagal panen diikuti wabah tifus yang berlangsung dari 1816 sampai 1819 dan diperkirakan menewaskan puluhan ribu orang."
+        },
+        {
+          "id": "b06_x7",
+          "text": "Krisis ini juga dikaitkan dengan satu penemuan."
+        },
+        {
+          "id": "b06_x8",
+          "text": "Harga pakan melonjak, dan banyak kuda mati atau dijual."
+        },
+        {
+          "id": "b06_x9",
+          "text": "Di Jerman, Karl Drais membuat sepeda tanpa pedal pada 1817, dan sebagian sejarawan mengaitkannya dengan kelangkaan kuda."
+        },
+        {
+          "id": "b06_x10",
+          "text": "Kaitan itu masuk akal, tapi masih berupa dugaan."
+        },
+        {
           "id": "b06_19",
           "text": "Sejarawan John Post menyebut krisis 1816 sampai 1817 ini sebagai krisis pangan besar terakhir di dunia Barat."
         }
@@ -383,8 +487,16 @@
           "text": "Di beberapa tempat dilaporkan salju turun di awal Juni."
         },
         {
+          "id": "b07_x1",
+          "text": "Pada 6 sampai 11 Juni, gelombang dingin membawa salju dan es tipis dari Kanada sampai ke New England dan New York bagian utara."
+        },
+        {
           "id": "b07_05",
           "text": "Jagung dan tanaman lain hangus, dan harga bahan pangan naik."
+        },
+        {
+          "id": "b07_x2",
+          "text": "Di beberapa tempat, petani dilaporkan menanam ulang jagung berkali-kali, dan tetap kehilangan panen."
         },
         {
           "id": "b07_06",
@@ -393,6 +505,26 @@
         {
           "id": "b07_07",
           "text": "Sebagian peneliti juga mengaitkan gangguan musim hujan di India dan kelaparan di barat daya Tiongkok pada masa itu dengan dampak yang sama, walaupun hubungannya masih diperdebatkan."
+        },
+        {
+          "id": "b07_x3",
+          "text": "Di India, musim hujan 1816 terlambat dan tidak teratur, dan itu dikaitkan dengan gangguan panen padi di Bengal."
+        },
+        {
+          "id": "b07_x4",
+          "text": "Wabah kolera yang menyebar dari Bengal pada 1817 kadang dikaitkan dengan kekacauan musim itu, tapi penyebabnya jauh lebih rumit."
+        },
+        {
+          "id": "b07_x5",
+          "text": "Di Yunnan, barat daya Tiongkok, cuaca dingin dan basah yang tidak biasa pada tahun-tahun itu dikaitkan dengan gagal panen dan kelaparan."
+        },
+        {
+          "id": "b07_x6",
+          "text": "Para peneliti masih memperdebatkan seberapa besar peran Tambora dalam semua itu."
+        },
+        {
+          "id": "b07_x7",
+          "text": "Cuaca selalu punya banyak penyebab, dan 1816 bukan pengecualian."
         }
       ]
     },
