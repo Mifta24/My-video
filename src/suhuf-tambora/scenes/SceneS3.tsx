@@ -9,6 +9,46 @@ import { colors, fonts } from "../theme";
 const STRATO_Y = 760;
 const GROUND_Y = 1330;
 
+const Step: React.FC<{
+  readonly x: number;
+  readonly y: number;
+  readonly n: string;
+  readonly lines: string[];
+  readonly o: number;
+  readonly anchor?: "start" | "end";
+}> = ({ x, y, n, lines, o, anchor = "start" }) => (
+  <g opacity={o}>
+    <text
+      x={x}
+      y={y}
+      textAnchor={anchor}
+      fill={colors.warm}
+      fontFamily={fonts.heading}
+      fontWeight={700}
+      fontSize={38}
+    >
+      {n}
+    </text>
+    {lines.map((l, i) => (
+      <text
+        key={l}
+        x={anchor === "start" ? x + 50 : x}
+        y={y + i * 38}
+        textAnchor={anchor}
+        fill={colors.text}
+        fontFamily={fonts.mono}
+        fontWeight={500}
+        fontSize={30}
+        stroke={colors.bg}
+        strokeWidth={8}
+        paintOrder="stroke"
+      >
+        {l}
+      </text>
+    ))}
+  </g>
+);
+
 export const SceneS3: React.FC = () => {
   const total = sceneFrames("s3");
   const { t, opacity } = useSceneTime(total);
@@ -18,6 +58,10 @@ export const SceneS3: React.FC = () => {
     easing: easeOut,
   });
   const rays = interpolate(t, [5.4, 6.6], [0, 1], clamp);
+  const s1 = interpolate(t, [1.2, 1.8], [0, 1], clamp);
+  const s2 = interpolate(t, [4.4, 5.0], [0, 1], clamp);
+  const s4 = interpolate(t, [7.4, 8.0], [0, 1], clamp);
+  const sunDim = 1 - 0.55 * interpolate(t, [5.4, 8.0], [0, 1], clamp);
   const colTop = GROUND_Y - (GROUND_Y - 500) * col;
 
   // Partikel deterministik (tanpa Math.random supaya render konsisten).
@@ -165,6 +209,35 @@ export const SceneS3: React.FC = () => {
             </g>
           );
         })}
+        <circle
+          cx={930}
+          cy={250}
+          r={86}
+          fill={colors.sun}
+          opacity={0.14 * sunDim}
+        />
+        <circle cx={930} cy={250} r={52} fill={colors.sun} opacity={sunDim} />
+        <Step
+          x={600}
+          y={1010}
+          n="1"
+          lines={["Letusan melontarkan", "gas belerang ke atas"]}
+          o={s1}
+        />
+        <Step
+          x={70}
+          y={598}
+          n="2"
+          lines={["Gas jadi kabut", "partikel halus", "di stratosfer"]}
+          o={s2}
+        />
+        <Step
+          x={70}
+          y={925}
+          n="4"
+          lines={["Sinar ke tanah", "berkurang: Bumi", "mendingin"]}
+          o={s4}
+        />
         <text
           x={540}
           y={310}
@@ -174,7 +247,7 @@ export const SceneS3: React.FC = () => {
           fontSize={34}
           opacity={rays}
         >
-          sinar Matahari dipantulkan kembali
+          3 Matahari dipantulkan kembali
         </text>
       </svg>
       <Tag text="Skema" />

@@ -2,6 +2,8 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { WorldMap } from "../elements/WorldMap";
 import { Subtitle } from "../elements/Subtitle";
+import { Particles } from "../elements/Particles";
+import { Frost } from "../elements/Frost";
 import { clamp, easeOut, useSceneTime } from "../elements/common";
 import { NEW_ENGLAND, SWISS, TAMBORA, WORLD_VIEW } from "../geo";
 import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
@@ -24,13 +26,23 @@ export const SceneS1: React.FC = () => {
     ...clamp,
     easing: easeOut,
   });
+  // Fase 1815: abu naik + layar bergetar (mereda). Fase 1816: salju turun + embun beku merambat.
+  const quake = interpolate(t, [0.6, 4.8], [1, 0], clamp);
+  const shakeX = Math.sin(t * 47) * 7 * quake;
+  const shakeY = Math.cos(t * 39) * 5 * quake;
+  const ashOp = interpolate(t, [0.3, 1.2, 4.6, 5.6], [0, 1, 1, 0], clamp);
+  const snowOp = interpolate(t, [5.2, 6.2], [0, 1], clamp);
+  const frost = interpolate(t, [5.4, 8.6], [0, 0.85], {
+    ...clamp,
+    easing: easeOut,
+  });
   const dotOn = interpolate(t, [1.0, 1.8], [0, 1], clamp);
 
   return (
     <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
       <WorldMap
         view={WORLD_VIEW}
-        landOpacity={interpolate(t, [0.2, 1.8], [0, 1], clamp)}
+        landOpacity={interpolate(t, [0.2, 1.8], [0, 0.55], clamp)}
       >
         {(s) => {
           const [ax, ay] = s(TAMBORA.lon, TAMBORA.lat);
@@ -100,11 +112,16 @@ export const SceneS1: React.FC = () => {
         }}
       </WorldMap>
 
+      <Particles kind="ash" t={t} count={50} opacity={ashOp} />
+      <Particles kind="snow" t={t} count={60} opacity={snowOp} />
+      <Frost intensity={frost} />
+
       <div
         style={{
           position: "absolute",
           left: 0,
           right: 0,
+          translate: `${shakeX}px ${shakeY}px`,
           top: 420,
           height: 160,
           overflow: "hidden",

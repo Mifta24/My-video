@@ -15,6 +15,8 @@ type PhotoCardProps = {
   readonly zoomFrom?: number;
   readonly zoomTo?: number;
   readonly position?: string;
+  readonly grade?: boolean;
+  readonly captionSize?: number;
 };
 
 // Foto asli dalam kartu: grading dingin biru gelap supaya menyatu dengan palet,
@@ -31,6 +33,8 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({
   zoomFrom = 1.0,
   zoomTo = 1.12,
   position = "50% 50%",
+  grade = true,
+  captionSize = 28,
 }) => {
   const inP = interpolate(t, [inAt, inAt + 0.8], [0, 1], {
     ...clamp,
@@ -72,26 +76,30 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({
             objectFit: "cover",
             objectPosition: position,
             scale: String(scale),
-            filter: "saturate(0.7) contrast(1.05) brightness(0.9)",
+            filter: grade
+              ? "saturate(0.7) contrast(1.05) brightness(0.9)"
+              : "none",
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(180deg, rgba(7,11,20,0.0) 55%, rgba(7,11,20,0.55) 100%)",
-            boxShadow: "inset 0 0 120px rgba(7,11,20,0.55)",
-            backgroundColor: "rgba(20,45,100,0.18)",
-          }}
-        />
+        {grade ? (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(180deg, rgba(7,11,20,0.0) 55%, rgba(7,11,20,0.55) 100%)",
+              boxShadow: "inset 0 0 120px rgba(7,11,20,0.55)",
+              backgroundColor: "rgba(20,45,100,0.18)",
+            }}
+          />
+        ) : null}
       </div>
       <div
         style={{
           marginTop: 12,
           fontFamily: fonts.mono,
           fontWeight: 500,
-          fontSize: 28,
+          fontSize: captionSize,
           lineHeight: 1.25,
           color: colors.text,
           textAlign: "center",
