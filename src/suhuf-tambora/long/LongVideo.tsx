@@ -2,6 +2,7 @@ import type React from "react";
 import { Audio } from "@remotion/media";
 import { AbsoluteFill, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { Subtitle } from "../elements/Subtitle";
+import { Watermark } from "../elements/Watermark";
 import { colors } from "../theme";
 import {
   GAP,
@@ -22,7 +23,7 @@ const LongScene: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: colors.bg }}>
-      <Visual sceneId={scene.id} progress={progress} />
+      <Visual sceneId={scene.id} progress={progress} t={frame / FPS} />
       {clips.map((clip, i) => {
         const from = clipStartInScene(clips, i);
         const dur = Math.max(1, Math.round(clipDuration(clip.id) * FPS));
@@ -64,5 +65,6 @@ export const LongVideo: React.FC = () => (
         <LongScene scene={scene} />
       </Sequence>
     ))}
+    <Watermark wide />
   </AbsoluteFill>
 );

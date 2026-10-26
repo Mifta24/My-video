@@ -1,6 +1,6 @@
 {
   "voice": "id-ID-ArdiNeural",
-  "rate": "+0%",
+  "rate": "-8%",
   "scenes": [
     {
       "id": "b1",
@@ -146,7 +146,7 @@
         },
         {
           "id": "b04_06",
-          "text": "Kolom abu menjulang hingga sekitar 43 kilometer ke langit [Oppenheimer 2003, terverifikasi Kim]."
+          "text": "Kolom abu menjulang hingga sekitar 43 kilometer ke langit."
         },
         {
           "id": "b04_07",

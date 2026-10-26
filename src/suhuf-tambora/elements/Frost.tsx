@@ -1,17 +1,19 @@
 import type React from "react";
 
 // Embun beku yang merambat dari keempat sudut layar: kristal bercabang + kabut biru di tepi.
-const CORNERS = [
+const corners = (w: number, h: number) => [
   { x: 0, y: 0, sx: 1, sy: 1 },
-  { x: 1080, y: 0, sx: -1, sy: 1 },
-  { x: 0, y: 1920, sx: 1, sy: -1 },
-  { x: 1080, y: 1920, sx: -1, sy: -1 },
+  { x: w, y: 0, sx: -1, sy: 1 },
+  { x: 0, y: h, sx: 1, sy: -1 },
+  { x: w, y: h, sx: -1, sy: -1 },
 ];
 const ANGLES = [8, 24, 40, 56, 72, 86];
 
-export const Frost: React.FC<{ readonly intensity: number }> = ({
-  intensity,
-}) => (
+export const Frost: React.FC<{
+  readonly intensity: number;
+  readonly width?: number;
+  readonly height?: number;
+}> = ({ intensity, width = 1080, height = 1920 }) => (
   <>
     <div
       style={{
@@ -22,12 +24,12 @@ export const Frost: React.FC<{ readonly intensity: number }> = ({
       }}
     />
     <svg
-      width={1080}
-      height={1920}
-      viewBox="0 0 1080 1920"
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
     >
-      {CORNERS.map((c, ci) =>
+      {corners(width, height).map((c, ci) =>
         ANGLES.map((deg, ai) => {
           const len = (200 + ((ci * 7 + ai * 13) % 5) * 55) * intensity;
           const a = (deg * Math.PI) / 180;

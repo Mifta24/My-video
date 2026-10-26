@@ -16,7 +16,7 @@ pat = re.compile(r'^ADEGAN (B\d+) \| ([^\n]*)\nNARASI: "(.*?)"\nVISUAL: (.*?)\nC
 
 
 def clean(t: str) -> str:
-    t = re.sub(r"\s*\[VERIFIKASI[^\]]*\]", "", t)
+    t = re.sub(r"\s*\[(?:VERIFIKASI|[^\]]*terverifikasi)[^\]]*\]", "", t)
     t = re.sub(r"(?<=\d)\.(?=\d{3}\b)", "", t)
     t = re.sub(r"\s+", " ", t).strip()
     return t

@@ -1,7 +1,7 @@
 import type React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { LAND_D, project, SPHERE_D, REGION } from "./geo";
-import { colors, fonts } from "../theme";
+import { colors } from "../theme";
 
 export type MapKind = "world" | "tambora" | "europe" | "north-america" | "asia";
 
@@ -75,16 +75,6 @@ export const SceneMap: React.FC<{ kind: MapKind; progress?: number }> = ({
           </g>
         );
       })}
-      <text
-        x={90}
-        y={975}
-        fill={colors.muted}
-        fontFamily={fonts.mono}
-        fontSize={22}
-        letterSpacing={2}
-      >
-        Peta: Natural Earth (domain publik)
-      </text>
     </svg>
   );
 };
