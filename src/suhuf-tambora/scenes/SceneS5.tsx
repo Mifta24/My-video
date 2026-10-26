@@ -15,6 +15,15 @@ export const SceneS5: React.FC = () => {
   const { t } = useSceneTime(total);
   const qIn = cue("s5", "Tapi korban", 0.1);
   const endAt = cue("s5", "Ceritanya", 0);
+  const subAt = cue("s5", "Subscribe", -0.1);
+  const sub = interpolate(t, [subAt, subAt + 0.7], [0, 1], {
+    ...clamp,
+    easing: easeOut,
+  });
+  const follow = interpolate(t, [subAt + 0.6, subAt + 1.3], [0, 1], {
+    ...clamp,
+    easing: easeOut,
+  });
   const pulse = 0.7 + 0.3 * Math.sin(t * 4);
   const q = interpolate(t, [qIn, qIn + 0.8], [0, 1], clamp);
   const qOut = interpolate(t, [endAt - 0.5, endAt - 0.1], [1, 0], clamp);
@@ -108,15 +117,47 @@ export const SceneS5: React.FC = () => {
         </div>
         <div
           style={{
-            display: "inline-block",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 28,
             marginTop: 36,
-            padding: "16px 40px",
+            padding: "20px 44px 20px 36px",
+            borderRadius: 44,
+            background: colors.text,
+            color: colors.bg,
+            textShadow: "none",
+            textAlign: "left",
+            opacity: sub,
+            translate: `0px ${(1 - sub) * 24}px`,
+            scale: String(0.94 + 0.06 * sub + 0.02 * pulse * sub),
+          }}
+        >
+          <svg width={110} height={78} viewBox="0 0 110 78">
+            <rect width={110} height={78} rx={22} fill="#FF0000" />
+            <path d="M44 22 L78 39 L44 56 Z" fill="#FFFFFF" />
+          </svg>
+          <div>
+            <div style={{ fontWeight: 700, fontSize: 62, lineHeight: 1.1 }}>
+              SUBSCRIBE
+            </div>
+            <div style={{ fontWeight: 700, fontSize: 36, lineHeight: 1.2 }}>
+              YouTube Suhuf Pengetahuan
+            </div>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "inline-block",
+            marginTop: 28,
+            padding: "14px 40px",
             borderRadius: 999,
             background: colors.warm,
             color: colors.bg,
             fontWeight: 700,
-            fontSize: 54,
+            fontSize: 46,
             textShadow: "none",
+            opacity: follow,
+            translate: `0px ${(1 - follow) * 20}px`,
           }}
         >
           Follow @suhufpengetahuan

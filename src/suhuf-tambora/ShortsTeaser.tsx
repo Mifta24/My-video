@@ -6,6 +6,7 @@ import { SceneS2B } from "./scenes/SceneS2B";
 import { SceneS3 } from "./scenes/SceneS3";
 import { SceneS4 } from "./scenes/SceneS4";
 import { SceneS5 } from "./scenes/SceneS5";
+import { Watermark } from "./elements/Watermark";
 import { clipIds, sceneFrames, sceneStartFrame } from "./timing";
 import { colors } from "./theme";
 
@@ -28,6 +29,7 @@ export const ShortsTeaser: React.FC = () => (
         <Scene />
       </Sequence>
     ))}
+    <Watermark />
     {MUSIC_FILE ? (
       <Audio
         name="Musik"
