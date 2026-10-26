@@ -11,7 +11,7 @@ type Cue = readonly [string, number, SfxName, number];
 const CUES: Record<string, readonly Cue[]> = {
   b1: [
     ["b01_01", 0, "rumble", 0.5],
-    ["b01_02", 0.4, "boom", 0.7],
+    ["b01_02", 0.4, "boom", 0.5],
     ["b01_03", 0, "whoosh", 0.35],
     ["b01_03", 0.3, "wind", 0.3],
     ["b01_03", 0.8, "shimmer", 0.3],
@@ -37,7 +37,7 @@ const CUES: Record<string, readonly Cue[]> = {
     ["b03_02", 0.2, "pop", 0.3],
     ["b03_03", 0.5, "sonar", 0.3],
     ["b03_04", 0, "whoosh", 0.3],
-    ["b03_04", 0.3, "thud", 0.4],
+    ["b03_04", 0.3, "thud", 0.3],
     ["b03_06", 0.1, "dim-down", 0.3],
     ["b03_07", 0, "whoosh", 0.3],
     ["b03_09", 0.1, "pop", 0.2],
@@ -52,8 +52,8 @@ const CUES: Record<string, readonly Cue[]> = {
     ["b04_02", 0, "thud", 0.4],
     ["b04_04", 0, "whoosh", 0.3],
     ["b04_04", 0.3, "riser", 0.4],
-    ["b04_05", 0.2, "boom", 0.8],
-    ["b04_05", 0.3, "rumble", 0.5],
+    ["b04_05", 0.2, "boom", 0.55],
+    ["b04_05", 0.3, "rumble", 0.4],
     ["b04_06", 0, "whoosh", 0.3],
     ["b04_06", 0.3, "riser", 0.35],
     ["b04_07", 0, "rumble", 0.5],
