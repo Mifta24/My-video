@@ -1,15 +1,14 @@
 import { Audio } from "@remotion/media";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
-import { WorldMap } from "../elements/WorldMap";
+import { GlobeLayer } from "../three/Globe";
 import { Subtitle } from "../elements/Subtitle";
 import { Particles } from "../elements/Particles";
 import { Frost } from "../elements/Frost";
 import { clamp, easeOut, useSceneTime } from "../elements/common";
-import { NEW_ENGLAND, SWISS, TAMBORA, WORLD_VIEW } from "../geo";
 import { LEAD, clipText, cue, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
 
-// S1 · Hook. "APRIL 1815" geser ke "JUNI 1816"; garis putus-putus Sumbawa → Eropa & Amerika Utara.
+// S1 · Hook. Globe 3D: Tambora (April 1815) lalu berputar ke Amerika Utara (embun beku, Juni 1816).
 export const SceneS1: React.FC = () => {
   const total = sceneFrames("s1");
   const { t, opacity } = useSceneTime(total);
@@ -17,15 +16,6 @@ export const SceneS1: React.FC = () => {
   const sw = cue("s1", "Setahun kemudian", 0.5);
   const qAt = cue("s1", "Bagaimana", 0.2);
   const swap = interpolate(t, [sw, sw + 1.0], [0, 1], {
-    ...clamp,
-    easing: easeOut,
-  });
-  const dotPulse = 0.6 + 0.4 * Math.sin(t * 6);
-  const line1 = interpolate(t, [sw + 0.4, sw + 2.6], [0, 1], {
-    ...clamp,
-    easing: easeOut,
-  });
-  const line2 = interpolate(t, [sw + 0.9, sw + 3.4], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
@@ -44,81 +34,12 @@ export const SceneS1: React.FC = () => {
     ...clamp,
     easing: easeOut,
   });
-  const dotOn = interpolate(t, [1.0, 1.8], [0, 1], clamp);
 
   return (
     <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
-      <WorldMap
-        view={WORLD_VIEW}
-        landOpacity={interpolate(t, [0.2, 1.8], [0, 0.55], clamp)}
-      >
-        {(s) => {
-          const [ax, ay] = s(TAMBORA.lon, TAMBORA.lat);
-          const [bx, by] = s(SWISS.lon, SWISS.lat);
-          const [cx, cy] = s(NEW_ENGLAND.lon, NEW_ENGLAND.lat);
-          const arc = (
-            x1: number,
-            y1: number,
-            x2: number,
-            y2: number,
-            lift: number,
-          ) => {
-            const mx = (x1 + x2) / 2;
-            const my = Math.min(y1, y2) - lift;
-            return `M ${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`;
-          };
-          return (
-            <>
-              <path
-                d={arc(ax, ay, bx, by, 110)}
-                fill="none"
-                stroke={colors.cold}
-                strokeWidth={4}
-                strokeDasharray="14 12"
-                opacity={line1}
-                style={{ clipPath: `inset(0 ${100 - line1 * 100}% 0 0)` }}
-              />
-              <path
-                d={arc(ax, ay, cx, cy, 400)}
-                fill="none"
-                stroke={colors.cold}
-                strokeWidth={4}
-                strokeDasharray="14 12"
-                opacity={line2}
-                style={{ clipPath: `inset(0 0 0 ${100 - line2 * 100}%)` }}
-              />
-              <circle
-                cx={ax}
-                cy={ay}
-                r={26 * dotPulse}
-                fill={colors.warm}
-                opacity={0.25 * dotOn}
-              />
-              <circle
-                cx={ax}
-                cy={ay}
-                r={11}
-                fill={colors.warm}
-                opacity={dotOn}
-              />
-              <circle
-                cx={bx}
-                cy={by}
-                r={9}
-                fill={colors.cold}
-                opacity={line1}
-              />
-              <circle
-                cx={cx}
-                cy={cy}
-                r={9}
-                fill={colors.cold}
-                opacity={line2}
-              />
-            </>
-          );
-        }}
-      </WorldMap>
+      <div style={{ position: "absolute", inset: 0, translate: "0px 120px" }}>
+        <GlobeLayer t={t} sw={sw} />
+      </div>
 
       <Particles kind="ash" t={t} count={50} opacity={ashOp} />
       <Particles kind="snow" t={t} count={60} opacity={snowOp} />
@@ -136,6 +57,7 @@ export const SceneS1: React.FC = () => {
           fontFamily: fonts.heading,
           fontWeight: 700,
           fontSize: 130,
+          letterSpacing: "0.03em",
           textAlign: "center",
           color: colors.text,
         }}

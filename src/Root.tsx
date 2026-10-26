@@ -26,7 +26,6 @@ import { YtRevealScene } from "./ai-apartment/youtube/YtRevealScene";
 import { ShortsTeaser } from "./suhuf-tambora/ShortsTeaser";
 import { shortsTotalFrames } from "./suhuf-tambora/timing";
 import { SpinningCube } from "./three-demo/SpinningCube";
-import { TamboraGlobe } from "./suhuf-tambora/three/Globe";
 import { LongVideo } from "./suhuf-tambora/long/LongVideo";
 import { longDurationFrames } from "./suhuf-tambora/long/timing";
 
@@ -322,7 +321,6 @@ export const RemotionRoot: React.FC = () => {
           />
         </Folder>
       </Folder>
-      <Composition id="Tambora-Globe-Spike" component={TamboraGlobe} durationInFrames={300} fps={30} width={1080} height={1920} />
       <Composition id="ThreeDemo" component={SpinningCube} durationInFrames={90} fps={30} width={1080} height={1080} />
     </>
   );
