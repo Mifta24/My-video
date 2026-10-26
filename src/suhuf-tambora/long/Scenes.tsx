@@ -1406,81 +1406,73 @@ const B10: React.FC<SceneProps> = ({ t, progress }) => {
               lt={t - endAt}
               title="Suhuf Pengetahuan"
               color={colors.cold}
-              titleSize={120}
+              titleSize={104}
               x={0}
               w={1920}
-              y={110}
+              y={70}
               align="center"
               body="Ceritanya dimulai dari Sumbawa"
             />
+            {/* Bagian bawah (y 560-900) sengaja kosong: tempat elemen end screen YouTube (video berikutnya + subscribe). */}
             <div
               style={{
                 position: "absolute",
                 left: 0,
                 right: 0,
-                top: 440,
+                top: 330,
                 display: "flex",
                 justifyContent: "center",
-                opacity: sub,
-                translate: `0px ${(1 - sub) * 24}px`,
+                alignItems: "center",
+                gap: 48,
               }}
             >
               <div
                 style={{
+                  opacity: sub,
+                  translate: `0px ${(1 - sub) * 24}px`,
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: 36,
-                  padding: "26px 64px 26px 48px",
-                  borderRadius: 56,
+                  gap: 28,
+                  padding: "18px 48px 18px 36px",
+                  borderRadius: 48,
                   background: colors.text,
                   color: colors.bg,
                 }}
               >
-                <svg width={150} height={106} viewBox="0 0 110 78">
+                <svg width={110} height={78} viewBox="0 0 110 78">
                   <rect width={110} height={78} rx={22} fill="#FF0000" />
                   <path d="M44 22 L78 39 L44 56 Z" fill="#FFFFFF" />
                 </svg>
                 <div style={{ fontFamily: fonts.heading }}>
                   <div
-                    style={{ fontWeight: 700, fontSize: 84, lineHeight: 1.05 }}
+                    style={{ fontWeight: 700, fontSize: 62, lineHeight: 1.05 }}
                   >
                     SUBSCRIBE
                   </div>
                   <div
-                    style={{ fontWeight: 700, fontSize: 46, lineHeight: 1.2 }}
+                    style={{ fontWeight: 700, fontSize: 34, lineHeight: 1.2 }}
                   >
                     YouTube Suhuf Pengetahuan
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              style={{
-                position: "absolute",
-                left: 0,
-                right: 0,
-                top: 650,
-                display: "flex",
-                justifyContent: "center",
-                opacity: follow,
-                translate: `0px ${(1 - follow) * 20}px`,
-              }}
-            >
               <div
                 style={{
-                  padding: "16px 54px",
+                  opacity: follow,
+                  translate: `0px ${(1 - follow) * 20}px`,
+                  padding: "14px 40px",
                   borderRadius: 999,
                   background: colors.warm,
                   color: colors.bg,
                   fontFamily: fonts.heading,
                   fontWeight: 700,
-                  fontSize: 52,
+                  fontSize: 40,
                 }}
               >
                 Follow @suhufpengetahuan
               </div>
             </div>
-            <Label x={960} y={780} align="center" size={40} opacity={ask}>
+            <Label x={960} y={515} align="center" size={36} opacity={ask}>
               Tulis di komentar: gunung atau peristiwa apa lagi yang ingin kamu
               lihat?
             </Label>
