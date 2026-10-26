@@ -116,15 +116,15 @@ export const SceneS3: React.FC = () => {
           Tambora
         </text>
         <Step
-          x={600}
-          y={1010}
+          x={630}
+          y={1030}
           n="1"
-          lines={["Letusan melontarkan", "gas belerang ke atas"]}
+          lines={["Letusan", "melontarkan gas", "belerang ke atas"]}
           o={s1}
         />
         <Step
-          x={70}
-          y={598}
+          x={630}
+          y={860}
           n="2"
           lines={["Gas jadi kabut", "partikel halus", "di stratosfer"]}
           o={s2}
@@ -137,9 +137,9 @@ export const SceneS3: React.FC = () => {
           o={s4}
         />
         <text
-          x={540}
-          y={310}
-          textAnchor="middle"
+          x={80}
+          y={340}
+          textAnchor="start"
           fill={colors.sun}
           fontFamily={fonts.mono}
           fontSize={34}

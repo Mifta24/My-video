@@ -136,7 +136,7 @@ export const AtmosphereLayer: React.FC<Props> = ({
     [],
   );
 
-  const rayXs = [170, 400, 700];
+  const rayXs = [260, 380, 700];
   const p = ease(rays);
 
   return (
@@ -251,7 +251,7 @@ export const AtmosphereLayer: React.FC<Props> = ({
                 emissive={colors.warm}
                 emissiveIntensity={0.9}
                 transparent
-                opacity={0.85 - 0.4 * spread}
+                opacity={0.85 - 0.8 * spread}
               />
             </mesh>
           ) : null}
@@ -327,8 +327,8 @@ export const AtmosphereLayer: React.FC<Props> = ({
           })}
           {/* Langkah 4: sinar yang sampai ke tanah redup */}
           <DashedBeam
-            a={[SUN.x - 60, SUN.y + 80, 260]}
-            b={[880, GROUND_Y - 8, 260]}
+            a={[SUN.x + 25, SUN.y + 90, 260]}
+            b={[1030, GROUND_Y - 8, 260]}
             progress={dim}
             color={colors.sun}
             opacity={0.35 * dim}
