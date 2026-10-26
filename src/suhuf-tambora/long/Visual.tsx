@@ -15,82 +15,42 @@ const TAKEAWAYS = [
   "Mulai dari Sumbawa",
 ];
 
-export const Atmosphere: React.FC<{ progress: number }> = ({ progress }) => (
+// Label di atas penampang atmosfer 3D (AtmosphereLayer wide); posisi mengikuti layout WIDE.
+export const AtmosphereLabels: React.FC = () => (
   <svg
     width={1920}
     height={1080}
     viewBox="0 0 1920 1080"
     style={{ position: "absolute", inset: 0 }}
   >
-    <rect x={0} y={190} width={1920} height={390} fill="#0A1426" />
-    <rect x={0} y={580} width={1920} height={300} fill="#101D37" />
-    <line
-      x1={0}
-      x2={1920}
-      y1={580}
-      y2={580}
-      stroke={colors.landLine}
-      strokeDasharray="12 14"
-      strokeWidth={3}
-    />
     <text
       x={140}
-      y={270}
+      y={440}
       fill={colors.cold}
-      fontSize={38}
+      fontSize={34}
       fontFamily={fonts.mono}
+      stroke={colors.bg}
+      strokeWidth={8}
+      paintOrder="stroke"
     >
       STRATOSFER
     </text>
     <text
       x={140}
-      y={650}
+      y={525}
       fill={colors.text}
-      fontSize={36}
+      fontSize={32}
       fontFamily={fonts.mono}
+      stroke={colors.bg}
+      strokeWidth={8}
+      paintOrder="stroke"
     >
       TROPOSFER · LAPISAN CUACA
     </text>
-    <path d="M 850 885 L 950 760 L 1050 885 Z" fill="#4A362B" />
-    <ellipse cx={950} cy={760} rx={48} ry={18} fill={colors.warm} />
-    <rect
-      x={930}
-      y={410}
-      width={40}
-      height={350}
-      rx={20}
-      fill={colors.warm}
-      opacity={0.8}
-    />
-    <ellipse
-      cx={950}
-      cy={410}
-      rx={130 + progress * 170}
-      ry={44}
-      fill={colors.warm}
-      opacity={0.55}
-    />
-    {Array.from({ length: 55 }, (_, i) => {
-      const angle = i * 2.399;
-      const radius = 70 + ((i * 89) % 600) * progress;
-      const x = 950 + Math.cos(angle) * radius;
-      const y = 410 + Math.sin(angle) * radius * 0.34;
-      if (y > 565 || y < 230) return null;
-      return (
-        <circle
-          key={i}
-          cx={x}
-          cy={y}
-          r={4 + (i % 3)}
-          fill={colors.sun}
-          opacity={0.6}
-        />
-      );
-    })}
     <text
-      x={950}
-      y={955}
-      textAnchor="middle"
+      x={1800}
+      y={72}
+      textAnchor="end"
       fill={colors.muted}
       fontSize={24}
       fontFamily={fonts.mono}

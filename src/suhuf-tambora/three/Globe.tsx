@@ -230,3 +230,136 @@ export const GlobeLayer: React.FC<{ t: number; sw: number }> = ({ t, sw }) => {
     </AbsoluteFill>
   );
 };
+
+type LonLat = { readonly lon: number; readonly lat: number };
+
+export type GlobeMarker = {
+  readonly at: LonLat;
+  readonly color: string;
+  readonly appearAt: number; // detik
+  readonly pulse?: boolean;
+};
+export type GlobeArc = {
+  readonly from: LonLat;
+  readonly to: LonLat;
+  readonly color: string;
+  readonly startAt: number; // detik
+  readonly duration: number;
+  readonly lift?: number;
+};
+
+// Globe serbaguna untuk video panjang (16:9). Kamera menghadap `focus`; kalau `focusTo` diisi,
+// globe berputar dari `focus` ke `focusTo` antara turnAt..turnAt+turnDur. Posisi globe digeser
+// `shiftX` (unit dunia) supaya teks punya ruang di sisi lain.
+export const GlobeView: React.FC<{
+  readonly t: number;
+  readonly focus: LonLat;
+  readonly focusTo?: LonLat;
+  readonly turnAt?: number;
+  readonly turnDur?: number;
+  readonly markers: readonly GlobeMarker[];
+  readonly arcs?: readonly GlobeArc[];
+  readonly distance?: number;
+  readonly shiftX?: number;
+}> = ({
+  t,
+  focus,
+  focusTo,
+  turnAt = 0,
+  turnDur = 3,
+  markers,
+  arcs = [],
+  distance = 5.6,
+  shiftX = 0,
+}) => {
+  const { width, height } = useVideoConfig();
+  const spin = focusTo
+    ? interpolate(t, [turnAt, turnAt + turnDur], [0, 1], {
+        ...clamp,
+        easing: ease,
+      })
+    : 0;
+  const lon = focus.lon + ((focusTo?.lon ?? focus.lon) - focus.lon) * spin;
+  const lat = focus.lat + ((focusTo?.lat ?? focus.lat) - focus.lat) * spin;
+  const drift = interpolate(t, [0, 12], [0, 8], clamp) * DEG;
+  const appear = interpolate(t, [0, 0.8], [0, 1], clamp);
+  const pulse = (t * 0.9) % 1;
+  const tex = getTexture();
+
+  return (
+    <AbsoluteFill style={{ opacity: appear }}>
+      <ThreeCanvas
+        width={width}
+        height={height}
+        camera={{ fov: 32, position: [0, 0, distance] }}
+      >
+        <ambientLight intensity={0.9} />
+        <directionalLight
+          position={[-3, 2, 4]}
+          intensity={2.2}
+          color="#DCE8FF"
+        />
+        <group position={[shiftX, 0, 0]}>
+          <group rotation={[lat * DEG, (-90 - lon) * DEG + drift, 0]}>
+            <mesh>
+              <sphereGeometry args={[R, 96, 64]} />
+              <meshStandardMaterial
+                map={tex}
+                emissiveMap={tex}
+                emissive="#ffffff"
+                emissiveIntensity={0.55}
+                roughness={0.9}
+                metalness={0}
+              />
+            </mesh>
+            {markers.map((m) => {
+              const s = interpolate(
+                t,
+                [m.appearAt, m.appearAt + 0.6],
+                [0, 1],
+                clamp,
+              );
+              return (
+                <Marker
+                  key={`${m.at.lon}-${m.at.lat}`}
+                  at={m.at}
+                  color={m.color}
+                  scale={s * (m.pulse ? 1.5 : 0.9)}
+                  pulse={m.pulse ? pulse : 0}
+                />
+              );
+            })}
+            {arcs.map((a) => (
+              <Arc
+                key={`${a.from.lon}-${a.to.lon}`}
+                from={a.from}
+                to={a.to}
+                lift={a.lift ?? 0.1}
+                color={a.color}
+                progress={interpolate(
+                  t,
+                  [a.startAt, a.startAt + a.duration],
+                  [0, 1],
+                  {
+                    ...clamp,
+                    easing: ease,
+                  },
+                )}
+              />
+            ))}
+          </group>
+          <mesh>
+            <sphereGeometry args={[R * 1.05, 64, 48]} />
+            <meshBasicMaterial
+              color="#4C93E0"
+              transparent
+              opacity={0.42}
+              side={THREE.BackSide}
+              toneMapped={false}
+            />
+          </mesh>
+        </group>
+      </ThreeCanvas>
+    </AbsoluteFill>
+  );
+};

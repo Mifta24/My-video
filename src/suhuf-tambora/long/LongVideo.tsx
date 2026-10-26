@@ -13,6 +13,7 @@ import {
   scenes,
   FPS,
 } from "./timing";
+import { SceneSfx } from "./sfx";
 import { Visual } from "./Visual";
 
 const LongScene: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
@@ -24,6 +25,7 @@ const LongScene: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
   return (
     <AbsoluteFill style={{ backgroundColor: colors.bg }}>
       <Visual sceneId={scene.id} progress={progress} t={frame / FPS} />
+      <SceneSfx sceneId={scene.id} />
       {clips.map((clip, i) => {
         const from = clipStartInScene(clips, i);
         const dur = Math.max(1, Math.round(clipDuration(clip.id) * FPS));

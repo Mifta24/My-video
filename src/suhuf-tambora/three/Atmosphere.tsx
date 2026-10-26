@@ -8,11 +8,65 @@ import { colors } from "../theme";
 // jadi koordinat piksel layout 1080x1920 dipakai langsung (px -> world: x-540, 960-y).
 // Semua gerak dari prop t (detik) → deterministik, tanpa useFrame.
 
+// Layout portrait 1080x1920 (Shorts). Layout "wide" 1920x1080 (video panjang) memakai skema yang sama,
+// hanya koordinat pikselnya berbeda; keduanya dihitung dari satu tabel supaya tampilannya identik.
 export const STRATO_Y = 760;
 export const GROUND_Y = 1330;
 export const SUN = { x: 930, y: 250 } as const;
-// Lapisan aerosol (tempat sinar dipantulkan).
-const HIT_Y = 600;
+
+type Layout = {
+  readonly strato: number; // batas troposfer/stratosfer
+  readonly stratoTop: number; // tepi atas pita stratosfer
+  readonly ground: number;
+  readonly sun: { readonly x: number; readonly y: number };
+  readonly hit: number; // lapisan aerosol (tempat sinar dipantulkan)
+  readonly colMin: number; // puncak kolom letusan
+  readonly aerosolY: readonly [number, number];
+  readonly aerosolX: readonly [number, number];
+  readonly aerosolK: number;
+  readonly center: number; // x pusat gunung
+  readonly rayXs: readonly number[];
+  readonly rayOut: readonly [number, number];
+  readonly dimTo: number; // x titik sinar redup di tanah
+  readonly span: number; // lebar bidang atmosfer/tanah
+  readonly offset: readonly [number, number, number]; // geser agar pusat layout = pusat layar
+};
+
+const PORTRAIT: Layout = {
+  strato: STRATO_Y,
+  stratoTop: 420,
+  ground: GROUND_Y,
+  sun: SUN,
+  hit: 600,
+  colMin: 500,
+  aerosolY: [500, 700],
+  aerosolX: [70, 1010],
+  aerosolK: 1.5,
+  center: 540,
+  rayXs: [260, 380, 700],
+  rayOut: [-120, -200],
+  dimTo: 1030,
+  span: 1700,
+  offset: [0, 0, 0],
+};
+
+export const WIDE: Layout = {
+  strato: 470,
+  stratoTop: 140,
+  ground: 760,
+  sun: { x: 1640, y: 175 },
+  hit: 330,
+  colMin: 260,
+  aerosolY: [240, 400],
+  aerosolX: [140, 1780],
+  aerosolK: 2.4,
+  center: 960,
+  rayXs: [1180, 1330, 1480],
+  rayOut: [-150, -150],
+  dimTo: 1700,
+  span: 2600,
+  offset: [-420, -420, 0],
+};
 
 const wx = (px: number) => px - 540;
 const wy = (py: number) => 960 - py;
@@ -99,6 +153,7 @@ type Props = {
   readonly rays: number; // 0..1 sinar muncul
   readonly sunDim: number; // 1 → ~0.45
   readonly dim: number; // 0..1 sinar redup ke tanah (langkah 4)
+  readonly wide?: boolean; // layout 1920x1080
 };
 
 export const AtmosphereLayer: React.FC<Props> = ({
@@ -108,11 +163,14 @@ export const AtmosphereLayer: React.FC<Props> = ({
   rays,
   sunDim,
   dim,
+  wide = false,
 }) => {
   const { width, height } = useVideoConfig();
+  const L = wide ? WIDE : PORTRAIT;
+  const { strato, ground, sun: SUNP, hit: HIT_Y } = L;
   const sway = 0.14 * Math.sin(t * 0.55); // putar halus ±8° (sumbu Y saja, garis tetap horizontal)
-  const colTop = GROUND_Y - (GROUND_Y - 500) * col;
-  const colH = Math.max(0, GROUND_Y - 190 - colTop);
+  const colTop = ground - (ground - L.colMin) * col;
+  const colH = Math.max(0, ground - 190 - colTop);
   const appear = interpolate(t, [0, 0.5], [0, 1], clamp);
 
   const particles = useMemo(
@@ -128,15 +186,15 @@ export const AtmosphereLayer: React.FC<Props> = ({
   const billows = useMemo(
     () =>
       Array.from({ length: 11 }, (_, i) => ({
-        py: GROUND_Y - 200 - (i / 10) * (GROUND_Y - 200 - 500),
+        py: ground - 200 - (i / 10) * (ground - 200 - L.colMin),
         dx: Math.sin(i * 2.3) * 22,
         dz: Math.cos(i * 1.7) * 22,
         r: 46 + (i % 3) * 8,
       })),
-    [],
+    [ground, L.colMin],
   );
 
-  const rayXs = [260, 380, 700];
+  const rayXs = L.rayXs;
   const p = ease(rays);
 
   return (
@@ -156,184 +214,195 @@ export const AtmosphereLayer: React.FC<Props> = ({
         />
 
         <group rotation={[0, sway, 0]}>
-          {/* Lapisan atmosfer: plane di belakang objek (tanpa depthWrite, tidak menutupi kolom) */}
-          <mesh position={[0, wy((420 + STRATO_Y) / 2), -300]} renderOrder={-2}>
-            <planeGeometry args={[1700, STRATO_Y - 420]} />
-            <meshBasicMaterial
-              color="#1B3A6B"
-              transparent
-              opacity={0.3}
-              depthWrite={false}
-            />
-          </mesh>
-          <mesh
-            position={[0, wy((STRATO_Y + GROUND_Y) / 2), -300]}
-            renderOrder={-2}
-          >
-            <planeGeometry args={[1700, GROUND_Y - STRATO_Y]} />
-            <meshBasicMaterial
-              color="#14284A"
-              transparent
-              opacity={0.4}
-              depthWrite={false}
-            />
-          </mesh>
-          {/* Batas stratosfer (tepat di tepi pita) */}
-          <Beam
-            a={[-300, STRATO_Y, -290]}
-            b={[1400, STRATO_Y, -290]}
-            color={colors.landLine}
-            radius={2.5}
-            opacity={0.9}
-          />
-
-          {/* Tanah */}
-          <mesh position={[0, wy(GROUND_Y + 8), 0]}>
-            <boxGeometry args={[1700, 16, 560]} />
-            <meshStandardMaterial color="#2E4170" roughness={0.9} />
-          </mesh>
-
-          {/* Gunung (kerucut terpotong) + kawah */}
-          <mesh position={[0, wy(GROUND_Y - 95), 0]}>
-            <cylinderGeometry args={[72, 290, 190, 48]} />
-            <meshStandardMaterial
-              color="#9A7860"
-              emissive="#3A2418"
-              emissiveIntensity={0.6}
-              roughness={0.95}
-              flatShading
-            />
-          </mesh>
-          <mesh position={[0, wy(GROUND_Y - 190), 0]}>
-            <cylinderGeometry args={[72, 72, 6, 40]} />
-            <meshBasicMaterial
-              color={colors.warm}
-              transparent
-              opacity={col}
-              toneMapped={false}
-            />
-          </mesh>
-
-          {/* Kolom letusan */}
-          {colH > 1 ? (
-            <mesh position={[0, wy(colTop + colH / 2), 0]}>
-              <cylinderGeometry args={[46, 32, colH, 28]} />
-              <meshStandardMaterial
-                color="#FF7A1F"
-                emissive="#FF6A10"
-                emissiveIntensity={0.9}
-                roughness={0.7}
-              />
-            </mesh>
-          ) : null}
-          {billows.map((b, i) =>
-            b.py >= colTop + 20 ? (
-              <mesh key={i} position={[b.dx, wy(b.py), b.dz]}>
-                <sphereGeometry args={[b.r, 16, 12]} />
-                <meshStandardMaterial
-                  color="#FF8A3D"
-                  emissive="#FF6A10"
-                  emissiveIntensity={0.8}
-                  roughness={0.8}
-                />
-              </mesh>
-            ) : null,
-          )}
-          {/* Payung awan di puncak kolom (sedikit di atas kolom supaya tidak tertembus) */}
-          {col > 0.02 ? (
+          <group position={L.offset as unknown as [number, number, number]}>
+            {/* Lapisan atmosfer: plane di belakang objek (tanpa depthWrite, tidak menutupi kolom) */}
             <mesh
-              position={[0, wy(colTop - 14), 0]}
-              scale={[100 + 180 * spread, 50, 100 + 120 * spread]}
+              position={[wx(L.center), wy((L.stratoTop + strato) / 2), -300]}
+              renderOrder={-2}
             >
-              <sphereGeometry args={[1, 32, 16]} />
-              <meshStandardMaterial
-                color={colors.warm}
-                emissive={colors.warm}
-                emissiveIntensity={0.9}
+              <planeGeometry args={[L.span, strato - L.stratoTop]} />
+              <meshBasicMaterial
+                color="#1B3A6B"
                 transparent
-                opacity={0.85 - 0.8 * spread}
+                opacity={0.3}
+                depthWrite={false}
               />
             </mesh>
-          ) : null}
+            <mesh
+              position={[wx(L.center), wy((strato + ground) / 2), -300]}
+              renderOrder={-2}
+            >
+              <planeGeometry args={[L.span, ground - strato]} />
+              <meshBasicMaterial
+                color="#14284A"
+                transparent
+                opacity={0.4}
+                depthWrite={false}
+              />
+            </mesh>
+            {/* Batas stratosfer (tepat di tepi pita) */}
+            <Beam
+              a={[L.center - L.span / 2, strato, -290]}
+              b={[L.center + L.span / 2, strato, -290]}
+              color={colors.landLine}
+              radius={2.5}
+              opacity={0.9}
+            />
 
-          {/* Aerosol sulfat: menyebar ke kiri dan kanan di lapisan stratosfer */}
-          {particles.map((pt, i) => {
-            const x = Math.min(
-              1010,
-              Math.max(70, 540 + Math.cos(pt.rad) * pt.dist * spread * 1.5),
-            );
-            const y = Math.min(
-              700,
-              Math.max(500, HIT_Y + Math.sin(pt.rad) * pt.dist * 0.2 * spread),
-            );
-            return (
-              <mesh key={i} position={[wx(x), wy(y), pt.z * spread]}>
-                <sphereGeometry args={[pt.r * 1.3, 10, 8]} />
-                <meshBasicMaterial
-                  color={colors.sun}
-                  transparent
-                  opacity={0.85 * spread}
-                  toneMapped={false}
+            {/* Tanah */}
+            <mesh position={[wx(L.center), wy(ground + 8), 0]}>
+              <boxGeometry args={[L.span, 16, 560]} />
+              <meshStandardMaterial color="#2E4170" roughness={0.9} />
+            </mesh>
+
+            {/* Gunung (kerucut terpotong) + kawah */}
+            <mesh position={[wx(L.center), wy(ground - 95), 0]}>
+              <cylinderGeometry args={[72, 290, 190, 48]} />
+              <meshStandardMaterial
+                color="#9A7860"
+                emissive="#3A2418"
+                emissiveIntensity={0.6}
+                roughness={0.95}
+                flatShading
+              />
+            </mesh>
+            <mesh position={[wx(L.center), wy(ground - 190), 0]}>
+              <cylinderGeometry args={[72, 72, 6, 40]} />
+              <meshBasicMaterial
+                color={colors.warm}
+                transparent
+                opacity={col}
+                toneMapped={false}
+              />
+            </mesh>
+
+            {/* Kolom letusan */}
+            {colH > 1 ? (
+              <mesh position={[wx(L.center), wy(colTop + colH / 2), 0]}>
+                <cylinderGeometry args={[46, 32, colH, 28]} />
+                <meshStandardMaterial
+                  color="#FF7A1F"
+                  emissive="#FF6A10"
+                  emissiveIntensity={0.9}
+                  roughness={0.7}
                 />
               </mesh>
-            );
-          })}
-
-          {/* Matahari + halo */}
-          <mesh position={[wx(SUN.x), wy(SUN.y), -120]}>
-            <sphereGeometry args={[52, 32, 24]} />
-            <meshBasicMaterial
-              color={colors.sun}
-              transparent
-              opacity={sunDim}
-              toneMapped={false}
-            />
-          </mesh>
-          <mesh position={[wx(SUN.x), wy(SUN.y), -120]}>
-            <sphereGeometry args={[88, 32, 24]} />
-            <meshBasicMaterial
-              color={colors.sun}
-              transparent
-              opacity={0.14 * sunDim}
-              depthWrite={false}
-              toneMapped={false}
-            />
-          </mesh>
-
-          {/* Sinar dari matahari ke lapisan aerosol (sama tinggi), lalu dipantulkan balik ke atas */}
-          {rayXs.map((tx) => {
-            const z = 300;
-            const sun: Vec = [SUN.x - 30, SUN.y + 40, z];
-            const hit: Vec = [tx, HIT_Y, z];
-            const out: Vec = [tx - 120, HIT_Y - 200, z];
-            return (
-              <React.Fragment key={tx}>
-                <Beam
-                  a={sun}
-                  b={hit}
-                  color={colors.sun}
-                  radius={3.5}
-                  opacity={0.9 * rays}
+            ) : null}
+            {billows.map((b, i) =>
+              b.py >= colTop + 20 ? (
+                <mesh key={i} position={[wx(L.center) + b.dx, wy(b.py), b.dz]}>
+                  <sphereGeometry args={[b.r, 16, 12]} />
+                  <meshStandardMaterial
+                    color="#FF8A3D"
+                    emissive="#FF6A10"
+                    emissiveIntensity={0.8}
+                    roughness={0.8}
+                  />
+                </mesh>
+              ) : null,
+            )}
+            {/* Payung awan di puncak kolom (sedikit di atas kolom supaya tidak tertembus) */}
+            {col > 0.02 ? (
+              <mesh
+                position={[wx(L.center), wy(colTop - 14), 0]}
+                scale={[100 + 180 * spread, 50, 100 + 120 * spread]}
+              >
+                <sphereGeometry args={[1, 32, 16]} />
+                <meshStandardMaterial
+                  color={colors.warm}
+                  emissive={colors.warm}
+                  emissiveIntensity={0.9}
+                  transparent
+                  opacity={0.85 - 0.8 * spread}
                 />
-                <DashedBeam
-                  a={hit}
-                  b={out}
-                  progress={p}
-                  color={colors.sun}
-                  opacity={rays}
-                />
-              </React.Fragment>
-            );
-          })}
-          {/* Langkah 4: sinar yang sampai ke tanah redup */}
-          <DashedBeam
-            a={[SUN.x + 25, SUN.y + 90, 260]}
-            b={[1030, GROUND_Y - 8, 260]}
-            progress={dim}
-            color={colors.sun}
-            opacity={0.35 * dim}
-            radius={3}
-          />
+              </mesh>
+            ) : null}
+
+            {/* Aerosol sulfat: menyebar ke kiri dan kanan di lapisan stratosfer */}
+            {particles.map((pt, i) => {
+              const x = Math.min(
+                L.aerosolX[1],
+                Math.max(
+                  L.aerosolX[0],
+                  L.center + Math.cos(pt.rad) * pt.dist * spread * L.aerosolK,
+                ),
+              );
+              const y = Math.min(
+                L.aerosolY[1],
+                Math.max(
+                  L.aerosolY[0],
+                  HIT_Y + Math.sin(pt.rad) * pt.dist * 0.2 * spread,
+                ),
+              );
+              return (
+                <mesh key={i} position={[wx(x), wy(y), pt.z * spread]}>
+                  <sphereGeometry args={[pt.r * 1.3, 10, 8]} />
+                  <meshBasicMaterial
+                    color={colors.sun}
+                    transparent
+                    opacity={0.85 * spread}
+                    toneMapped={false}
+                  />
+                </mesh>
+              );
+            })}
+
+            {/* Matahari + halo */}
+            <mesh position={[wx(SUNP.x), wy(SUNP.y), -120]}>
+              <sphereGeometry args={[52, 32, 24]} />
+              <meshBasicMaterial
+                color={colors.sun}
+                transparent
+                opacity={sunDim}
+                toneMapped={false}
+              />
+            </mesh>
+            <mesh position={[wx(SUNP.x), wy(SUNP.y), -120]}>
+              <sphereGeometry args={[88, 32, 24]} />
+              <meshBasicMaterial
+                color={colors.sun}
+                transparent
+                opacity={0.14 * sunDim}
+                depthWrite={false}
+                toneMapped={false}
+              />
+            </mesh>
+
+            {/* Sinar dari matahari ke lapisan aerosol (sama tinggi), lalu dipantulkan balik ke atas */}
+            {rayXs.map((tx) => {
+              const z = 300;
+              const sun: Vec = [SUNP.x - 30, SUNP.y + 40, z];
+              const hit: Vec = [tx, HIT_Y, z];
+              const out: Vec = [tx + L.rayOut[0], HIT_Y + L.rayOut[1], z];
+              return (
+                <React.Fragment key={tx}>
+                  <Beam
+                    a={sun}
+                    b={hit}
+                    color={colors.sun}
+                    radius={3.5}
+                    opacity={0.9 * rays}
+                  />
+                  <DashedBeam
+                    a={hit}
+                    b={out}
+                    progress={p}
+                    color={colors.sun}
+                    opacity={rays}
+                  />
+                </React.Fragment>
+              );
+            })}
+            {/* Langkah 4: sinar yang sampai ke tanah redup */}
+            <DashedBeam
+              a={[SUNP.x + 25, SUNP.y + 90, 260]}
+              b={[L.dimTo, ground - 8, 260]}
+              progress={dim}
+              color={colors.sun}
+              opacity={0.35 * dim}
+              radius={3}
+            />
+          </group>
         </group>
       </ThreeCanvas>
     </AbsoluteFill>

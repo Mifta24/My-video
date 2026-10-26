@@ -22,8 +22,11 @@ import {
   TextBlock,
   clipStart,
 } from "./parts";
+import { AtmosphereLayer } from "../three/Atmosphere";
+import { GlobeView } from "../three/Globe";
+import { REGION } from "./geo";
 import { SceneMap } from "./SceneMap";
-import { Atmosphere, Takeaways, Timeline } from "./Visual";
+import { AtmosphereLabels, Takeaways, Timeline } from "./Visual";
 
 type SceneProps = { readonly t: number; readonly progress: number };
 
@@ -137,29 +140,66 @@ const B1: React.FC<SceneProps> = ({ t }) => {
       <Shot t={t} from={s("b01_04")} to={s("b01_07")}>
         {(lt) => (
           <>
-            <SceneMap kind="world" progress={Math.min(1, lt / 14)} />
+            <GlobeView
+              t={lt}
+              focus={{ lon: 79, lat: 26 }}
+              shiftX={-1.35}
+              markers={[
+                {
+                  at: REGION.tambora,
+                  color: colors.warm,
+                  appearAt: 0.2,
+                  pulse: true,
+                },
+                { at: REGION.europe, color: "#D6F0FF", appearAt: 2.4 },
+              ]}
+              arcs={[
+                {
+                  from: REGION.tambora,
+                  to: REGION.europe,
+                  color: colors.cold,
+                  startAt: 0.5,
+                  duration: 2.2,
+                  lift: 0.16,
+                },
+              ]}
+            />
             <TextBlock
               lt={lt}
               kicker="PERKIRAAN JARAK GARIS LURUS"
               title="± 12.000 km"
               color={colors.sun}
               titleSize={130}
-              x={0}
-              w={1920}
-              y={140}
-              align="center"
+              x={1010}
+              w={820}
+              y={230}
             />
           </>
         )}
       </Shot>
       <Shot t={t} from={s("b01_05")} to={s("b01_06")}>
         {(lt) => (
-          <TextBlock lt={lt} title="Tanpa pasukan. Tanpa kapal perang." titleSize={60} x={0} w={1920} y={760} align="center" />
+          <TextBlock
+            lt={lt}
+            title="Tanpa pasukan. Tanpa kapal perang."
+            titleSize={60}
+            x={1010}
+            w={820}
+            y={560}
+          />
         )}
       </Shot>
       <Shot t={t} from={s("b01_06")} to={s("b01_07")}>
         {(lt) => (
-          <TextBlock lt={lt} title="Yang menyeberang: partikel di langit" titleSize={60} color={colors.cold} x={0} w={1920} y={760} align="center" />
+          <TextBlock
+            lt={lt}
+            title="Yang menyeberang: partikel di langit"
+            titleSize={60}
+            color={colors.cold}
+            x={1010}
+            w={820}
+            y={560}
+          />
         )}
       </Shot>
       <Shot t={t} from={s("b01_07")}>
@@ -272,7 +312,16 @@ const B3: React.FC<SceneProps> = ({ t }) => {
               align="center"
               titleSize={72}
             />
-            <TextBlock lt={lt} delay={s("b03_06") - s("b03_04")} title="Berabad-abad tidak meletus besar" x={1230} y={300} w={600} titleSize={52} color={colors.warm} />
+            <TextBlock
+              lt={lt}
+              delay={s("b03_06") - s("b03_04")}
+              title="Berabad-abad tidak meletus besar"
+              x={1230}
+              y={300}
+              w={600}
+              titleSize={52}
+              color={colors.warm}
+            />
           </>
         )}
       </Shot>
@@ -483,15 +532,44 @@ const B4: React.FC<SceneProps> = ({ t }) => {
         {(lt) => (
           <>
             <Profile lt={lt} showNow />
-            <TextBlock lt={lt} title="Puncak gunung itu tidak ada lagi" x={0} w={1920} y={130} titleSize={70} align="center" />
+            <TextBlock
+              lt={lt}
+              title="Puncak gunung itu tidak ada lagi"
+              x={0}
+              w={1920}
+              y={130}
+              titleSize={70}
+              align="center"
+            />
           </>
         )}
       </Shot>
       <Shot t={t} from={s("b04_17")} to={s("b04_18")}>
         {(lt) => (
           <>
-            <Card src="caldera-panorama.jpg" lt={lt} x={160} y={110} w={1600} h={352} caption="Kaldera Tambora hari ini" zoomTo={1.06} />
-            <TextBlock lt={lt} delay={0.5} kicker="KALDERA" title="Lebar ± 6–7 km" x={0} w={1920} y={580} titleSize={96} align="center" color={colors.warm} body="dalam lebih dari 600 meter" />
+            <Card
+              src="caldera-panorama.jpg"
+              lt={lt}
+              x={160}
+              y={110}
+              w={1600}
+              h={352}
+              caption="Kaldera Tambora hari ini"
+              zoomTo={1.06}
+            />
+            <TextBlock
+              lt={lt}
+              delay={0.5}
+              kicker="KALDERA"
+              title="Lebar ± 6–7 km"
+              x={0}
+              w={1920}
+              y={580}
+              titleSize={96}
+              align="center"
+              color={colors.warm}
+              body="dalam lebih dari 600 meter"
+            />
           </>
         )}
       </Shot>
@@ -513,7 +591,7 @@ const B4: React.FC<SceneProps> = ({ t }) => {
 };
 
 // ───────────────────── B5 · YANG DILEMPARKAN KE ATMOSFER ─────────────────────
-const B5: React.FC<SceneProps> = ({ t, progress }) => {
+const B5: React.FC<SceneProps> = ({ t }) => {
   const s = (id: string) => clipStart("b5", id);
   return (
     <>
@@ -548,7 +626,36 @@ const B5: React.FC<SceneProps> = ({ t, progress }) => {
       <Shot t={t} from={s("b05_04")} to={s("b05_11")}>
         {() => (
           <>
-            <Atmosphere progress={progress} />
+            <AtmosphereLayer
+              wide
+              t={t - s("b05_04")}
+              col={interpolate(t, [s("b05_05"), s("b05_05") + 5], [0, 1], {
+                ...clamp,
+                easing: easeOut,
+              })}
+              spread={interpolate(t, [s("b05_06"), s("b05_08") + 4], [0, 1], {
+                ...clamp,
+                easing: easeOut,
+              })}
+              rays={interpolate(
+                t,
+                [s("b05_09"), s("b05_09") + 1.2],
+                [0, 1],
+                clamp,
+              )}
+              sunDim={
+                1 -
+                0.55 *
+                  interpolate(t, [s("b05_09"), s("b05_10") + 2], [0, 1], clamp)
+              }
+              dim={interpolate(
+                t,
+                [s("b05_10"), s("b05_10") + 2],
+                [0, 1],
+                clamp,
+              )}
+            />
+            <AtmosphereLabels />
             <TextBlock
               lt={t - s("b05_04")}
               kicker="YANG PENTING"
@@ -899,7 +1006,43 @@ const B7: React.FC<SceneProps> = ({ t }) => {
       <Shot t={t} from={s("b07_07")}>
         {(lt) => (
           <>
-            <SceneMap kind="asia" progress={Math.min(1, lt / 10)} />
+            <GlobeView
+              t={lt}
+              focus={{ lon: 100, lat: 12 }}
+              shiftX={1.35}
+              markers={[
+                {
+                  at: REGION.tambora,
+                  color: colors.warm,
+                  appearAt: 0.2,
+                  pulse: true,
+                },
+                { at: REGION.india, color: colors.cold, appearAt: 1.6 },
+                {
+                  at: { lon: 102, lat: 26 },
+                  color: colors.cold,
+                  appearAt: 2.6,
+                },
+              ]}
+              arcs={[
+                {
+                  from: REGION.tambora,
+                  to: REGION.india,
+                  color: colors.cold,
+                  startAt: 0.8,
+                  duration: 2,
+                  lift: 0.08,
+                },
+                {
+                  from: REGION.tambora,
+                  to: { lon: 102, lat: 26 },
+                  color: colors.cold,
+                  startAt: 1.8,
+                  duration: 2,
+                  lift: 0.08,
+                },
+              ]}
+            />
             <TextBlock
               lt={lt}
               kicker="BAGIAN DUNIA LAIN"
