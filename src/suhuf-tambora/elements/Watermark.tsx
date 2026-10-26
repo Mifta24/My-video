@@ -65,10 +65,10 @@ export const Watermark: React.FC<{ readonly wide?: boolean }> = ({
         style={{
           ...base,
           top: 162,
-          opacity: 0.55 * o,
+          opacity: 0.75 * o,
           fontFamily: fonts.heading,
           fontWeight: 700,
-          fontSize: 26,
+          fontSize: 28,
           letterSpacing: 6,
         }}
       >
@@ -77,11 +77,11 @@ export const Watermark: React.FC<{ readonly wide?: boolean }> = ({
       <div
         style={{
           ...base,
-          top: 1572,
-          opacity: 0.35 * o,
+          top: 1566,
+          opacity: 0.7 * o,
           fontFamily: fonts.mono,
           fontWeight: 500,
-          fontSize: 22,
+          fontSize: 28,
           letterSpacing: 2,
         }}
       >

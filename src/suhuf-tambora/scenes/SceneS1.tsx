@@ -8,6 +8,14 @@ import { clamp, easeOut, useSceneTime } from "../elements/common";
 import { LEAD, clipText, cue, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
 
+// Pita y yang bebas partikel: brand, judul + label, subtitle, handle.
+const TEXT_BANDS = [
+  [140, 215],
+  [410, 700],
+  [1370, 1500],
+  [1550, 1630],
+] as const;
+
 // S1 · Hook. Globe 3D: Tambora (April 1815) lalu berputar ke Amerika Utara (embun beku, Juni 1816).
 export const SceneS1: React.FC = () => {
   const total = sceneFrames("s1");
@@ -37,12 +45,26 @@ export const SceneS1: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
-      <div style={{ position: "absolute", inset: 0, translate: "0px 120px" }}>
+      <div style={{ position: "absolute", inset: 0, translate: "0px 72px" }}>
         <GlobeLayer t={t} sw={sw} />
       </div>
 
-      <Particles kind="ash" t={t} count={50} opacity={ashOp} />
-      <Particles kind="snow" t={t} count={60} opacity={snowOp} />
+      <Particles
+        kind="ash"
+        t={t}
+        count={40}
+        size={0.7}
+        exclude={TEXT_BANDS}
+        opacity={ashOp}
+      />
+      <Particles
+        kind="snow"
+        t={t}
+        count={45}
+        size={0.65}
+        exclude={TEXT_BANDS}
+        opacity={snowOp}
+      />
       <Frost intensity={frost} />
 
       <div

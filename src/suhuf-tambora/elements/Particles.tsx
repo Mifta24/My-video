@@ -13,6 +13,10 @@ type ParticlesProps = {
   readonly opacity?: number;
   readonly width?: number;
   readonly height?: number;
+  // Pita y (px) tempat partikel dipudarkan supaya tidak menimpa teks: [atas, bawah].
+  readonly exclude?: ReadonlyArray<readonly [number, number]>;
+  // Pengali ukuran partikel (default 1).
+  readonly size?: number;
 };
 
 // Abu naik pelan (letusan 1815, sebagian bara oranye), salju turun (dingin 1816), atau hujan.
@@ -23,7 +27,15 @@ export const Particles: React.FC<ParticlesProps> = ({
   opacity = 1,
   width = 1080,
   height = 1920,
+  exclude = [],
+  size = 1,
 }) => {
+  // Pudar halus 50 px di tepi pita, supaya partikel tidak muncul/hilang tiba-tiba.
+  const zone = (y: number) =>
+    exclude.reduce((m, [a, b]) => {
+      const d = y < a ? a - y : y > b ? y - b : 0;
+      return Math.min(m, Math.min(1, d / 50));
+    }, 1);
   const span = height + 80;
   return (
     <svg
@@ -45,7 +57,7 @@ export const Particles: React.FC<ParticlesProps> = ({
             ? 0
             : Math.sin(t * (0.6 + rnd(i, 5)) + i) * (kind === "snow" ? 34 : 22);
         const x = rnd(i, 1) * width + sway;
-        const visible = y >= 0 && y <= height ? 1 : 0;
+        const visible = (y >= 0 && y <= height ? 1 : 0) * zone(y);
         if (kind === "rain") {
           return (
             <line
@@ -62,7 +74,9 @@ export const Particles: React.FC<ParticlesProps> = ({
           );
         }
         const r =
-          (kind === "snow" ? 3 : 2.5) + rnd(i, 4) * (kind === "snow" ? 6 : 5);
+          ((kind === "snow" ? 3 : 2.5) +
+            rnd(i, 4) * (kind === "snow" ? 6 : 5)) *
+          size;
         const ember = kind === "ash" && i % 6 === 0;
         return (
           <circle

@@ -124,6 +124,17 @@ const Marker: React.FC<{
         <circleGeometry args={[0.06, 32]} />
         <meshBasicMaterial color={color} toneMapped={false} />
       </mesh>
+      <mesh scale={1 + ((pulse + 0.5) % 1) * 2.4}>
+        <ringGeometry args={[0.075, 0.09, 48]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={
+            0.7 * (1 - ((pulse + 0.5) % 1)) * (pulse > 0 || scale > 0 ? 1 : 0)
+          }
+          toneMapped={false}
+        />
+      </mesh>
       <mesh scale={1 + pulse * 2.4}>
         <ringGeometry args={[0.075, 0.092, 48]} />
         <meshBasicMaterial
@@ -152,7 +163,7 @@ export const GlobeLayer: React.FC<{ t: number; sw: number }> = ({ t, sw }) => {
   const rotY = (-90 - lon) * DEG;
   const rotX = lat * DEG;
   const drift = interpolate(t, [0, sw], [0, 6], clamp) * DEG; // gerak halus sebelum berputar
-  const zoom = interpolate(t, [0, sw, sw + 3.2], [8.9, 8.5, 8.2], {
+  const zoom = interpolate(t, [0, sw, sw + 3.2], [11.3, 11.0, 10.8], {
     ...clamp,
     easing: ease,
   });
