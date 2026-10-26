@@ -23,13 +23,13 @@ const CARDS = [
   {
     head: "BANYAK WILAYAH EROPA",
     body: "hujan & dingin",
-    at: 4.1,
+    at: 4.45,
     color: colors.cold,
   },
   {
     head: "HARGA PANGAN NAIK",
     body: "panen gagal",
-    at: 6.0,
+    at: 6.5,
     color: colors.warm,
   },
 ];
@@ -44,7 +44,7 @@ export const SceneS4: React.FC = () => {
 
       {CARDS.map((c, i) => {
         const next = CARDS[i + 1]?.at ?? 99;
-        const inP = interpolate(t, [c.at, c.at + 0.4], [0, 1], {
+        const inP = interpolate(t, [c.at, c.at + 0.7], [0, 1], {
           ...clamp,
           easing: easeOut,
         });
@@ -89,7 +89,7 @@ export const SceneS4: React.FC = () => {
         src="suhuf-tambora/photos/hunger-1817.jpg"
         caption="Kelaparan 1817 · Giezendanner (domain publik)"
         t={t}
-        inAt={4.4}
+        inAt={4.8}
         top={760}
         width={900}
         height={540}

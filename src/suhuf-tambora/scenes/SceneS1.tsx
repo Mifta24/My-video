@@ -11,26 +11,26 @@ import { colors, fonts } from "../theme";
 export const SceneS1: React.FC = () => {
   const total = sceneFrames("s1");
   const { t, opacity } = useSceneTime(total);
-  const swap = interpolate(t, [4.4, 5.0], [0, 1], {
+  const swap = interpolate(t, [4.8, 5.8], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
   const dotPulse = 0.6 + 0.4 * Math.sin(t * 6);
-  const line1 = interpolate(t, [4.8, 6.4], [0, 1], {
+  const line1 = interpolate(t, [5.2, 7.4], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
-  const line2 = interpolate(t, [5.2, 7.0], [0, 1], {
+  const line2 = interpolate(t, [5.9, 8.3], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
-  const dotOn = interpolate(t, [1.0, 1.4], [0, 1], clamp);
+  const dotOn = interpolate(t, [1.0, 1.8], [0, 1], clamp);
 
   return (
     <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
       <WorldMap
         view={WORLD_VIEW}
-        landOpacity={interpolate(t, [0.2, 1.4], [0, 1], clamp)}
+        landOpacity={interpolate(t, [0.2, 1.8], [0, 1], clamp)}
       >
         {(s) => {
           const [ax, ay] = s(TAMBORA.lon, TAMBORA.lat);

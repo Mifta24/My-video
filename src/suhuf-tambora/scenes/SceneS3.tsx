@@ -12,12 +12,12 @@ const GROUND_Y = 1330;
 export const SceneS3: React.FC = () => {
   const total = sceneFrames("s3");
   const { t, opacity } = useSceneTime(total);
-  const col = interpolate(t, [0.6, 2.4], [0, 1], { ...clamp, easing: easeOut });
-  const spread = interpolate(t, [2.4, 5.6], [0, 1], {
+  const col = interpolate(t, [0.6, 3.0], [0, 1], { ...clamp, easing: easeOut });
+  const spread = interpolate(t, [3.0, 6.6], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
-  const rays = interpolate(t, [4.4, 5.4], [0, 1], clamp);
+  const rays = interpolate(t, [5.4, 6.6], [0, 1], clamp);
   const colTop = GROUND_Y - (GROUND_Y - 500) * col;
 
   // Partikel deterministik (tanpa Math.random supaya render konsisten).

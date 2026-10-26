@@ -12,9 +12,9 @@ import { colors, fonts } from "../theme";
 export const SceneS2: React.FC = () => {
   const total = sceneFrames("s2");
   const { t, opacity } = useSceneTime(total);
-  const z = interpolate(t, [0, 1.6], [0, 1], { ...clamp, easing: easeOut });
+  const z = interpolate(t, [0, 2.2], [0, 1], { ...clamp, easing: easeOut });
   const view = mixView(WORLD_VIEW, SUMBAWA_VIEW, z);
-  const labelIn = interpolate(t, [1.4, 1.9], [0, 1], clamp);
+  const labelIn = interpolate(t, [1.8, 2.5], [0, 1], clamp);
 
   return (
     <AbsoluteFill style={{ opacity, backgroundColor: colors.bg }}>
@@ -27,8 +27,8 @@ export const SceneS2: React.FC = () => {
         {(s) => {
           const [x, y] = s(TAMBORA.lon, TAMBORA.lat);
           const rings = [0, 1, 2].map((i) => {
-            const p = ((t - 1.2 - i * 0.55) % 1.65) / 1.65;
-            const on = t > 1.2 + i * 0.55 ? 1 : 0;
+            const p = ((t - 1.8 - i * 0.7) % 2.1) / 2.1;
+            const on = t > 1.8 + i * 0.7 ? 1 : 0;
             return {
               r: 20 + Math.max(0, p) * 560,
               a: (1 - Math.max(0, p)) * 0.55 * on,
@@ -88,7 +88,7 @@ export const SceneS2: React.FC = () => {
         src="suhuf-tambora/photos/tambora-nasa-iss.jpg"
         caption="Kaldera Tambora hari ini · Foto: NASA (domain publik)"
         t={t}
-        inAt={1.9}
+        inAt={2.5}
         top={190}
         height={560}
         zoomFrom={1.0}

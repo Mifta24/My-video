@@ -12,13 +12,13 @@ import { colors, fonts } from "../theme";
 export const SceneS5: React.FC = () => {
   const total = sceneFrames("s5");
   const { t } = useSceneTime(total);
-  const z = interpolate(t, [0, 2.0], [0, 1], { ...clamp, easing: easeOut });
+  const z = interpolate(t, [0, 2.8], [0, 1], { ...clamp, easing: easeOut });
   const view = mixView(WORLD_VIEW, SUMBAWA_VIEW, z);
   const pulse = 0.7 + 0.3 * Math.sin(t * 4);
-  const q = interpolate(t, [1.0, 1.5], [0, 1], clamp);
-  const qOut = interpolate(t, [4.2, 4.7], [1, 0], clamp);
-  const end = interpolate(t, [4.7, 5.5], [0, 1], { ...clamp, easing: easeOut });
-  const endHold = interpolate(t, [5.2, 5.6], [0, 1], { ...clamp, easing: easeOut });
+  const q = interpolate(t, [1.0, 1.8], [0, 1], clamp);
+  const qOut = interpolate(t, [4.6, 5.1], [1, 0], clamp);
+  const end = interpolate(t, [5.3, 6.5], [0, 1], { ...clamp, easing: easeOut });
+  const endHold = interpolate(t, [5.9, 6.5], [0, 1], { ...clamp, easing: easeOut });
 
   return (
     <AbsoluteFill style={{ backgroundColor: colors.bg }}>

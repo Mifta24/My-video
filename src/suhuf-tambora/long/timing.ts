@@ -2,7 +2,7 @@ import durations from "./durations.json";
 import spec from "./spec.json";
 
 export const FPS = 30;
-export const GAP = 0.22;
+export const GAP = 0.6;
 export const END_PAD = 2.4;
 export const scenes = spec.scenes;
 const dur = durations as Record<string, number>;

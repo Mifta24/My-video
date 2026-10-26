@@ -12,10 +12,10 @@ export const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
 export const useSceneTime = (totalFrames: number) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const fadeIn = interpolate(frame, [0, 8], [0, 1], clamp);
+  const fadeIn = interpolate(frame, [0, 12], [0, 1], clamp);
   const fadeOut = interpolate(
     frame,
-    [totalFrames - 8, totalFrames],
+    [totalFrames - 12, totalFrames],
     [1, 0],
     clamp,
   );

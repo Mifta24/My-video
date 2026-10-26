@@ -32,7 +32,7 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({
   zoomTo = 1.12,
   position = "50% 50%",
 }) => {
-  const inP = interpolate(t, [inAt, inAt + 0.45], [0, 1], {
+  const inP = interpolate(t, [inAt, inAt + 0.8], [0, 1], {
     ...clamp,
     easing: easeOut,
   });

@@ -1,6 +1,6 @@
 {
   "voice": "id-ID-ArdiNeural",
-  "rate": "+0%",
+  "rate": "-8%",
   "note": "Narator sementara (AI). Teks sudah bersih dari penanda [VERIFIKASI]. Ganti dengan rekaman Miftah nanti: cukup timpa mp3 dengan nama sama lalu jalankan ulang scripts/gen-vo-suhuf.py --measure-only.",
   "clips": [
     {
