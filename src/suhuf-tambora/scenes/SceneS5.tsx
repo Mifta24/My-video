@@ -4,7 +4,7 @@ import { Subtitle } from "../elements/Subtitle";
 import { PhotoBackdrop } from "../elements/PhotoBackdrop";
 import { Particles } from "../elements/Particles";
 import { clamp, easeOut, useSceneTime } from "../elements/common";
-import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
+import { LEAD, clipText, cue, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
 
 // S5 · Janji + CTA. Narasi: "Tapi korban terberatnya bukan di Eropa. Ceritanya bersambung. Follow Suhuf Pengetahuan."
@@ -13,11 +13,16 @@ import { colors, fonts } from "../theme";
 export const SceneS5: React.FC = () => {
   const total = sceneFrames("s5");
   const { t } = useSceneTime(total);
+  const qIn = cue("s5", "Tapi korban", 0.1);
+  const endAt = cue("s5", "Ceritanya", 0);
   const pulse = 0.7 + 0.3 * Math.sin(t * 4);
-  const q = interpolate(t, [1.0, 1.8], [0, 1], clamp);
-  const qOut = interpolate(t, [4.6, 5.1], [1, 0], clamp);
-  const end = interpolate(t, [5.3, 6.5], [0, 1], { ...clamp, easing: easeOut });
-  const endHold = interpolate(t, [5.9, 6.5], [0, 1], {
+  const q = interpolate(t, [qIn, qIn + 0.8], [0, 1], clamp);
+  const qOut = interpolate(t, [endAt - 0.5, endAt - 0.1], [1, 0], clamp);
+  const end = interpolate(t, [endAt, endAt + 1.2], [0, 1], {
+    ...clamp,
+    easing: easeOut,
+  });
+  const endHold = interpolate(t, [endAt + 0.6, endAt + 1.2], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
@@ -116,31 +121,6 @@ export const SceneS5: React.FC = () => {
         >
           Follow @suhufpengetahuan
         </div>
-      </div>
-
-      {/* Atribusi: di atas zona UI bawah (250 px), di bawah subtitle. */}
-      <div
-        style={{
-          position: "absolute",
-          top: 180,
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          fontFamily: fonts.mono,
-          fontWeight: 500,
-          fontSize: 25,
-          lineHeight: 1.4,
-          color: colors.text,
-          backgroundColor: "rgba(7,11,20,0.82)",
-          padding: "8px 0",
-          opacity: end,
-        }}
-      >
-        Peta: Natural Earth · Foto: NASA · Data volume: USGS
-        <br />
-        Gambar 1817: Giezendanner (domain publik)
-        <br />
-        Peta suhu 1816: Giorgiogp2, CC BY-SA 3.0 · data NOAA
       </div>
 
       <Audio

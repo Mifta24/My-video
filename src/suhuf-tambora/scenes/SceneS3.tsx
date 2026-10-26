@@ -2,7 +2,7 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { Subtitle } from "../elements/Subtitle";
 import { Tag, clamp, easeOut, useSceneTime } from "../elements/common";
-import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
+import { LEAD, clipText, cue, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
 
 // S3 · Penampang atmosfer SKEMATIS: kolom naik, stratosfer, aerosol menyebar, sinar memantul.
@@ -52,16 +52,24 @@ const Step: React.FC<{
 export const SceneS3: React.FC = () => {
   const total = sceneFrames("s3");
   const { t, opacity } = useSceneTime(total);
-  const col = interpolate(t, [0.6, 3.0], [0, 1], { ...clamp, easing: easeOut });
-  const spread = interpolate(t, [3.0, 6.6], [0, 1], {
+  // Setiap langkah muncul saat frasanya diucapkan.
+  const c1 = cue("s3", "Gas belerang", -0.3);
+  const c2 = cue("s3", "jadi kabut", -0.2);
+  const c3 = cue("s3", "memantulkan", -0.4);
+  const c4 = cue("s3", "sehingga", -0.2);
+  const col = interpolate(t, [c1, c1 + 2.6], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
-  const rays = interpolate(t, [5.4, 6.6], [0, 1], clamp);
-  const s1 = interpolate(t, [1.2, 1.8], [0, 1], clamp);
-  const s2 = interpolate(t, [4.4, 5.0], [0, 1], clamp);
-  const s4 = interpolate(t, [7.4, 8.0], [0, 1], clamp);
-  const sunDim = 1 - 0.55 * interpolate(t, [5.4, 8.0], [0, 1], clamp);
+  const spread = interpolate(t, [c2, c2 + 3.4], [0, 1], {
+    ...clamp,
+    easing: easeOut,
+  });
+  const rays = interpolate(t, [c3, c3 + 1.2], [0, 1], clamp);
+  const s1 = interpolate(t, [c1 + 0.4, c1 + 1.0], [0, 1], clamp);
+  const s2 = interpolate(t, [c2 + 0.4, c2 + 1.0], [0, 1], clamp);
+  const s4 = interpolate(t, [c4, c4 + 0.6], [0, 1], clamp);
+  const sunDim = 1 - 0.55 * interpolate(t, [c3, c4 + 2.0], [0, 1], clamp);
   const colTop = GROUND_Y - (GROUND_Y - 500) * col;
 
   // Partikel deterministik (tanpa Math.random supaya render konsisten).

@@ -4,22 +4,23 @@ import { Subtitle } from "../elements/Subtitle";
 import { PhotoBackdrop } from "../elements/PhotoBackdrop";
 import { Particles } from "../elements/Particles";
 import { Tag, clamp, easeOut, useSceneTime } from "../elements/common";
-import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
+import { LEAD, clipText, cue, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
 
 // S2 · Foto asli kaldera Tambora (NASA) lalu perbandingan volume letusan (skema, data USGS).
-// Fase 1 (0 - SWITCH): foto + penjelasan VEI 7 dan kolom abu 43 km (terverifikasi di script).
+// Fase 1 (0 - SWITCH): foto + penjelasan VEI 7 (terverifikasi di script).
 // Fase 2 (SWITCH - akhir): bola volume. Luas bola mengikuti volume (jari-jari ∝ akar pangkat tiga).
-const SWITCH = 2.9;
+const SWITCH = cue("s2", "Salah satu yang", -0.2);
+const VEI_AT = cue("s2", "Letusannya", -0.2);
 const BASE_Y = 1190;
-const D_MAX = 340;
+const D_MAX = 320;
 const ERUPTIONS = [
   { name: "Tambora", year: "1815", km3: 50, label: "50 km³", main: true },
   { name: "Krakatau", year: "1883", km3: 10, label: "10 km³", main: false },
   { name: "Pinatubo", year: "1991", km3: 4.8, label: "4,8 km³", main: false },
   { name: "St. Helens", year: "1980", km3: 0.4, label: "0,4 km³", main: false },
 ];
-const GAP = 50;
+const GAP = 56;
 
 const Note: React.FC<{
   readonly top: number;
@@ -102,7 +103,7 @@ export const SceneS2: React.FC = () => {
         brightness={0.95 - 0.62 * phase2}
         zoomFrom={1.0}
         zoomTo={1.14}
-        duration={6}
+        duration={SWITCH + 1}
       />
       <Particles kind="ash" t={t} count={36} opacity={0.6} />
 
@@ -144,7 +145,7 @@ export const SceneS2: React.FC = () => {
       <Note
         top={1010}
         t={t}
-        at={1.1}
+        at={VEI_AT}
         out={SWITCH}
         head="VEI 7"
         body="Skala 0–8. Tiap tingkat ± 10× lebih besar."
@@ -210,7 +211,7 @@ export const SceneS2: React.FC = () => {
           opacity={phase2}
         />
         {ERUPTIONS.map((e, i) => {
-          const at = SWITCH + 0.3 + i * 0.4;
+          const at = SWITCH + 0.3 + i * 0.5;
           const g = interpolate(t, [at, at + 0.8], [0, 1], {
             ...clamp,
             easing: easeOut,
@@ -234,7 +235,7 @@ export const SceneS2: React.FC = () => {
                   fill={e.main ? colors.warm : colors.text}
                   fontFamily={fonts.mono}
                   fontWeight={700}
-                  fontSize={e.main ? 34 : 27}
+                  fontSize={e.main ? 34 : 25}
                 >
                   {e.name}
                 </text>
@@ -266,7 +267,7 @@ export const SceneS2: React.FC = () => {
       </svg>
 
       <div style={{ opacity: phase2 }}>
-        <Tag text="Skema · data USGS" />
+        <Tag text="Skema" />
       </div>
 
       <Audio

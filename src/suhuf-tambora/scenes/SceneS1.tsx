@@ -6,33 +6,41 @@ import { Particles } from "../elements/Particles";
 import { Frost } from "../elements/Frost";
 import { clamp, easeOut, useSceneTime } from "../elements/common";
 import { NEW_ENGLAND, SWISS, TAMBORA, WORLD_VIEW } from "../geo";
-import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
+import { LEAD, clipText, cue, sceneFrames, voSeconds } from "../timing";
 import { colors, fonts } from "../theme";
 
 // S1 · Hook. "APRIL 1815" geser ke "JUNI 1816"; garis putus-putus Sumbawa → Eropa & Amerika Utara.
 export const SceneS1: React.FC = () => {
   const total = sceneFrames("s1");
   const { t, opacity } = useSceneTime(total);
-  const swap = interpolate(t, [4.8, 5.8], [0, 1], {
+  // Semua isyarat mengikuti narasi: ganti tahun saat "Setahun kemudian".
+  const sw = cue("s1", "Setahun kemudian", 0.5);
+  const qAt = cue("s1", "Bagaimana", 0.2);
+  const swap = interpolate(t, [sw, sw + 1.0], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
   const dotPulse = 0.6 + 0.4 * Math.sin(t * 6);
-  const line1 = interpolate(t, [5.2, 7.4], [0, 1], {
+  const line1 = interpolate(t, [sw + 0.4, sw + 2.6], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
-  const line2 = interpolate(t, [5.9, 8.3], [0, 1], {
+  const line2 = interpolate(t, [sw + 0.9, sw + 3.4], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
   // Fase 1815: abu naik + layar bergetar (mereda). Fase 1816: salju turun + embun beku merambat.
-  const quake = interpolate(t, [0.6, 4.8], [1, 0], clamp);
+  const quake = interpolate(t, [0.6, sw], [1, 0], clamp);
   const shakeX = Math.sin(t * 47) * 7 * quake;
   const shakeY = Math.cos(t * 39) * 5 * quake;
-  const ashOp = interpolate(t, [0.3, 1.2, 4.6, 5.6], [0, 1, 1, 0], clamp);
-  const snowOp = interpolate(t, [5.2, 6.2], [0, 1], clamp);
-  const frost = interpolate(t, [5.4, 8.6], [0, 0.85], {
+  const ashOp = interpolate(
+    t,
+    [0.3, 1.2, sw - 0.2, sw + 0.8],
+    [0, 1, 1, 0],
+    clamp,
+  );
+  const snowOp = interpolate(t, [sw + 0.4, sw + 1.4], [0, 1], clamp);
+  const frost = interpolate(t, [sw + 0.6, sw + 4.6], [0, 0.85], {
     ...clamp,
     easing: easeOut,
   });
@@ -172,6 +180,24 @@ export const SceneS1: React.FC = () => {
         EMBUN BEKU · TIMUR LAUT AS
       </div>
 
+      <div
+        style={{
+          position: "absolute",
+          left: 80,
+          right: 80,
+          top: 1250,
+          textAlign: "center",
+          fontFamily: fonts.heading,
+          fontWeight: 700,
+          fontSize: 76,
+          color: colors.text,
+          opacity: interpolate(t, [qAt, qAt + 0.6], [0, 1], clamp),
+          translate: `0px ${(1 - interpolate(t, [qAt, qAt + 0.6], [0, 1], clamp)) * 24}px`,
+          textShadow: `0 4px 20px ${colors.bg}`,
+        }}
+      >
+        Bagaimana mungkin?
+      </div>
       <Audio
         name="VO s1"
         from={Math.round(LEAD * 30)}

@@ -6,22 +6,27 @@
     {
       "id": "s1",
       "scene": "S1",
-      "text": "April 1815, gunung di Sumbawa meledak. Setahun kemudian, embun beku muncul di Amerika Utara, bulan Juni."
+      "text": "April 1815, gunung di Sumbawa meledak. Setahun kemudian, embun beku muncul di Amerika Utara, bulan Juni. Bagaimana mungkin?"
     },
     {
       "id": "s2",
       "scene": "S2",
-      "text": "Gunung itu Tambora. Salah satu letusan terbesar yang pernah tercatat."
+      "text": "Gunung itu Tambora. Letusannya tingkat tujuh dari delapan, dan tiap tingkat sekitar sepuluh kali lebih besar. Salah satu yang terbesar yang pernah tercatat."
+    },
+    {
+      "id": "s2b",
+      "scene": "S2B",
+      "text": "Kolom abunya naik sampai empat puluh tiga kilometer. Dentumannya terdengar di Sumatra, lebih dari dua ribu enam ratus kilometer jauhnya."
     },
     {
       "id": "s3",
       "scene": "S3",
-      "text": "Yang menyebar ke dunia bukan cuma abu. Gas belerang naik ke stratosfer, jadi kabut partikel halus yang memantulkan sinar Matahari."
+      "text": "Yang menyebar ke dunia bukan cuma abu. Gas belerang naik ke stratosfer, jadi kabut partikel halus yang memantulkan sinar Matahari, sehingga permukaan Bumi lebih dingin."
     },
     {
       "id": "s4",
       "scene": "S4",
-      "text": "Hasilnya, 1816 dijuluki Tahun Tanpa Musim Panas. Di banyak wilayah Eropa panen gagal, dan harga pangan melonjak."
+      "text": "Hasilnya, 1816 dijuluki Tahun Tanpa Musim Panas. Di banyak wilayah Eropa, hujan dan dingin tak habis-habis. Di Amerika Utara, embun beku muncul bahkan di bulan Juni. Panen gagal, dan harga pangan melonjak."
     },
     {
       "id": "s5",

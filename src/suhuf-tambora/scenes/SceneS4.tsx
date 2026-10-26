@@ -5,7 +5,8 @@ import { PhotoCard } from "../elements/PhotoCard";
 import { Particles } from "../elements/Particles";
 import { Frost } from "../elements/Frost";
 import { clamp, easeOut, useSceneTime } from "../elements/common";
-import { LEAD, clipText, sceneFrames, voSeconds } from "../timing";
+import { LEAD, clipText, cue, sceneFrames, voSeconds } from "../timing";
+import { Tag } from "../elements/common";
 import { colors, fonts } from "../theme";
 
 // S4 · Kartu teks mengikuti narasi (waktu relatif terhadap awal scene, VO mulai di LEAD):
@@ -17,27 +18,159 @@ const CARDS = [
   {
     head: "1816",
     body: "Tahun Tanpa Musim Panas",
-    at: 0.4,
+    at: cue("s4", "Hasilnya", 0.1),
     color: colors.cold,
   },
   {
     head: "BANYAK WILAYAH EROPA",
     body: "hujan & dingin",
-    at: 4.45,
+    at: cue("s4", "Di banyak wilayah", 0.4),
+    color: colors.cold,
+  },
+  {
+    head: "AMERIKA UTARA",
+    body: "embun beku, Juni 1816",
+    at: cue("s4", "Di Amerika Utara", 0.4),
     color: colors.cold,
   },
   {
     head: "HARGA PANGAN NAIK",
     body: "panen gagal",
-    at: 6.8,
+    at: cue("s4", "Panen gagal", 0.3),
     color: colors.warm,
   },
 ];
 
+// Termometer skematis: air raksa turun melewati 0 °C (titik beku) => embun beku di bulan Juni.
+const ZERO_Y = 1040;
+const Thermometer: React.FC<{
+  readonly t: number;
+  readonly inAt: number;
+  readonly outAt: number;
+}> = ({ t, inAt, outAt }) => {
+  const i = interpolate(t, [inAt, inAt + 0.7], [0, 1], {
+    ...clamp,
+    easing: easeOut,
+  });
+  const o = Math.min(i, interpolate(t, [outAt - 0.3, outAt], [1, 0], clamp));
+  if (o <= 0) {
+    return null;
+  }
+  const fall = interpolate(t, [inAt + 0.8, inAt + 3.4], [0, 1], {
+    ...clamp,
+    easing: easeOut,
+  });
+  const level = 800 + fall * (1110 - 800);
+  const frozen = level > ZERO_Y;
+  const hg = frozen ? colors.cold : colors.warm;
+  const note = interpolate(t, [inAt + 2.4, inAt + 3.2], [0, 1], clamp);
+  return (
+    <svg
+      width={1080}
+      height={1920}
+      viewBox="0 0 1080 1920"
+      style={{ position: "absolute", inset: 0, opacity: o }}
+    >
+      <rect
+        x={330}
+        y={760}
+        width={60}
+        height={450}
+        rx={30}
+        fill="#0B1730"
+        stroke={colors.landLine}
+        strokeWidth={4}
+      />
+      <circle
+        cx={360}
+        cy={1250}
+        r={62}
+        fill="#0B1730"
+        stroke={colors.landLine}
+        strokeWidth={4}
+      />
+      <rect x={345} y={level} width={30} height={1250 - level} fill={hg} />
+      <circle cx={360} cy={1250} r={46} fill={hg} />
+      {[800, 870, 940, 1110, 1180].map((y) => (
+        <line
+          key={y}
+          x1={300}
+          x2={322}
+          y1={y}
+          y2={y}
+          stroke={colors.muted}
+          strokeWidth={3}
+        />
+      ))}
+      <line
+        x1={270}
+        x2={1000}
+        y1={ZERO_Y}
+        y2={ZERO_Y}
+        stroke={colors.sun}
+        strokeWidth={4}
+        strokeDasharray="12 10"
+      />
+      <text
+        x={440}
+        y={ZERO_Y - 18}
+        fill={colors.sun}
+        fontFamily={fonts.heading}
+        fontWeight={700}
+        fontSize={64}
+        stroke={colors.bg}
+        strokeWidth={10}
+        paintOrder="stroke"
+      >
+        0 °C
+      </text>
+      <text
+        x={440}
+        y={ZERO_Y + 50}
+        fill={colors.text}
+        fontFamily={fonts.mono}
+        fontSize={30}
+        stroke={colors.bg}
+        strokeWidth={8}
+        paintOrder="stroke"
+      >
+        titik beku air
+      </text>
+      <g opacity={note}>
+        <text
+          x={440}
+          y={1160}
+          fill={colors.cold}
+          fontFamily={fonts.heading}
+          fontWeight={700}
+          fontSize={56}
+          stroke={colors.bg}
+          strokeWidth={10}
+          paintOrder="stroke"
+        >
+          Embun beku
+        </text>
+        <text
+          x={440}
+          y={1210}
+          fill={colors.text}
+          fontFamily={fonts.mono}
+          fontSize={28}
+          stroke={colors.bg}
+          strokeWidth={8}
+          paintOrder="stroke"
+        >
+          timur laut AS, Juni 1816
+        </text>
+      </g>
+    </svg>
+  );
+};
+
 export const SceneS4: React.FC = () => {
   const total = sceneFrames("s4");
   const { t, opacity } = useSceneTime(total);
-  const frost = interpolate(t, [0.6, 4.5], [0, 0.9], {
+  const frost = interpolate(t, [0.6, CARDS[1].at + 1], [0, 0.9], {
     ...clamp,
     easing: easeOut,
   });
@@ -105,8 +238,8 @@ export const SceneS4: React.FC = () => {
         src="suhuf-tambora/photos/anomali-1816.png"
         caption="Suhu musim panas 1816 (°C)"
         t={t}
-        inAt={4.45}
-        outAt={6.8}
+        inAt={CARDS[1].at}
+        outAt={CARDS[2].at}
         top={705}
         width={704}
         height={560}
@@ -122,8 +255,12 @@ export const SceneS4: React.FC = () => {
           right: 80,
           top: 1322,
           opacity:
-            interpolate(t, [5.2, 5.8], [0, 1], clamp) *
-            interpolate(t, [6.5, 6.8], [1, 0], clamp),
+            interpolate(
+              t,
+              [CARDS[1].at + 0.9, CARDS[1].at + 1.5],
+              [0, 1],
+              clamp,
+            ) * interpolate(t, [CARDS[2].at - 0.3, CARDS[2].at], [1, 0], clamp),
           textAlign: "center",
           fontFamily: fonts.mono,
           fontSize: 27,
@@ -135,11 +272,14 @@ export const SceneS4: React.FC = () => {
         Biru = lebih dingin dari rata-rata 1971–2000
       </div>
 
+      <Thermometer t={t} inAt={CARDS[2].at} outAt={CARDS[3].at} />
+      {t >= CARDS[2].at && t < CARDS[3].at ? <Tag text="Skema" /> : null}
+
       <PhotoCard
         src="suhuf-tambora/photos/hunger-1817.jpg"
         caption="Kelaparan 1817 · gambar sezaman, Swiss"
         t={t}
-        inAt={6.8}
+        inAt={CARDS[3].at}
         top={760}
         width={900}
         height={540}
