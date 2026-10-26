@@ -1,4 +1,5 @@
 import { Audio } from "@remotion/media";
+import { Sfx } from "../elements/Sfx";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { Subtitle } from "../elements/Subtitle";
 import { PhotoBackdrop } from "../elements/PhotoBackdrop";
@@ -270,6 +271,13 @@ export const SceneS2: React.FC = () => {
         <Tag text="Skema" />
       </div>
 
+      <Sfx name="whoosh" at={0.2} volume={0.3} />
+      <Sfx name="pop" at={VEI_AT} volume={0.4} />
+      <Sfx name="whoosh" at={SWITCH} volume={0.35} />
+      <Sfx name="thud" at={SWITCH + 0.3} volume={0.6} />
+      {[1, 2, 3].map((i) => (
+        <Sfx key={i} name="pop" at={SWITCH + 0.3 + i * 0.5} volume={0.35} />
+      ))}
       <Audio
         name="VO s2"
         from={Math.round(LEAD * 30)}

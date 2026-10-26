@@ -1,4 +1,5 @@
 import { Audio } from "@remotion/media";
+import { Sfx } from "../elements/Sfx";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { Subtitle } from "../elements/Subtitle";
 import { Tag, clamp, easeOut, useSceneTime } from "../elements/common";
@@ -149,6 +150,15 @@ export const SceneS3: React.FC = () => {
         </text>
       </svg>
       <Tag text="Skema" />
+      <Sfx name="rumble" at={c1} volume={0.45} />
+      <Sfx name="sweep-up" at={c1} volume={0.35} />
+      <Sfx name="tick" at={c1 + 0.4} volume={0.35} />
+      <Sfx name="shimmer" at={c2} volume={0.35} />
+      <Sfx name="tick" at={c2 + 0.4} volume={0.35} />
+      <Sfx name="whoosh" at={c3} volume={0.3} />
+      <Sfx name="ding" at={c3 + 0.2} volume={0.3} />
+      <Sfx name="dim-down" at={c4} volume={0.4} />
+      <Sfx name="tick" at={c4} volume={0.35} />
       <Audio
         name="VO s3"
         from={Math.round(LEAD * 30)}

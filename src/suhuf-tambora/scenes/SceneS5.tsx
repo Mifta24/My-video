@@ -1,4 +1,5 @@
 import { Audio } from "@remotion/media";
+import { Sfx } from "../elements/Sfx";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { Subtitle } from "../elements/Subtitle";
 import { PhotoBackdrop } from "../elements/PhotoBackdrop";
@@ -164,6 +165,10 @@ export const SceneS5: React.FC = () => {
         </div>
       </div>
 
+      <Sfx name="whoosh" at={qIn} volume={0.3} />
+      <Sfx name="thud" at={endAt} volume={0.45} />
+      <Sfx name="pop" at={subAt} volume={0.4} />
+      <Sfx name="ding" at={subAt + 0.6} volume={0.3} />
       <Audio
         name="VO s5"
         from={Math.round(LEAD * 30)}

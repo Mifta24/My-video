@@ -1,4 +1,5 @@
 import { Audio } from "@remotion/media";
+import { Sfx } from "../elements/Sfx";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { Subtitle } from "../elements/Subtitle";
 import { PhotoBackdrop } from "../elements/PhotoBackdrop";
@@ -250,6 +251,10 @@ export const SceneS2B: React.FC = () => {
 
       <Tag text="Skema" />
 
+      <Sfx name="riser" at={0.2} volume={0.4} />
+      <Sfx name="sweep-up" at={0.5} volume={0.35} />
+      <Sfx name="boom" at={SWITCH - 0.5} volume={0.55} />
+      <Sfx name="sonar" at={SWITCH + 0.3} volume={0.5} />
       <Audio
         name="VO s2b"
         from={Math.round(LEAD * 30)}

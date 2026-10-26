@@ -1,4 +1,5 @@
 import { Audio } from "@remotion/media";
+import { Sfx } from "../elements/Sfx";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { Subtitle } from "../elements/Subtitle";
 import { PhotoCard } from "../elements/PhotoCard";
@@ -286,6 +287,17 @@ export const SceneS4: React.FC = () => {
         zoomFrom={1.0}
         zoomTo={1.06}
       />
+      <Sfx name="wind" at={0.4} volume={0.3} />
+      {CARDS.map((c, i) => (
+        <Sfx
+          key={c.head}
+          name={i === 3 ? "thud" : "whoosh"}
+          at={c.at}
+          volume={i === 3 ? 0.55 : 0.3}
+        />
+      ))}
+      <Sfx name="ding" at={CARDS[0].at + 0.2} volume={0.3} />
+      <Sfx name="shimmer" at={CARDS[2].at} volume={0.3} />
       <Audio
         name="VO s4"
         from={Math.round(LEAD * 30)}

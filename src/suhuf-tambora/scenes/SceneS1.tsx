@@ -1,4 +1,5 @@
 import { Audio } from "@remotion/media";
+import { Sfx } from "../elements/Sfx";
 import { AbsoluteFill, interpolate, staticFile } from "remotion";
 import { GlobeLayer } from "../three/Globe";
 import { Subtitle } from "../elements/Subtitle";
@@ -142,6 +143,12 @@ export const SceneS1: React.FC = () => {
       >
         Bagaimana mungkin?
       </div>
+      <Sfx name="rumble" at={0.3} volume={0.5} />
+      <Sfx name="boom" at={0.55} volume={0.7} />
+      <Sfx name="whoosh" at={sw} volume={0.35} />
+      <Sfx name="wind" at={sw + 0.3} volume={0.3} />
+      <Sfx name="shimmer" at={sw + 0.7} volume={0.3} />
+      <Sfx name="pop" at={qAt} volume={0.35} />
       <Audio
         name="VO s1"
         from={Math.round(LEAD * 30)}
