@@ -25,6 +25,7 @@ import { YtProblemScene } from "./ai-apartment/youtube/YtProblemScene";
 import { YtRevealScene } from "./ai-apartment/youtube/YtRevealScene";
 import { ShortsTeaser } from "./suhuf-tambora/ShortsTeaser";
 import { shortsTotalFrames } from "./suhuf-tambora/timing";
+import { SpinningCube } from "./three-demo/SpinningCube";
 import { LongVideo } from "./suhuf-tambora/long/LongVideo";
 import { longDurationFrames } from "./suhuf-tambora/long/timing";
 
@@ -320,6 +321,7 @@ export const RemotionRoot: React.FC = () => {
           />
         </Folder>
       </Folder>
+      <Composition id="ThreeDemo" component={SpinningCube} durationInFrames={90} fps={30} width={1080} height={1080} />
     </>
   );
 };
