@@ -5,7 +5,7 @@ import { FPS } from "../timing";
 
 // SFX prosedural (scripts/gen-sfx-suhuf.py). `at` = detik relatif awal scene.
 // Volume relatif terhadap narasi: SFX_MASTER diturunkan kalau terlalu ramai.
-export const SFX_MASTER = 1;
+export const SFX_MASTER = 0.3;
 
 export type SfxName =
   | "boom"

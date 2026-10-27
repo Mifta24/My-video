@@ -1,6 +1,7 @@
 """Generate Suhuf Pengetahuan VO clips from src/suhuf-tambora/vo/spec.json with edge-tts.
 
 Writes public/suhuf-tambora/vo/<id>.mp3 and src/suhuf-tambora/vo/durations.json.
+Use --only s1,s4 to regenerate just those clips.
 Use --measure-only to skip TTS and just re-measure existing mp3 files
 (e.g. after replacing them with a human recording).
 Run: ~/projects/tts-venv/venv/bin/python scripts/gen-vo-suhuf.py
@@ -43,8 +44,10 @@ async def synth(clip):
 
 async def main():
     if "--measure-only" not in sys.argv:
+        only = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
         for clip in spec["clips"]:
-            await synth(clip)
+            if only is None or clip["id"] in only:
+                await synth(clip)
     durations = {c["id"]: duration(out_dir / f"{c['id']}.mp3") for c in spec["clips"]}
     (root / "src/suhuf-tambora/vo/durations.json").write_text(json.dumps(durations, indent=2) + "\n")
     for c in spec["clips"]:

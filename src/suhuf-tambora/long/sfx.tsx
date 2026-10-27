@@ -25,6 +25,7 @@ const CUES: Record<string, readonly Cue[]> = {
     ["b01_07", 0, "whoosh", 0.3],
     ["b01_07", 0.2, "wind", 0.3],
     ["b01_07", 0.9, "shimmer", 0.3],
+    ["b01_08", 0.1, "ding", 0.25],
   ],
   b2: [
     ["b02_01", 0, "whoosh", 0.3],

@@ -229,6 +229,17 @@ const B1: React.FC<SceneProps> = ({ t }) => {
               y={510}
               align="center"
             />
+            <TextBlock
+              lt={lt}
+              delay={s("b01_08") - s("b01_07")}
+              title="Satu lembar, satu cerita."
+              color={colors.sun}
+              titleSize={84}
+              x={0}
+              w={1920}
+              y={720}
+              align="center"
+            />
           </>
         )}
       </Shot>

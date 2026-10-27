@@ -24,6 +24,12 @@ export const SceneS1: React.FC = () => {
   // Semua isyarat mengikuti narasi: ganti tahun saat "Setahun kemudian".
   const sw = cue("s1", "Setahun kemudian", 0.5);
   const qAt = cue("s1", "Bagaimana", 0.2);
+  const slAt = cue("s1", "Satu lembar", 0);
+  const slogan = interpolate(t, [slAt, slAt + 0.7], [0, 1], {
+    ...clamp,
+    easing: easeOut,
+  });
+  const qFade = interpolate(t, [slAt - 0.3, slAt], [1, 0], clamp);
   const swap = interpolate(t, [sw, sw + 1.0], [0, 1], {
     ...clamp,
     easing: easeOut,
@@ -136,12 +142,31 @@ export const SceneS1: React.FC = () => {
           fontWeight: 700,
           fontSize: 76,
           color: colors.text,
-          opacity: interpolate(t, [qAt, qAt + 0.6], [0, 1], clamp),
+          opacity: interpolate(t, [qAt, qAt + 0.6], [0, 1], clamp) * qFade,
           translate: `0px ${(1 - interpolate(t, [qAt, qAt + 0.6], [0, 1], clamp)) * 24}px`,
           textShadow: `0 4px 20px ${colors.bg}`,
         }}
       >
         Bagaimana mungkin?
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          left: 80,
+          right: 80,
+          top: 275,
+          textAlign: "center",
+          fontFamily: fonts.heading,
+          fontWeight: 700,
+          fontSize: 62,
+          color: colors.sun,
+          opacity: slogan,
+          translate: `0px ${(1 - slogan) * 24}px`,
+          textShadow: `0 4px 20px ${colors.bg}`,
+        }}
+      >
+        Satu lembar, satu cerita.
       </div>
       <Sfx name="rumble" at={0.3} volume={0.5} />
       <Sfx name="boom" at={0.55} volume={0.7} />
@@ -149,6 +174,7 @@ export const SceneS1: React.FC = () => {
       <Sfx name="wind" at={sw + 0.3} volume={0.3} />
       <Sfx name="shimmer" at={sw + 0.7} volume={0.3} />
       <Sfx name="pop" at={qAt} volume={0.35} />
+      <Sfx name="ding" at={slAt + 0.1} volume={0.25} />
       <Audio
         name="VO s1"
         from={Math.round(LEAD * 30)}
