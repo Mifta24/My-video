@@ -35,7 +35,7 @@ const ColLabel: React.FC<{
 // ── S-01 · HOOK: "10 : 1" lalu dicoret, kolom bakteri menyusut ──
 const S01: V = ({ t }) => {
   const keliru = clipStart("s01", "s01_02");
-  const shrink = interpolate(t, [keliru, keliru + 1.4], [0, 1], { ...clamp, easing: easeInOut });
+  const shrink = interpolate(t, [keliru - 0.1, keliru + 0.85], [0, 1], { ...clamp, easing: easeInOut });
   const bact = interpolate(shrink, [0, 1], [100, 13]);
   return (
     <>

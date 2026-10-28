@@ -321,7 +321,8 @@ export const CellGrid: React.FC<{
   readonly gather?: number; // 0..1 sel berinti berkumpul ke kolom kanan
   readonly gatherX?: number;
   readonly gatherY?: number;
-}> = ({ x, y, cell, appear, nucleus = 0, dimPlain = 0, gather = 0, gatherX = 0, gatherY = 0 }) => {
+  readonly gatherCols?: number; // sel berinti disusun gatherCols per baris, dari bawah
+}> = ({ x, y, cell, appear, nucleus = 0, dimPlain = 0, gather = 0, gatherX = 0, gatherY = 0, gatherCols = 2 }) => {
   const r = cell * 0.38;
   let k = 0;
   return (
@@ -335,8 +336,8 @@ export const CellGrid: React.FC<{
         let cy = y + row * cell + cell / 2;
         if (isN && gather > 0) {
           const j = k++;
-          const tx = gatherX + (j % 2) * cell;
-          const ty = gatherY - Math.floor(j / 2) * cell;
+          const tx = gatherX + (j % gatherCols) * cell;
+          const ty = gatherY - Math.floor(j / gatherCols) * cell;
           const g = easeOut(gather);
           cx = cx + (tx - cx) * g;
           cy = cy + (ty - cy) * g;

@@ -25,7 +25,9 @@ import { YtProblemScene } from "./ai-apartment/youtube/YtProblemScene";
 import { YtRevealScene } from "./ai-apartment/youtube/YtRevealScene";
 import { ShortsScene } from "./suhuf-bakteri/shorts/ShortsScene";
 import { ShortsVideo } from "./suhuf-bakteri/shorts/ShortsVideo";
-import { sceneFrames, shortsTotalFrames as bakteriShortsFrames } from "./suhuf-bakteri/timing";
+import { LongScene } from "./suhuf-bakteri/long/LongScene";
+import { LongVideo as BakteriLongVideo } from "./suhuf-bakteri/long/LongVideo";
+import { longTotalFrames as bakteriLongFrames, sceneFrames, shortsTotalFrames as bakteriShortsFrames } from "./suhuf-bakteri/timing";
 import { ShortsTeaser } from "./suhuf-tambora/ShortsTeaser";
 import { shortsTotalFrames } from "./suhuf-tambora/timing";
 import { SpinningCube } from "./three-demo/SpinningCube";
@@ -44,6 +46,25 @@ export const RemotionRoot: React.FC = () => {
           width={1080}
           height={1920}
         />
+        <Composition
+          id="Bakteri-YouTube-Long"
+          component={BakteriLongVideo}
+          durationInFrames={bakteriLongFrames}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+        <Folder name="Bakteri-Adegan-Long">
+          <Composition
+            id="Bakteri-Long-Adegan"
+            component={LongScene}
+            durationInFrames={sceneFrames("l01")}
+            fps={30}
+            width={1920}
+            height={1080}
+            defaultProps={{ sceneId: "l01" }}
+          />
+        </Folder>
         <Folder name="Bakteri-Adegan-Shorts">
           <Composition
             id="Bakteri-Shorts-Adegan"
