@@ -61,7 +61,7 @@ def build(block: str, prefix: str):
     return scenes
 
 
-for name, block, prefix, rate in [("shorts", shorts_md, "s", "+0%"), ("long", long_md, "l", "-4%")]:
+for name, block, prefix, rate in [("shorts", shorts_md, "s", "+0%"), ("long", long_md, "l", "+0%")]:
     scenes = build(block, prefix)
     out = {"voice": "id-ID-ArdiNeural", "rate": rate, "scenes": scenes}
     path = root / f"src/suhuf-bakteri/vo/spec-{name}.json"

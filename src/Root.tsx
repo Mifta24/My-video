@@ -23,6 +23,9 @@ import { YtFormScene } from "./ai-apartment/youtube/YtFormScene";
 import { YtLiftTourScene } from "./ai-apartment/youtube/YtLiftTourScene";
 import { YtProblemScene } from "./ai-apartment/youtube/YtProblemScene";
 import { YtRevealScene } from "./ai-apartment/youtube/YtRevealScene";
+import { ShortsScene } from "./suhuf-bakteri/shorts/ShortsScene";
+import { ShortsVideo } from "./suhuf-bakteri/shorts/ShortsVideo";
+import { sceneFrames, shortsTotalFrames as bakteriShortsFrames } from "./suhuf-bakteri/timing";
 import { ShortsTeaser } from "./suhuf-tambora/ShortsTeaser";
 import { shortsTotalFrames } from "./suhuf-tambora/timing";
 import { SpinningCube } from "./three-demo/SpinningCube";
@@ -32,6 +35,27 @@ import { longDurationFrames } from "./suhuf-tambora/long/timing";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Folder name="Suhuf-Pengetahuan-02-Bakteri">
+        <Composition
+          id="Bakteri-Shorts"
+          component={ShortsVideo}
+          durationInFrames={bakteriShortsFrames}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Folder name="Bakteri-Adegan-Shorts">
+          <Composition
+            id="Bakteri-Shorts-Adegan"
+            component={ShortsScene}
+            durationInFrames={sceneFrames("s01")}
+            fps={30}
+            width={1080}
+            height={1920}
+            defaultProps={{ sceneId: "s01" }}
+          />
+        </Folder>
+      </Folder>
       <Folder name="Suhuf-Pengetahuan-01-Tambora">
         <Composition
           id="Tambora-YouTube-Long"
