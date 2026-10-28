@@ -1,0 +1,1349 @@
+{
+ "voice": "id-ID-ArdiNeural",
+ "rate": "-4%",
+ "scenes": [
+  {
+   "id": "l01",
+   "clips": [
+    {
+     "id": "l01_01",
+     "text": "Sepuluh banding satu."
+    },
+    {
+     "id": "l01_02",
+     "text": "Mungkin kamu pernah membaca angka ini."
+    },
+    {
+     "id": "l01_03",
+     "text": "Katanya, di tubuh manusia, bakteri jumlahnya sepuluh kali lebih banyak daripada sel kita sendiri."
+    },
+    {
+     "id": "l01_04",
+     "text": "Angkanya rapi."
+    },
+    {
+     "id": "l01_05",
+     "text": "Mudah diingat."
+    },
+    {
+     "id": "l01_06",
+     "text": "Dan diulang di mana-mana."
+    },
+    {
+     "id": "l01_07",
+     "text": "Tapi suatu hari ada yang bertanya: dari mana angka ini sebenarnya berasal?"
+    },
+    {
+     "id": "l01_08",
+     "text": "Jawabannya mengejutkan."
+    },
+    {
+     "id": "l01_09",
+     "text": "Ternyata angka itu berawal dari perkiraan kasar."
+    },
+    {
+     "id": "l01_10",
+     "text": "Dan ketika seseorang menghitungnya ulang, hasilnya berbeda jauh."
+    }
+   ],
+   "bab": 1,
+   "babTitle": "HOOK"
+  },
+  {
+   "id": "l02",
+   "clips": [
+    {
+     "id": "l02_01",
+     "text": "Satu lembar, satu cerita."
+    },
+    {
+     "id": "l02_02",
+     "text": "Selamat datang di Suhuf Pengetahuan."
+    },
+    {
+     "id": "l02_03",
+     "text": "Hari ini kita membuka satu lembar tentang sebuah angka."
+    },
+    {
+     "id": "l02_04",
+     "text": "Perjalanannya dari tahun 1972 sampai hitung ulang di tahun 2016."
+    },
+    {
+     "id": "l02_05",
+     "text": "Santai saja."
+    },
+    {
+     "id": "l02_06",
+     "text": "Tidak ada yang menakutkan di sini."
+    },
+    {
+     "id": "l02_07",
+     "text": "Hanya hitung-hitungan, dan beberapa kejutan kecil."
+    }
+   ],
+   "bab": 1,
+   "babTitle": "HOOK"
+  },
+  {
+   "id": "l03",
+   "clips": [
+    {
+     "id": "l03_01",
+     "text": "Mari mulai dari klaimnya."
+    },
+    {
+     "id": "l03_02",
+     "text": "Kalimatnya hampir selalu sama."
+    },
+    {
+     "id": "l03_03",
+     "text": "Bakteri di tubuh manusia jumlahnya sepuluh kali lipat sel manusia."
+    },
+    {
+     "id": "l03_04",
+     "text": "Sebagian orang bahkan menyebut seratus kali lipat."
+    },
+    {
+     "id": "l03_05",
+     "text": "Sekilas, rasanya masuk akal."
+    },
+    {
+     "id": "l03_06",
+     "text": "Bakteri itu kecil sekali, dan jumlahnya memang banyak."
+    },
+    {
+     "id": "l03_07",
+     "text": "Jadi sepuluh kali lipat terdengar wajar."
+    },
+    {
+     "id": "l03_08",
+     "text": "Seratus kali lipat pun terdengar mungkin."
+    }
+   ],
+   "bab": 2,
+   "babTitle": "APA KATA BANYAK ORANG"
+  },
+  {
+   "id": "l04",
+   "clips": [
+    {
+     "id": "l04_01",
+     "text": "Jadi di video ini, kita lakukan tiga hal."
+    },
+    {
+     "id": "l04_02",
+     "text": "Pertama, mencari asal angkanya."
+    },
+    {
+     "id": "l04_03",
+     "text": "Kedua, ikut menghitung ulang, langkah demi langkah, dari sisi bakteri dan sisi sel manusia."
+    },
+    {
+     "id": "l04_04",
+     "text": "Ketiga, melihat bagian mana yang masih belum pasti."
+    },
+    {
+     "id": "l04_05",
+     "text": "Kita mulai dari yang pertama."
+    }
+   ],
+   "bab": 2,
+   "babTitle": "APA KATA BANYAK ORANG"
+  },
+  {
+   "id": "l05",
+   "clips": [
+    {
+     "id": "l05_01",
+     "text": "Kita mundur ke tahun 1972."
+    },
+    {
+     "id": "l05_02",
+     "text": "Di tahun itu, seorang peneliti bernama Luckey membuat sebuah perkiraan."
+    },
+    {
+     "id": "l05_03",
+     "text": "Hitungannya sederhana."
+    },
+    {
+     "id": "l05_04",
+     "text": "Orang menyebut hitungan seperti ini hitungan di balik amplop, atau back-of-the-envelope.",
+     "say": "Orang menyebut hitungan seperti ini hitungan di balik amplop, atau bek of de envelop."
+    },
+    {
+     "id": "l05_05",
+     "text": "Cepat, kasar, cukup untuk memberi gambaran."
+    },
+    {
+     "id": "l05_06",
+     "text": "Ia memakai dua bilangan."
+    },
+    {
+     "id": "l05_07",
+     "text": "Yang pertama, sekitar sepuluh pangkat sebelas bakteri untuk setiap gram isi saluran cerna."
+    },
+    {
+     "id": "l05_08",
+     "text": "Itu sekitar seratus miliar bakteri dalam satu gram."
+    }
+   ],
+   "bab": 3,
+   "babTitle": "DARI MANA 10:1"
+  },
+  {
+   "id": "l06",
+   "clips": [
+    {
+     "id": "l06_01",
+     "text": "Bilangan kedua adalah kapasitas saluran cerna."
+    },
+    {
+     "id": "l06_02",
+     "text": "Luckey menganggapnya sekitar satu liter, atau kira-kira satu kilogram isi."
+    },
+    {
+     "id": "l06_03",
+     "text": "Lalu kedua bilangan itu dikalikan."
+    },
+    {
+     "id": "l06_04",
+     "text": "Hasilnya angka yang sangat besar, dan dari perkiraan inilah angka sepuluh banding satu itu bermula."
+    },
+    {
+     "id": "l06_05",
+     "text": "Tapi perhatikan."
+    },
+    {
+     "id": "l06_06",
+     "text": "Ini bukan hasil menghitung bakteri satu per satu."
+    },
+    {
+     "id": "l06_07",
+     "text": "Ini hasil perkalian dua perkiraan."
+    }
+   ],
+   "bab": 3,
+   "babTitle": "DARI MANA 10:1"
+  },
+  {
+   "id": "l07",
+   "clips": [
+    {
+     "id": "l07_01",
+     "text": "Bayangkan kamu ingin tahu berapa banyak orang di sebuah gedung."
+    },
+    {
+     "id": "l07_02",
+     "text": "Kamu tahu satu lantai bisa penuh sesak."
+    },
+    {
+     "id": "l07_03",
+     "text": "Lalu kamu menganggap semua lantai sama penuhnya, dan mengalikannya."
+    },
+    {
+     "id": "l07_04",
+     "text": "Ini hanya perumpamaan, bukan bagian dari data."
+    },
+    {
+     "id": "l07_05",
+     "text": "Hitungannya rapi, tapi asumsinya perlu diuji."
+    },
+    {
+     "id": "l07_06",
+     "text": "Perkiraan kasar memang begitu sifatnya."
+    },
+    {
+     "id": "l07_07",
+     "text": "Cukup untuk gambaran awal."
+    },
+    {
+     "id": "l07_08",
+     "text": "Belum cukup untuk jadi acuan."
+    }
+   ],
+   "bab": 3,
+   "babTitle": "DARI MANA 10:1"
+  },
+  {
+   "id": "l08",
+   "clips": [
+    {
+     "id": "l08_01",
+     "text": "Lima tahun kemudian, tahun 1977, seorang penulis bernama Savage mengutip angka itu."
+    },
+    {
+     "id": "l08_02",
+     "text": "Setelah itu, hampir semua makalah tentang mikrobiota bersandar pada makalah Savage, langsung atau tidak langsung."
+    },
+    {
+     "id": "l08_03",
+     "text": "Dan makalah Savage sendiri, ternyata mengutip Luckey."
+    },
+    {
+     "id": "l08_04",
+     "text": "Jadi jalurnya seperti estafet."
+    },
+    {
+     "id": "l08_05",
+     "text": "Tongkatnya sama."
+    },
+    {
+     "id": "l08_06",
+     "text": "Hanya tangannya yang berganti."
+    }
+   ],
+   "bab": 3,
+   "babTitle": "DARI MANA 10:1"
+  },
+  {
+   "id": "l09",
+   "clips": [
+    {
+     "id": "l09_01",
+     "text": "Dalam makalah mereka tahun 2016, para penulis yang menghitung ulang menyebut perkiraan Luckey itu elegan."
+    },
+    {
+     "id": "l09_02",
+     "text": "Tapi mereka juga menulis, perkiraan itu tidak dimaksudkan menjadi acuan selama puluhan tahun."
+    },
+    {
+     "id": "l09_03",
+     "text": "Jadi cerita ini bukan soal mencari siapa yang salah."
+    },
+    {
+     "id": "l09_04",
+     "text": "Luckey membuat perkiraan awal."
+    },
+    {
+     "id": "l09_05",
+     "text": "Yang berlangsung terlalu lama adalah pemakaiannya."
+    }
+   ],
+   "bab": 3,
+   "babTitle": "DARI MANA 10:1"
+  },
+  {
+   "id": "l10",
+   "clips": [
+    {
+     "id": "l10_01",
+     "text": "Lalu dari mana angka seratus banding satu?"
+    },
+    {
+     "id": "l10_02",
+     "text": "Ada laporan NIH yang menyebut sekitar satu sampai tiga persen massa tubuh adalah bakteri, tanpa rujukan yang jelas.",
+     "say": "Ada laporan en-ai-eich yang menyebut sekitar satu sampai tiga persen massa tubuh adalah bakteri, tanpa rujukan yang jelas."
+    },
+    {
+     "id": "l10_03",
+     "text": "Angka persen itu dikalikan dengan ukuran bakteri standar buku teks."
+    },
+    {
+     "id": "l10_04",
+     "text": "Hasilnya sekitar sepuluh pangkat lima belas bakteri."
+    },
+    {
+     "id": "l10_05",
+     "text": "Dari situlah muncul klaim seratus banding satu."
+    },
+    {
+     "id": "l10_06",
+     "text": "Nanti kita lihat, ukuran standar itu juga ternyata bermasalah."
+    }
+   ],
+   "bab": 3,
+   "babTitle": "DARI MANA 10:1"
+  },
+  {
+   "id": "l11",
+   "clips": [
+    {
+     "id": "l11_01",
+     "text": "Sekarang kita menghitung ulang, mulai dari sisi bakteri."
+    },
+    {
+     "id": "l11_02",
+     "text": "Cara berpikirnya sederhana."
+    },
+    {
+     "id": "l11_03",
+     "text": "Untuk menghitung sesuatu yang tidak bisa dihitung satu per satu, kita butuh tiga hal."
+    },
+    {
+     "id": "l11_04",
+     "text": "Di mana letaknya."
+    },
+    {
+     "id": "l11_05",
+     "text": "Berapa ruangnya."
+    },
+    {
+     "id": "l11_06",
+     "text": "Dan seberapa padat isinya."
+    },
+    {
+     "id": "l11_07",
+     "text": "Letak, ruang, kepadatan."
+    },
+    {
+     "id": "l11_08",
+     "text": "Kita ikuti tiga langkah itu."
+    }
+   ],
+   "bab": 4,
+   "babTitle": "HITUNG ULANG BAKTERI"
+  },
+  {
+   "id": "l12",
+   "clips": [
+    {
+     "id": "l12_01",
+     "text": "Langkah pertama, letak."
+    },
+    {
+     "id": "l12_02",
+     "text": "Bakteri tidak tersebar rata di seluruh saluran cerna."
+    },
+    {
+     "id": "l12_03",
+     "text": "Di usus besar, atau kolon, jumlahnya paling sedikit seratus kali lebih banyak daripada organ lain."
+    },
+    {
+     "id": "l12_04",
+     "text": "Di lambung dan bagian atas usus halus, jumlahnya hanya sekitar seribu sampai sepuluh ribu per mililiter."
+    },
+    {
+     "id": "l12_05",
+     "text": "Kenapa sedikit?"
+    },
+    {
+     "id": "l12_06",
+     "text": "Dua sebab."
+    },
+    {
+     "id": "l12_07",
+     "text": "Asam lambung yang pH-nya rendah, dan isi yang mengalir cepat.",
+     "say": "Asam lambung yang pe-ha-nya rendah, dan isi yang mengalir cepat."
+    }
+   ],
+   "bab": 4,
+   "babTitle": "HITUNG ULANG BAKTERI"
+  },
+  {
+   "id": "l13",
+   "clips": [
+    {
+     "id": "l13_01",
+     "text": "Bagaimana dengan mulut?"
+    },
+    {
+     "id": "l13_02",
+     "text": "Seluruh bakteri di mulut jumlahnya kurang dari satu persen dari bakteri di kolon."
+    },
+    {
+     "id": "l13_03",
+     "text": "Organ lain, termasuk kulit, paling banyak sekitar satu triliun."
+    },
+    {
+     "id": "l13_04",
+     "text": "Itu kurang dari tiga persen dari total."
+    },
+    {
+     "id": "l13_05",
+     "text": "Jadi kalau ditarik garis besarnya, hampir semua bakteri tinggal di satu tempat."
+    },
+    {
+     "id": "l13_06",
+     "text": "Kolon."
+    }
+   ],
+   "bab": 4,
+   "babTitle": "HITUNG ULANG BAKTERI"
+  },
+  {
+   "id": "l14",
+   "clips": [
+    {
+     "id": "l14_01",
+     "text": "Langkah kedua, ruang."
+    },
+    {
+     "id": "l14_02",
+     "text": "Berapa isi kolon?"
+    },
+    {
+     "id": "l14_03",
+     "text": "Luckey memakai satu liter untuk seluruh saluran cerna."
+    },
+    {
+     "id": "l14_04",
+     "text": "Para penulis memakai analisis MRI untuk pria referensi, dan hasilnya sekitar nol koma empat liter, dengan ketidakpastian sekitar dua puluh lima persen.",
+     "say": "Para penulis memakai analisis em-er-i untuk pria referensi, dan hasilnya sekitar nol koma empat liter, dengan ketidakpastian sekitar dua puluh lima persen."
+    },
+    {
+     "id": "l14_05",
+     "text": "Isinya juga tidak tetap."
+    },
+    {
+     "id": "l14_06",
+     "text": "Setelah makan, berubah sekitar sepuluh persen."
+    },
+    {
+     "id": "l14_07",
+     "text": "Jadi nol koma empat liter adalah angka acuan."
+    }
+   ],
+   "bab": 4,
+   "babTitle": "HITUNG ULANG BAKTERI"
+  },
+  {
+   "id": "l15",
+   "clips": [
+    {
+     "id": "l15_01",
+     "text": "Langkah ketiga, kepadatan."
+    },
+    {
+     "id": "l15_02",
+     "text": "Berapa banyak bakteri dalam satu gram isi kolon?"
+    },
+    {
+     "id": "l15_03",
+     "text": "Para penulis mengumpulkan hasil dari empat belas studi yang mengukur bakteri dalam tinja."
+    },
+    {
+     "id": "l15_04",
+     "text": "Kepadatan terukurnya sekitar nol koma sembilan kali sepuluh pangkat sebelas per gram tinja basah."
+    },
+    {
+     "id": "l15_05",
+     "text": "Atau sekitar sembilan puluh miliar bakteri per gram."
+    },
+    {
+     "id": "l15_06",
+     "text": "Variasi antarorang sekitar empat puluh enam persen."
+    }
+   ],
+   "bab": 4,
+   "babTitle": "HITUNG ULANG BAKTERI"
+  },
+  {
+   "id": "l16",
+   "clips": [
+    {
+     "id": "l16_01",
+     "text": "Perhatikan."
+    },
+    {
+     "id": "l16_02",
+     "text": "Kepadatan ini hampir sama dengan angka yang dipakai Luckey."
+    },
+    {
+     "id": "l16_03",
+     "text": "Yang meleset ternyata ruangnya."
+    },
+    {
+     "id": "l16_04",
+     "text": "Satu liter diganti nol koma empat liter."
+    },
+    {
+     "id": "l16_05",
+     "text": "Kalikan ruang dengan kepadatan, dan total bakteri kolon turun dari angka lama."
+    },
+    {
+     "id": "l16_06",
+     "text": "Bukan karena kepadatannya diubah, tapi karena ruangnya diukur."
+    }
+   ],
+   "bab": 4,
+   "babTitle": "HITUNG ULANG BAKTERI"
+  },
+  {
+   "id": "l17",
+   "clips": [
+    {
+     "id": "l17_01",
+     "text": "Ada satu hal lagi: ukuran bakteri."
+    },
+    {
+     "id": "l17_02",
+     "text": "Buku teks biasanya memakai bakteri standar, satu mikrometer kubik, dengan massa sekitar satu pikogram."
+    },
+    {
+     "id": "l17_03",
+     "text": "Pikogram itu sepersejuta dari sepersejuta gram."
+    },
+    {
+     "id": "l17_04",
+     "text": "Tapi bakteri usus rata-rata sekitar lima pikogram dalam keadaan basah, beberapa kali lebih besar."
+    },
+    {
+     "id": "l17_05",
+     "text": "Kalau bakterinya lebih besar, untuk massa yang sama jumlahnya lebih sedikit."
+    },
+    {
+     "id": "l17_06",
+     "text": "Inilah salah satu sebab klaim seratus banding satu kebesaran."
+    }
+   ],
+   "bab": 4,
+   "babTitle": "HITUNG ULANG BAKTERI"
+  },
+  {
+   "id": "l18",
+   "clips": [
+    {
+     "id": "l18_01",
+     "text": "Jeda ringkas pertama."
+    },
+    {
+     "id": "l18_02",
+     "text": "Kita rekap sisi bakteri."
+    },
+    {
+     "id": "l18_03",
+     "text": "Satu, hampir semua bakteri ada di kolon."
+    },
+    {
+     "id": "l18_04",
+     "text": "Dua, ruangnya sekitar nol koma empat liter, bukan satu liter."
+    },
+    {
+     "id": "l18_05",
+     "text": "Tiga, kepadatannya sekitar nol koma sembilan kali sepuluh pangkat sebelas per gram, dari empat belas studi."
+    },
+    {
+     "id": "l18_06",
+     "text": "Empat, bakteri usus lebih besar dari ukuran standar buku teks."
+    },
+    {
+     "id": "l18_07",
+     "text": "Sisi bakteri selesai."
+    },
+    {
+     "id": "l18_08",
+     "text": "Sekarang sisi satunya."
+    }
+   ],
+   "bab": 4,
+   "babTitle": "HITUNG ULANG BAKTERI"
+  },
+  {
+   "id": "l19",
+   "clips": [
+    {
+     "id": "l19_01",
+     "text": "Sisi sel manusia."
+    },
+    {
+     "id": "l19_02",
+     "text": "Mungkin terdengar mudah, karena kita tahu apa itu sel."
+    },
+    {
+     "id": "l19_03",
+     "text": "Tapi menghitung sel manusia juga tidak sesederhana kelihatannya."
+    },
+    {
+     "id": "l19_04",
+     "text": "Tubuh punya banyak jenis sel, dengan ukuran dan jumlah yang berbeda jauh."
+    },
+    {
+     "id": "l19_05",
+     "text": "Jadi menghitungnya sering dilakukan jenis demi jenis."
+    }
+   ],
+   "bab": 5,
+   "babTitle": "HITUNG ULANG SEL MANUSIA"
+  },
+  {
+   "id": "l20",
+   "clips": [
+    {
+     "id": "l20_01",
+     "text": "Satu cara menghitung, yaitu per jenis sel dengan lima puluh enam kategori, memberi sekitar tiga puluh tujuh triliun sel."
+    },
+    {
+     "id": "l20_02",
+     "text": "Lalu para penulis menghitung ulang dengan cara mereka sendiri, dan mendapat sekitar tiga puluh triliun."
+    },
+    {
+     "id": "l20_03",
+     "text": "Dua angka itu tidak persis sama."
+    },
+    {
+     "id": "l20_04",
+     "text": "Tapi keduanya berada di kisaran yang dekat."
+    }
+   ],
+   "bab": 5,
+   "babTitle": "HITUNG ULANG SEL MANUSIA"
+  },
+  {
+   "id": "l21",
+   "clips": [
+    {
+     "id": "l21_01",
+     "text": "Ada satu hal menarik."
+    },
+    {
+     "id": "l21_02",
+     "text": "Sekitar sembilan puluh persen sel manusia tidak punya inti."
+    },
+    {
+     "id": "l21_03",
+     "text": "Terutama sel darah merah dan trombosit."
+    },
+    {
+     "id": "l21_04",
+     "text": "Hanya sekitar sepuluh persen yang berinti."
+    },
+    {
+     "id": "l21_05",
+     "text": "Jadi dari sisi jumlah, sel manusia didominasi sel tanpa inti."
+    }
+   ],
+   "bab": 5,
+   "babTitle": "HITUNG ULANG SEL MANUSIA"
+  },
+  {
+   "id": "l22",
+   "clips": [
+    {
+     "id": "l22_01",
+     "text": "Sel darah merah juga kecil."
+    },
+    {
+     "id": "l22_02",
+     "text": "Volumenya sekitar seratus mikrometer kubik."
+    },
+    {
+     "id": "l22_03",
+     "text": "Kita sudah bertemu satuan ini tadi, pada bakteri buku teks."
+    },
+    {
+     "id": "l22_04",
+     "text": "Pelajarannya sederhana."
+    },
+    {
+     "id": "l22_05",
+     "text": "Ukuran sel beragam sekali."
+    },
+    {
+     "id": "l22_06",
+     "text": "Dan ukuran tidak berjalan sejajar dengan jumlah."
+    },
+    {
+     "id": "l22_07",
+     "text": "Gagasan ini akan kita temui lagi sebentar lagi."
+    }
+   ],
+   "bab": 5,
+   "babTitle": "HITUNG ULANG SEL MANUSIA"
+  },
+  {
+   "id": "l23",
+   "clips": [
+    {
+     "id": "l23_01",
+     "text": "Sekarang kita gabungkan dua sisi."
+    },
+    {
+     "id": "l23_02",
+     "text": "Untuk seorang pria referensi: berat tujuh puluh kilogram, usia dua puluh sampai tiga puluh tahun, tinggi satu koma tujuh meter."
+    },
+    {
+     "id": "l23_03",
+     "text": "Jumlah bakteri sekitar tiga puluh delapan triliun."
+    },
+    {
+     "id": "l23_04",
+     "text": "Jumlah sel manusia sekitar tiga puluh triliun."
+    }
+   ],
+   "bab": 6,
+   "babTitle": "HASIL 1,3:1 DAN KETIDAKPASTIAN"
+  },
+  {
+   "id": "l24",
+   "clips": [
+    {
+     "id": "l24_01",
+     "text": "Bandingkan keduanya, dan rasionya sekitar satu koma tiga banding satu."
+    },
+    {
+     "id": "l24_02",
+     "text": "Artinya, hampir sama banyak."
+    },
+    {
+     "id": "l24_03",
+     "text": "Bukan sepuluh banding satu."
+    },
+    {
+     "id": "l24_04",
+     "text": "Bukan seratus banding satu."
+    },
+    {
+     "id": "l24_05",
+     "text": "Dan bakteri paling banyak ada di kolon, sekitar sepuluh pangkat tiga belas."
+    }
+   ],
+   "bab": 6,
+   "babTitle": "HASIL 1,3:1 DAN KETIDAKPASTIAN"
+  },
+  {
+   "id": "l25",
+   "clips": [
+    {
+     "id": "l25_01",
+     "text": "Seberapa pasti?"
+    },
+    {
+     "id": "l25_02",
+     "text": "Untuk jumlah bakteri, ketidakpastiannya sekitar dua puluh lima persen."
+    },
+    {
+     "id": "l25_03",
+     "text": "Itu cara para penulis menyatakan seberapa jauh angkanya bisa bergeser karena pengukurannya terbatas."
+    },
+    {
+     "id": "l25_04",
+     "text": "Lalu ada hal yang berbeda: variasi antarpria, sekitar separuh."
+    },
+    {
+     "id": "l25_05",
+     "text": "Itu bukan soal pengukuran yang kurang."
+    },
+    {
+     "id": "l25_06",
+     "text": "Itu soal manusia yang memang tidak sama."
+    }
+   ],
+   "bab": 6,
+   "babTitle": "HASIL 1,3:1 DAN KETIDAKPASTIAN"
+  },
+  {
+   "id": "l26",
+   "clips": [
+    {
+     "id": "l26_01",
+     "text": "Jeda ringkas kedua."
+    },
+    {
+     "id": "l26_02",
+     "text": "Mitosnya berasal dari perkiraan kasar tahun 1972."
+    },
+    {
+     "id": "l26_03",
+     "text": "Hitung ulang: bakteri sekitar tiga puluh delapan triliun, sel manusia sekitar tiga puluh triliun."
+    },
+    {
+     "id": "l26_04",
+     "text": "Rasionya sekitar satu koma tiga banding satu, untuk pria referensi."
+    },
+    {
+     "id": "l26_05",
+     "text": "Berikutnya, dua catatan menarik."
+    }
+   ],
+   "bab": 6,
+   "babTitle": "HASIL 1,3:1 DAN KETIDAKPASTIAN"
+  },
+  {
+   "id": "l27",
+   "clips": [
+    {
+     "id": "l27_01",
+     "text": "Ada catatan menarik."
+    },
+    {
+     "id": "l27_02",
+     "text": "Kalau bakteri dibandingkan hanya dengan sel manusia yang berinti, rasionya memang sekitar sepuluh banding satu."
+    },
+    {
+     "id": "l27_03",
+     "text": "Ingat, sekitar sembilan puluh persen sel manusia tidak berinti."
+    },
+    {
+     "id": "l27_04",
+     "text": "Kalau yang tanpa inti tidak ikut dihitung, tersisa sekitar sepersepuluh."
+    }
+   ],
+   "bab": 7,
+   "babTitle": "CATATAN MENARIK"
+  },
+  {
+   "id": "l28",
+   "clips": [
+    {
+     "id": "l28_01",
+     "text": "Tolong dicatat."
+    },
+    {
+     "id": "l28_02",
+     "text": "Ini hanya catatan hitungan yang menarik."
+    },
+    {
+     "id": "l28_03",
+     "text": "Bukan penyebab lahirnya mitos."
+    },
+    {
+     "id": "l28_04",
+     "text": "Mitosnya lahir dari perkiraan kasar tahun 1972 tadi."
+    },
+    {
+     "id": "l28_05",
+     "text": "Dua hal yang berbeda, hanya angkanya yang mirip."
+    }
+   ],
+   "bab": 7,
+   "babTitle": "CATATAN MENARIK"
+  },
+  {
+   "id": "l29",
+   "clips": [
+    {
+     "id": "l29_01",
+     "text": "Sekarang bicara berat."
+    },
+    {
+     "id": "l29_02",
+     "text": "Seluruh bakteri di tubuh pria referensi massanya sekitar nol koma dua kilogram."
+    },
+    {
+     "id": "l29_03",
+     "text": "Itu sekitar nol koma tiga persen berat tubuh."
+    },
+    {
+     "id": "l29_04",
+     "text": "Bandingkan dengan klaim lama: satu sampai tiga persen, atau satu sampai tiga kilogram."
+    },
+    {
+     "id": "l29_05",
+     "text": "Angka lamanya jauh lebih besar."
+    }
+   ],
+   "bab": 7,
+   "babTitle": "CATATAN MENARIK"
+  },
+  {
+   "id": "l30",
+   "clips": [
+    {
+     "id": "l30_01",
+     "text": "Di sinilah gagasan tadi kembali."
+    },
+    {
+     "id": "l30_02",
+     "text": "Jumlah dan massa tidak sejalan."
+    },
+    {
+     "id": "l30_03",
+     "text": "Sel lemak dan sel otot kira-kira tujuh puluh lima persen dari massa sel manusia."
+    },
+    {
+     "id": "l30_04",
+     "text": "Tapi jumlahnya hanya sekitar nol koma dua persen dari seluruh sel."
+    },
+    {
+     "id": "l30_05",
+     "text": "Sedikit, tapi berat."
+    },
+    {
+     "id": "l30_06",
+     "text": "Sementara sel darah merah kecil."
+    },
+    {
+     "id": "l30_07",
+     "text": "Jadi bakteri lebih banyak dan bakteri lebih berat adalah dua pertanyaan yang berbeda."
+    },
+    {
+     "id": "l30_08",
+     "text": "Rasio jumlah berubah dari sepuluh banding satu ke sekitar satu koma tiga."
+    },
+    {
+     "id": "l30_09",
+     "text": "Persen massa berubah dari satu sampai tiga persen ke sekitar nol koma tiga."
+    }
+   ],
+   "bab": 7,
+   "babTitle": "CATATAN MENARIK"
+  },
+  {
+   "id": "l31",
+   "clips": [
+    {
+     "id": "l31_01",
+     "text": "Sekarang bagian yang jujur: apa yang belum pasti."
+    },
+    {
+     "id": "l31_02",
+     "text": "Dalam sains, mengakui batas adalah bagian dari pekerjaan."
+    },
+    {
+     "id": "l31_03",
+     "text": "Para penulis menyebut beberapa hal yang masih perlu diteliti."
+    },
+    {
+     "id": "l31_04",
+     "text": "Kita lewati satu per satu."
+    }
+   ],
+   "bab": 8,
+   "babTitle": "YANG BELUM PASTI"
+  },
+  {
+   "id": "l32",
+   "clips": [
+    {
+     "id": "l32_01",
+     "text": "Pertama, tinja sebagai wakil."
+    },
+    {
+     "id": "l32_02",
+     "text": "Kepadatan bakteri diukur dari tinja."
+    },
+    {
+     "id": "l32_03",
+     "text": "Lalu para penulis mengasumsikan kepadatan itu mewakili isi kolon."
+    },
+    {
+     "id": "l32_04",
+     "text": "Asumsi ini perlu diteliti lebih lanjut."
+    },
+    {
+     "id": "l32_05",
+     "text": "Kalau ternyata isi kolon sedikit berbeda dari yang terukur di tinja, angka totalnya ikut bergeser."
+    }
+   ],
+   "bab": 8,
+   "babTitle": "YANG BELUM PASTI"
+  },
+  {
+   "id": "l33",
+   "clips": [
+    {
+     "id": "l33_01",
+     "text": "Kedua, perempuan."
+    },
+    {
+     "id": "l33_02",
+     "text": "Angka tadi untuk pria referensi."
+    },
+    {
+     "id": "l33_03",
+     "text": "Untuk perempuan, para penulis memperkirakan rasio bakteri terhadap sel manusia naik sekitar sepertiga."
+    },
+    {
+     "id": "l33_04",
+     "text": "Kata kuncinya, diperkirakan."
+    },
+    {
+     "id": "l33_05",
+     "text": "Itu bukan hasil pengukuran."
+    },
+    {
+     "id": "l33_06",
+     "text": "Alasannya, konsentrasi sel darah merah sekitar sepuluh persen lebih rendah, dan volume darah dua puluh sampai tiga puluh persen lebih rendah."
+    },
+    {
+     "id": "l33_07",
+     "text": "Sementara belum ada laporan perbedaan kepadatan bakteri kolon."
+    }
+   ],
+   "bab": 8,
+   "babTitle": "YANG BELUM PASTI"
+  },
+  {
+   "id": "l34",
+   "clips": [
+    {
+     "id": "l34_01",
+     "text": "Ketiga, bayi dan anak."
+    },
+    {
+     "id": "l34_02",
+     "text": "Kepadatan bakteri kolon relatif konstan sejak bayi."
+    },
+    {
+     "id": "l34_03",
+     "text": "Tapi data volume kolon anak masih terbatas."
+    },
+    {
+     "id": "l34_04",
+     "text": "Para penulis menyebutnya kesenjangan pengetahuan."
+    },
+    {
+     "id": "l34_05",
+     "text": "Karena itu, di video ini kita tidak memberi angka untuk anak."
+    },
+    {
+     "id": "l34_06",
+     "text": "Lebih baik dikosongkan, daripada ditebak."
+    }
+   ],
+   "bab": 8,
+   "babTitle": "YANG BELUM PASTI"
+  },
+  {
+   "id": "l35",
+   "clips": [
+    {
+     "id": "l35_01",
+     "text": "Bagaimana kita tahu mana bagian yang kokoh dan mana yang goyah?"
+    },
+    {
+     "id": "l35_02",
+     "text": "Ada cara sederhana."
+    },
+    {
+     "id": "l35_03",
+     "text": "Ajukan tiga pertanyaan pada setiap angka."
+    },
+    {
+     "id": "l35_04",
+     "text": "Dari mana datangnya?"
+    },
+    {
+     "id": "l35_05",
+     "text": "Diukur, atau diasumsikan?"
+    },
+    {
+     "id": "l35_06",
+     "text": "Berapa ketidakpastiannya?"
+    },
+    {
+     "id": "l35_07",
+     "text": "Angka baru berusaha menjawab ketiganya, dan menyebut bagian yang masih asumsi."
+    }
+   ],
+   "bab": 8,
+   "babTitle": "YANG BELUM PASTI"
+  },
+  {
+   "id": "l36",
+   "clips": [
+    {
+     "id": "l36_01",
+     "text": "Mari kita pisahkan."
+    },
+    {
+     "id": "l36_02",
+     "text": "Yang diukur: kepadatan bakteri dari empat belas studi, dan volume kolon dari analisis MRI.",
+     "say": "Yang diukur: kepadatan bakteri dari empat belas studi, dan volume kolon dari analisis em-er-i."
+    },
+    {
+     "id": "l36_03",
+     "text": "Yang diasumsikan: kepadatan di tinja mewakili isi kolon."
+    },
+    {
+     "id": "l36_04",
+     "text": "Yang diperkirakan: rasio untuk perempuan."
+    },
+    {
+     "id": "l36_05",
+     "text": "Yang masih kosong: angka untuk anak."
+    }
+   ],
+   "bab": 8,
+   "babTitle": "YANG BELUM PASTI"
+  },
+  {
+   "id": "l37",
+   "clips": [
+    {
+     "id": "l37_01",
+     "text": "Sekarang sesuatu yang ringan."
+    },
+    {
+     "id": "l37_02",
+     "text": "Para penulis menyebut, karena rasionya cukup dekat dengan satu, satu kali buang air besar saja bisa membalik rasionya."
+    },
+    {
+     "id": "l37_03",
+     "text": "Setelah dari toilet, sekitar sepertiga bakteri kolon ikut keluar."
+    },
+    {
+     "id": "l37_04",
+     "text": "Dan rasionya bergeser ke arah sel manusia."
+    }
+   ],
+   "bab": 9,
+   "babTitle": "CATATAN RINGAN"
+  },
+  {
+   "id": "l38",
+   "clips": [
+    {
+     "id": "l38_01",
+     "text": "Jadi, kalau ada yang bertanya mana yang lebih banyak, jawaban jujurnya agak lucu."
+    },
+    {
+     "id": "l38_02",
+     "text": "Bergantung pada kapan kamu bertanya."
+    },
+    {
+     "id": "l38_03",
+     "text": "Rasionya bukan angka yang diam."
+    },
+    {
+     "id": "l38_04",
+     "text": "Ia bergerak."
+    },
+    {
+     "id": "l38_05",
+     "text": "Dan itu hanya mungkin karena rasionya dekat dengan satu."
+    },
+    {
+     "id": "l38_06",
+     "text": "Kalau rasionya seratus banding satu, satu kali ke toilet tidak akan membalik apa pun."
+    }
+   ],
+   "bab": 9,
+   "babTitle": "CATATAN RINGAN"
+  },
+  {
+   "id": "l39",
+   "clips": [
+    {
+     "id": "l39_01",
+     "text": "Sekarang pelajarannya."
+    },
+    {
+     "id": "l39_02",
+     "text": "Pertama, angka populer perlu dicek."
+    },
+    {
+     "id": "l39_03",
+     "text": "Bukan karena yang pertama menyebutnya berniat salah."
+    },
+    {
+     "id": "l39_04",
+     "text": "Tapi karena perkiraan kasar mudah berubah jadi fakta kalau diulang cukup lama."
+    },
+    {
+     "id": "l39_05",
+     "text": "Perkiraan itu tetap berguna sebagai titik awal."
+    },
+    {
+     "id": "l39_06",
+     "text": "Masalahnya muncul ketika titik awal dianggap titik akhir."
+    }
+   ],
+   "bab": 10,
+   "babTitle": "PELAJARAN DAN REKAP"
+  },
+  {
+   "id": "l40",
+   "clips": [
+    {
+     "id": "l40_01",
+     "text": "Kedua, menghitung ulang adalah bagian dari sains, bukan tanda sains gagal."
+    },
+    {
+     "id": "l40_02",
+     "text": "Kesimpulan para penulis kurang lebih begini."
+    },
+    {
+     "id": "l40_03",
+     "text": "Kita mungkin masih tampak kalah jumlah."
+    },
+    {
+     "id": "l40_04",
+     "text": "Tapi sekarang kita tahu seberapa jauh, dan seberapa pasti."
+    },
+    {
+     "id": "l40_05",
+     "text": "Itu kemajuan yang tenang, tapi nyata."
+    }
+   ],
+   "bab": 10,
+   "babTitle": "PELAJARAN DAN REKAP"
+  },
+  {
+   "id": "l41",
+   "clips": [
+    {
+     "id": "l41_01",
+     "text": "Ketiga, mengubah rasio dari sepuluh banding satu, atau seratus banding satu, menjadi sekitar satu banding satu tidak mengurangi pentingnya mikrobiota."
+    },
+    {
+     "id": "l41_02",
+     "text": "Para penulis menegaskan itu."
+    },
+    {
+     "id": "l41_03",
+     "text": "Yang berubah hanya angkanya."
+    },
+    {
+     "id": "l41_04",
+     "text": "Dan angka yang dikutip luas sebaiknya berdasar data terbaik."
+    }
+   ],
+   "bab": 10,
+   "babTitle": "PELAJARAN DAN REKAP"
+  },
+  {
+   "id": "l42",
+   "clips": [
+    {
+     "id": "l42_01",
+     "text": "Rekap besar."
+    },
+    {
+     "id": "l42_02",
+     "text": "Satu, sepuluh banding satu berawal dari perkiraan kasar tahun 1972, dan seratus banding satu dari angka persen massa tanpa rujukan yang jelas."
+    },
+    {
+     "id": "l42_03",
+     "text": "Dua, bakteri terutama di kolon: ruangnya nol koma empat liter, kepadatannya dari empat belas studi."
+    },
+    {
+     "id": "l42_04",
+     "text": "Tiga, sel manusia sekitar tiga puluh triliun, sembilan puluh persen tanpa inti."
+    },
+    {
+     "id": "l42_05",
+     "text": "Empat, hasilnya sekitar satu koma tiga banding satu untuk pria referensi."
+    },
+    {
+     "id": "l42_06",
+     "text": "Lima, yang belum pasti: tinja sebagai wakil, perempuan, dan anak."
+    }
+   ],
+   "bab": 10,
+   "babTitle": "PELAJARAN DAN REKAP"
+  },
+  {
+   "id": "l43",
+   "clips": [
+    {
+     "id": "l43_01",
+     "text": "Dari sepuluh banding satu, menjadi hampir sama banyak."
+    },
+    {
+     "id": "l43_02",
+     "text": "Satu angka lama, dihitung ulang dengan sabar."
+    },
+    {
+     "id": "l43_03",
+     "text": "Lain kali kamu bertemu angka yang terlalu rapi dan terlalu sering diulang, coba tanya: siapa yang pertama menghitungnya, dan bagaimana caranya?"
+    },
+    {
+     "id": "l43_04",
+     "text": "Terima kasih sudah menemani sampai akhir lembar ini."
+    },
+    {
+     "id": "l43_05",
+     "text": "Kalau kamu suka cerita seperti ini, ikuti @suhufpengetahuan.",
+     "say": "Kalau kamu suka cerita seperti ini, ikuti Suhuf Pengetahuan."
+    },
+    {
+     "id": "l43_06",
+     "text": "Sampai jumpa di lembar berikutnya."
+    }
+   ],
+   "bab": 11,
+   "babTitle": "PENUTUP"
+  }
+ ]
+}
