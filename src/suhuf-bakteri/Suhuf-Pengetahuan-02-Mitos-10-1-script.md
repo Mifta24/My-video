@@ -1,65 +1,75 @@
 ---
 id: suhuf-02-bakteri
+versi_naskah: v3 ramah pemula (menggantikan v1 dan v2)
 judul_kerja: "Mitos 10:1: Bakteri di Tubuhmu Sebenarnya Tidak Sebanyak Itu"
 channel: Suhuf Pengetahuan (@suhufpengetahuan)
 bahasa: id
+audiens: pemula, anak, remaja
 penulis_script: Don
-narator: AI Ardi
-versi: shorts 60-75 detik (revisi koreksi penyebab mitos) + long 14-15 menit (v2)
-dibuat: 2026-10-28
-status: DRAF, menunggu persetujuan Miftah
+narator: Miftah (suara sendiri atau AI: BELUM DIPUTUSKAN)
 format: [shorts 9:16 1080x1920, long 16:9 1920x1080]
+dibuat: 2026-10-29
+status: DRAF, menunggu persetujuan Miftah
 sumber: [Sender-Fuchs-Milo 2016 PLoS Biology 14(8):e1002533, Sender-Fuchs-Milo 2016 Cell 164:337-340, Nature news 2016]
 ---
 
-# Suhuf Pengetahuan #02 — Mitos 10:1 (Shorts + Video Panjang)
+# Suhuf Pengetahuan #02 — Mitos 10:1 (V3 Ramah Pemula)
 
 ## 0. Cara memakai file ini
 
 **Untuk Mas Miftah**
-- Bagian 1 = ringkasan satu halaman dan keputusan yang masih terbuka.
-- Bagian 2 = fakta yang boleh dipakai. Semua klaim di script harus bisa ditelusuri ke sini (F01–F18).
-- Bagian 3 = pedoman produksi bersama (visual, suara, larangan).
+- Bagian 1 = ringkasan dan keputusan yang masih terbuka.
+- Bagian 2 = fakta yang boleh dipakai (F01–F18). Bagian 3 = pedoman produksi ramah pemula.
 - Bagian 4 = script Shorts. Bagian 5 = script video panjang.
-- Bagian 6 = teks rekam: narasi saja, tanpa catatan visual. Pakai ini saat merekam suara.
-- Bagian 7 = serah terima ke Stark dan Dex. Bagian 8 = riwayat perubahan.
+- Bagian 6 = teks rekam: narasi saja. Pakai ini saat merekam suara.
+- Bagian 7 = serah terima ke Stark, Dex, dan Kim. Bagian 8 = riwayat perubahan.
+- Komentar paling mudah per ID adegan, misalnya: "L-20 dipangkas" atau "S-04 diganti".
 
 **Untuk AI yang membaca file ini**
-- Sumber kebenaran fakta = Bagian 2. Jangan menambah angka, nama, atau tahun di luar Bagian 2.
-- ID adegan dipakai untuk rujukan: `S-01..S-11` (Shorts) dan `L-01..L-43` (Long).
-- Ada tiga label teks yang beda fungsi: **NARASI** = yang diucapkan, **VISUAL** = instruksi gambar, **AUDIO** = musik/SFX. Hanya NARASI yang dibacakan.
-- Teks Don di Bagian 4–5 disalin apa adanya dari file asli. Perubahan hanya pada format (judul, ID adegan, huruf tebal).
-- Setiap grafik skematis wajib berlabel "SKEMA" atau "PERUMPAMAAN"; jangan digambar sebagai data presisi.
-- Kalau ada ketidaksesuaian antara bagian, Bagian 2 menang atas Bagian 4–5.
+- Sumber kebenaran fakta = Bagian 2. Jangan menambah angka, nama, atau tahun di luar Bagian 2. Bagian 2 menang atas Bagian 4–5 bila bertentangan.
+- ID adegan: `S-01..S-11` (Shorts) dan `L-01..L-45` (Long). ID ini BARU dan tidak sama dengan ID versi lama.
+- **NARASI** = yang diucapkan. **VISUAL** = instruksi gambar. **AUDIO** = musik/SFX. Hanya NARASI yang dibacakan.
+- Teks Don di Bagian 4–5 disalin apa adanya dari `shorts-v3.md` dan `long-v3.md`. Yang berubah hanya format (judul, ID, huruf tebal).
+- Setiap perumpamaan wajib berlabel "PERUMPAMAAN - bukan data". Setiap grafik skematis wajib berlabel "SKEMA".
 
 ## 1. Ringkasan dan keputusan terbuka
 
-**Inti video**
-- Angka "bakteri 10 kali lebih banyak dari sel manusia" berasal dari perkiraan kasar tahun 1972 yang diulang puluhan tahun.
-- Hitungan ulang 2016 untuk pria dewasa referensi: sekitar 38 triliun bakteri dan sekitar 30 triliun sel manusia. Rasio sekitar 1,3 : 1, jadi hampir sama banyak.
-- Pesan penutup: angka populer perlu dicek, dan menghitung ulang adalah bagian dari sains.
+**Apa yang berubah dari versi sebelumnya**
+- Versi lama (V1/V2) dinilai Mas terlalu berat untuk pemula, anak, dan remaja: padat angka, istilah teknis, dan diagram abstrak di latar gelap.
+- V3 ditulis ulang dari nol oleh Don dengan prinsip Mas: "video mudah dimengerti dan dicerna orang lain".
+- Narasi V3 hanya memakai 3 angka kunci: "10 banding 1", "sekitar 38 triliun vs sekitar 30 triliun", dan "hampir sama banyak". Tahun 1972 disebut sebagai penanda waktu.
+- Visual berganti dari kolom titik menjadi kartun cerah: Tim Bakteri (kapsul oranye), Tim Sel Manusia (bulat biru), detektif kartun, timbangan, stadion.
 
 **Dua versi**
-- Shorts/Reels/TikTok: 11 adegan, 160 kata narasi, sekitar 73 detik.
-- Video panjang YouTube: 43 adegan, 11 bab, 1985 kata narasi, sekitar 14,2 menit pada 140 kata/menit (15,3 menit pada 130 kata/menit).
-- Shorts berfungsi sebagai pintu masuk. Long berisi penjelasan langkah hitung dan hal yang belum pasti.
+- Shorts/Reels/TikTok: 11 adegan, 150 kata narasi, sekitar 72 detik.
+- Video panjang YouTube: 45 adegan, 742 kata narasi, sekitar 6:11 menit (termasuk bab toilet opsional).
+- Don menandai **BAHAN KURANG** untuk target 8–10 menit. Dengan 3 angka dan tanpa istilah teknis, fakta aman hanya cukup sekitar 6 menit. Don tidak mengisi dengan pengulangan. Kim setuju.
 
-**Beda isi Shorts vs Long**
-- Shorts: asal mitos (singkat), hasil 1,3:1, kolon vs seluruh saluran cerna, catatan sel berinti, massa 0,2 kg, ketidakpastian.
-- Long: menambah rantai kutipan Luckey 1972 → Savage 1977, asal 100:1 (laporan NIH), tiga langkah hitung bakteri, 14 studi, ukuran bakteri, hitung sel manusia, perempuan/bayi, tinja sebagai wakil, dan satu kali ke toilet.
-- Nama Luckey dan Savage hanya ada di Long. Shorts tanpa nama orang.
+**Hasil pemeriksaan Kim (29 Okt)**
+- Semua klaim di narasi cocok dengan F01–F18. Tidak ada klaim kesehatan.
+- Pindai otomatis narasi untuk kata terlarang (pangkat, pikogram, mikrometer, Luckey, Savage, NIH, kolon, MRI, persen, jurnal, PLoS, tinja): **tidak ada yang ditemukan**.
+- Sel berinti (L-30 sampai L-32) tampil sebagai "catatan menarik" dan L-31 menyatakan jelas "bukan penyebab mitos".
+- Perumpamaan (stadion, pesan berantai, tarik tambang, kelereng) tidak membawa angka atau klaim baru.
+
+**Saran kecil Kim (tidak diubah di file, tunggu keputusan Mas)**
+1. **L-34** kalimatnya janggal: "hasilnya tergantung apa yang dihitung, maka para peneliti menghitung semua sel." Usulan: "Jadi, hasilnya tergantung apa yang dihitung. Karena itu, para peneliti menghitung semua sel."
+2. **L-06** visual menyebut "Lego". Itu merek dagang. Usulan: "balok susun warna-warni".
+3. **L-20** sebagian mengulang L-16 sampai L-18. Boleh dipangkas (hemat sekitar 9 detik). Isi lain tidak terpengaruh.
+4. **L-33** perumpamaan kelereng dan bola basket paling jauh dari inti cerita. Kalau durasi terasa panjang, ini kandidat pertama untuk dipangkas.
+5. **S-10** kalimat "Kadang, perlu dihitung ulang" adalah refleksi, bukan fakta. Aman dipakai.
 
 **Keputusan yang masih terbuka (Mas)**
-1. Suara: rekam sendiri atau suara AI dulu. Kalau AI, wajib diakui sebagai konten sintetis di YouTube Studio, TikTok, dan Instagram.
-2. Urutan produksi: Shorts dulu atau Long dulu (usulan Kim: Shorts dulu, lalu Long).
-3. Kalimat refleksi di Shorts S-10 ("Kadang, angka yang sering diulang itu cuma belum dihitung ulang") boleh dihapus kalau terasa terlalu umum.
-4. Kata "elegan" dan kesimpulan penulis di Long tampil sebagai parafrasa, bukan kutipan. Jangan ditampilkan dengan tanda kutip.
-5. Thumbnail dan cover menunggu logo baru dari Dex.
-6. Bab toilet di Long (L-37, L-38) opsional. Kalau Mas tidak suka nadanya, hapus dua adegan itu. Isi lain tidak terpengaruh.
+1. Durasi video panjang: tetap sekitar 6 menit (saran Kim) atau menambah bahan baru yang saya verifikasi dulu.
+2. Suara: rekam sendiri atau suara AI dulu. Kalau AI, wajib diakui sebagai konten sintetis di YouTube Studio, TikTok, dan Instagram.
+3. Bab toilet (L-40 dan L-41): dipakai atau dibuang. Isi lain tidak terpengaruh.
+4. Urutan produksi: Shorts dulu lalu Long (saran Kim).
+5. Gaya visual kartun dan tokohnya perlu Dex. Dex masih mengerjakan logo baru.
 
 ## 2. Fakta terverifikasi (sumber kebenaran)
 
-Sumber: Sender, Fuchs & Milo 2016, PLoS Biology 14(8):e1002533 (doi 10.1371/journal.pbio.1002533); Sender, Fuchs & Milo 2016, Cell 164:337-340; laporan Nature 2016 ("Scientists bust myth that our bodies have more bacteria than human cells"). Setiap angka di bawah dicocokkan Kim ke teks makalah pada 28 Okt 2026. Daftar baris-per-baris ada di tab "Cek Fakta" sheet Workflow (baris `06-L`).
+Sumber: Sender, Fuchs & Milo 2016, PLoS Biology 14(8):e1002533 (doi 10.1371/journal.pbio.1002533); Sender, Fuchs & Milo 2016, Cell 164:337-340; laporan Nature 2016 ("Scientists bust myth that our bodies have more bacteria than human cells"). Setiap angka dicocokkan Kim ke teks makalah (28 Okt 2026). Rincian per baris ada di tab "Cek Fakta" sheet Workflow (baris `06-L`).
+
+Catatan: V3 sengaja hanya memakai sebagian fakta di bawah (untuk menjaga maksimal 3 angka kunci). Fakta yang tidak dipakai tetap sah, hanya tidak dimunculkan.
 
 
 **Asal Mitos**
@@ -92,680 +102,815 @@ Sumber: Sender, Fuchs & Milo 2016, PLoS Biology 14(8):e1002533 (doi 10.1371/jour
 - **F17** Penulis: "meski kita masih tampak kalah jumlah, kini kita tahu seberapa jauh dan seberapa pasti." Parafrasa, jangan klaim "lebih banyak bakteri" sebagai fakta mutlak.
 - **F18** Penutup penulis: mengubah rasio dari 10:1 atau 100:1 ke sekitar 1:1 tidak mengurangi pentingnya mikrobiota; angka yang dikutip luas sebaiknya berdasar data terbaik. Pelajaran: angka populer perlu dicek.
 
-**Catatan penting tentang F11**
+**Catatan penting F11**
 - Perbandingan dengan sel berinti hanyalah catatan hitungan. **Bukan** penyebab lahirnya mitos. Penyebab yang didukung sumber: perkiraan kasar 1972 yang kebesaran (F02, F04, F05).
 
-## 3. Pedoman produksi bersama
+**Yang sengaja TIDAK dipakai di narasi V3**
+- Nama peneliti (Luckey, Savage), nama jurnal, kolon, MRI, persen ketidakpastian, pangkat sepuluh, pikogram, mikrometer kubik, laporan NIH (100:1), massa 0,2 kg, kalimat "masih tampak kalah jumlah".
 
-**Aturan konten**
-- Tulis "sekitar" atau "hampir sama banyak". Jangan "tepat 1:1".
+## 3. Pedoman produksi (ramah pemula)
+
+**Aturan script**
+- Bahasa bercerita seperti ke anak SMP. Kalimat pendek, satu ide per adegan, sapa penonton dengan "kamu".
+- Maksimal 3 angka kunci. Istilah teknis diganti kata biasa atau dibuang.
+- Perumpamaan diucapkan sebagai perumpamaan ("bayangkan...") dan ditandai di layar. Perumpamaan tidak membawa angka atau klaim baru.
+- Alur seperti misteri: pertanyaan di awal, jawaban bertahap, satu kejutan, satu pelajaran.
+- Video panjang: satu pertanyaan ke penonton di tengah (L-22) dan setiap bab ditutup satu kalimat rekap.
+- Durasi mengikuti bahan. Tidak mengisi dengan pengulangan.
+
+**Aturan fakta**
+- Tulis "sekitar" dan "hampir sama banyak". Jangan "tepat 1:1".
 - Jangan klaim "kamu lebih banyak bakteri daripada sel manusia" atau sebaliknya.
-- Angka berlaku untuk pria dewasa referensi. Perempuan hanya sebagai perkiraan penulis (F14). Tidak ada angka anak.
-- Tanpa klaim kesehatan (probiotik, antibiotik, kebersihan, penyakit).
-- Jangan sebut persen sel darah merah. Angka di makalah berbeda (70% / 84%). Pakai "sekitar 90% tidak berinti".
-- Jangan sebut jumlah kutipan, tahun kutipan lain, nama jurnal kutipan, atau nama peneliti MRI.
-- Jangan menyalahkan Luckey atau NIH. Pakai "perkiraan kasar" dan "tanpa rujukan yang jelas".
+- Angka berlaku untuk pria dewasa rata-rata. Perempuan hanya perkiraan penulis. Tidak ada angka anak.
+- Tanpa klaim kesehatan. Jangan menyalahkan peneliti lama.
 
-**Visual**
-- Palet: navy gelap sebagai latar, oranye untuk data utama (bakteri), putih/krem untuk sel manusia.
-- Tanpa foto bakteri. Semua ilustrasi berupa diagram titik/kolom, siluet datar, garis saluran cerna sederhana.
-- Label "SKEMA" untuk diagram konsep, "PERUMPAMAAN - bukan data" untuk analogi.
+**Aturan visual**
+- Kartun datar, cerah, latar krem hangat; oranye dan biru sebagai aksen. Bukan diagram dingin di latar gelap.
+- Tokoh dikenali: Tim Bakteri, Tim Sel Manusia, detektif kartun. Bukan foto, tidak menjijikkan.
+- Gambar berganti tiap 3–5 detik. Teks besar hanya 1–4 kata.
 - Shorts: area aman 150 px atas dan 250 px bawah.
 
-**Suara dan audio**
-- Tenang, kalimat pendek, jeda 0,5–1 detik di hook, hasil, dan rekap.
-- Pembuka khas setelah hook: "Satu lembar, satu cerita." Penutup Long: "Sampai jumpa di lembar berikutnya."
+**Suara dan penutup**
+- Tenang dan hangat. Pembuka khas setelah hook: "Satu lembar, satu cerita." Penutup Long: "Sampai jumpa di lembar berikutnya."
 - Satu CTA saja: `@suhufpengetahuan`. Tidak menjanjikan video yang belum ada.
 
-## 4. Script Shorts / Reels / TikTok (9:16, 60–75 detik)
+## 4. Script Shorts / Reels / TikTok (9:16)
 
-_Sumber asli: `script-shorts.md` (Don). Teks disalin apa adanya._
+_Sumber asli: `v3-ramah-pemula/shorts-v3.md` (Don). Teks disalin apa adanya._
 
-SUHUF PENGETAHUAN - VIDEO KE-2 (IDE NO. 6) - VERSI 60-75 DETIK (REVISI: koreksi penyebab mitos)
+Suhuf Pengetahuan #02 | Mitos 10:1 | Penulis: Don | Bahasa Indonesia | Narator: Miftah
 
-Shorts/Reels/TikTok 9:16 | Bahasa Indonesia | Penulis: Don | Narator: Miftah | Build: Remotion (repo My-video)
+Ditulis ulang dari nol. Tidak menimpa script lama. Sumber fakta: Bagian 2 (F01-F18) di suhuf-02-bakteri-script-lengkap.md.
 
-Palet: navy gelap + oranye (sama seperti video #1). Menggantikan versi 50 detik (script-shorts-v1-50detik.md). Versi sebelum revisi ini: script-shorts-v2-sebelum-revisi.md.
-**BIG IDEA:** Angka 10:1 itu keliru. Asalnya perkiraan kasar yang diulang puluhan tahun. Hitungan terbaru: bakteri dan sel manusia hampir sama banyak.
+**BIG IDEA:** Angka "10 banding 1" ternyata tebakan kasar yang kebesaran. Dihitung ulang, bakteri dan sel manusia hampir sama banyak.
 
-**PESAN YANG HARUS DIINGAT:** Sekitar 1 banding 1, bukan 10 banding 1. Angka lama berasal dari perkiraan kasar yang terus diulang.
+**PESAN YANG HARUS DIINGAT:** Hampir sama banyak, bukan sepuluh banding satu.
 
-### Judul
+**ANGKA KUNCI (maks 3):** (a) "sepuluh banding satu"; (b) "sekitar 38 triliun bakteri, sekitar 30 triliun sel manusia"; (c) "hampir sama banyak". Tahun 1972 disebut satu kali.
 
-1. Mitos 10:1: Bakteri di Tubuhmu Tidak Sebanyak Itu (49 karakter)
-2. Bakteri 10x Lebih Banyak dari Selmu? Itu Keliru (47 karakter)
-3. Hitungan Baru: Bakteri dan Sel Tubuhmu Hampir Sama Banyak (57 karakter)
-
-**Rekomendasi:** no. 2 (hook-nya sama dengan detik pertama video).
+**GAYA VISUAL (untuk Dex):** kartun datar, cerah, latar krem hangat. Dua tokoh: Tim Bakteri (kapsul oranye kecil, mata bulat, senyum) dan Tim Sel Manusia (bulat biru, lucu). Bukan foto, tidak menjijikkan. Gambar berganti tiap 3-5 detik. Teks besar hanya 1-4 kata. Area aman: 150 px atas, 250 px bawah.
 
 ### Script per adegan
 
-**Format:** no | narasi | catatan visual | perkiraan detik
+#### [S-01] 7 dtk
 
-#### [S-01] Adegan 1 | 0-4 dtk | 12 kata
+**NARASI:** Katanya, di tubuhmu bakteri menang jumlah. Sepuluh banding satu! Dari mana angka itu datang? Dan apakah benar?
 
-**NARASI:** "Katanya bakteri di tubuhmu 10 kali lebih banyak dari selmu. Itu keliru."
+**VISUAL:** (0-4 dtk) Latar krem. Siluet tubuh ramah dengan perut bercahaya oranye. Dari perut, barisan Tim Bakteri berlari keluar dan memenuhi sisi kiri layar, sedangkan di kanan hanya segelintir Tim Sel Manusia. Teks besar "10 : 1 ?", label kecil "MITOS". (4-7 dtk) Tanda tanya besar bergoyang di tengah, teks "Dari mana?".
 
-**VISUAL:** Layar navy gelap. Teks besar oranye "10 : 1" muncul, lalu dicoret garis oranye + tanda "KELIRU". Dua tumpukan titik (kiri kecil, kanan sepuluh kali lipat) menyusut sampai hampir sama tinggi. Tanpa foto bakteri.
+**AUDIO:** Ketukan ringan di "sepuluh banding satu". Musik ceria-penasaran masuk. Jeda 0,5 dtk sebelum "Dari mana".
 
-#### [S-02] Adegan 2 | 4-6 dtk | 4 kata
+#### [S-02] 3 dtk
 
-**NARASI:** "Satu lembar, satu cerita."
+**NARASI:** Satu lembar, satu cerita.
 
-**VISUAL:** Logo Suhuf Pengetahuan + gerak lembar kertas terbuka (sama seperti video #1). Teks "Satu lembar, satu cerita."
+**VISUAL:** Selembar kertas hangat terbuka dari bawah, logo Suhuf Pengetahuan muncul. Teks "Satu lembar, satu cerita."
 
-#### [S-03] Adegan 3 | 6-13 dtk | 15 kata
+**AUDIO:** Bunyi kertas dibuka, nada logo pendek.
 
-**NARASI:** "Angka sepuluh banding satu itu berasal dari perkiraan kasar, yang diulang terus selama puluhan tahun."
+#### [S-03] 7 dtk
 
-**VISUAL:** "10 : 1" muncul berulang, bergema dan menumpuk pelan seperti kutipan yang disalin dari satu tempat ke tempat lain. Teks kecil "perkiraan kasar, diulang puluhan tahun". Tanpa nama orang. Label "SKEMA" di pojok atas.
+**NARASI:** Ceritanya mulai tahun 1972. Seorang peneliti membuat perkiraan kasar. Dia tidak menghitung bakteri satu per satu.
 
-#### [S-04] Adegan 4 | 13-17 dtk | 10 kata
+**VISUAL:** (0-3 dtk) Kalender kartun membalik ke "1972". (3-7 dtk) Tokoh peneliti kartun (jas lab, kacamata, tanpa wajah rinci) menulis di kertas kecil sambil mengira-ngira. Teks besar "PERKIRAAN KASAR". Di sebelahnya dua bakteri lucu menggeleng.
 
-**NARASI:** "Ambil contoh pria dewasa rata-rata. Para peneliti menghitung ulang jumlahnya."
+**AUDIO:** Efek pensil menulis, musik tetap ringan.
 
-**VISUAL:** Siluet pria sederhana (flat, tanpa wajah) di tengah, label kecil "Pria dewasa rata-rata (acuan)". Label "SKEMA".
+#### [S-04] 8 dtk
 
-#### [S-05] Adegan 5 | 17-27 dtk | 22 kata
+**NARASI:** Bayangkan kamu menebak jumlah penonton di stadion. Kamu kira semua kursi penuh, sampai ke pojok. Tebakanmu pasti kebesaran.
 
-**NARASI:** "Hasilnya, sekitar 38 triliun bakteri. Dan sekitar 30 triliun sel manusia. Hampir sama banyak. Kira-kira satu banding satu, bukan sepuluh banding satu."
+**VISUAL:** Label tetap di pojok atas: "PERUMPAMAAN - bukan data". (0-3 dtk) Stadion kartun dari atas. (3-6 dtk) Warna oranye mengisi semua kursi sampai pojok. (6-8 dtk) Kamera zoom ke satu pojok yang ternyata kosong, tokoh kecil menggaruk kepala. Teks besar "KEBESARAN".
 
-**VISUAL:** Dua kolom titik berdampingan. Kiri oranye "BAKTERI ~38 triliun", kanan krem "SEL MANUSIA ~30 triliun". Tinggi hampir sama (rasio visual kira-kira 1,3 : 1, kolom oranye sedikit lebih tinggi). Hitung naik cepat lalu berhenti. Teks akhir "hampir sama banyak" (bukan "1:1 tepat"). Label "SKEMA".
+**AUDIO:** Dengung riuh penonton, lalu "plop" lucu di pojok kosong.
 
-#### [S-06] Adegan 6 | 27-40 dtk | 29 kata
+#### [S-05] 8 dtk
 
-**NARASI:** "Kenapa angka lama terlalu besar? Perkiraan kasar tahun 1972 menganggap bakteri tersebar di seluruh saluran cerna. Padahal sebagian besar ada di usus besar, dengan kepadatan yang terukur lebih rendah."
+**NARASI:** Perkiraan lama menganggap bakteri memenuhi seluruh saluran pencernaan. Padahal sebagian besar hanya berkumpul di usus besar.
 
-**VISUAL:** Siluet pria dengan garis saluran cerna sederhana (bukan gambar anatomi realistis). Mula-mula seluruh garis menyala redup oranye, label "Perkiraan lama: seluruh saluran cerna (~1 liter)". Lalu menyusut dan hanya bagian usus besar yang menyala terang, label "Sebagian besar bakteri: usus besar (~0,4 liter)". Teks kecil "kepadatan terukur lebih rendah". Tahun 1972 tampil kecil di label, tanpa nama orang. Label "SKEMA".
+**VISUAL:** Label "SKEMA". (0-4 dtk) Siluet tubuh dengan garis saluran pencernaan sederhana (bukan gambar anatomi asli). Seluruh garis menyala oranye redup. (4-8 dtk) Cahaya menyusut dan berkumpul di satu bagian; usus besar menyala terang, Tim Bakteri berkumpul di situ seperti sedang rapat. Teks besar "USUS BESAR".
 
-#### [S-07] Adegan 7 | 40-51 dtk | 26 kata
+**AUDIO:** "Whoosh" menyusut, lalu satu nada hangat saat usus besar menyala.
 
-**NARASI:** "Menariknya, kalau hanya dibandingkan dengan sel berinti, hasilnya memang sekitar sepuluh banding satu. Tapi sekitar sembilan puluh persen sel manusia tidak berinti, terutama sel darah merah."
+#### [S-06] 5 dtk
 
-**VISUAL:** Kolom sel manusia dipecah dua warna: "BERINTI" (kecil, sekitar 10%) dan "TANPA INTI" (besar, sekitar 90%). Sorot kolom kecil berinti di samping kolom bakteri: tampak sekitar 10 : 1. Lalu bagian "TANPA INTI" menyala dengan ikon sel darah merah flat (lingkaran sederhana, bukan gambar medis realistis), label "sel darah merah". Bagian itu bergabung kembali dan kolom kembali hampir sama tinggi dengan kolom bakteri. Teks kecil "catatan menarik". Jangan tampilkan teks atau panah yang menyiratkan ini penyebab mitos. Label "SKEMA".
+**NARASI:** Tapi angka itu terlanjur diulang dan diulang, puluhan tahun lamanya.
 
-#### [S-08] Adegan 8 | 51-57 dtk | 11 kata
+**VISUAL:** Kertas kecil bertuliskan "10 : 1" disalin dari tangan ke tangan, tumpukan kertas makin tinggi dan tersebar. Teks kecil "diulang puluhan tahun".
 
-**NARASI:** "Soal bobot, seluruh bakteri itu hanya sekitar nol koma dua kilogram."
+**AUDIO:** Bunyi mesin fotokopi ringan, makin cepat lalu berhenti.
 
-**VISUAL:** Siluet pria; satu blok oranye kecil di samping dengan teks "~0,2 kg total massa bakteri". Jangan menyorot usus besar lagi (sudah di adegan 6). Label "SKEMA".
+#### [S-07] 10 dtk
 
-#### [S-09] Adegan 9 | 57-64 dtk | 16 kata
+**NARASI:** Lalu para peneliti menghitung ulang, untuk pria dewasa rata-rata. Hasilnya: sekitar 38 triliun bakteri. Dan sekitar 30 triliun sel manusia.
 
-**NARASI:** "Tentu ini perkiraan. Ketidakpastiannya sekitar dua puluh lima persen, dan angka tiap orang bisa sangat berbeda."
+**VISUAL:** Label "SKEMA". (0-3 dtk) Para peneliti kartun menghitung di papan tulis. (3-5 dtk) Siluet pria dewasa sederhana, label "Pria dewasa rata-rata". (5-7 dtk) Kerumunan Tim Bakteri muncul di kiri, teks besar "~38 TRILIUN". (7-10 dtk) Kerumunan Tim Sel Manusia muncul di kanan, teks besar "~30 TRILIUN". Dua kerumunan tampak hampir sama besar.
 
-**VISUAL:** Kolom bakteri dan sel manusia bergetar halus dengan rentang bayangan (batas ketidakpastian). Teks kecil "Perkiraan, ketidakpastian sekitar 25%. Antarorang bervariasi."
+**AUDIO:** Jeda hening 0,5 dtk sebelum angka. Satu "ting" untuk tiap angka.
 
-#### [S-10] Adegan 10 | 64-70 dtk | 14 kata
+#### [S-08] 8 dtk
 
-**NARASI:** "Kadang, angka yang sering diulang itu cuma belum dihitung ulang. Kini hitungannya sudah diperbarui."
+**NARASI:** Hampir sama banyak! Bayangkan dua tim tarik tambang dengan anggota hampir sama banyak. Seru, seimbang. Bukan sepuluh lawan satu.
 
-**VISUAL:** Teks "10 : 1" kecil dicoret di kiri; di kanan dua kolom hampir sama tinggi. Musik naik tipis lalu turun.
+**VISUAL:** (0-2 dtk) Teks besar "HAMPIR SAMA BANYAK". (2-6 dtk) Label "PERUMPAMAAN - bukan data". Dua tim tarik tambang kartun (satu oranye, satu biru), tali nyaris diam di tengah, semua tertawa. (6-8 dtk) Tulisan "10 : 1" dicoret besar.
 
-#### [S-11] Adegan 11 | 70-73 dtk | 1 kata
+**AUDIO:** Musik naik hangat, tawa kecil, "ting-tong" saat dicoret.
 
-**NARASI:** "@suhufpengetahuan"
+#### [S-09] 7 dtk
 
-**VISUAL:** Navy polos, logo di tengah (area aman, bukan 250 px bawah). Teks "@suhufpengetahuan" dan sumber kecil "Sender, Fuchs & Milo, 2016, PLoS Biology". Tanpa janji video lain.
+**NARASI:** Tapi ingat, ini perkiraan. Tiap orang bisa berbeda. Anggap saja ini gambaran, bukan angka pas.
 
-**AUDIO:** ambient tenang, nada rendah; bunyi "tik" halus tiap kolom titik naik; hening sejenak sebelum adegan 6 (penjelasan); musik turun di CTA.
+**VISUAL:** (0-3 dtk) Angka-angka bergoyang halus seperti kabut. (3-7 dtk) Tiga siluet orang berbeda tinggi dan bentuk berjejer, perut masing-masing bercahaya dengan terang berbeda. Teks "PERKIRAAN".
 
-**CATATAN VISUAL UMUM:** tanpa foto bakteri; semua grafik skematis berlabel "SKEMA", jangan digambar sebagai data presisi. Teks inti tampil di subtitle persis seperti narasi. Aman dari 250 px bawah dan 150 px atas. Teks hook sudah tampil di detik 0-2; hook diucapkan agak cepat. Versi 16:9 tidak diminta kali ini.
+**AUDIO:** Musik tenang, sedikit melambat.
 
-**HITUNGAN KATA NARASI:** 160 kata (per adegan: 12, 4, 15, 10, 22, 29, 26, 11, 16, 14, 1). Angka digit (10, 38, 30, 1972) dan '@suhufpengetahuan' dihitung 1 kata.
+#### [S-10] 6 dtk
 
-**Perkiraan bicara:** kalau angka dibaca penuh ("tiga puluh delapan", "seribu sembilan ratus tujuh puluh dua", dst.) sekitar 168 kata ucap, jadi sekitar 67 detik pada 2,5 kata/detik. Dengan jeda antaradegan total video sekitar 73 detik. Target 60-75 detik terpenuhi. Adegan 6 paling padat: bacakan rapat.
+**NARASI:** Pelajarannya: angka yang sering diulang belum tentu sudah dicek. Kadang, perlu dihitung ulang.
 
-**Perubahan dari versi sebelumnya:** adegan 3, 6, 7, 8 ditulis ulang (163 -> 160 kata). Adegan 1, 2, 4, 5, 9, 10, 11 dan hook tidak berubah (hanya timeline bergeser sedikit).
+**VISUAL:** (0-3 dtk) Tokoh peneliti mengangkat kaca pembesar ke kertas "10 : 1". (3-6 dtk) Teks besar muncul satu-satu: "CEK" lalu "ULANG".
 
-**OPSI PANGKAS (sekitar 65 detik):** hapus seluruh adegan 10 (CTA maju) dan 'terutama sel darah merah' di adegan 7.
+**AUDIO:** Musik naik tipis lalu turun.
 
-### Daftar klaim dan sumber
+#### [S-11] 3 dtk
 
-**Sumber utama:** Sender R, Fuchs S, Milo R (2016), PLoS Biology, doi 10.1371/journal.pbio.1002533; Sender R, Fuchs S, Milo R (2016), Cell (komentar tentang rasio sel bakteri dan sel inang); laporan Nature (2016), "Scientists bust myth that our bodies have more bacteria than human cells".
+**NARASI:** Ikuti @suhufpengetahuan.
 
-- Mitos populer: bakteri 10 kali lebih banyak dari sel manusia -> Sender dkk. 2016 (daftar fakta brief)
-- Angka 10:1 berasal dari perkiraan kasar (1972) yang terus diulang puluhan tahun -> Sender dkk. 2016 (PLoS Biology & Cell); Nature 2016
-- Perkiraan lama menganggap bakteri tersebar di seluruh saluran cerna (sekitar 1 liter) -> Sender dkk. 2016
-- Sebagian besar bakteri berada di usus besar (sekitar 0,4 liter) dan kepadatannya terukur lebih rendah, sehingga jumlah bakteri dilebih-lebihkan -> Sender dkk. 2016
-- Hitungan terbaru untuk pria dewasa referensi (disebut 'pria dewasa rata-rata') -> Sender dkk. 2016
-- Sekitar 38 triliun bakteri -> Sender dkk. 2016
-- Sekitar 30 triliun sel manusia -> Sender dkk. 2016
-- Rasio kira-kira 1,3 : 1, jadi hampir sama banyak / sekitar 1 banding 1 -> Sender dkk. 2016; Nature 2016
-- Dibandingkan hanya dengan sel manusia berinti, rasionya memang sekitar 10:1 (catatan menarik, BUKAN penyebab mitos) -> Sender dkk. 2016
-- Sekitar 90% sel manusia tidak berinti (terutama sel darah merah dan trombosit) -> Sender dkk. 2016
-- Total massa bakteri sekitar 0,2 kg -> Sender dkk. 2016
-- Ketidakpastian estimasi sekitar 25%, angka antarorang bervariasi -> Sender dkk. 2016
+**VISUAL:** Latar krem polos. Logo di tengah (di dalam area aman). Teks "@suhufpengetahuan". Satu Tim Bakteri dan satu Tim Sel Manusia melambai dari kiri-kanan logo. Tanpa janji video lain.
 
-**Tidak dicantumkan (sesuai aturan):** nama orang di balik perkiraan lama, klaim penyebab mitos selain perkiraan kasar 1972, klaim kesehatan, angka lain di luar daftar fakta. Tahun 1972 hanya disebut di adegan 6. Tidak ada penanda [VERIFIKASI] karena semua klaim dari daftar fakta terverifikasi.
+**AUDIO:** Musik turun, nada logo, berhenti bersih.
 
-**Catatan untuk Kim:** (1) Adegan 7 sengaja ditulis sebagai catatan menarik, bukan penyebab; jangan ubah 'menariknya' jadi 'karena'. (2) Kalimat 'Kadang, angka yang sering diulang itu cuma belum dihitung ulang' (adegan 10) adalah refleksi penutup, bukan klaim fakta; boleh dihapus kalau dinilai terlalu umum.
+### Bagian akhir Shorts
+#### (1) Tiga pilihan judul (maks 70 karakter)
 
-### Caption
+1. Bakteri di Tubuhmu 10x Lebih Banyak? Ternyata Bukan! (52 karakter)
+2. Mitos 10:1: Bakteri di Perutmu Tidak Sebanyak Itu (49 karakter)
+3. Siapa Bilang Bakteri Menang Jumlah? Kita Hitung Ulang (53 karakter)
 
-Bakteri di tubuhmu 10 kali lebih banyak dari selmu? Itu keliru.
+**Rekomendasi:** no. 1 (cocok dengan hook).
 
-Angka itu berasal dari perkiraan kasar yang diulang puluhan tahun. Untuk pria dewasa rata-rata, hitungan terbaru menunjukkan jumlahnya hampir sama banyak. Sumber: Sender, Fuchs & Milo 2016, PLoS Biology.
+#### (2) Usulan thumbnail / cover
 
-Follow @suhufpengetahuan
+**Teks:** "10:1 SALAH?" (2 kata). Visual: latar krem, timbangan kartun dengan Tim Bakteri oranye dan Tim Sel Manusia biru hampir seimbang, "10:1" dicoret di atasnya.
 
-#SuhufPengetahuan #FaktaSains #MitosVsFakta #Biologi #TahukahKamu
+#### (3) Klaim -> fakta
 
-## 5. Script video panjang YouTube (16:9, 14–15 menit)
+- Mitos: bakteri 10x lebih banyak dari sel manusia -> F01
+- Mulai dari perkiraan kasar tahun 1972, bukan hitungan satu per satu -> F02
+- Perkiraan menganggap bakteri memenuhi seluruh saluran pencernaan, padahal sebagian besar di usus besar -> F02, F04, F05
+- Angka diulang puluhan tahun -> F02
+- Hitung ulang pria dewasa rata-rata: sekitar 38 triliun bakteri, sekitar 30 triliun sel manusia, hampir sama banyak -> F08
+- Ini perkiraan, tiap orang bisa berbeda -> F08, F13
+- Pelajaran: angka populer perlu dicek -> F18
+- Sengaja TIDAK dipakai di Shorts: sel berinti (F11), 0,2 kg (F12), toilet (F16), perempuan/bayi (F14, F15).
 
-_Sumber asli: `script-long.md` (Don, v2). Teks disalin apa adanya._
+#### (4) Hitungan kata dan durasi
 
-Versi 14-15 menit (menggantikan v1 5-7 menit; v1 disimpan di script-long-v1-6menit.md)
+**Kata per adegan:** 17, 4, 16, 18, 16, 10, 20, 19, 15, 13, 2 = 150 kata (dihitung otomatis dari file; angka digit dan "@suhufpengetahuan" dihitung 1 kata).
 
-Penulis: Don | Bahasa: Indonesia, ramah semua umur | Narator: Miftah | Tempo ±140 kata/menit
+**Perkiraan durasi:** 150 / 2,5 = sekitar 60 detik bicara, plus jeda antaradegan = sekitar 72 detik total (jumlah durasi adegan 72 dtk). Target 60-75 detik terpenuhi.
 
-### Judul (maks 70 karakter)
+#### (5) Caption
 
-- Mitos 10:1: Bakteri di Tubuhmu Sebenarnya Tidak Sebanyak Itu (60 karakter)
-- Angka 10:1 Itu Ternyata Perkiraan Kasar dari Tahun 1972 (55 karakter)
-- Bakteri vs Sel Manusia: Kita Hitung Ulang dari Awal (51 karakter)
+Bakteri di tubuhmu 10 kali lebih banyak dari selmu? Ternyata angka itu berawal dari tebakan kasar yang kebesaran. Dihitung ulang, jumlahnya hampir sama banyak. Ikuti @suhufpengetahuan
 
-**Rekomendasi:** judul 1 (sesuai brief). Judul 2 untuk uji A/B.
+#SuhufPengetahuan #FaktaSains #TahukahKamu #Biologi #MitosVsFakta
 
-### Usulan thumbnail
+#### (6) Catatan perumpamaan
 
-Teks (3 kata): "10:1 itu keliru?". Visual: latar navy gelap, angka "10:1" oranye besar dengan coretan diagonal; di kanan dua kolom titik yang hampir sama tinggi. Pojok kecil label "SKEMA". Tanpa foto bakteri.
+- S-04 Stadion dengan semua kursi dikira penuh: untuk menjelaskan kenapa tebakan kebesaran. Tanpa angka. Ditandai "PERUMPAMAAN - bukan data".
+- S-08 Dua tim tarik tambang dengan anggota hampir sama banyak: untuk menjelaskan "hampir sama banyak". Tanpa angka baru. Ditandai "PERUMPAMAAN - bukan data".
+- Dipakai juga sebagai gambar (bukan perumpamaan): Tim Bakteri vs Tim Sel Manusia sebagai ikon jumlah. Ditandai "SKEMA" saat membawa angka.
 
-### Struktur bab (untuk adegan Stark)
+#### Catatan Don untuk Miftah
 
-- Bab 1: HOOK | adegan 1-2 | mulai sekitar 0:00
-- Bab 2: APA KATA BANYAK ORANG | adegan 3-4 | mulai sekitar 0:44
-- Bab 3: DARI MANA 10:1 | adegan 5-10 | mulai sekitar 1:23
-- Bab 4: HITUNG ULANG BAKTERI | adegan 11-18 | mulai sekitar 3:39
-- Bab 5: HITUNG ULANG SEL MANUSIA | adegan 19-22 | mulai sekitar 6:38
-- Bab 6: HASIL 1,3:1 DAN KETIDAKPASTIAN | adegan 23-26 | mulai sekitar 7:50
-- Bab 7: CATATAN MENARIK | adegan 27-30 | mulai sekitar 9:00
-- Bab 8: YANG BELUM PASTI | adegan 31-36 | mulai sekitar 10:21
-- Bab 9: CATATAN RINGAN | adegan 37-38 | mulai sekitar 12:05
-- Bab 10: PELAJARAN DAN REKAP | adegan 39-42 | mulai sekitar 12:43
-- Bab 11: PENUTUP | adegan 43-43 | mulai sekitar 14:06
+- Hook sengaja bertanya "Dari mana angka itu datang?", bukan "Siapa yang pertama bilang?", karena sumber hanya mendukung kalimat "perkiraan kasar tahun 1972 yang diulang", bukan klaim "orang pertama".
+- Nama peneliti, nama jurnal, kolon, MRI, persen, dan satuan teknis tidak muncul di narasi. Sumber (Sender, Fuchs & Milo 2016) cukup di deskripsi/komentar, bukan di narasi.
+- Sel berinti tidak dipaksakan di Shorts; masuk di video panjang saja.
 
-### Script per adegan (16:9, 1920x1080)
+## 5. Script video panjang YouTube (16:9)
 
-**Format:** nomor | bab | narasi | catatan visual | durasi dan kumulatif. Durasi = kata x 60/140 detik + jeda transisi 0,5 dtk (+1 dtk untuk adegan rekap). Visual 16:9 dengan label "SKEMA" atau "PERUMPAMAAN" untuk ilustrasi konsep. Palet navy gelap + oranye.
+_Sumber asli: `v3-ramah-pemula/long-v3.md` (Don). Teks disalin apa adanya._
 
-### BAB 1 - HOOK
+Suhuf Pengetahuan #02 | Mitos 10:1: Bakteri di Tubuhmu Sebenarnya Tidak Sebanyak Itu | Penulis: Don | Bahasa Indonesia | Narator: Miftah
 
-#### [L-01] Adegan 1 | Bab 1: HOOK | 60 kata | 26 dtk | kumulatif 0:26
+Ditulis ulang dari nol. Tidak menimpa script lama. Sumber fakta: Bagian 2 (F01-F18) di suhuf-02-bakteri-script-lengkap.md.
 
-**NARASI:** Sepuluh banding satu. Mungkin kamu pernah membaca angka ini. Katanya, di tubuh manusia, bakteri jumlahnya sepuluh kali lebih banyak daripada sel kita sendiri. Angkanya rapi. Mudah diingat. Dan diulang di mana-mana. Tapi suatu hari ada yang bertanya: dari mana angka ini sebenarnya berasal? Jawabannya mengejutkan. Ternyata angka itu berawal dari perkiraan kasar. Dan ketika seseorang menghitungnya ulang, hasilnya berbeda jauh.
+**BIG IDEA:** Misteri kecil. Siapa yang pertama menghitung "10 banding 1", dan apakah benar? Jawabannya: tebakan kasar yang kebesaran. Dihitung ulang, hampir sama banyak.
 
-**VISUAL:** Layar navy gelap. Teks oranye besar "10 : 1" muncul dengan satu ketukan. Di bawahnya dua kolom titik: kiri penuh titik oranye, kanan satu titik putih. Label kecil "SKEMA: ilustrasi mitos". Pada kalimat "dihitung ulang", kolom kiri menyusut cepat hingga hampir sejajar kolom kanan; "10 : 1" tergores coret tipis. SFX: bass rendah di "10 : 1", pad tenang masuk.
+**PESAN YANG HARUS DIINGAT:** Angka yang sering diulang perlu dicek.
 
-#### [L-02] Adegan 2 | Bab 1: HOOK | 42 kata | 18 dtk | kumulatif 0:44
+**ANGKA KUNCI (maks 3):** (a) "sepuluh banding satu"; (b) "sekitar 38 triliun bakteri dan sekitar 30 triliun sel manusia"; (c) "hampir sama banyak". Tahun 1972 disebut sebagai penanda waktu.
 
-**NARASI:** Satu lembar, satu cerita. Selamat datang di Suhuf Pengetahuan. Hari ini kita membuka satu lembar tentang sebuah angka. Perjalanannya dari tahun 1972 sampai hitung ulang di tahun 2016. Santai saja. Tidak ada yang menakutkan di sini. Hanya hitung-hitungan, dan beberapa kejutan kecil.
+**CATATAN BAHAN:** BAHAN KURANG untuk 8-10 menit. Dengan batasan 3 angka dan tanpa istilah teknis, bahan fakta yang aman hanya cukup sekitar 6 menit. Saya tidak mengisi dengan pengulangan atau tebakan. Bab toilet (OPSIONAL) bisa dibuang; sisanya tetap utuh. Kalau Miftah mau lebih panjang, tambahkan bahan baru terverifikasi dulu (mis. bagian bakteri di mulut/kulit), jangan diperpanjang dengan pengulangan.
 
-**VISUAL:** Kartu judul bergaya lembar kertas: logo Suhuf Pengetahuan, teks "Satu lembar, satu cerita." Judul video fade in: "Mitos 10:1". Navy, aksen oranye. Musik utama naik pelan, tempo santai.
+**GAYA VISUAL (untuk Dex):** kartun datar, cerah, latar krem hangat; oranye dan biru sebagai aksen. Tokoh: Tim Bakteri (kapsul oranye kecil, mata bulat, senyum), Tim Sel Manusia (bulat biru, lucu), peneliti kartun, detektif kartun (topi + kaca pembesar) sebagai pemandu, timbangan, stadion, siluet tubuh dengan perut bercahaya. Bukan foto, tidak menjijikkan. Gambar berganti tiap 3-5 detik. Teks besar hanya 1-4 kata.
 
-### BAB 2 - APA KATA BANYAK ORANG
+### Script per adegan
 
-#### [L-03] Adegan 3 | Bab 2: APA KATA BANYAK ORANG | 49 kata | 22 dtk | kumulatif 1:06
+### BAB 1 - HOOK MISTERI
 
-**NARASI:** Mari mulai dari klaimnya. Kalimatnya hampir selalu sama. Bakteri di tubuh manusia jumlahnya sepuluh kali lipat sel manusia. Sebagian orang bahkan menyebut seratus kali lipat. Sekilas, rasanya masuk akal. Bakteri itu kecil sekali, dan jumlahnya memang banyak. Jadi sepuluh kali lipat terdengar wajar. Seratus kali lipat pun terdengar mungkin.
+#### [L-01] 10 dtk (kumulatif 0:10) | Angka misterius
 
-**VISUAL:** Tiga kartu kutipan generik (tanpa merek buku nyata, label "SKEMA: contoh kalimat"): "10 kali lipat", "bahkan 100 kali lipat". Kartu bertambah satu per satu dengan efek gema halus.
+**NARASI:** Sepuluh banding satu. Mungkin kamu pernah mendengar angka ini. Katanya, di tubuhmu, bakteri jauh lebih banyak daripada sel kamu sendiri.
 
-#### [L-04] Adegan 4 | Bab 2: APA KATA BANYAK ORANG | 39 kata | 17 dtk | kumulatif 1:23
+**VISUAL:** Latar krem hangat. Siluet tubuh ramah dengan perut bercahaya oranye. Dari perut, Tim Bakteri (kapsul oranye kecil bermata bulat, tersenyum) berbaris keluar memenuhi kiri layar; di kanan hanya segelintir Tim Sel Manusia (bulat biru, lucu). Teks besar "10 : 1", label kecil "MITOS".
 
-**NARASI:** Jadi di video ini, kita lakukan tiga hal. Pertama, mencari asal angkanya. Kedua, ikut menghitung ulang, langkah demi langkah, dari sisi bakteri dan sisi sel manusia. Ketiga, melihat bagian mana yang masih belum pasti. Kita mulai dari yang pertama.
+**AUDIO:** Ketukan ringan di "sepuluh banding satu"; musik penasaran-ceria masuk.
 
-**VISUAL:** Tiga kartu bernomor 1-2-3 muncul berurutan di kiri layar (peta perjalanan), kartu 1 menyala oranye, sisanya redup. Gaya daftar sederhana, banyak ruang kosong.
+#### [L-02] 9 dtk (kumulatif 0:19) | Dua pertanyaan
 
-### BAB 3 - DARI MANA 10:1
+**NARASI:** Tapi, siapa yang pertama kali menghitungnya? Dan apakah hitungannya benar? Jawabannya seru, dan ada satu kejutan di ujung cerita.
 
-#### [L-05] Adegan 5 | Bab 3: DARI MANA 10:1 | 59 kata | 26 dtk | kumulatif 1:49
+**VISUAL:** Tanda tanya besar bergoyang di atas perut siluet. Tokoh detektif kartun (topi, kaca pembesar) muncul dari pojok dan mengintip angka "10 : 1". Teks besar "Benar?".
 
-**NARASI:** Kita mundur ke tahun 1972. Di tahun itu, seorang peneliti bernama Luckey membuat sebuah perkiraan. Hitungannya sederhana. Orang menyebut hitungan seperti ini hitungan di balik amplop, atau back-of-the-envelope. Cepat, kasar, cukup untuk memberi gambaran. Ia memakai dua bilangan. Yang pertama, sekitar sepuluh pangkat sebelas bakteri untuk setiap gram isi saluran cerna. Itu sekitar seratus miliar bakteri dalam satu gram.
+**AUDIO:** Nada misteri pendek (pizzicato).
 
-**VISUAL:** Garis waktu horizontal, penanda "1972" menyala. Sketsa amplop/kertas dengan coretan garis tipis oranye di atas navy. Kotak pertama: "~10^11 bakteri per gram isi" dengan keterangan "≈ 100 miliar". Label "SKEMA: perkiraan kasar, bukan data pengukuran". SFX: pensil menulis, tick-tick tiap angka.
+#### [L-03] 7 dtk (kumulatif 0:26) | Salam pembuka
 
-#### [L-06] Adegan 6 | Bab 3: DARI MANA 10:1 | 51 kata | 22 dtk | kumulatif 2:11
+**NARASI:** Satu lembar, satu cerita. Selamat datang di Suhuf Pengetahuan. Hari ini, kita jadi detektif angka.
 
-**NARASI:** Bilangan kedua adalah kapasitas saluran cerna. Luckey menganggapnya sekitar satu liter, atau kira-kira satu kilogram isi. Lalu kedua bilangan itu dikalikan. Hasilnya angka yang sangat besar, dan dari perkiraan inilah angka sepuluh banding satu itu bermula. Tapi perhatikan. Ini bukan hasil menghitung bakteri satu per satu. Ini hasil perkalian dua perkiraan.
+**VISUAL:** Selembar kertas hangat terbuka dari bawah, logo Suhuf Pengetahuan muncul. Teks "Satu lembar, satu cerita." Detektif kartun melambai di pojok.
 
-**VISUAL:** Kotak kedua: "1 liter ≈ 1 kg". Tanda kali antara dua kotak. Siluet saluran cerna sederhana (garis, bukan anatomi realistis) diwarnai oranye merata dari atas sampai bawah. Hasil perkalian ditampilkan sebagai tanda tanya besar "?" (angka hasil tidak diucapkan). Label "SKEMA".
+**AUDIO:** Bunyi kertas dibuka, nada logo.
 
-#### [L-07] Adegan 7 | Bab 3: DARI MANA 10:1 | 53 kata | 23 dtk | kumulatif 2:34
+### BAB 2 - APA KATA ORANG
 
-**NARASI:** Bayangkan kamu ingin tahu berapa banyak orang di sebuah gedung. Kamu tahu satu lantai bisa penuh sesak. Lalu kamu menganggap semua lantai sama penuhnya, dan mengalikannya. Ini hanya perumpamaan, bukan bagian dari data. Hitungannya rapi, tapi asumsinya perlu diuji. Perkiraan kasar memang begitu sifatnya. Cukup untuk gambaran awal. Belum cukup untuk jadi acuan.
+#### [L-04] 11 dtk (kumulatif 0:37) | Kata orang
 
-**VISUAL:** Ilustrasi gedung sederhana bergaya garis, 6 lantai. Satu lantai berisi banyak titik oranye; lantai lain mula-mula ikut penuh (asumsi, titik redup), lalu ternyata kosong. Label besar "PERUMPAMAAN - bukan data". Musik tenang, reflektif.
+**NARASI:** Pertama, kita dengar dulu kata orang. Kalimatnya hampir selalu sama: bakteri di tubuh manusia jauh lebih banyak daripada sel manusia. Sepuluh banding satu.
 
-#### [L-08] Adegan 8 | Bab 3: DARI MANA 10:1 | 44 kata | 19 dtk | kumulatif 2:53
+**VISUAL:** Tiga gelembung percakapan kartun dari tokoh-tokoh berbeda (guru, remaja, kakek) semuanya berisi "10 : 1". Gelembung bertambah satu per satu dengan efek gema ringan.
 
-**NARASI:** Lima tahun kemudian, tahun 1977, seorang penulis bernama Savage mengutip angka itu. Setelah itu, hampir semua makalah tentang mikrobiota bersandar pada makalah Savage, langsung atau tidak langsung. Dan makalah Savage sendiri, ternyata mengutip Luckey. Jadi jalurnya seperti estafet. Tongkatnya sama. Hanya tangannya yang berganti.
+**AUDIO:** "Pop" kecil tiap gelembung.
 
-**VISUAL:** Garis waktu: 1972 (Luckey) > 1977 (Savage) > deretan kartu kecil yang bertambah > 2016. Di setiap titik kartu bertambah dengan efek gema (estafet). Animasi tongkat estafet sederhana berwarna oranye berpindah dari kartu ke kartu. Tanpa jumlah kutipan dan tanpa nama jurnal.
+#### [L-05] 11 dtk (kumulatif 0:48) | Kenapa terdengar masuk akal
 
-#### [L-09] Adegan 9 | Bab 3: DARI MANA 10:1 | 47 kata | 21 dtk | kumulatif 3:14
+**NARASI:** Kedengarannya masuk akal, kan? Bakteri itu makhluk hidup yang kecil sekali. Mata kita tidak bisa melihatnya. Jadi wajar kalau orang membayangkan jumlahnya sangat banyak.
 
-**NARASI:** Dalam makalah mereka tahun 2016, para penulis yang menghitung ulang menyebut perkiraan Luckey itu elegan. Tapi mereka juga menulis, perkiraan itu tidak dimaksudkan menjadi acuan selama puluhan tahun. Jadi cerita ini bukan soal mencari siapa yang salah. Luckey membuat perkiraan awal. Yang berlangsung terlalu lama adalah pemakaiannya.
+**VISUAL:** Kaca pembesar detektif mendekat ke titik kecil di layar; titik membesar jadi Tim Bakteri yang melambai lucu. Teks besar "KECIL SEKALI".
 
-**VISUAL:** Kartu parafrasa (bukan kutipan langsung): "Elegan - tapi tidak dimaksudkan jadi acuan puluhan tahun". Teks kecil: Sender, Fuchs & Milo 2016. Kartu label "perkiraan kasar" perlahan berganti menjadi "fakta umum" lalu diberi tanda tanya oranye.
+**AUDIO:** Efek zoom lembut.
 
-#### [L-10] Adegan 10 | Bab 3: DARI MANA 10:1 | 58 kata | 25 dtk | kumulatif 3:39
+#### [L-06] 10 dtk (kumulatif 0:58) | Apa itu sel manusia
 
-**NARASI:** Lalu dari mana angka seratus banding satu? Ada laporan NIH yang menyebut sekitar satu sampai tiga persen massa tubuh adalah bakteri, tanpa rujukan yang jelas. Angka persen itu dikalikan dengan ukuran bakteri standar buku teks. Hasilnya sekitar sepuluh pangkat lima belas bakteri. Dari situlah muncul klaim seratus banding satu. Nanti kita lihat, ukuran standar itu juga ternyata bermasalah.
+**NARASI:** Kalau sel manusia, itu bagian-bagian kecil yang menyusun tubuhmu. Ada sel darah, sel otot, sel kulit, dan masih banyak lagi.
 
-**VISUAL:** Jalur kedua bercabang dari kartu mitos: kotak "laporan NIH: 1-3% massa tubuh (tanpa rujukan yang jelas)" > kali > kotak "bakteri 'standar buku teks'" > kotak "~10^15" > kartu "klaim 100 : 1". Label "SKEMA: dua jalur menuju satu mitos". Jangan beri kesan NIH "salah".
+**VISUAL:** Siluet tubuh "dibuka" jadi kotak-kotak Lego warna-warni (kartun, bukan anatomi nyata). Tim Sel Manusia (bulat biru) keluar dari kotak: ada yang merah (darah), ada yang berotot lucu, ada yang berbentuk kotak (kulit). Teks "SEL MANUSIA".
 
-### BAB 4 - HITUNG ULANG BAKTERI
+**AUDIO:** Bunyi klik-klik Lego.
 
-#### [L-11] Adegan 11 | Bab 4: HITUNG ULANG BAKTERI | 42 kata | 18 dtk | kumulatif 3:57
+#### [L-07] 7 dtk (kumulatif 1:05) | Rekap bab 2
 
-**NARASI:** Sekarang kita menghitung ulang, mulai dari sisi bakteri. Cara berpikirnya sederhana. Untuk menghitung sesuatu yang tidak bisa dihitung satu per satu, kita butuh tiga hal. Di mana letaknya. Berapa ruangnya. Dan seberapa padat isinya. Letak, ruang, kepadatan. Kita ikuti tiga langkah itu.
+**NARASI:** Jadi, kata orang bakteri menang jauh, dan sekarang kita cari asal angkanya.
 
-**VISUAL:** Judul bab "Menghitung ulang: bakteri". Tiga ikon sederhana berurutan: pin (letak), kotak (ruang), titik rapat (kepadatan), dihubungkan tanda kali antara ruang dan kepadatan. Label "SKEMA: cara menaksir".
+**VISUAL:** Detektif menempelkan kertas "10 : 1" di papan investigasi lalu menarik benang merah menuju tanda tanya. Teks "Dari mana?".
 
-#### [L-12] Adegan 12 | Bab 4: HITUNG ULANG BAKTERI | 56 kata | 24 dtk | kumulatif 4:21
+**AUDIO:** Nada transisi.
 
-**NARASI:** Langkah pertama, letak. Bakteri tidak tersebar rata di seluruh saluran cerna. Di usus besar, atau kolon, jumlahnya paling sedikit seratus kali lebih banyak daripada organ lain. Di lambung dan bagian atas usus halus, jumlahnya hanya sekitar seribu sampai sepuluh ribu per mililiter. Kenapa sedikit? Dua sebab. Asam lambung yang pH-nya rendah, dan isi yang mengalir cepat.
+### BAB 3 - DARI MANA ANGKA ITU?
 
-**VISUAL:** Siluet saluran cerna garis. Bagian lambung dan usus halus atas redup dengan label "10^3 - 10^4 per mL"; kolon menyala oranye. Dua ikon sebab: "pH rendah" dan "aliran cepat" (panah lurus cepat). Label "SKEMA". SFX: satu nada pop saat kolon menyala.
+#### [L-08] 8 dtk (kumulatif 1:13) | Tahun 1972
 
-#### [L-13] Adegan 13 | Bab 4: HITUNG ULANG BAKTERI | 45 kata | 20 dtk | kumulatif 4:41
+**NARASI:** Kita mundur ke tahun 1972. Seorang peneliti ingin tahu, kira-kira ada berapa bakteri di tubuh manusia.
 
-**NARASI:** Bagaimana dengan mulut? Seluruh bakteri di mulut jumlahnya kurang dari satu persen dari bakteri di kolon. Organ lain, termasuk kulit, paling banyak sekitar satu triliun. Itu kurang dari tiga persen dari total. Jadi kalau ditarik garis besarnya, hampir semua bakteri tinggal di satu tempat. Kolon.
+**VISUAL:** Kalender kartun membalik cepat dan berhenti di "1972". Peneliti kartun (jas lab, kacamata, tanpa wajah rinci) duduk di meja, menatap siluet tubuh sambil menggaruk kepala. Teks "1972".
 
-**VISUAL:** Bilah horizontal 100%: hampir seluruhnya oranye (kolon), irisan sangat tipis "organ lain < 3%" (maks ~10^12; kulit ~10^12) dan anotasi "seluruh mulut < 1% dari kolon". Tanpa gambar bakteri; hanya bilah dan titik.
+**AUDIO:** Efek balik halaman kalender.
 
-#### [L-14] Adegan 14 | Bab 4: HITUNG ULANG BAKTERI | 54 kata | 24 dtk | kumulatif 5:05
+#### [L-09] 9 dtk (kumulatif 1:22) | Tebakan kasar
 
-**NARASI:** Langkah kedua, ruang. Berapa isi kolon? Luckey memakai satu liter untuk seluruh saluran cerna. Para penulis memakai analisis MRI untuk pria referensi, dan hasilnya sekitar nol koma empat liter, dengan ketidakpastian sekitar dua puluh lima persen. Isinya juga tidak tetap. Setelah makan, berubah sekitar sepuluh persen. Jadi nol koma empat liter adalah angka acuan.
+**NARASI:** Menghitung bakteri satu per satu itu sulit sekali. Jadi dia membuat perkiraan kasar. Cepat, sederhana, cukup untuk gambaran awal.
 
-**VISUAL:** Dua kotak volume berdampingan: "1 liter" (abu-abu redup, diasumsikan 1972) vs "0,4 liter" (oranye, analisis MRI, ketidakpastian ~25%). Kotak 0,4 diisi hingga 40% tinggi kotak 1 liter. Lalu kotak berdenyut kecil (+/- 10%, ikon makan). Tanpa gambar MRI nyata. Label "SKEMA: bukan skala sebenarnya".
+**VISUAL:** Peneliti menulis di kertas kecil bergaya amplop, dikelilingi bakteri lucu yang menggeleng karena tak mungkin dihitung satu-satu. Stempel besar "PERKIRAAN KASAR".
 
-#### [L-15] Adegan 15 | Bab 4: HITUNG ULANG BAKTERI | 53 kata | 23 dtk | kumulatif 5:28
+**AUDIO:** Efek pensil, stempel "tak!".
 
-**NARASI:** Langkah ketiga, kepadatan. Berapa banyak bakteri dalam satu gram isi kolon? Para penulis mengumpulkan hasil dari empat belas studi yang mengukur bakteri dalam tinja. Kepadatan terukurnya sekitar nol koma sembilan kali sepuluh pangkat sebelas per gram tinja basah. Atau sekitar sembilan puluh miliar bakteri per gram. Variasi antarorang sekitar empat puluh enam persen.
+#### [L-10] 11 dtk (kumulatif 1:33) | Cara hitungnya
 
-**VISUAL:** Kartu besar "14 studi" lalu muncul 14 titik kecil yang menyatu menjadi satu angka "0,9 x 10^11 per gram tinja basah" (anotasi: "≈ 90 miliar"). Rentang tipis "variasi antarorang ~46%". Nada tenang, bahasa visual data (tanpa gambar tinja).
+**NARASI:** Caranya begini. Dia menebak berapa bakteri ada di sedikit isi usus. Lalu dia menebak berapa banyak isi di seluruh saluran pencernaan. Lalu keduanya dikalikan.
 
-#### [L-16] Adegan 16 | Bab 4: HITUNG ULANG BAKTERI | 41 kata | 18 dtk | kumulatif 5:46
+**VISUAL:** Label "SKEMA". Dua kotak kartun berurutan: kotak 1 "bakteri di sedikit isi usus" (sendok kecil berisi titik oranye), kotak 2 "isi seluruh saluran pencernaan" (garis saluran sederhana, bukan anatomi nyata). Tanda kali "x" di antaranya, hasilnya tanda tanya.
 
-**NARASI:** Perhatikan. Kepadatan ini hampir sama dengan angka yang dipakai Luckey. Yang meleset ternyata ruangnya. Satu liter diganti nol koma empat liter. Kalikan ruang dengan kepadatan, dan total bakteri kolon turun dari angka lama. Bukan karena kepadatannya diubah, tapi karena ruangnya diukur.
+**AUDIO:** Tik-tik tiap kotak muncul.
 
-**VISUAL:** Dua kolom batang: "perkiraan 1972" (tinggi, redup) dan "hitung ulang" (lebih pendek, oranye). Dua kotak penanda: kepadatan "≈ sama" (centang), ruang "1 L → 0,4 L" (panah turun, disorot). Label "SKEMA: bukan skala sebenarnya".
+#### [L-11] 12 dtk (kumulatif 1:45) | Perumpamaan stadion
 
-#### [L-17] Adegan 17 | Bab 4: HITUNG ULANG BAKTERI | 60 kata | 26 dtk | kumulatif 6:12
+**NARASI:** Bayangkan kamu menebak jumlah penonton di sebuah stadion. Kamu menghitung satu deret kursi yang penuh. Lalu kamu mengira semua kursi sama penuhnya, sampai ke pojok.
 
-**NARASI:** Ada satu hal lagi: ukuran bakteri. Buku teks biasanya memakai bakteri standar, satu mikrometer kubik, dengan massa sekitar satu pikogram. Pikogram itu sepersejuta dari sepersejuta gram. Tapi bakteri usus rata-rata sekitar lima pikogram dalam keadaan basah, beberapa kali lebih besar. Kalau bakterinya lebih besar, untuk massa yang sama jumlahnya lebih sedikit. Inilah salah satu sebab klaim seratus banding satu kebesaran.
+**VISUAL:** Label tetap "PERUMPAMAAN - bukan data". Stadion kartun dari atas. Satu deret kursi terisi penonton lucu; lalu warna oranye menjalar mengisi SEMUA kursi sampai pojok.
 
-**VISUAL:** Dua lingkaran: kecil berlabel "standar buku teks: 1 µm³, ~1 pg", lebih besar berlabel "bakteri usus: ~5 pg (basah)". Skala sederhana (SKEMA). Di samping, anotasi "massa tetap → bakteri besar = jumlah lebih sedikit".
+**AUDIO:** Dengung riuh penonton naik pelan.
 
-#### [L-18] Adegan 18 | Bab 4: HITUNG ULANG BAKTERI | 56 kata | 26 dtk | kumulatif 6:38
+#### [L-12] 6 dtk (kumulatif 1:51) | Kursi kosong
 
-**NARASI:** Jeda ringkas pertama. Kita rekap sisi bakteri. Satu, hampir semua bakteri ada di kolon. Dua, ruangnya sekitar nol koma empat liter, bukan satu liter. Tiga, kepadatannya sekitar nol koma sembilan kali sepuluh pangkat sebelas per gram, dari empat belas studi. Empat, bakteri usus lebih besar dari ukuran standar buku teks. Sisi bakteri selesai. Sekarang sisi satunya.
+**NARASI:** Hitungannya rapi. Tapi kalau ternyata banyak kursi kosong, tebakanmu pasti kebesaran.
 
-**VISUAL:** REKAP BAB 4: empat kartu bernomor 1-4 tampil bergantian di kiri; di kanan, ringkasan visual: kolon menyala, kotak 0,4 L, "14 studi", dua lingkaran ukuran. Setelah kalimat terakhir, layar bergeser ke kanan menuju bab sel manusia. Tempo lambat.
+**VISUAL:** Masih label "PERUMPAMAAN - bukan data". Kamera zoom ke pojok stadion yang ternyata kosong, hanya ada burung kecil dan satu penonton menggaruk kepala. Teks besar "KEBESARAN".
 
-### BAB 5 - HITUNG ULANG SEL MANUSIA
+**AUDIO:** Hening sejenak, "plop" lucu.
 
-#### [L-19] Adegan 19 | Bab 5: HITUNG ULANG SEL MANUSIA | 39 kata | 17 dtk | kumulatif 6:55
+#### [L-13] 9 dtk (kumulatif 2:00) | Bukan soal salah
 
-**NARASI:** Sisi sel manusia. Mungkin terdengar mudah, karena kita tahu apa itu sel. Tapi menghitung sel manusia juga tidak sesederhana kelihatannya. Tubuh punya banyak jenis sel, dengan ukuran dan jumlah yang berbeda jauh. Jadi menghitungnya sering dilakukan jenis demi jenis.
+**NARASI:** Ini bukan soal siapa yang salah. Tebakan awal itu wajar. Yang kebablasan adalah memakainya sebagai patokan, selama puluhan tahun.
 
-**VISUAL:** Judul bab "Menghitung ulang: sel manusia". Mosaik berbagai bentuk sel generik (lingkaran, kotak bulat, pipih) berwarna putih/abu di atas navy, berbeda ukuran. Label "SKEMA: ilustrasi keragaman sel", bukan gambar histologi nyata.
+**VISUAL:** Peneliti kartun tersenyum dan mengangkat jempol, di belakangnya kalender berjalan cepat menunjukkan tahun-tahun berlalu. Teks "BUKAN SOAL SALAH".
 
-#### [L-20] Adegan 20 | Bab 5: HITUNG ULANG SEL MANUSIA | 47 kata | 21 dtk | kumulatif 7:16
+**AUDIO:** Musik hangat, tenang.
 
-**NARASI:** Satu cara menghitung, yaitu per jenis sel dengan lima puluh enam kategori, memberi sekitar tiga puluh tujuh triliun sel. Lalu para penulis menghitung ulang dengan cara mereka sendiri, dan mendapat sekitar tiga puluh triliun. Dua angka itu tidak persis sama. Tapi keduanya berada di kisaran yang dekat.
+#### [L-14] 11 dtk (kumulatif 2:11) | Pesan berantai
 
-**VISUAL:** Dua kartu angka berdampingan: "56 kategori → ~37 triliun" dan "hitung ulang penulis → ~30 triliun", dengan jarak kecil di antaranya ditandai kurung oranye. Teks kecil: Sender, Fuchs & Milo 2016.
+**NARASI:** Bayangkan permainan pesan berantai. Satu orang berbisik, lalu diteruskan, dan diteruskan lagi. Angka itu juga dikutip begitu, dari satu tulisan ke tulisan lain.
 
-#### [L-21] Adegan 21 | Bab 5: HITUNG ULANG SEL MANUSIA | 35 kata | 16 dtk | kumulatif 7:32
+**VISUAL:** Label "PERUMPAMAAN - bukan data". Barisan anak kartun berbisik satu ke satu; di atas kepala mereka gelembung "10 : 1" ikut berpindah dari anak ke anak.
 
-**NARASI:** Ada satu hal menarik. Sekitar sembilan puluh persen sel manusia tidak punya inti. Terutama sel darah merah dan trombosit. Hanya sekitar sepuluh persen yang berinti. Jadi dari sisi jumlah, sel manusia didominasi sel tanpa inti.
+**AUDIO:** Bisikan lucu, "psst".
 
-**VISUAL:** Grid 10 x 10 titik (100 titik). 90 titik putih polos berlabel "tanpa inti", 10 titik putih dengan lingkaran oranye kecil di tengah berlabel "berinti". Titik muncul bergelombang. Label "SKEMA: 100 sel, ilustrasi proporsi". SFX: tick halus.
+#### [L-15] 7 dtk (kumulatif 2:18) | Rekap bab 3
 
-#### [L-22] Adegan 22 | Bab 5: HITUNG ULANG SEL MANUSIA | 41 kata | 18 dtk | kumulatif 7:50
+**NARASI:** Jadi, sepuluh banding satu itu berasal dari tebakan kasar, bukan dari menghitung.
 
-**NARASI:** Sel darah merah juga kecil. Volumenya sekitar seratus mikrometer kubik. Kita sudah bertemu satuan ini tadi, pada bakteri buku teks. Pelajarannya sederhana. Ukuran sel beragam sekali. Dan ukuran tidak berjalan sejajar dengan jumlah. Gagasan ini akan kita temui lagi sebentar lagi.
+**VISUAL:** Detektif menempelkan stempel "TEBAKAN KASAR" di atas kertas "10 : 1" pada papan investigasi.
 
-**VISUAL:** Lingkaran sel darah merah generik (cakram sederhana, bukan gambar medis) berlabel "~100 µm³" di samping lingkaran bakteri buku teks "1 µm³" dari scene sebelumnya (hanya penanda satuan, jangan beri kesan rasio). Label "SKEMA".
+**AUDIO:** Stempel "tak!".
 
-### BAB 6 - HASIL 1,3:1 DAN KETIDAKPASTIAN
+### BAB 4 - KENAPA KEBESARAN?
 
-#### [L-23] Adegan 23 | Bab 6: HASIL 1,3:1 DAN KETIDAKPASTIAN | 39 kata | 17 dtk | kumulatif 8:07
+#### [L-16] 6 dtk (kumulatif 2:24) | Tidak merata
 
-**NARASI:** Sekarang kita gabungkan dua sisi. Untuk seorang pria referensi: berat tujuh puluh kilogram, usia dua puluh sampai tiga puluh tahun, tinggi satu koma tujuh meter. Jumlah bakteri sekitar tiga puluh delapan triliun. Jumlah sel manusia sekitar tiga puluh triliun.
+**NARASI:** Lalu, kenapa tebakannya kebesaran? Karena bakteri tidak tersebar merata di seluruh perut.
 
-**VISUAL:** Judul bab "Hasilnya". Kartu profil minimalis: ikon siluet sederhana + "Pria referensi: 70 kg, 20-30 tahun, 1,7 m". Dua kolom batang sejajar muncul bergantian: oranye "~38 triliun bakteri", putih "~30 triliun sel manusia". Teks kecil: Sender, Fuchs & Milo 2016. Musik naik sedikit (momen pengungkapan).
+**VISUAL:** Label "SKEMA". Siluet tubuh dengan garis saluran pencernaan sederhana. Titik-titik oranye (Tim Bakteri) yang tadi tersebar merata satu per satu menghilang dari banyak bagian dan terkumpul.
 
-#### [L-24] Adegan 24 | Bab 6: HASIL 1,3:1 DAN KETIDAKPASTIAN | 34 kata | 15 dtk | kumulatif 8:22
+**AUDIO:** Whoosh menyusut.
 
-**NARASI:** Bandingkan keduanya, dan rasionya sekitar satu koma tiga banding satu. Artinya, hampir sama banyak. Bukan sepuluh banding satu. Bukan seratus banding satu. Dan bakteri paling banyak ada di kolon, sekitar sepuluh pangkat tiga belas.
+#### [L-17] 9 dtk (kumulatif 2:33) | Bagian atas sepi
 
-**VISUAL:** Dua kolom menjajar dengan whoosh halus. Teks besar "sekitar 1,3 : 1". Coretan "10 : 1" dan "100 : 1" memudar di latar. Anotasi kecil di siluet kolon: "paling banyak ~10^13".
+**NARASI:** Di bagian atas, ada cairan asam yang kuat. Makanan juga lewat dengan cepat. Jadi bakteri sulit tinggal di sana.
 
-#### [L-25] Adegan 25 | Bab 6: HASIL 1,3:1 DAN KETIDAKPASTIAN | 46 kata | 20 dtk | kumulatif 8:42
+**VISUAL:** Label "SKEMA". Bagian atas saluran dengan awan asam hijau lucu dan makanan meluncur seperti perosotan. Bakteri-bakteri kecil kepanasan dan melambai pergi.
 
-**NARASI:** Seberapa pasti? Untuk jumlah bakteri, ketidakpastiannya sekitar dua puluh lima persen. Itu cara para penulis menyatakan seberapa jauh angkanya bisa bergeser karena pengukurannya terbatas. Lalu ada hal yang berbeda: variasi antarpria, sekitar separuh. Itu bukan soal pengukuran yang kurang. Itu soal manusia yang memang tidak sama.
+**AUDIO:** Desis ringan, perosotan "wiiing".
 
-**VISUAL:** Batang ~38 triliun diberi pita bayangan oranye transparan (error band) berlabel "ketidakpastian ~25%". Di sebelahnya, deretan 8-10 batang pria berbeda tinggi berlabel "variasi antarpria ~separuh". Teks kecil: "hanya pria referensi".
+#### [L-18] 7 dtk (kumulatif 2:40) | Berkumpul di usus besar
 
-#### [L-26] Adegan 26 | Bab 6: HASIL 1,3:1 DAN KETIDAKPASTIAN | 38 kata | 18 dtk | kumulatif 9:00
+**NARASI:** Hampir semua bakteri berkumpul di satu tempat, yaitu usus besar. Di sanalah mereka tinggal.
 
-**NARASI:** Jeda ringkas kedua. Mitosnya berasal dari perkiraan kasar tahun 1972. Hitung ulang: bakteri sekitar tiga puluh delapan triliun, sel manusia sekitar tiga puluh triliun. Rasionya sekitar satu koma tiga banding satu, untuk pria referensi. Berikutnya, dua catatan menarik.
+**VISUAL:** Label "SKEMA". Usus besar menyala terang oranye. Tim Bakteri berkumpul di sana seperti sedang rapat besar, ada yang membawa kursi lipat. Teks besar "USUS BESAR".
 
-**VISUAL:** REKAP BAB 6: tiga baris besar bergantian di tengah: "Asal: perkiraan kasar 1972", "Hitung ulang: ~38 T vs ~30 T", "Rasio: ~1,3 : 1 (pria referensi)". Latar tenang, musik mengendur.
+**AUDIO:** Nada hangat saat menyala.
 
-### BAB 7 - CATATAN MENARIK
+#### [L-19] 7 dtk (kumulatif 2:47) | Kembali ke stadion
 
-#### [L-27] Adegan 27 | Bab 7: CATATAN MENARIK | 37 kata | 16 dtk | kumulatif 9:16
+**NARASI:** Kembali ke stadion tadi. Ternyata penonton hanya menumpuk di satu tribun. Sisanya kosong.
 
-**NARASI:** Ada catatan menarik. Kalau bakteri dibandingkan hanya dengan sel manusia yang berinti, rasionya memang sekitar sepuluh banding satu. Ingat, sekitar sembilan puluh persen sel manusia tidak berinti. Kalau yang tanpa inti tidak ikut dihitung, tersisa sekitar sepersepuluh.
+**VISUAL:** Label "PERUMPAMAAN - bukan data". Stadion dari atas: satu tribun penuh sesak, tribun lain kosong. Teks "SATU TRIBUN".
 
-**VISUAL:** Judul bab "Catatan menarik". Grid 100 titik muncul kembali; 90 titik tanpa inti meredup, tersisa 10 titik berinti. Di samping, kolom bakteri sekitar 10x tinggi kolom 10 titik tadi, label "dibanding sel berinti saja: sekitar 10 : 1". Nada "hmm" rendah.
+**AUDIO:** Riuh di satu sisi saja.
 
-#### [L-28] Adegan 28 | Bab 7: CATATAN MENARIK | 28 kata | 12 dtk | kumulatif 9:28
+#### [L-20] 9 dtk (kumulatif 2:56) | Ruangnya lebih kecil
 
-**NARASI:** Tolong dicatat. Ini hanya catatan hitungan yang menarik. Bukan penyebab lahirnya mitos. Mitosnya lahir dari perkiraan kasar tahun 1972 tadi. Dua hal yang berbeda, hanya angkanya yang mirip.
+**NARASI:** Dan ruang di usus besar ternyata lebih kecil dari dugaan lama. Jadi tebakan lama mengira ruangnya lebih luas.
 
-**VISUAL:** Panah dari catatan kembali ke penanda "1972" dengan teks "asal mitos: perkiraan kasar ini". Catatan sel berinti diberi label kecil "catatan, bukan asal mitos". Tempo pelan.
+**VISUAL:** Label "SKEMA". Dua kotak: kotak besar redup "dugaan lama", kotak lebih kecil terang "hitungan baru". Kotak besar mengecil pelan menjadi kotak kecil. Teks "LEBIH KECIL".
 
-#### [L-29] Adegan 29 | Bab 7: CATATAN MENARIK | 41 kata | 18 dtk | kumulatif 9:46
+**AUDIO:** Efek mengecil "fiuh".
 
-**NARASI:** Sekarang bicara berat. Seluruh bakteri di tubuh pria referensi massanya sekitar nol koma dua kilogram. Itu sekitar nol koma tiga persen berat tubuh. Bandingkan dengan klaim lama: satu sampai tiga persen, atau satu sampai tiga kilogram. Angka lamanya jauh lebih besar.
+#### [L-21] 7 dtk (kumulatif 3:03) | Rekap bab 4
 
-**VISUAL:** Timbangan datar bergaya diagram. Kiri: balok kecil "~0,2 kg" (oranye). Kanan: balok besar redup "1-3 kg (klaim lama)". Bilah kecil "0,3% berat tubuh" vs "1-3%". Label "SKEMA: bukan skala sebenarnya". SFX: bunyi timbangan halus.
+**NARASI:** Jadi, tebakan lama kebesaran karena mengira bakteri ada di mana-mana dan ruangnya luas.
 
-#### [L-30] Adegan 30 | Bab 7: CATATAN MENARIK | 81 kata | 35 dtk | kumulatif 10:21
+**VISUAL:** Peta saluran pencernaan dicoret di bagian yang kosong, lalu stempel "KEBESARAN" di papan investigasi.
 
-**NARASI:** Di sinilah gagasan tadi kembali. Jumlah dan massa tidak sejalan. Sel lemak dan sel otot kira-kira tujuh puluh lima persen dari massa sel manusia. Tapi jumlahnya hanya sekitar nol koma dua persen dari seluruh sel. Sedikit, tapi berat. Sementara sel darah merah kecil. Jadi bakteri lebih banyak dan bakteri lebih berat adalah dua pertanyaan yang berbeda. Rasio jumlah berubah dari sepuluh banding satu ke sekitar satu koma tiga. Persen massa berubah dari satu sampai tiga persen ke sekitar nol koma tiga.
+**AUDIO:** Stempel "tak!".
 
-**VISUAL:** Dua bilah pembanding: bilah "massa" (sel lemak & otot ~75%, oranye besar) dan bilah "jumlah" (sel lemak & otot ~0,2%, hampir tak terlihat). Di bawahnya, sel darah merah: titik banyak, balok kecil. Label "SKEMA". Akhiri dengan dua kartu berdampingan: "JUMLAH: 10:1 → ~1,3:1" dan "MASSA: 1-3% → ~0,3%" dengan panah turun oranye.
+#### [L-22] 6 dtk (kumulatif 3:09) | Pertanyaan untukmu
 
-### BAB 8 - YANG BELUM PASTI
+**NARASI:** Sekarang giliranmu menebak. Menurutmu, mana yang lebih banyak?
 
-#### [L-31] Adegan 31 | Bab 8: YANG BELUM PASTI | 30 kata | 13 dtk | kumulatif 10:34
+**VISUAL:** Tengah video. Layar split dua: kiri Tim Bakteri melambai, kanan Tim Sel Manusia melambai, tanda tanya besar di tengah. Teks besar "Menurutmu, mana yang lebih banyak?". Setelah narasi, muncul hitung mundur kecil dua detik.
 
-**NARASI:** Sekarang bagian yang jujur: apa yang belum pasti. Dalam sains, mengakui batas adalah bagian dari pekerjaan. Para penulis menyebut beberapa hal yang masih perlu diteliti. Kita lewati satu per satu.
+**AUDIO:** JEDA 2 DETIK diam (hanya detak jam halus) setelah pertanyaan.
 
-**VISUAL:** Judul bab "Yang belum pasti". Tiga kartu bernomor dengan tanda tanya oranye lembut: "tinja sebagai wakil", "perempuan", "bayi dan anak". Tanpa musik drama; pad lembut.
+### BAB 5 - HITUNG ULANG
 
-#### [L-32] Adegan 32 | Bab 8: YANG BELUM PASTI | 39 kata | 17 dtk | kumulatif 10:51
+#### [L-23] 10 dtk (kumulatif 3:19) | Menghitung ulang
 
-**NARASI:** Pertama, tinja sebagai wakil. Kepadatan bakteri diukur dari tinja. Lalu para penulis mengasumsikan kepadatan itu mewakili isi kolon. Asumsi ini perlu diteliti lebih lanjut. Kalau ternyata isi kolon sedikit berbeda dari yang terukur di tinja, angka totalnya ikut bergeser.
+**NARASI:** Baik, kita cek jawabannya. Kali ini para peneliti memakai hasil pengukuran, bukan cuma tebakan. Kita ambil contoh pria dewasa rata-rata.
 
-**VISUAL:** Dua kotak dihubungkan tanda sama dengan dengan tanda tanya: "kepadatan di tinja" ? "kepadatan di kolon". Label kecil "asumsi penulis - perlu diteliti". Kartu 1 menyala. Tanpa gambar tinja.
+**VISUAL:** Label "SKEMA". Para peneliti kartun di papan tulis dengan jangka dan penggaris. Di tengah siluet pria dewasa sederhana, label "Pria dewasa rata-rata".
 
-#### [L-33] Adegan 33 | Bab 8: YANG BELUM PASTI | 56 kata | 24 dtk | kumulatif 11:15
+**AUDIO:** Musik tegang-ringan, tik jam.
 
-**NARASI:** Kedua, perempuan. Angka tadi untuk pria referensi. Untuk perempuan, para penulis memperkirakan rasio bakteri terhadap sel manusia naik sekitar sepertiga. Kata kuncinya, diperkirakan. Itu bukan hasil pengukuran. Alasannya, konsentrasi sel darah merah sekitar sepuluh persen lebih rendah, dan volume darah dua puluh sampai tiga puluh persen lebih rendah. Sementara belum ada laporan perbedaan kepadatan bakteri kolon.
+#### [L-24] 8 dtk (kumulatif 3:27) | Hitungan bakteri
 
-**VISUAL:** Kartu 2 menyala. Teks besar "DIPERKIRAKAN" dengan stempel oranye (bukan hasil pengukuran). Dua kotak kecil: "sel darah merah ~10% lebih rendah" dan "volume darah 20-30% lebih rendah", ditambah kotak "kepadatan bakteri kolon: belum ada laporan beda". Tanpa menggambar angka rasio perempuan selain "naik ~sepertiga (perkiraan)".
+**NARASI:** Dimulai dari bakteri. Hasilnya, sekitar 38 triliun. Angka itu besar sekali, jadi anggap saja: banyak sekali!
 
-#### [L-34] Adegan 34 | Bab 8: YANG BELUM PASTI | 39 kata | 17 dtk | kumulatif 11:32
+**VISUAL:** Label "SKEMA". Kerumunan Tim Bakteri sangat besar memenuhi layar. Teks besar "~38 TRILIUN".
 
-**NARASI:** Ketiga, bayi dan anak. Kepadatan bakteri kolon relatif konstan sejak bayi. Tapi data volume kolon anak masih terbatas. Para penulis menyebutnya kesenjangan pengetahuan. Karena itu, di video ini kita tidak memberi angka untuk anak. Lebih baik dikosongkan, daripada ditebak.
+**AUDIO:** Satu "ting" saat angka muncul, jeda hening 0,5 dtk sebelum angka.
 
-**VISUAL:** Kartu 3 menyala. Kotak data berisi sebagian: "kepadatan: relatif konstan" terisi, "volume kolon anak: data terbatas" kosong dengan garis putus-putus oranye bertuliskan "kesenjangan pengetahuan". Tidak ada angka anak.
+#### [L-25] 8 dtk (kumulatif 3:35) | Hitungan sel manusia
 
-#### [L-35] Adegan 35 | Bab 8: YANG BELUM PASTI | 39 kata | 17 dtk | kumulatif 11:49
+**NARASI:** Sekarang sel manusia. Semuanya dihitung: sel darah, sel otot, sel kulit, dan lainnya. Hasilnya, sekitar 30 triliun.
 
-**NARASI:** Bagaimana kita tahu mana bagian yang kokoh dan mana yang goyah? Ada cara sederhana. Ajukan tiga pertanyaan pada setiap angka. Dari mana datangnya? Diukur, atau diasumsikan? Berapa ketidakpastiannya? Angka baru berusaha menjawab ketiganya, dan menyebut bagian yang masih asumsi.
+**VISUAL:** Label "SKEMA". Kerumunan Tim Sel Manusia (biru) memenuhi layar, ada yang merah, berotot, dan berbentuk kotak. Teks besar "~30 TRILIUN".
 
-**VISUAL:** Tiga pertanyaan muncul satu per satu sebagai kartu berpita oranye: "Dari mana?", "Diukur atau diasumsikan?", "Berapa ketidakpastiannya?". Dua kolom: "angka lama" dan "angka baru" dengan centang/tanda tanya. Label "SKEMA: cara memeriksa angka".
+**AUDIO:** Satu "ting" saat angka muncul.
 
-#### [L-36] Adegan 36 | Bab 8: YANG BELUM PASTI | 36 kata | 16 dtk | kumulatif 12:05
+#### [L-26] 6 dtk (kumulatif 3:41) | Hampir sama banyak
 
-**NARASI:** Mari kita pisahkan. Yang diukur: kepadatan bakteri dari empat belas studi, dan volume kolon dari analisis MRI. Yang diasumsikan: kepadatan di tinja mewakili isi kolon. Yang diperkirakan: rasio untuk perempuan. Yang masih kosong: angka untuk anak.
+**NARASI:** Coba bandingkan. Sekitar 38 triliun, dengan sekitar 30 triliun. Hampir sama banyak!
 
-**VISUAL:** Empat lajur vertikal berwarna: "DIUKUR" (oranye solid), "DIASUMSIKAN" (oranye garis), "DIPERKIRAKAN" (oranye transparan), "KOSONG" (garis putus). Item mengisi lajur masing-masing. Tempo lambat.
+**VISUAL:** Timbangan besar muncul. Di sisi kiri Tim Bakteri oranye, di kanan Tim Sel Manusia biru. Timbangan bergoyang lalu nyaris rata. Teks besar "HAMPIR SAMA BANYAK".
 
-### BAB 9 - CATATAN RINGAN
+**AUDIO:** Efek timbangan "ting-tong", musik naik hangat.
 
-#### [L-37] Adegan 37 | Bab 9: CATATAN RINGAN | 38 kata | 17 dtk | kumulatif 12:22
+#### [L-27] 8 dtk (kumulatif 3:49) | Tarik tambang
 
-**NARASI:** Sekarang sesuatu yang ringan. Para penulis menyebut, karena rasionya cukup dekat dengan satu, satu kali buang air besar saja bisa membalik rasionya. Setelah dari toilet, sekitar sepertiga bakteri kolon ikut keluar. Dan rasionya bergeser ke arah sel manusia.
+**NARASI:** Bayangkan dua tim tarik tambang. Anggotanya hampir sama banyak. Pertandingannya seimbang dan seru. Bukan sepuluh lawan satu.
 
-**VISUAL:** Judul bab "Satu catatan ringan". Dua kolom batang: bakteri (oranye) sedikit lebih tinggi dari sel manusia (putih). Ikon pintu sederhana lewat; kolom oranye turun sepertiga hingga lebih rendah. Ilustrasi bersih dan ringan, tanpa gambar vulgar. SFX: bunyi pintu halus.
+**VISUAL:** Label "PERUMPAMAAN - bukan data". Dua tim kartun (oranye dan biru) tarik tambang, tali nyaris tidak bergerak, semua tertawa. Lalu "10 : 1" dicoret besar.
 
-#### [L-38] Adegan 38 | Bab 9: CATATAN RINGAN | 48 kata | 21 dtk | kumulatif 12:43
+**AUDIO:** Tawa kecil, sorak ringan.
 
-**NARASI:** Jadi, kalau ada yang bertanya mana yang lebih banyak, jawaban jujurnya agak lucu. Bergantung pada kapan kamu bertanya. Rasionya bukan angka yang diam. Ia bergerak. Dan itu hanya mungkin karena rasionya dekat dengan satu. Kalau rasionya seratus banding satu, satu kali ke toilet tidak akan membalik apa pun.
+#### [L-28] 7 dtk (kumulatif 3:56) | Awas kata hampir
 
-**VISUAL:** Kolom bergoyang naik-turun pelan, lalu dibandingkan dengan versi mitos 100:1 yang tidak berubah saat kolom dipotong sepertiga. Teks kecil: "hanya karena rasionya dekat dengan 1". Musik sedikit lebih hangat.
+**NARASI:** Perhatikan kata "hampir". Angkanya tidak persis sama, dan ini perkiraan, bukan skor pertandingan.
 
-### BAB 10 - PELAJARAN DAN REKAP
+**VISUAL:** Kata "HAMPIR" disorot dengan lingkaran oranye di tengah layar. Skor pertandingan di papan kartun dicoret dan diganti "PERKIRAAN".
 
-#### [L-39] Adegan 39 | Bab 10: PELAJARAN DAN REKAP | 41 kata | 18 dtk | kumulatif 13:01
+**AUDIO:** Nada lembut.
 
-**NARASI:** Sekarang pelajarannya. Pertama, angka populer perlu dicek. Bukan karena yang pertama menyebutnya berniat salah. Tapi karena perkiraan kasar mudah berubah jadi fakta kalau diulang cukup lama. Perkiraan itu tetap berguna sebagai titik awal. Masalahnya muncul ketika titik awal dianggap titik akhir.
+#### [L-29] 6 dtk (kumulatif 4:02) | Rekap bab 5
 
-**VISUAL:** Judul bab "Pelajaran". Kartu teks "1. Angka populer perlu dicek". Garis dari "perkiraan" ke "fakta" memanjang, dengan penanda "diulang puluhan tahun". Visual tenang, banyak ruang kosong. Musik hangat naik perlahan.
+**NARASI:** Jadi, hitungan baru berkata: bakteri dan sel manusia hampir sama banyak.
 
-#### [L-40] Adegan 40 | Bab 10: PELAJARAN DAN REKAP | 38 kata | 17 dtk | kumulatif 13:18
+**VISUAL:** Timbangan nyaris rata, kedua tim melambai bersama detektif.
 
-**NARASI:** Kedua, menghitung ulang adalah bagian dari sains, bukan tanda sains gagal. Kesimpulan para penulis kurang lebih begini. Kita mungkin masih tampak kalah jumlah. Tapi sekarang kita tahu seberapa jauh, dan seberapa pasti. Itu kemajuan yang tenang, tapi nyata.
+**AUDIO:** Musik hangat.
 
-**VISUAL:** Kartu teks "2. Hitung ulang itu bagian dari sains". Kartu parafrasa (bukan kutipan langsung): "Kini kita tahu seberapa jauh dan seberapa pasti". Atribusi kecil: Sender, Fuchs & Milo 2016. Jangan tampilkan teks yang menyatakan bakteri "lebih banyak" sebagai fakta mutlak.
+### BAB 6 - CATATAN MENARIK
 
-#### [L-41] Adegan 41 | Bab 10: PELAJARAN DAN REKAP | 37 kata | 16 dtk | kumulatif 13:34
+#### [L-30] 10 dtk (kumulatif 4:12) | Catatan menarik
 
-**NARASI:** Ketiga, mengubah rasio dari sepuluh banding satu, atau seratus banding satu, menjadi sekitar satu banding satu tidak mengurangi pentingnya mikrobiota. Para penulis menegaskan itu. Yang berubah hanya angkanya. Dan angka yang dikutip luas sebaiknya berdasar data terbaik.
+**NARASI:** Ada catatan menarik. Tadi kita menghitung semua sel manusia. Sekarang coba hitung hanya sel yang punya pusat kendali di dalamnya.
 
-**VISUAL:** Kartu teks "3. Angkanya berubah, pentingnya tidak berkurang". Tiga bilah angka (10:1, 100:1, ~1,3:1) dengan kata "angka" disorot, bukan "nilainya". Tanpa klaim kesehatan.
+**VISUAL:** Sel biru yang bulat kini digambar dengan bulatan kecil di tengah sebagai "pusat kendali" dengan panah label. Sel darah merah digambar tanpa bulatan itu. Teks "PUNYA PUSAT KENDALI".
 
-#### [L-42] Adegan 42 | Bab 10: PELAJARAN DAN REKAP | 72 kata | 32 dtk | kumulatif 14:06
+**AUDIO:** Nada ingin tahu.
 
-**NARASI:** Rekap besar. Satu, sepuluh banding satu berawal dari perkiraan kasar tahun 1972, dan seratus banding satu dari angka persen massa tanpa rujukan yang jelas. Dua, bakteri terutama di kolon: ruangnya nol koma empat liter, kepadatannya dari empat belas studi. Tiga, sel manusia sekitar tiga puluh triliun, sembilan puluh persen tanpa inti. Empat, hasilnya sekitar satu koma tiga banding satu untuk pria referensi. Lima, yang belum pasti: tinja sebagai wakil, perempuan, dan anak.
+#### [L-31] 8 dtk (kumulatif 4:20) | Sepuluh banding satu muncul
 
-**VISUAL:** REKAP BESAR: lima kartu bernomor muncul berurutan dengan ikon masing-masing (garis waktu estafet, kolon, grid 100 titik, dua kolom 1,3:1, tiga tanda tanya). Setelah kartu 5 semuanya menyusut jadi satu baris. Tempo lambat dan jelas.
+**NARASI:** Kalau begitu, perbandingannya memang sekitar sepuluh banding satu! Tapi ini hanya catatan menarik. Ini bukan penyebab mitosnya.
 
-### BAB 11 - PENUTUP
+**VISUAL:** Hanya sel biru yang punya pusat kendali dibariskan; sel yang tidak punya diredupkan. Timbangan condong jauh ke Tim Bakteri. Label "CATATAN MENARIK", lalu tanda "BUKAN PENYEBAB MITOS" muncul kecil di bawah.
 
-#### [L-43] Adegan 43 | Bab 11: PENUTUP | 57 kata | 25 dtk | kumulatif 14:31
+**AUDIO:** Nada "oh!" kecil.
 
-**NARASI:** Dari sepuluh banding satu, menjadi hampir sama banyak. Satu angka lama, dihitung ulang dengan sabar. Lain kali kamu bertemu angka yang terlalu rapi dan terlalu sering diulang, coba tanya: siapa yang pertama menghitungnya, dan bagaimana caranya? Terima kasih sudah menemani sampai akhir lembar ini. Kalau kamu suka cerita seperti ini, ikuti @suhufpengetahuan. Sampai jumpa di lembar berikutnya.
+#### [L-32] 7 dtk (kumulatif 4:27) | Kenapa bisa beda
 
-**VISUAL:** Kolom oranye 10 menyusut jadi sejajar kolom putih; "10 : 1" memudar menjadi "sekitar 1,3 : 1". End card: logo Suhuf Pengetahuan, "@suhufpengetahuan" (satu-satunya CTA), teks "Sampai jumpa di lembar berikutnya." Lembar kertas menutup / halaman dibalik. Musik resolusi lalu fade out; bunyi halaman dibalik di akhir.
+**NARASI:** Soalnya, sebagian besar sel manusia tidak punya pusat kendali itu. Contohnya sel darah merah.
 
-### Hitungan kata
+**VISUAL:** Kerumunan sel manusia: sebagian besar sel merah bulat tanpa bulatan di tengah menyala, sel berpusat kendali hanya sedikit.
 
-Total narasi: 1985 kata dalam 43 adegan. Estimasi durasi: 1985/140 = 14.2 menit narasi murni; dengan jeda transisi total sekitar 14:31 (target 14:00-15:00 tercapai). Catatan: kalau tempo Miftah rata-rata 150 kata/menit, durasi turun ke sekitar 13:50; mohon uji baca satu bab dulu dan kabari Stark bila perlu menambah jeda visual.
+**AUDIO:** Efek menyala lembut.
 
-### Daftar klaim dan sumber
+#### [L-33] 11 dtk (kumulatif 4:38) | Perumpamaan kelereng
 
-Sumber: [A] Sender, Fuchs & Milo 2016, PLoS Biology 14(8):e1002533. [B] Sender, Fuchs & Milo 2016, Cell 164:337-340. [C] Nature news 2016. Nomor = nomor fakta di brief.
+**NARASI:** Bayangkan sekantong kelereng dan sebuah bola basket. Kelereng banyak sekali tapi kecil-kecil. Bola basket cuma satu tapi besar. Sel darah merah itu seperti kelereng.
 
-- Mitos 10x / 100x lebih banyak dari sel manusia -> fakta 1 (bab 1, 2)
-- Perkiraan Luckey 1972: ~10^11 bakteri/gram isi x ~1 liter (~1 kg) -> fakta 2 (bab 3)
-- Savage 1977 mengutip Luckey; makalah mikrobiota lain bersandar pada Savage (langsung/tidak langsung) -> fakta 2 (bab 3)
-- Penulis 2016: perkiraan itu "elegan" tapi tidak dimaksudkan jadi acuan puluhan tahun (diparafrasakan) -> fakta 2 (bab 3)
-- 100:1: laporan NIH menyebut 1-3% massa tubuh tanpa rujukan yang jelas, dikali volume bakteri "standar buku teks" -> ~10^15 -> fakta 3 (bab 3)
-- Kolon: bakteri paling sedikit 100x lebih banyak dari organ lain; lambung/usus halus atas 10^3-10^4 per mL karena asam lambung dan aliran cepat -> fakta 4 (bab 4)
-- Seluruh mulut < 1% bakteri kolon; organ lain paling banyak ~10^12 (< ~3% total), kulit ~10^12 -> fakta 4 (bab 4)
-- Volume isi kolon pria referensi ~0,4 L (MRI, ketidakpastian 25%); berubah ~10% setelah makan -> fakta 5 (bab 4)
-- Kepadatan ~0,9x10^11 per gram tinja basah, 14 studi, variasi antarorang ~46% -> fakta 6 (bab 4)
-- Bakteri usus ~5 pg basah vs standar buku teks 1 µm³ / 1 pg; salah satu sebab kebesaran 100:1 -> fakta 7 (bab 3, 4)
-- Pria referensi 70 kg, 20-30 th, 1,7 m: ~38 triliun bakteri (25%), variasi antarpria ~separuh, ~30 triliun sel manusia, rasio ~1,3:1, bakteri terbanyak ~10^13 di kolon -> fakta 8 (bab 6)
-- Sel manusia: 56 kategori ~37 triliun, hitung ulang ~30 triliun; ~90% tanpa inti (terutama sel darah merah dan trombosit) -> fakta 9 (bab 5)
-- Sel darah merah ~100 µm³; sel lemak dan otot ~75% massa tapi ~0,2% jumlah -> fakta 10 (bab 5, 7)
-- Dibanding hanya sel berinti, rasio ~10:1; disajikan sebagai catatan, BUKAN penyebab mitos -> fakta 11 (bab 7)
-- Massa bakteri ~0,2 kg (~0,3% berat tubuh), menggantikan klaim 1-3% / 1-3 kg -> fakta 12 (bab 7)
-- Asumsi kepadatan tinja mewakili isi kolon, perlu diteliti -> fakta 13 (bab 8)
-- Perempuan: DIPERKIRAKAN rasio naik ~sepertiga (sel darah merah ~10% lebih rendah, volume darah 20-30% lebih rendah; tak ada laporan beda kepadatan bakteri kolon) -> fakta 14 (bab 8)
-- Bayi/anak: kepadatan relatif konstan sejak bayi; data volume kolon anak terbatas (kesenjangan pengetahuan); tanpa angka anak -> fakta 15 (bab 8)
-- Satu kali buang air besar (~sepertiga bakteri kolon) bisa membalik rasio ke arah sel manusia; disebut hanya di bab 9, bahasa halus ("toilet") -> fakta 16 (bab 9). Fakta 5 (isi kolon berkurang seperempat-sepertiga) sengaja tidak diulang di bab 4 agar bagian toilet hanya muncul sekali
-- "Kita masih tampak kalah jumlah, tapi kini tahu seberapa jauh dan seberapa pasti" (parafrasa) -> fakta 17 (bab 10)
-- Mengubah rasio tidak mengurangi pentingnya mikrobiota; angka yang dikutip luas harus berdasar data terbaik; angka populer perlu dicek -> fakta 18 (bab 10)
+**VISUAL:** Label "PERUMPAMAAN - bukan data". Kantong penuh kelereng di kiri, satu bola basket di kanan. Di bawahnya muncul sel darah merah kecil (seperti kelereng) dan sel lemak besar (seperti bola basket).
 
-Konversi/turunan (bukan klaim baru): 10^11 = sekitar seratus miliar; 0,9x10^11 = sekitar sembilan puluh miliar; pikogram = sepersejuta dari sepersejuta gram; 1977 - 1972 = lima tahun; 0,4 L = empat persepuluh liter.
+**AUDIO:** Bunyi kelereng bergulir.
 
-Perumpamaan yang SENGAJA ditandai "PERUMPAMAAN - bukan data" di layar: gedung berlantai (bab 3), 100 sel (skema bab 5). Perumpamaan toko bangunan, kantong kelereng, meteran, dan segelas air sengaja tidak dipakai karena tidak perlu dan menambah risiko salah tafsir. Perumpamaan tidak membawa angka baru.
+#### [L-34] 7 dtk (kumulatif 4:45) | Rekap bab 6
 
-Penanda [VERIFIKASI]: tidak ada klaim tambahan di luar daftar. Satu catatan produksi: kata "elegan" dan kalimat penutup penulis ditampilkan sebagai parafrasa, bukan kutipan langsung, kecuali Miftah mencocokkan kata persisnya di makalah. Nama "Weizmann Institute" tidak dipakai.
+**NARASI:** Jadi, hasilnya tergantung apa yang dihitung, maka para peneliti menghitung semua sel.
 
-Sengaja tidak dipakai: persen sel darah merah, angka perempuan/anak selain fakta 14-15, klaim kesehatan apa pun, jumlah/tahun kutipan lain, "tepat 1:1".
+**VISUAL:** Timbangan kembali nyaris rata, teks "HITUNG SEMUANYA".
 
-### BAHAN KURANG
+**AUDIO:** Musik hangat.
 
-Bahan fakta cukup untuk 14-15 menit dengan 11 bab, tetapi sebagian durasi memang datang dari analogi (ditandai di layar), tiga jeda ringkas (akhir bab 4, akhir bab 6, rekap besar bab 10) dan penjelasan langkah hitung. Tidak ada pengisi tebakan. Dua hal yang tipis dan sengaja dibiarkan: (1) bab 9 (toilet) hanya dua adegan karena faktanya hanya satu butir; (2) makna rasio 1,3:1 tidak dikembangkan ke arti biologis karena itu menyentuh klaim di luar daftar. Kalau Miftah ingin lebih panjang, tambahan hanya sah bila ada fakta baru dari makalah yang diverifikasi.
+### BAB 7 - YANG BELUM PASTI
 
-### Deskripsi YouTube (draft)
+#### [L-35] 7 dtk (kumulatif 4:52) | Bagian jujur
 
-Katanya, bakteri di tubuh manusia jumlahnya sepuluh kali lipat sel manusia. Ternyata angka itu berawal dari perkiraan kasar, dan ketika dihitung ulang, hasilnya jauh berbeda. Di video ini kita telusuri asalnya, menghitung ulang bersama, dan melihat bagian mana yang masih belum pasti.
+**NARASI:** Sekarang bagian yang jujur: apa yang belum pasti. Hasil tadi adalah perkiraan, bukan angka pas.
 
-Sumber:
+**VISUAL:** Angka di timbangan bergoyang halus seperti kabut. Teks besar "PERKIRAAN".
 
-- Sender R, Fuchs S, Milo R. 2016. PLoS Biology 14(8):e1002533.
-- Sender R, Fuchs S, Milo R. 2016. Cell 164:337-340.
-- Nature news, 2016.
+**AUDIO:** Musik lebih pelan.
 
-#SuhufPengetahuan #Sains #Mikrobiota
+#### [L-36] 7 dtk (kumulatif 4:59) | Tiap orang beda
 
-### Hand-off (Dex / Stark)
+**NARASI:** Tadi itu untuk pria dewasa rata-rata. Orang lain bisa berbeda. Setiap orang punya angkanya sendiri.
 
-- Palet: navy gelap (latar), oranye (aksen/data utama), putih/abu muda (teks, sel manusia). Tanpa foto bakteri; semua ilustrasi diagram titik/kolom, label "SKEMA" atau "PERUMPAMAAN".
-- Aset: logo Suhuf Pengetahuan, end card @suhufpengetahuan, siluet saluran cerna garis, ikon pria referensi, grid 10x10, komponen kolom/error band, timeline estafet 1972-1977-2016, gedung berlantai 6, ikon timbangan, ikon pintu sederhana (bab 9).
-- Voice over: Miftah, tempo tenang, jeda 0,5-1 dtk di adegan hook, hasil, rekap.
-- Tiga jeda ringkas: akhir bab 4, akhir bab 6, dan rekap besar di bab 10.
-- Penutup hanya satu CTA: @suhufpengetahuan. Tidak ada video lain yang dijanjikan.
+**VISUAL:** Tiga siluet orang berbeda tinggi dan bentuk berjejer, perut masing-masing bercahaya dengan terang berbeda. Teks "TIAP ORANG BEDA".
+
+**AUDIO:** Nada ringan.
+
+#### [L-37] 10 dtk (kumulatif 5:09) | Perempuan dan anak
+
+**NARASI:** Untuk perempuan, para peneliti memperkirakan angkanya bergeser. Itu perkiraan mereka, bukan hasil pengukuran. Untuk anak dan bayi, datanya masih kurang.
+
+**VISUAL:** Siluet perempuan dan siluet anak kecil di samping siluet pria. Pada perempuan tampak label "PERKIRAAN", pada anak tampak label "DATA MASIH KURANG" dengan tanda tanya lucu.
+
+**AUDIO:** Nada rendah-lembut.
+
+#### [L-38] 11 dtk (kumulatif 5:20) | Satu dugaan
+
+**NARASI:** Para peneliti juga memakai satu dugaan. Mereka mengira contoh yang mereka ukur mewakili seluruh isi usus besar. Dugaan ini masih perlu diteliti lagi.
+
+**VISUAL:** Detektif memeriksa contoh kecil dengan kaca pembesar dan menaruh tanda tanya di atasnya. Teks "PERLU DITELITI".
+
+**AUDIO:** Nada ingin tahu.
+
+#### [L-39] 6 dtk (kumulatif 5:26) | Rekap bab 7
+
+**NARASI:** Jadi, hasilnya bagus, tapi tetap perkiraan yang masih perlu diteliti.
+
+**VISUAL:** Papan investigasi dengan label "PERKIRAAN" dan "MASIH DITELITI" ditempel.
+
+**AUDIO:** Stempel "tak!".
+
+### BAB 8 - OPSIONAL: SATU KALI KE TOILET
+
+#### [L-40] 12 dtk (kumulatif 5:38) | OPSIONAL: Ke toilet
+
+**NARASI:** Ada satu fakta lucu yang halus. Karena angkanya hampir sama, sekali ke toilet saja, sebagian bakteri usus ikut keluar. Perbandingannya bisa bergeser ke arah sel manusia.
+
+**VISUAL:** Pintu toilet kartun (ikon sederhana, tanpa detail menjijikkan). Tim Bakteri sebagian melambai sambil jalan keluar dari usus besar. Timbangan bergeser ke arah Tim Sel Manusia. Teks "BISA BERGESER".
+
+**AUDIO:** Nada jenaka ringan; tanpa efek suara toilet nyata.
+
+#### [L-41] 4 dtk (kumulatif 5:42) | Rekap bab 8 (OPSIONAL)
+
+**NARASI:** Jadi, angka ini bukan skor yang tetap.
+
+**VISUAL:** Timbangan bergoyang kecil, lalu kembali nyaris rata.
+
+**AUDIO:** Musik hangat.
+
+### BAB 9 - PELAJARAN DAN REKAP
+
+#### [L-42] 5 dtk (kumulatif 5:47) | Pelajaran
+
+**NARASI:** Lalu apa pelajarannya? Angka yang sering diulang perlu dicek.
+
+**VISUAL:** Kaca pembesar detektif besar di tengah layar, melihat kertas "10 : 1". Teks besar "CEK ULANG".
+
+**AUDIO:** Musik naik tipis.
+
+#### [L-43] 9 dtk (kumulatif 5:56) | Bakteri tetap penting
+
+**NARASI:** Mengubah sepuluh banding satu jadi hampir sama banyak tidak membuat bakteri itu kurang penting. Yang diperbaiki hanya angkanya.
+
+**VISUAL:** "10 : 1" dicoret, diganti "HAMPIR SAMA BANYAK" dengan kedua tim berpelukan di sekitar timbangan. Teks "ANGKANYA DIPERBAIKI".
+
+**AUDIO:** Musik hangat.
+
+#### [L-44] 8 dtk (kumulatif 6:04) | Rekap akhir
+
+**NARASI:** Jadi, tebakan kasar bilang sepuluh banding satu, tapi hitungan baru bilang hampir sama banyak.
+
+**VISUAL:** Rangkuman cepat tiga gambar berurutan: tebakan kasar (stadion kosong di pojok), timbangan nyaris rata, kaca pembesar. Detektif menutup papan investigasi dengan senyum.
+
+**AUDIO:** Musik naik hangat.
+
+### BAB 10 - PENUTUP
+
+#### [L-45] 7 dtk (kumulatif 6:11) | Penutup
+
+**NARASI:** Kalau kamu suka cerita seperti ini, ikuti @suhufpengetahuan. Sampai jumpa di lembar berikutnya.
+
+**VISUAL:** Logo Suhuf Pengetahuan di latar krem, teks "@suhufpengetahuan". Tim Bakteri dan Tim Sel Manusia melambai dari kiri-kanan logo. Kertas menutup pelan seperti halaman buku. Tanpa janji video lain.
+
+**AUDIO:** Musik turun, nada logo, berhenti bersih.
+
+### Bagian akhir Video panjang
+#### (1) Tiga pilihan judul (maks 70 karakter)
+
+1. Siapa Bilang Bakteri 10x Lebih Banyak? Kita Hitung Ulang! (57 karakter)
+2. Mitos 10:1: Bakteri di Tubuhmu Tidak Sebanyak Itu (49 karakter)
+3. Detektif Angka: Misteri 10 Banding 1 pada Bakteri (49 karakter)
+
+**Rekomendasi:** no. 1 (ramah anak/remaja, ada pertanyaan misteri).
+
+#### (2) Usulan thumbnail / cover
+
+**Teks:** "10:1 SALAH?" (2 kata). Visual: latar krem, detektif kartun dengan kaca pembesar menatap timbangan; Tim Bakteri oranye dan Tim Sel Manusia biru nyaris seimbang; "10:1" dicoret di pojok.
+
+#### (3) Klaim -> fakta
+
+- Mitos 10 banding 1 -> F01
+- Muncul dari perkiraan kasar tahun 1972 (sedikit isi usus x isi seluruh saluran pencernaan); bukan hitungan satu per satu -> F02
+- Diulang dan dikutip dari tulisan ke tulisan selama puluhan tahun -> F02
+- Bukan soal siapa yang salah -> F02 (jangan menyalahkan peneliti)
+- Bakteri tidak merata; bagian atas sepi (asam kuat, aliran cepat); hampir semua di usus besar -> F04
+- Ruang usus besar lebih kecil dari dugaan lama -> F05
+- Hitung ulang pria dewasa rata-rata: sekitar 38 triliun bakteri, sekitar 30 triliun sel manusia, hampir sama banyak -> F08, F09
+- Banding hanya dengan sel yang punya inti: sekitar sepuluh banding satu (catatan menarik, bukan penyebab mitos) -> F11
+- Sebagian besar sel manusia tidak punya inti, mis. sel darah merah -> F09
+- Jumlah dan ukuran tidak selalu sejalan (sel darah merah kecil, sel lemak/otot besar) -> F10
+- Hasil adalah perkiraan; tiap orang beda -> F08
+- Perempuan: perkiraan penulis, bukan pengukuran -> F14
+- Bayi/anak: data masih kurang -> F15
+- Dugaan contoh mewakili isi usus besar, perlu diteliti -> F13
+- OPSIONAL: sekali ke toilet bisa menggeser perbandingan ke arah sel manusia -> F16
+- Hitungan baru tidak mengurangi pentingnya bakteri; angka populer perlu dicek -> F18
+- Sengaja tidak dipakai: 100:1/NIH (F03), volume/kepadatan/ukuran bakteri dan satuannya (F05-F07 angka), massa 0,2 kg (F12), "masih tampak kalah jumlah" (F17).
+
+#### (4) Hitungan kata dan durasi
+
+**Jumlah kata narasi:** 742 kata (dihitung otomatis dari file). Durasi: sekitar 6:11 menit (371.0 dtk), dihitung 140 kata/menit + 1 dtk jeda per adegan + jeda 2 dtk di pertanyaan untuk penonton + jeda rekap. Di bawah target 1.100-1.400 kata karena BAHAN KURANG (lihat catatan). Tanpa bab toilet (L-40, L-41): kurangi sekitar 16 detik.
+
+**Pertanyaan ke penonton:** L-22 (tengah video), jeda 2 detik. Setiap bab ditutup satu kalimat rekap (L-07, L-15, L-21, L-29, L-34, L-39, L-41 opsional, L-44).
+
+#### (5) Deskripsi YouTube
+
+Pernah dengar bahwa bakteri di tubuhmu 10 kali lebih banyak dari selmu sendiri? Di video ini kita jadi detektif angka: mencari asalnya dan menghitung ulang. Ternyata jawabannya mengejutkan. Ikuti @suhufpengetahuan. Sumber: Sender, Fuchs & Milo (2016), PLoS Biology.
+
+#### (6) Catatan perumpamaan (semua wajib diucapkan "bayangkan..." dan berlabel "PERUMPAMAAN - bukan data")
+
+- L-11/L-12/L-19 Stadion: menebak penonton dengan mengira semua kursi penuh sampai pojok, lalu ternyata hanya menumpuk di satu tribun. Menjelaskan tebakan kasar kebesaran. Tanpa angka.
+- L-14 Pesan berantai: angka diteruskan dari satu tulisan ke tulisan lain tanpa dicek. Tanpa angka.
+- L-27 Tarik tambang: dua tim hampir sama banyak. Tanpa angka baru.
+- L-33 Kelereng dan bola basket: jumlah dan ukuran tidak selalu sejalan. Tanpa angka.
+- Bukan perumpamaan, berlabel "SKEMA": siluet saluran pencernaan, timbangan, Tim Bakteri vs Tim Sel Manusia.
+
+#### Catatan Don untuk Miftah
+
+- L-31 sengaja memakai kalimat "hanya catatan menarik, bukan penyebab mitosnya". Jangan diubah jadi "karena".
+- L-40/L-41 (toilet) opsional, ditulis halus. Aman dibuang.
+- Peneliti 1972 tidak dinamai. Nama jurnal dan peneliti hanya di deskripsi, bukan narasi.
+- Di L-37, arah pergeseran angka untuk perempuan sengaja tidak disebut (F14 menyatakan itu hanya perkiraan penulis).
 
 ## 6. Teks rekam (narasi saja)
 
-Untuk merekam suara. Tanpa catatan visual. Baca per adegan; jeda satu tarikan napas di antara adegan.
+Untuk merekam suara. Tanpa catatan visual. Baca per adegan; ambil napas dan jeda sebentar di antara adegan. Di L-22 diam 2 detik setelah pertanyaan.
 
-### 6A. Shorts (160 kata)
+### 6A. Shorts (150 kata)
 
-**S-01** Katanya bakteri di tubuhmu 10 kali lebih banyak dari selmu. Itu keliru.
+**S-01** Katanya, di tubuhmu bakteri menang jumlah. Sepuluh banding satu! Dari mana angka itu datang? Dan apakah benar?
 
 **S-02** Satu lembar, satu cerita.
 
-**S-03** Angka sepuluh banding satu itu berasal dari perkiraan kasar, yang diulang terus selama puluhan tahun.
+**S-03** Ceritanya mulai tahun 1972. Seorang peneliti membuat perkiraan kasar. Dia tidak menghitung bakteri satu per satu.
 
-**S-04** Ambil contoh pria dewasa rata-rata. Para peneliti menghitung ulang jumlahnya.
+**S-04** Bayangkan kamu menebak jumlah penonton di stadion. Kamu kira semua kursi penuh, sampai ke pojok. Tebakanmu pasti kebesaran.
 
-**S-05** Hasilnya, sekitar 38 triliun bakteri. Dan sekitar 30 triliun sel manusia. Hampir sama banyak. Kira-kira satu banding satu, bukan sepuluh banding satu.
+**S-05** Perkiraan lama menganggap bakteri memenuhi seluruh saluran pencernaan. Padahal sebagian besar hanya berkumpul di usus besar.
 
-**S-06** Kenapa angka lama terlalu besar? Perkiraan kasar tahun 1972 menganggap bakteri tersebar di seluruh saluran cerna. Padahal sebagian besar ada di usus besar, dengan kepadatan yang terukur lebih rendah.
+**S-06** Tapi angka itu terlanjur diulang dan diulang, puluhan tahun lamanya.
 
-**S-07** Menariknya, kalau hanya dibandingkan dengan sel berinti, hasilnya memang sekitar sepuluh banding satu. Tapi sekitar sembilan puluh persen sel manusia tidak berinti, terutama sel darah merah.
+**S-07** Lalu para peneliti menghitung ulang, untuk pria dewasa rata-rata. Hasilnya: sekitar 38 triliun bakteri. Dan sekitar 30 triliun sel manusia.
 
-**S-08** Soal bobot, seluruh bakteri itu hanya sekitar nol koma dua kilogram.
+**S-08** Hampir sama banyak! Bayangkan dua tim tarik tambang dengan anggota hampir sama banyak. Seru, seimbang. Bukan sepuluh lawan satu.
 
-**S-09** Tentu ini perkiraan. Ketidakpastiannya sekitar dua puluh lima persen, dan angka tiap orang bisa sangat berbeda.
+**S-09** Tapi ingat, ini perkiraan. Tiap orang bisa berbeda. Anggap saja ini gambaran, bukan angka pas.
 
-**S-10** Kadang, angka yang sering diulang itu cuma belum dihitung ulang. Kini hitungannya sudah diperbarui.
+**S-10** Pelajarannya: angka yang sering diulang belum tentu sudah dicek. Kadang, perlu dihitung ulang.
 
-**S-11** @suhufpengetahuan
+**S-11** Ikuti @suhufpengetahuan.
 
-### 6B. Video panjang (1985 kata)
+### 6B. Video panjang (742 kata)
 
-#### Bab 1 - HOOK
+#### Bab 1 - HOOK MISTERI
 
-**L-01** Sepuluh banding satu. Mungkin kamu pernah membaca angka ini. Katanya, di tubuh manusia, bakteri jumlahnya sepuluh kali lebih banyak daripada sel kita sendiri. Angkanya rapi. Mudah diingat. Dan diulang di mana-mana. Tapi suatu hari ada yang bertanya: dari mana angka ini sebenarnya berasal? Jawabannya mengejutkan. Ternyata angka itu berawal dari perkiraan kasar. Dan ketika seseorang menghitungnya ulang, hasilnya berbeda jauh.
+**L-01** Sepuluh banding satu. Mungkin kamu pernah mendengar angka ini. Katanya, di tubuhmu, bakteri jauh lebih banyak daripada sel kamu sendiri.
 
-**L-02** Satu lembar, satu cerita. Selamat datang di Suhuf Pengetahuan. Hari ini kita membuka satu lembar tentang sebuah angka. Perjalanannya dari tahun 1972 sampai hitung ulang di tahun 2016. Santai saja. Tidak ada yang menakutkan di sini. Hanya hitung-hitungan, dan beberapa kejutan kecil.
+**L-02** Tapi, siapa yang pertama kali menghitungnya? Dan apakah hitungannya benar? Jawabannya seru, dan ada satu kejutan di ujung cerita.
 
-#### Bab 2 - APA KATA BANYAK ORANG
+**L-03** Satu lembar, satu cerita. Selamat datang di Suhuf Pengetahuan. Hari ini, kita jadi detektif angka.
 
-**L-03** Mari mulai dari klaimnya. Kalimatnya hampir selalu sama. Bakteri di tubuh manusia jumlahnya sepuluh kali lipat sel manusia. Sebagian orang bahkan menyebut seratus kali lipat. Sekilas, rasanya masuk akal. Bakteri itu kecil sekali, dan jumlahnya memang banyak. Jadi sepuluh kali lipat terdengar wajar. Seratus kali lipat pun terdengar mungkin.
+#### Bab 2 - APA KATA ORANG
 
-**L-04** Jadi di video ini, kita lakukan tiga hal. Pertama, mencari asal angkanya. Kedua, ikut menghitung ulang, langkah demi langkah, dari sisi bakteri dan sisi sel manusia. Ketiga, melihat bagian mana yang masih belum pasti. Kita mulai dari yang pertama.
+**L-04** Pertama, kita dengar dulu kata orang. Kalimatnya hampir selalu sama: bakteri di tubuh manusia jauh lebih banyak daripada sel manusia. Sepuluh banding satu.
 
-#### Bab 3 - DARI MANA 10:1
+**L-05** Kedengarannya masuk akal, kan? Bakteri itu makhluk hidup yang kecil sekali. Mata kita tidak bisa melihatnya. Jadi wajar kalau orang membayangkan jumlahnya sangat banyak.
 
-**L-05** Kita mundur ke tahun 1972. Di tahun itu, seorang peneliti bernama Luckey membuat sebuah perkiraan. Hitungannya sederhana. Orang menyebut hitungan seperti ini hitungan di balik amplop, atau back-of-the-envelope. Cepat, kasar, cukup untuk memberi gambaran. Ia memakai dua bilangan. Yang pertama, sekitar sepuluh pangkat sebelas bakteri untuk setiap gram isi saluran cerna. Itu sekitar seratus miliar bakteri dalam satu gram.
+**L-06** Kalau sel manusia, itu bagian-bagian kecil yang menyusun tubuhmu. Ada sel darah, sel otot, sel kulit, dan masih banyak lagi.
 
-**L-06** Bilangan kedua adalah kapasitas saluran cerna. Luckey menganggapnya sekitar satu liter, atau kira-kira satu kilogram isi. Lalu kedua bilangan itu dikalikan. Hasilnya angka yang sangat besar, dan dari perkiraan inilah angka sepuluh banding satu itu bermula. Tapi perhatikan. Ini bukan hasil menghitung bakteri satu per satu. Ini hasil perkalian dua perkiraan.
+**L-07** Jadi, kata orang bakteri menang jauh, dan sekarang kita cari asal angkanya.
 
-**L-07** Bayangkan kamu ingin tahu berapa banyak orang di sebuah gedung. Kamu tahu satu lantai bisa penuh sesak. Lalu kamu menganggap semua lantai sama penuhnya, dan mengalikannya. Ini hanya perumpamaan, bukan bagian dari data. Hitungannya rapi, tapi asumsinya perlu diuji. Perkiraan kasar memang begitu sifatnya. Cukup untuk gambaran awal. Belum cukup untuk jadi acuan.
+#### Bab 3 - DARI MANA ANGKA ITU?
 
-**L-08** Lima tahun kemudian, tahun 1977, seorang penulis bernama Savage mengutip angka itu. Setelah itu, hampir semua makalah tentang mikrobiota bersandar pada makalah Savage, langsung atau tidak langsung. Dan makalah Savage sendiri, ternyata mengutip Luckey. Jadi jalurnya seperti estafet. Tongkatnya sama. Hanya tangannya yang berganti.
+**L-08** Kita mundur ke tahun 1972. Seorang peneliti ingin tahu, kira-kira ada berapa bakteri di tubuh manusia.
 
-**L-09** Dalam makalah mereka tahun 2016, para penulis yang menghitung ulang menyebut perkiraan Luckey itu elegan. Tapi mereka juga menulis, perkiraan itu tidak dimaksudkan menjadi acuan selama puluhan tahun. Jadi cerita ini bukan soal mencari siapa yang salah. Luckey membuat perkiraan awal. Yang berlangsung terlalu lama adalah pemakaiannya.
+**L-09** Menghitung bakteri satu per satu itu sulit sekali. Jadi dia membuat perkiraan kasar. Cepat, sederhana, cukup untuk gambaran awal.
 
-**L-10** Lalu dari mana angka seratus banding satu? Ada laporan NIH yang menyebut sekitar satu sampai tiga persen massa tubuh adalah bakteri, tanpa rujukan yang jelas. Angka persen itu dikalikan dengan ukuran bakteri standar buku teks. Hasilnya sekitar sepuluh pangkat lima belas bakteri. Dari situlah muncul klaim seratus banding satu. Nanti kita lihat, ukuran standar itu juga ternyata bermasalah.
+**L-10** Caranya begini. Dia menebak berapa bakteri ada di sedikit isi usus. Lalu dia menebak berapa banyak isi di seluruh saluran pencernaan. Lalu keduanya dikalikan.
 
-#### Bab 4 - HITUNG ULANG BAKTERI
+**L-11** Bayangkan kamu menebak jumlah penonton di sebuah stadion. Kamu menghitung satu deret kursi yang penuh. Lalu kamu mengira semua kursi sama penuhnya, sampai ke pojok.
 
-**L-11** Sekarang kita menghitung ulang, mulai dari sisi bakteri. Cara berpikirnya sederhana. Untuk menghitung sesuatu yang tidak bisa dihitung satu per satu, kita butuh tiga hal. Di mana letaknya. Berapa ruangnya. Dan seberapa padat isinya. Letak, ruang, kepadatan. Kita ikuti tiga langkah itu.
+**L-12** Hitungannya rapi. Tapi kalau ternyata banyak kursi kosong, tebakanmu pasti kebesaran.
 
-**L-12** Langkah pertama, letak. Bakteri tidak tersebar rata di seluruh saluran cerna. Di usus besar, atau kolon, jumlahnya paling sedikit seratus kali lebih banyak daripada organ lain. Di lambung dan bagian atas usus halus, jumlahnya hanya sekitar seribu sampai sepuluh ribu per mililiter. Kenapa sedikit? Dua sebab. Asam lambung yang pH-nya rendah, dan isi yang mengalir cepat.
+**L-13** Ini bukan soal siapa yang salah. Tebakan awal itu wajar. Yang kebablasan adalah memakainya sebagai patokan, selama puluhan tahun.
 
-**L-13** Bagaimana dengan mulut? Seluruh bakteri di mulut jumlahnya kurang dari satu persen dari bakteri di kolon. Organ lain, termasuk kulit, paling banyak sekitar satu triliun. Itu kurang dari tiga persen dari total. Jadi kalau ditarik garis besarnya, hampir semua bakteri tinggal di satu tempat. Kolon.
+**L-14** Bayangkan permainan pesan berantai. Satu orang berbisik, lalu diteruskan, dan diteruskan lagi. Angka itu juga dikutip begitu, dari satu tulisan ke tulisan lain.
 
-**L-14** Langkah kedua, ruang. Berapa isi kolon? Luckey memakai satu liter untuk seluruh saluran cerna. Para penulis memakai analisis MRI untuk pria referensi, dan hasilnya sekitar nol koma empat liter, dengan ketidakpastian sekitar dua puluh lima persen. Isinya juga tidak tetap. Setelah makan, berubah sekitar sepuluh persen. Jadi nol koma empat liter adalah angka acuan.
+**L-15** Jadi, sepuluh banding satu itu berasal dari tebakan kasar, bukan dari menghitung.
 
-**L-15** Langkah ketiga, kepadatan. Berapa banyak bakteri dalam satu gram isi kolon? Para penulis mengumpulkan hasil dari empat belas studi yang mengukur bakteri dalam tinja. Kepadatan terukurnya sekitar nol koma sembilan kali sepuluh pangkat sebelas per gram tinja basah. Atau sekitar sembilan puluh miliar bakteri per gram. Variasi antarorang sekitar empat puluh enam persen.
+#### Bab 4 - KENAPA KEBESARAN?
 
-**L-16** Perhatikan. Kepadatan ini hampir sama dengan angka yang dipakai Luckey. Yang meleset ternyata ruangnya. Satu liter diganti nol koma empat liter. Kalikan ruang dengan kepadatan, dan total bakteri kolon turun dari angka lama. Bukan karena kepadatannya diubah, tapi karena ruangnya diukur.
+**L-16** Lalu, kenapa tebakannya kebesaran? Karena bakteri tidak tersebar merata di seluruh perut.
 
-**L-17** Ada satu hal lagi: ukuran bakteri. Buku teks biasanya memakai bakteri standar, satu mikrometer kubik, dengan massa sekitar satu pikogram. Pikogram itu sepersejuta dari sepersejuta gram. Tapi bakteri usus rata-rata sekitar lima pikogram dalam keadaan basah, beberapa kali lebih besar. Kalau bakterinya lebih besar, untuk massa yang sama jumlahnya lebih sedikit. Inilah salah satu sebab klaim seratus banding satu kebesaran.
+**L-17** Di bagian atas, ada cairan asam yang kuat. Makanan juga lewat dengan cepat. Jadi bakteri sulit tinggal di sana.
 
-**L-18** Jeda ringkas pertama. Kita rekap sisi bakteri. Satu, hampir semua bakteri ada di kolon. Dua, ruangnya sekitar nol koma empat liter, bukan satu liter. Tiga, kepadatannya sekitar nol koma sembilan kali sepuluh pangkat sebelas per gram, dari empat belas studi. Empat, bakteri usus lebih besar dari ukuran standar buku teks. Sisi bakteri selesai. Sekarang sisi satunya.
+**L-18** Hampir semua bakteri berkumpul di satu tempat, yaitu usus besar. Di sanalah mereka tinggal.
 
-#### Bab 5 - HITUNG ULANG SEL MANUSIA
+**L-19** Kembali ke stadion tadi. Ternyata penonton hanya menumpuk di satu tribun. Sisanya kosong.
 
-**L-19** Sisi sel manusia. Mungkin terdengar mudah, karena kita tahu apa itu sel. Tapi menghitung sel manusia juga tidak sesederhana kelihatannya. Tubuh punya banyak jenis sel, dengan ukuran dan jumlah yang berbeda jauh. Jadi menghitungnya sering dilakukan jenis demi jenis.
+**L-20** Dan ruang di usus besar ternyata lebih kecil dari dugaan lama. Jadi tebakan lama mengira ruangnya lebih luas.
 
-**L-20** Satu cara menghitung, yaitu per jenis sel dengan lima puluh enam kategori, memberi sekitar tiga puluh tujuh triliun sel. Lalu para penulis menghitung ulang dengan cara mereka sendiri, dan mendapat sekitar tiga puluh triliun. Dua angka itu tidak persis sama. Tapi keduanya berada di kisaran yang dekat.
+**L-21** Jadi, tebakan lama kebesaran karena mengira bakteri ada di mana-mana dan ruangnya luas.
 
-**L-21** Ada satu hal menarik. Sekitar sembilan puluh persen sel manusia tidak punya inti. Terutama sel darah merah dan trombosit. Hanya sekitar sepuluh persen yang berinti. Jadi dari sisi jumlah, sel manusia didominasi sel tanpa inti.
+**L-22** Sekarang giliranmu menebak. Menurutmu, mana yang lebih banyak?
 
-**L-22** Sel darah merah juga kecil. Volumenya sekitar seratus mikrometer kubik. Kita sudah bertemu satuan ini tadi, pada bakteri buku teks. Pelajarannya sederhana. Ukuran sel beragam sekali. Dan ukuran tidak berjalan sejajar dengan jumlah. Gagasan ini akan kita temui lagi sebentar lagi.
+#### Bab 5 - HITUNG ULANG
 
-#### Bab 6 - HASIL 1,3:1 DAN KETIDAKPASTIAN
+**L-23** Baik, kita cek jawabannya. Kali ini para peneliti memakai hasil pengukuran, bukan cuma tebakan. Kita ambil contoh pria dewasa rata-rata.
 
-**L-23** Sekarang kita gabungkan dua sisi. Untuk seorang pria referensi: berat tujuh puluh kilogram, usia dua puluh sampai tiga puluh tahun, tinggi satu koma tujuh meter. Jumlah bakteri sekitar tiga puluh delapan triliun. Jumlah sel manusia sekitar tiga puluh triliun.
+**L-24** Dimulai dari bakteri. Hasilnya, sekitar 38 triliun. Angka itu besar sekali, jadi anggap saja: banyak sekali!
 
-**L-24** Bandingkan keduanya, dan rasionya sekitar satu koma tiga banding satu. Artinya, hampir sama banyak. Bukan sepuluh banding satu. Bukan seratus banding satu. Dan bakteri paling banyak ada di kolon, sekitar sepuluh pangkat tiga belas.
+**L-25** Sekarang sel manusia. Semuanya dihitung: sel darah, sel otot, sel kulit, dan lainnya. Hasilnya, sekitar 30 triliun.
 
-**L-25** Seberapa pasti? Untuk jumlah bakteri, ketidakpastiannya sekitar dua puluh lima persen. Itu cara para penulis menyatakan seberapa jauh angkanya bisa bergeser karena pengukurannya terbatas. Lalu ada hal yang berbeda: variasi antarpria, sekitar separuh. Itu bukan soal pengukuran yang kurang. Itu soal manusia yang memang tidak sama.
+**L-26** Coba bandingkan. Sekitar 38 triliun, dengan sekitar 30 triliun. Hampir sama banyak!
 
-**L-26** Jeda ringkas kedua. Mitosnya berasal dari perkiraan kasar tahun 1972. Hitung ulang: bakteri sekitar tiga puluh delapan triliun, sel manusia sekitar tiga puluh triliun. Rasionya sekitar satu koma tiga banding satu, untuk pria referensi. Berikutnya, dua catatan menarik.
+**L-27** Bayangkan dua tim tarik tambang. Anggotanya hampir sama banyak. Pertandingannya seimbang dan seru. Bukan sepuluh lawan satu.
 
-#### Bab 7 - CATATAN MENARIK
+**L-28** Perhatikan kata "hampir". Angkanya tidak persis sama, dan ini perkiraan, bukan skor pertandingan.
 
-**L-27** Ada catatan menarik. Kalau bakteri dibandingkan hanya dengan sel manusia yang berinti, rasionya memang sekitar sepuluh banding satu. Ingat, sekitar sembilan puluh persen sel manusia tidak berinti. Kalau yang tanpa inti tidak ikut dihitung, tersisa sekitar sepersepuluh.
+**L-29** Jadi, hitungan baru berkata: bakteri dan sel manusia hampir sama banyak.
 
-**L-28** Tolong dicatat. Ini hanya catatan hitungan yang menarik. Bukan penyebab lahirnya mitos. Mitosnya lahir dari perkiraan kasar tahun 1972 tadi. Dua hal yang berbeda, hanya angkanya yang mirip.
+#### Bab 6 - CATATAN MENARIK
 
-**L-29** Sekarang bicara berat. Seluruh bakteri di tubuh pria referensi massanya sekitar nol koma dua kilogram. Itu sekitar nol koma tiga persen berat tubuh. Bandingkan dengan klaim lama: satu sampai tiga persen, atau satu sampai tiga kilogram. Angka lamanya jauh lebih besar.
+**L-30** Ada catatan menarik. Tadi kita menghitung semua sel manusia. Sekarang coba hitung hanya sel yang punya pusat kendali di dalamnya.
 
-**L-30** Di sinilah gagasan tadi kembali. Jumlah dan massa tidak sejalan. Sel lemak dan sel otot kira-kira tujuh puluh lima persen dari massa sel manusia. Tapi jumlahnya hanya sekitar nol koma dua persen dari seluruh sel. Sedikit, tapi berat. Sementara sel darah merah kecil. Jadi bakteri lebih banyak dan bakteri lebih berat adalah dua pertanyaan yang berbeda. Rasio jumlah berubah dari sepuluh banding satu ke sekitar satu koma tiga. Persen massa berubah dari satu sampai tiga persen ke sekitar nol koma tiga.
+**L-31** Kalau begitu, perbandingannya memang sekitar sepuluh banding satu! Tapi ini hanya catatan menarik. Ini bukan penyebab mitosnya.
 
-#### Bab 8 - YANG BELUM PASTI
+**L-32** Soalnya, sebagian besar sel manusia tidak punya pusat kendali itu. Contohnya sel darah merah.
 
-**L-31** Sekarang bagian yang jujur: apa yang belum pasti. Dalam sains, mengakui batas adalah bagian dari pekerjaan. Para penulis menyebut beberapa hal yang masih perlu diteliti. Kita lewati satu per satu.
+**L-33** Bayangkan sekantong kelereng dan sebuah bola basket. Kelereng banyak sekali tapi kecil-kecil. Bola basket cuma satu tapi besar. Sel darah merah itu seperti kelereng.
 
-**L-32** Pertama, tinja sebagai wakil. Kepadatan bakteri diukur dari tinja. Lalu para penulis mengasumsikan kepadatan itu mewakili isi kolon. Asumsi ini perlu diteliti lebih lanjut. Kalau ternyata isi kolon sedikit berbeda dari yang terukur di tinja, angka totalnya ikut bergeser.
+**L-34** Jadi, hasilnya tergantung apa yang dihitung, maka para peneliti menghitung semua sel.
 
-**L-33** Kedua, perempuan. Angka tadi untuk pria referensi. Untuk perempuan, para penulis memperkirakan rasio bakteri terhadap sel manusia naik sekitar sepertiga. Kata kuncinya, diperkirakan. Itu bukan hasil pengukuran. Alasannya, konsentrasi sel darah merah sekitar sepuluh persen lebih rendah, dan volume darah dua puluh sampai tiga puluh persen lebih rendah. Sementara belum ada laporan perbedaan kepadatan bakteri kolon.
+#### Bab 7 - YANG BELUM PASTI
 
-**L-34** Ketiga, bayi dan anak. Kepadatan bakteri kolon relatif konstan sejak bayi. Tapi data volume kolon anak masih terbatas. Para penulis menyebutnya kesenjangan pengetahuan. Karena itu, di video ini kita tidak memberi angka untuk anak. Lebih baik dikosongkan, daripada ditebak.
+**L-35** Sekarang bagian yang jujur: apa yang belum pasti. Hasil tadi adalah perkiraan, bukan angka pas.
 
-**L-35** Bagaimana kita tahu mana bagian yang kokoh dan mana yang goyah? Ada cara sederhana. Ajukan tiga pertanyaan pada setiap angka. Dari mana datangnya? Diukur, atau diasumsikan? Berapa ketidakpastiannya? Angka baru berusaha menjawab ketiganya, dan menyebut bagian yang masih asumsi.
+**L-36** Tadi itu untuk pria dewasa rata-rata. Orang lain bisa berbeda. Setiap orang punya angkanya sendiri.
 
-**L-36** Mari kita pisahkan. Yang diukur: kepadatan bakteri dari empat belas studi, dan volume kolon dari analisis MRI. Yang diasumsikan: kepadatan di tinja mewakili isi kolon. Yang diperkirakan: rasio untuk perempuan. Yang masih kosong: angka untuk anak.
+**L-37** Untuk perempuan, para peneliti memperkirakan angkanya bergeser. Itu perkiraan mereka, bukan hasil pengukuran. Untuk anak dan bayi, datanya masih kurang.
 
-#### Bab 9 - CATATAN RINGAN
+**L-38** Para peneliti juga memakai satu dugaan. Mereka mengira contoh yang mereka ukur mewakili seluruh isi usus besar. Dugaan ini masih perlu diteliti lagi.
 
-**L-37** Sekarang sesuatu yang ringan. Para penulis menyebut, karena rasionya cukup dekat dengan satu, satu kali buang air besar saja bisa membalik rasionya. Setelah dari toilet, sekitar sepertiga bakteri kolon ikut keluar. Dan rasionya bergeser ke arah sel manusia.
+**L-39** Jadi, hasilnya bagus, tapi tetap perkiraan yang masih perlu diteliti.
 
-**L-38** Jadi, kalau ada yang bertanya mana yang lebih banyak, jawaban jujurnya agak lucu. Bergantung pada kapan kamu bertanya. Rasionya bukan angka yang diam. Ia bergerak. Dan itu hanya mungkin karena rasionya dekat dengan satu. Kalau rasionya seratus banding satu, satu kali ke toilet tidak akan membalik apa pun.
+#### Bab 8 - OPSIONAL: SATU KALI KE TOILET
 
-#### Bab 10 - PELAJARAN DAN REKAP
+**L-40** _(opsional)_ Ada satu fakta lucu yang halus. Karena angkanya hampir sama, sekali ke toilet saja, sebagian bakteri usus ikut keluar. Perbandingannya bisa bergeser ke arah sel manusia.
 
-**L-39** Sekarang pelajarannya. Pertama, angka populer perlu dicek. Bukan karena yang pertama menyebutnya berniat salah. Tapi karena perkiraan kasar mudah berubah jadi fakta kalau diulang cukup lama. Perkiraan itu tetap berguna sebagai titik awal. Masalahnya muncul ketika titik awal dianggap titik akhir.
+**L-41** _(opsional)_ Jadi, angka ini bukan skor yang tetap.
 
-**L-40** Kedua, menghitung ulang adalah bagian dari sains, bukan tanda sains gagal. Kesimpulan para penulis kurang lebih begini. Kita mungkin masih tampak kalah jumlah. Tapi sekarang kita tahu seberapa jauh, dan seberapa pasti. Itu kemajuan yang tenang, tapi nyata.
+#### Bab 9 - PELAJARAN DAN REKAP
 
-**L-41** Ketiga, mengubah rasio dari sepuluh banding satu, atau seratus banding satu, menjadi sekitar satu banding satu tidak mengurangi pentingnya mikrobiota. Para penulis menegaskan itu. Yang berubah hanya angkanya. Dan angka yang dikutip luas sebaiknya berdasar data terbaik.
+**L-42** Lalu apa pelajarannya? Angka yang sering diulang perlu dicek.
 
-**L-42** Rekap besar. Satu, sepuluh banding satu berawal dari perkiraan kasar tahun 1972, dan seratus banding satu dari angka persen massa tanpa rujukan yang jelas. Dua, bakteri terutama di kolon: ruangnya nol koma empat liter, kepadatannya dari empat belas studi. Tiga, sel manusia sekitar tiga puluh triliun, sembilan puluh persen tanpa inti. Empat, hasilnya sekitar satu koma tiga banding satu untuk pria referensi. Lima, yang belum pasti: tinja sebagai wakil, perempuan, dan anak.
+**L-43** Mengubah sepuluh banding satu jadi hampir sama banyak tidak membuat bakteri itu kurang penting. Yang diperbaiki hanya angkanya.
 
-#### Bab 11 - PENUTUP
+**L-44** Jadi, tebakan kasar bilang sepuluh banding satu, tapi hitungan baru bilang hampir sama banyak.
 
-**L-43** Dari sepuluh banding satu, menjadi hampir sama banyak. Satu angka lama, dihitung ulang dengan sabar. Lain kali kamu bertemu angka yang terlalu rapi dan terlalu sering diulang, coba tanya: siapa yang pertama menghitungnya, dan bagaimana caranya? Terima kasih sudah menemani sampai akhir lembar ini. Kalau kamu suka cerita seperti ini, ikuti @suhufpengetahuan. Sampai jumpa di lembar berikutnya.
+#### Bab 10 - PENUTUP
+
+**L-45** Kalau kamu suka cerita seperti ini, ikuti @suhufpengetahuan. Sampai jumpa di lembar berikutnya.
+
+## 7. Serah terima
+
+**Mas Miftah**
+- Baca Bagian 4 dan 5, beri komentar per ID adegan. Putuskan 5 hal di Bagian 1.
+- Kalau rekam sendiri, pakai Bagian 6.
+
+**Dex (desain)**
+- Buat gaya kartun dan tokoh: Tim Bakteri (kapsul oranye, mata bulat, senyum), Tim Sel Manusia (bulat biru), detektif kartun (topi dan kaca pembesar), peneliti kartun, timbangan, stadion, siluet tubuh dengan perut bercahaya.
+- Buat thumbnail Long dan cover Shorts: usulan teks ada di bagian akhir tiap versi. Semuanya menunggu logo baru.
+
+**Stark (video)**
+- Buat komposisi baru (jangan menimpa komposisi bakteri versi lama). ID adegan V3 bertabrakan dengan ID versi lama (L-01..L-43 di commit sebelumnya), jadi pakai folder baru, misalnya `suhuf-bakteri-v3`.
+- Durasi adegan di Long dihitung dari kata (140 kata per menit). Setelah suara direkam, sinkronkan ke audio asli. Subtitle persis seperti narasi.
+- Urutan: Shorts dulu sebagai uji gaya baru, lalu Long.
+
+**Kim (teks upload)**
+- Caption Shorts dan deskripsi YouTube ada di bagian akhir tiap versi. Setelah script disetujui, Kim memasukkannya ke tab Publikasi dan melengkapi TikTok, Reels, dan X.
+- Video bakteri versi lama jangan diunggah. Simpan sebagai arsip.
+
+## 8. Riwayat perubahan
+
+- 28 Okt: V1 Shorts (40–55 detik) dan Long (5–7 menit) ditulis. Shorts diubah ke 60–75 detik atas permintaan Mas.
+- 28 Okt: Koreksi penyebab mitos. Versi awal menyiratkan mitos lahir karena sel darah merah tidak dihitung. Itu tidak didukung sumber. Diganti perkiraan kasar 1972 yang kebesaran.
+- 28 Okt: Long V2 (14–15 menit, 1.985 kata) ditulis dengan fakta tambahan dari makalah Cell dan PLoS.
+- 29 Okt: Mas menilai V2 terlalu berat untuk pemula, anak, dan remaja. Prinsip baru disimpan di memori dan skill `suhuf-video-brief`.
+- 29 Okt: V3 ramah pemula ditulis ulang dari nol. Shorts 150 kata (~72 detik), Long 742 kata (~6:11 menit). Long ditandai BAHAN KURANG untuk 8–10 menit.
+- 29 Okt: File gabungan V3 ini dibuat. File gabungan versi lama tetap ada sebagai arsip (`suhuf-02-bakteri-script-lengkap.md`).
 
