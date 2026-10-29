@@ -356,9 +356,9 @@ Ditulis ulang dari nol. Tidak menimpa script lama. Sumber fakta: Bagian 2 (F01-F
 
 **NARASI:** Kalau sel manusia, itu bagian-bagian kecil yang menyusun tubuhmu. Ada sel darah, sel otot, sel kulit, dan masih banyak lagi.
 
-**VISUAL:** Siluet tubuh "dibuka" jadi kotak-kotak Lego warna-warni (kartun, bukan anatomi nyata). Tim Sel Manusia (bulat biru) keluar dari kotak: ada yang merah (darah), ada yang berotot lucu, ada yang berbentuk kotak (kulit). Teks "SEL MANUSIA".
+**VISUAL:** Siluet tubuh "dibuka" jadi kotak-kotak balok susun warna-warni (kartun, bukan anatomi nyata). Tim Sel Manusia (bulat biru) keluar dari kotak: ada yang merah (darah), ada yang berotot lucu, ada yang berbentuk kotak (kulit). Teks "SEL MANUSIA".
 
-**AUDIO:** Bunyi klik-klik Lego.
+**AUDIO:** Bunyi klik-klik balok susun.
 
 #### [L-07] 7 dtk (kumulatif 1:05) | Rekap bab 2
 
@@ -586,7 +586,7 @@ Ditulis ulang dari nol. Tidak menimpa script lama. Sumber fakta: Bagian 2 (F01-F
 
 #### [L-34] 7 dtk (kumulatif 4:45) | Rekap bab 6
 
-**NARASI:** Jadi, hasilnya tergantung apa yang dihitung, maka para peneliti menghitung semua sel.
+**NARASI:** Jadi, hasilnya tergantung apa yang dihitung. Karena itu, para peneliti menghitung semua sel.
 
 **VISUAL:** Timbangan kembali nyaris rata, teks "HITUNG SEMUANYA".
 
@@ -854,7 +854,7 @@ Untuk merekam suara. Tanpa catatan visual. Baca per adegan; ambil napas dan jeda
 
 **L-33** Bayangkan sekantong kelereng dan sebuah bola basket. Kelereng banyak sekali tapi kecil-kecil. Bola basket cuma satu tapi besar. Sel darah merah itu seperti kelereng.
 
-**L-34** Jadi, hasilnya tergantung apa yang dihitung, maka para peneliti menghitung semua sel.
+**L-34** Jadi, hasilnya tergantung apa yang dihitung. Karena itu, para peneliti menghitung semua sel.
 
 #### Bab 7 - YANG BELUM PASTI
 
@@ -913,4 +913,4 @@ Untuk merekam suara. Tanpa catatan visual. Baca per adegan; ambil napas dan jeda
 - 29 Okt: Mas menilai V2 terlalu berat untuk pemula, anak, dan remaja. Prinsip baru disimpan di memori dan skill `suhuf-video-brief`.
 - 29 Okt: V3 ramah pemula ditulis ulang dari nol. Shorts 150 kata (~72 detik), Long 742 kata (~6:11 menit). Long ditandai BAHAN KURANG untuk 8–10 menit.
 - 29 Okt: File gabungan V3 ini dibuat. File gabungan versi lama tetap ada sebagai arsip (`suhuf-02-bakteri-script-lengkap.md`).
-
+- 29 Okt: Atas keputusan Miftah (via Kim), dua perbaikan kecil dari saran Kim dikerjakan Stark: (1) L-34 narasi (Bagian 5 dan 6B): "Jadi, hasilnya tergantung apa yang dihitung. Karena itu, para peneliti menghitung semua sel." (2) L-06 visual dan audio (Bagian 5): "Lego" diganti "balok susun warna-warni". Perbaikan lain tidak dikerjakan.
