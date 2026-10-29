@@ -4,9 +4,11 @@ import { ToonBackdrop } from "../elements/ToonKit";
 import { Voice } from "../elements/Voice";
 import { BAB1_3, SFX1_3 } from "./bab1-3";
 import { BAB4_5, SFX4_5 } from "./bab4-5";
+import { BAB6_7, SFX6_7 } from "./bab6-7";
+import { BAB8_10, SFX8_10 } from "./bab8-10";
 
-const VISUALS = { ...BAB1_3, ...BAB4_5 };
-const SFX = { ...SFX1_3, ...SFX4_5 };
+const VISUALS = { ...BAB1_3, ...BAB4_5, ...BAB6_7, ...BAB8_10 };
+const SFX = { ...SFX1_3, ...SFX4_5, ...SFX6_7, ...SFX8_10 };
 
 // Satu adegan video panjang V3 (L-01..L-45): latar kartun, visual, narasi + subtitle, SFX.
 const LongSceneInner = ({ sceneId }: { readonly sceneId: string }) => {
