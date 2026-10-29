@@ -1,6 +1,6 @@
 import type React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { colors, fonts } from "../theme";
+import { colors, fonts, toon } from "../theme";
 
 // Pecah teks jadi potongan pendek (satu-dua baris), waktu dibagi sebanding jumlah karakter.
 export const splitChunks = (text: string, maxChars: number): string[] => {
@@ -35,13 +35,16 @@ export const splitChunks = (text: string, maxChars: number): string[] => {
 
 // Angka dan satuannya diberi warna oranye.
 const UNIT = /^(triliun|miliar|persen|kilogram|liter|banding)$/i;
-const Words: React.FC<{ readonly text: string }> = ({ text }) => (
+const Words: React.FC<{ readonly text: string; readonly hotColor: string }> = ({
+  text,
+  hotColor,
+}) => (
   <>
     {text.split(" ").map((w, i) => {
       const bare = w.replace(/[.,:?!]/g, "");
       const hot = /\d/.test(bare) || UNIT.test(bare);
       return (
-        <span key={i} style={{ color: hot ? colors.orangeSoft : undefined }}>
+        <span key={i} style={{ color: hot ? hotColor : undefined }}>
           {i > 0 ? " " : ""}
           {w}
         </span>
@@ -57,7 +60,8 @@ export const Subtitle: React.FC<{
   readonly fontSize: number;
   readonly maxWidth: number;
   readonly maxChars: number;
-}> = ({ text, durationSec, bottom, fontSize, maxWidth, maxChars }) => {
+  readonly toonStyle?: boolean;
+}> = ({ text, durationSec, bottom, fontSize, maxWidth, maxChars, toonStyle = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -98,20 +102,21 @@ export const Subtitle: React.FC<{
     >
       <div
         style={{
-          fontFamily: fonts.heading,
-          fontWeight: 700,
+          fontFamily: toonStyle ? fonts.toon : fonts.heading,
+          fontWeight: toonStyle ? 600 : 700,
           fontSize,
           lineHeight: 1.18,
-          color: colors.text,
-          background: "rgba(5,10,23,0.8)",
-          border: `1.5px solid ${colors.lineSoft}`,
-          padding: "12px 28px",
-          borderRadius: 18,
+          color: toonStyle ? toon.ink : colors.text,
+          background: toonStyle ? "rgba(255,255,255,0.96)" : "rgba(5,10,23,0.8)",
+          border: toonStyle ? `5px solid ${toon.orange}` : `1.5px solid ${colors.lineSoft}`,
+          boxShadow: toonStyle ? `0 6px 0 ${toon.ink}` : undefined,
+          padding: toonStyle ? "12px 30px 14px" : "12px 28px",
+          borderRadius: toonStyle ? 28 : 18,
           maxWidth,
           textAlign: "center",
         }}
       >
-        <Words text={current.text} />
+        <Words text={current.text} hotColor={toonStyle ? toon.orangeDark : colors.orangeSoft} />
       </div>
     </div>
   );

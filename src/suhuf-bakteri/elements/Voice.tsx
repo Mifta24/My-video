@@ -5,7 +5,10 @@ import { clipDuration, clipStart, getScene } from "../timing";
 import { Subtitle } from "./Subtitle";
 
 // Narasi satu adegan: satu <Audio> + subtitle per kalimat, diposisikan dari timing.ts.
-export const Voice: React.FC<{ readonly sceneId: string }> = ({ sceneId }) => {
+export const Voice: React.FC<{ readonly sceneId: string; readonly toonStyle?: boolean }> = ({
+  sceneId,
+  toonStyle = false,
+}) => {
   const { fps, width } = useVideoConfig();
   const wide = width > 1500;
   const folder = sceneId.startsWith("s") ? "vo" : "vo-long";
@@ -25,9 +28,10 @@ export const Voice: React.FC<{ readonly sceneId: string }> = ({ sceneId }) => {
             text={clip.text}
             durationSec={clipDuration(clip.id)}
             bottom={wide ? 64 : 330}
-            fontSize={wide ? 40 : 52}
+            fontSize={wide ? 40 : toonStyle ? 56 : 52}
             maxWidth={wide ? 1500 : 920}
-            maxChars={wide ? 60 : 30}
+            maxChars={wide ? 60 : toonStyle ? 28 : 30}
+            toonStyle={toonStyle}
           />
         </Sequence>
       ))}

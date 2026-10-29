@@ -22,7 +22,10 @@ export type SfxName =
   | "door"
   | "hmm"
   | "shimmer"
-  | "shrink";
+  | "shrink"
+  | "plop"
+  | "tingtong"
+  | "crowd";
 
 export type Cue = readonly [at: number, name: SfxName, volume?: number];
 
@@ -46,10 +49,13 @@ export const SfxList: React.FC<{ readonly cues: readonly Cue[] }> = ({ cues }) =
 
 // Musik latar ambient (loop 32 dtk). `level(frame)` mengatur naik-turun; nilai dasar kecil
 // supaya narasi selalu dominan.
-export const MusicBed: React.FC<{ readonly level: (frame: number) => number }> = ({ level }) => (
+export const MusicBed: React.FC<{
+  readonly level: (frame: number) => number;
+  readonly file?: string;
+}> = ({ level, file = "bed" }) => (
   <Audio
     name="Musik latar"
-    src={staticFile("suhuf-bakteri/sfx/bed.mp3")}
+    src={staticFile(`suhuf-bakteri/sfx/${file}.mp3`)}
     loop
     loopVolumeCurveBehavior="extend"
     volume={(f) => level(f)}

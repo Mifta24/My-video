@@ -5,10 +5,12 @@ import { clamp } from "./common";
 
 // Watermark kecil sepanjang video. Shorts: di luar zona UI (150 px atas, 250 px bawah).
 // Logo resmi belum ada (menunggu Dex): wordmark teks sebagai pengganti.
-export const Watermark: React.FC<{ readonly wide?: boolean; readonly hideAfter?: number }> = ({
-  wide = false,
-  hideAfter,
-}) => {
+export const Watermark: React.FC<{
+  readonly wide?: boolean;
+  readonly hideAfter?: number;
+  readonly ink?: string;
+  readonly halo?: string;
+}> = ({ wide = false, hideAfter, ink = colors.text, halo = colors.bg }) => {
   const frame = useCurrentFrame();
   const o =
     interpolate(frame, [0, 15], [0, 1], clamp) *
@@ -16,8 +18,8 @@ export const Watermark: React.FC<{ readonly wide?: boolean; readonly hideAfter?:
   const base: React.CSSProperties = {
     position: "absolute",
     pointerEvents: "none",
-    color: colors.text,
-    textShadow: `0 0 8px ${colors.bg}`,
+    color: ink,
+    textShadow: `0 0 8px ${halo}`,
     whiteSpace: "nowrap",
   };
   if (wide) {
@@ -62,7 +64,7 @@ export const Watermark: React.FC<{ readonly wide?: boolean; readonly hideAfter?:
         top: 168,
         textAlign: "center",
         opacity: 0.6 * o,
-        fontFamily: fonts.heading,
+        fontFamily: wide ? fonts.heading : fonts.toon,
         fontWeight: 700,
         fontSize: 26,
         letterSpacing: 7,
