@@ -27,10 +27,10 @@ export const Voice: React.FC<{ readonly sceneId: string; readonly toonStyle?: bo
           <Subtitle
             text={clip.text}
             durationSec={clipDuration(clip.id)}
-            bottom={wide ? 64 : 330}
-            fontSize={wide ? 40 : toonStyle ? 56 : 52}
-            maxWidth={wide ? 1500 : 920}
-            maxChars={wide ? 60 : toonStyle ? 28 : 30}
+            bottom={wide ? (toonStyle ? 52 : 64) : 330}
+            fontSize={wide ? (toonStyle ? 46 : 40) : toonStyle ? 56 : 52}
+            maxWidth={wide ? (toonStyle ? 1560 : 1500) : 920}
+            maxChars={wide ? (toonStyle ? 64 : 60) : toonStyle ? 28 : 30}
             toonStyle={toonStyle}
           />
         </Sequence>

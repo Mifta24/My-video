@@ -13,9 +13,9 @@ const OUT = toon.ink;
 // Draf 2 (3D): tokoh 2D Bakteri/Sel disembunyikan, tokoh 3D digambar di atasnya. Default false (draf 1 tidak berubah).
 export const HideToyChars = createContext(false);
 
-const blinkOf = (t: number, phase: number) => ((t * 0.8 + phase) % 3 > 2.9 ? 0.1 : 1);
+export const blinkOf = (t: number, phase: number) => ((t * 0.8 + phase) % 3 > 2.9 ? 0.1 : 1);
 
-const Face: React.FC<{
+export const Face: React.FC<{
   readonly cx: number;
   readonly cy: number;
   readonly gap: number;
@@ -58,7 +58,7 @@ const Face: React.FC<{
 };
 
 // Lengan: 0 = turun, 90 = lurus ke samping, 180 = lurus ke atas.
-const Arm: React.FC<{
+export const Arm: React.FC<{
   readonly x: number;
   readonly y: number;
   readonly angle: number;
@@ -159,10 +159,11 @@ export const Detective: React.FC<{
   readonly mood?: Mood;
   readonly hand?: readonly [number, number];
   readonly hat?: string;
+  readonly bare?: boolean; // tanpa topi (peneliti lab)
   readonly flip?: boolean;
   readonly phase?: number;
   readonly children?: React.ReactNode;
-}> = ({ size, t = 0, mood = "happy", hand = [128, 158], hat = "#A9683C", flip = false, phase = 0, children }) => {
+}> = ({ size, t = 0, mood = "happy", hand = [128, 158], hat = "#A9683C", bare = false, flip = false, phase = 0, children }) => {
   const blink = blinkOf(t, phase);
   return (
     <svg
@@ -191,11 +192,19 @@ export const Detective: React.FC<{
       <circle cx={80} cy={72} r={35} fill={toon.skin} stroke={OUT} strokeWidth={4.5} />
       <circle cx={45} cy={76} r={7} fill={toon.skin} stroke={OUT} strokeWidth={3.5} />
       <circle cx={115} cy={76} r={7} fill={toon.skin} stroke={OUT} strokeWidth={3.5} />
-      {/* topi */}
-      <path d="M45,58 Q46,18 80,16 Q114,18 115,58 Z" fill={hat} stroke={OUT} strokeWidth={4.5} strokeLinejoin="round" />
-      <ellipse cx={80} cy={58} rx={41} ry={9} fill={hat} stroke={OUT} strokeWidth={4.5} />
-      <path d="M47,52 Q80,60 113,52" fill="none" stroke="#7A4524" strokeWidth={5} opacity={0.7} />
-      <circle cx={80} cy={15} r={5} fill="#7A4524" stroke={OUT} strokeWidth={3} />
+      {bare ? (
+        <g>
+          <path d="M46,60 Q44,34 70,34 Q86,26 102,38 Q116,46 114,60 Q100,46 80,48 Q60,46 46,60 Z" fill="#5B3A29" stroke={OUT} strokeWidth={4} strokeLinejoin="round" />
+        </g>
+      ) : (
+        <>
+          {/* topi */}
+          <path d="M45,58 Q46,18 80,16 Q114,18 115,58 Z" fill={hat} stroke={OUT} strokeWidth={4.5} strokeLinejoin="round" />
+          <ellipse cx={80} cy={58} rx={41} ry={9} fill={hat} stroke={OUT} strokeWidth={4.5} />
+          <path d="M47,52 Q80,60 113,52" fill="none" stroke="#7A4524" strokeWidth={5} opacity={0.7} />
+          <circle cx={80} cy={15} r={5} fill="#7A4524" stroke={OUT} strokeWidth={3} />
+        </>
+      )}
       {/* wajah + kacamata */}
       <Face cx={80} cy={76} gap={14} r={7.5} mood={mood} blink={blink} look={[0.6, 0]} />
       <circle cx={66} cy={76} r={11.5} fill="#D8EEFF" fillOpacity={0.35} stroke={OUT} strokeWidth={3} />

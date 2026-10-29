@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { Easing, interpolate } from "remotion";
 import { pop } from "../elements/ToonKit";
 import { toon } from "../theme";
+import { setStageSize, stageSize } from "./stage";
 
 // Tokoh 3D bergaya mainan/clay untuk Shorts V3 draf 2.
 // - Semua dibuat dari primitif Three.js (CapsuleGeometry, SphereGeometry, CylinderGeometry), tanpa aset unduhan.
@@ -14,10 +15,8 @@ import { toon } from "../theme";
 // - Wajah = decal DATAR (tekstur kanvas) yang menempel mengikuti permukaan badan.
 // - Semua gerak dihitung dari `t` (detik = frame / fps). Tidak ada useFrame, tidak ada waktu nyata.
 
-const W = 1080;
-const H = 1920;
 const FOV = 30;
-const CAM_Z = H / 2 / Math.tan((FOV * Math.PI) / 360);
+const camZ = (h: number) => h / 2 / Math.tan((FOV * Math.PI) / 360);
 const INK = toon.ink;
 
 export type Mood = "happy" | "laugh" | "oh" | "worry" | "think";
@@ -33,6 +32,7 @@ export const Stage3D: React.FC<{ readonly children: React.ReactNode; readonly zo
   camY = 0,
 }) => {
   const { width, height } = useVideoConfig();
+  setStageSize(width, height);
   return (
     <div style={{ position: "absolute", inset: 0 }}>
       <ThreeCanvas
@@ -40,7 +40,7 @@ export const Stage3D: React.FC<{ readonly children: React.ReactNode; readonly zo
         height={height}
         flat
         gl={{ antialias: true, alpha: true }}
-        camera={{ fov: FOV, near: 200, far: 9000, position: [camX, camY, CAM_Z / zoom] }}
+        camera={{ fov: FOV, near: 200, far: 9000, position: [camX, camY, camZ(height) / zoom] }}
       >
         <hemisphereLight args={["#FFF6E4", "#F2C9A0", 1.75]} />
         <directionalLight position={[-700, 1100, 1300]} intensity={2.3} color="#FFF0D4" />
@@ -52,8 +52,8 @@ export const Stage3D: React.FC<{ readonly children: React.ReactNode; readonly zo
 };
 
 // px kanvas (kiri-atas) -> dunia
-export const wx = (px: number) => px - W / 2;
-export const wy = (py: number) => H / 2 - py;
+export const wx = (px: number) => px - stageSize.w / 2;
+export const wy = (py: number) => stageSize.h / 2 - py;
 
 // ---------- Wajah (decal datar) ----------
 const FACE = {
@@ -509,7 +509,7 @@ export const Toy: React.FC<ToyProps> = ({
       const a: [number, number, number] = [sxl, syl, surfZ(sxl, syl) + armR * 0.9];
       // titik tangan: x mengikuti badan (setelah miring), y dan z dikunci ke tali
       const probe = new THREE.Vector3(dir * half * span, d.R * (1 - 0.78), 0).applyMatrix4(M);
-      const px = probe.x + W / 2;
+      const px = probe.x + stageSize.w / 2;
       const tgt = new THREE.Vector3(probe.x, wy(grip.ropeY(px)), grip.z).applyMatrix4(inv).sub(new THREE.Vector3(0, d.R, 0));
       return { a, b: [tgt.x, tgt.y, tgt.z] as [number, number, number] };
     }
