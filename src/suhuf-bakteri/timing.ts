@@ -5,6 +5,10 @@ import specLong from "./vo/spec-long.json";
 
 export const FPS = 30;
 
+// Bab toilet (L-40, L-41) opsional (script Bagian 5). Matikan dengan `false`: kedua adegan keluar dari
+// urutan, sisa video bergeser rapat dan tetap utuh. Tidak ada adegan lain yang bergantung padanya.
+export const INCLUDE_TOILET = true;
+
 export type Clip = { id: string; text: string; say?: string };
 export type SceneSpec = {
   id: string;
@@ -35,21 +39,24 @@ const TAIL: Record<string, number> = {
   s05: 0.6,
   s10: 0.6,
   s11: 1.4,
-  l01: 1.0,
-  l02: 1.0,
-  l18: 1.6,
-  l24: 1.2,
-  l26: 1.6,
-  l42: 1.8,
-  l43: 4.5,
+  l01: 0.9,
+  l02: 0.9,
+  l22: 2.4, // jeda 2 detik setelah pertanyaan ke penonton (script L-22) + napas
+  l24: 1.0,
+  l26: 1.2,
+  l41: 0.9,
+  l42: 1.0,
+  l44: 1.0,
+  l45: 2.2,
 };
 const DEFAULT_TAIL = { shorts: 0.25, long: 0.6 };
 
 const kindOf = (sceneId: string) => (sceneId.startsWith("s") ? "shorts" : "long");
 
 export const scenesShorts = specShorts.scenes as SceneSpec[];
-export const scenesLong = specLong.scenes as SceneSpec[];
-const all = [...scenesShorts, ...scenesLong];
+export const scenesLongAll = specLong.scenes as (SceneSpec & { toilet?: boolean })[];
+export const scenesLong = scenesLongAll.filter((s) => INCLUDE_TOILET || !s.toilet);
+const all = [...scenesShorts, ...scenesLongAll];
 
 export const getScene = (sceneId: string): SceneSpec => {
   const s = all.find((x) => x.id === sceneId);
