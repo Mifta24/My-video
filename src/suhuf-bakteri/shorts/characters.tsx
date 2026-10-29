@@ -1,4 +1,4 @@
-import type React from "react";
+import React, { createContext, useContext } from "react";
 import { toon } from "../theme";
 
 // Tokoh kartun Shorts V3 (dibuat dari SVG, dipakai ulang di semua adegan):
@@ -9,6 +9,9 @@ export type Mood = "happy" | "laugh" | "oh" | "worry" | "think";
 export type Arms = { readonly l?: number; readonly r?: number };
 
 const OUT = toon.ink;
+
+// Draf 2 (3D): tokoh 2D Bakteri/Sel disembunyikan, tokoh 3D digambar di atasnya. Default false (draf 1 tidak berubah).
+export const HideToyChars = createContext(false);
 
 const blinkOf = (t: number, phase: number) => ((t * 0.8 + phase) % 3 > 2.9 ? 0.1 : 1);
 
@@ -88,7 +91,7 @@ type CharProps = {
 };
 
 // Tim Bakteri: kapsul oranye, mata bulat, senyum.
-export const Bacteria: React.FC<CharProps> = ({ size, t = 0, mood = "happy", arms, look, phase = 0, x, y }) => (
+const BacteriaFlat: React.FC<CharProps> = ({ size, t = 0, mood = "happy", arms, look, phase = 0, x, y }) => (
   <svg x={x} y={y} width={size} height={(size * 80) / 120} viewBox="0 0 120 80" style={{ overflow: "visible", display: "block" }}>
     {arms?.l !== undefined ? <Arm x={14} y={46} angle={arms.l} side="l" len={26} color={toon.orange} /> : null}
     {arms?.r !== undefined ? <Arm x={106} y={46} angle={arms.r} side="r" len={26} color={toon.orange} /> : null}
@@ -102,7 +105,7 @@ export const Bacteria: React.FC<CharProps> = ({ size, t = 0, mood = "happy", arm
 );
 
 // Tim Sel Manusia: bulat biru, mata bulat.
-export const Cell: React.FC<CharProps> = ({ size, t = 0, mood = "happy", arms, look, phase = 0, x, y }) => (
+const CellFlat: React.FC<CharProps> = ({ size, t = 0, mood = "happy", arms, look, phase = 0, x, y }) => (
   <svg x={x} y={y} width={size} height={size} viewBox="0 0 100 100" style={{ overflow: "visible", display: "block" }}>
     {arms?.l !== undefined ? <Arm x={9} y={56} angle={arms.l} side="l" len={24} color={toon.blue} /> : null}
     {arms?.r !== undefined ? <Arm x={91} y={56} angle={arms.r} side="r" len={24} color={toon.blue} /> : null}
@@ -112,6 +115,16 @@ export const Cell: React.FC<CharProps> = ({ size, t = 0, mood = "happy", arms, l
     <Face cx={50} cy={47} gap={15} r={9} mood={mood} look={look} blink={blinkOf(t, phase)} />
   </svg>
 );
+
+export const Bacteria: React.FC<CharProps> = (props) => {
+  const hide = useContext(HideToyChars);
+  return hide ? <div style={{ width: props.size, height: (props.size * 80) / 120 }} /> : <BacteriaFlat {...props} />;
+};
+
+export const Cell: React.FC<CharProps> = (props) => {
+  const hide = useContext(HideToyChars);
+  return hide ? <div style={{ width: props.size, height: props.size }} /> : <CellFlat {...props} />;
+};
 
 // Kaca pembesar (dipakai di dalam <svg>). (x, y) = pusat lensa.
 export const MagnifierG: React.FC<{ readonly x: number; readonly y: number; readonly r: number; readonly rot?: number }> = ({
@@ -308,7 +321,8 @@ export const Stadium: React.FC<{
   readonly fill: number;
   readonly emptyCorner?: number;
   readonly t?: number;
-}> = ({ w, fill, emptyCorner = 0, t = 0 }) => {
+  readonly hideCell?: boolean;
+}> = ({ w, fill, emptyCorner = 0, t = 0, hideCell = false }) => {
   const stands = "M170,20 L430,20 A150,150 0 0 1 580,170 L580,350 A150,150 0 0 1 430,500 L170,500 A150,150 0 0 1 20,350 L20,170 A150,150 0 0 1 170,20 Z M210,120 L390,120 A90,90 0 0 1 480,210 L480,310 A90,90 0 0 1 390,400 L210,400 A90,90 0 0 1 120,310 L120,210 A90,90 0 0 1 210,120 Z";
   const R = fill * 520;
   return (
@@ -348,7 +362,7 @@ export const Stadium: React.FC<{
       <rect x={150} y={150} width={300} height={220} rx={60} fill="none" stroke="#fff" strokeWidth={4} opacity={0.8} />
       <line x1={300} y1={150} x2={300} y2={370} stroke="#fff" strokeWidth={4} opacity={0.8} />
       <circle cx={300} cy={260} r={36} fill="none" stroke="#fff" strokeWidth={4} opacity={0.8} />
-      {emptyCorner > 0 ? (
+      {emptyCorner > 0 && !hideCell ? (
         <g opacity={emptyCorner}>
           <Cell x={452} y={58} size={52} t={t} mood="think" arms={{ r: 150 + 10 * Math.sin(t * 7) }} look={[-0.8, -0.2]} />
         </g>

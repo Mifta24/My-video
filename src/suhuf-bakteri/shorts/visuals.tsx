@@ -38,7 +38,7 @@ const clamp01 = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const
 const INK = toon.ink;
 
 // ---------- potongan kecil ----------
-const Paper: React.FC<{ readonly w: number; readonly text?: string; readonly rot?: number }> = ({ w, text = "10 : 1", rot = 0 }) => (
+export const Paper: React.FC<{ readonly w: number; readonly text?: string; readonly rot?: number }> = ({ w, text = "10 : 1", rot = 0 }) => (
   <div
     style={{
       width: w,
@@ -63,7 +63,7 @@ const Paper: React.FC<{ readonly w: number; readonly text?: string; readonly rot
 );
 
 // Lembar kertas dengan lipatan sudut: logo sederhana (pengganti logo resmi).
-const LogoSheet: React.FC<{ readonly w: number }> = ({ w }) => (
+export const LogoSheet: React.FC<{ readonly w: number }> = ({ w }) => (
   <svg width={w} height={w * 1.2} viewBox="0 0 100 120" style={{ overflow: "visible", display: "block" }}>
     <path d="M10,6 L68,6 L90,28 L90,114 L10,114 Z" fill="#fff" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
     <path d="M68,6 L68,28 L90,28 Z" fill={toon.orangeLight} stroke={INK} strokeWidth={4} strokeLinejoin="round" />
@@ -74,13 +74,13 @@ const LogoSheet: React.FC<{ readonly w: number }> = ({ w }) => (
   </svg>
 );
 
-const Cloud: React.FC<{ readonly x: number; readonly y: number; readonly s: number }> = ({ x, y, s }) => (
+export const Cloud: React.FC<{ readonly x: number; readonly y: number; readonly s: number }> = ({ x, y, s }) => (
   <svg width={260 * s} height={130 * s} viewBox="0 0 260 130" style={{ position: "absolute", left: x, top: y }}>
     <path d="M50,110 Q10,110 14,80 Q18,56 46,58 Q52,24 96,24 Q132,6 160,34 Q204,22 214,62 Q250,66 244,96 Q240,112 210,110 Z" fill="#fff" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
   </svg>
 );
 
-const Bubble: React.FC<{ readonly x: number; readonly y: number; readonly t: number; readonly at: number; readonly text: string }> = ({ x, y, t, at, text }) => (
+export const Bubble: React.FC<{ readonly x: number; readonly y: number; readonly t: number; readonly at: number; readonly text: string }> = ({ x, y, t, at, text }) => (
   <Place x={x} y={y} t={t} at={at} origin="0% 100%">
     <div
       style={{
@@ -452,7 +452,7 @@ const S06: React.FC<V> = ({ t }) => {
 };
 
 // ---------- S-07 Hitung ulang: 38 vs 30 ----------
-const crowdPos = (n: number, cols: number, dx: number, dy: number) =>
+export const crowdPos = (n: number, cols: number, dx: number, dy: number) =>
   Array.from({ length: n }, (_, i) => ({
     x: (i % cols) * dx + (Math.floor(i / cols) % 2) * (dx * 0.25),
     y: Math.floor(i / cols) * dy,

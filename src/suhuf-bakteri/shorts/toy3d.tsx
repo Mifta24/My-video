@@ -231,7 +231,32 @@ export const SoftShadow: React.FC<{ readonly x: number; readonly y: number; read
 );
 
 // ---------- Bentuk dasar bergaris tepi (inverted hull, warna tinta) ----------
-const Hullmat = () => <meshBasicMaterial color={INK} side={THREE.BackSide} toneMapped={false} />;
+export const Hullmat = () => <meshBasicMaterial color={INK} side={THREE.BackSide} toneMapped={false} />;
+
+export const ToyMat: React.FC<{ readonly color: string }> = ({ color }) => (
+  <meshPhysicalMaterial color={color} roughness={0.55} metalness={0} clearcoat={1} clearcoatRoughness={0.22} />
+);
+
+// Silinder bergaris tepi (sumbu y), dipakai untuk piring timbangan, tiang, dasar.
+export const Cyl: React.FC<{
+  readonly r: number;
+  readonly h: number;
+  readonly color: string;
+  readonly ow?: number;
+  readonly position?: readonly [number, number, number];
+  readonly rotation?: readonly [number, number, number];
+}> = ({ r, h, color, ow = 3.5, position = [0, 0, 0], rotation = [0, 0, 0] }) => (
+  <group position={position as [number, number, number]} rotation={rotation as [number, number, number]}>
+    <mesh>
+      <cylinderGeometry args={[r, r, h, 56]} />
+      <ToyMat color={color} />
+    </mesh>
+    <mesh>
+      <cylinderGeometry args={[r + ow, r + ow, h + ow * 2, 56]} />
+      <Hullmat />
+    </mesh>
+  </group>
+);
 
 export const Ball: React.FC<{ readonly r: number; readonly color: string; readonly ow?: number; readonly position?: readonly [number, number, number] }> = ({
   r,
@@ -242,7 +267,7 @@ export const Ball: React.FC<{ readonly r: number; readonly color: string; readon
   <group position={position as [number, number, number]}>
     <mesh>
       <sphereGeometry args={[r, 32, 24]} />
-      <meshStandardMaterial color={color} roughness={0.42} metalness={0} />
+      <ToyMat color={color} />
     </mesh>
     <mesh>
       <sphereGeometry args={[r + ow, 32, 24]} />
@@ -273,7 +298,7 @@ export const Limb: React.FC<{
       <group position={mid.toArray()} quaternion={q}>
         <mesh scale={[1, len, 1]}>
           <cylinderGeometry args={[r, r, 1, 20]} />
-          <meshStandardMaterial color={color} roughness={0.45} />
+          <ToyMat color={color} />
         </mesh>
         <mesh scale={[1, len, 1]}>
           <cylinderGeometry args={[r + ow, r + ow, 1, 20]} />
@@ -317,9 +342,20 @@ const buildPatch = (R: number, seg: number, cx: number, cy: number, w: number, h
   return geo;
 };
 
-const buildDecal = (kind: Kind, R: number, seg: number) => {
+const patchCache = new Map<string, THREE.BufferGeometry>();
+const cachedPatch = (key: string, make: () => THREE.BufferGeometry) => {
+  const hit = patchCache.get(key);
+  if (hit) {
+    return hit;
+  }
+  const g = make();
+  patchCache.set(key, g);
+  return g;
+};
+
+const buildDecal = (kind: Kind, R: number, seg: number, up = 0) => {
   const f = FACE[kind];
-  return buildPatch(R, seg, 0, -((FACE_TOP + FACE_BOTTOM) / 2) * R, f.halfW * 2 * R, (FACE_BOTTOM - FACE_TOP) * R);
+  return buildPatch(R, seg, 0, (-((FACE_TOP + FACE_BOTTOM) / 2) + up) * R, f.halfW * 2 * R, (FACE_BOTTOM - FACE_TOP) * R);
 };
 
 let sheenTex: THREE.CanvasTexture | null = null;
@@ -384,11 +420,14 @@ export type ToyProps = {
   readonly z?: number;
   readonly squash?: number; // -1..1, positif = gepeng
   readonly shadow?: boolean;
+  readonly shadowW?: number; // pengali lebar bayangan
   readonly breathe?: boolean;
   readonly popDur?: number;
+  readonly faceUp?: number; // geser wajah ke atas (satuan R), mis. 0.12 agar tali tidak menutupi mulut
   readonly vis?: number; // 0..1 pengali skala (untuk menghilang)
   readonly armTo?: { readonly l?: readonly [number, number]; readonly r?: readonly [number, number] }; // tangan menempel ke titik px halaman
   readonly armZ?: number;
+  readonly grip?: { readonly ropeY: (x: number) => number; readonly z: number; readonly span?: number }; // kedua tangan menggenggam tali di depan bagian bawah badan
 };
 
 export const BODY_COLOR: Record<Kind, string> = { bact: toon.orange, cell: toon.blue };
@@ -411,17 +450,24 @@ export const Toy: React.FC<ToyProps> = ({
   z = 0,
   squash = 0,
   shadow = true,
+  shadowW = 1,
   breathe = true,
   popDur = 0.5,
   vis = 1,
+  faceUp = 0,
   armTo,
   armZ = 0,
+  grip,
 }) => {
   const d = dimOf(kind, size);
-  const decal = useMemo(() => buildDecal(kind, d.R, d.seg), [kind, d.R, d.seg]);
+  const key = `${kind}|${Math.round(d.R * 4)}`;
+  const decal = useMemo(() => cachedPatch(`f|${key}|${faceUp}`, () => buildDecal(kind, d.R, d.seg, faceUp)), [kind, d.R, d.seg, key, faceUp]);
   const sheen = useMemo(
-    () => (kind === "bact" ? buildPatch(d.R, d.seg, -d.seg * 0.35 - d.R * 0.1, d.R * 0.58, d.R * 1.15, d.R * 0.5) : buildPatch(d.R, 0, -d.R * 0.42, d.R * 0.56, d.R * 0.8, d.R * 0.4)),
-    [kind, d.R, d.seg],
+    () =>
+      cachedPatch(`s|${key}`, () =>
+        kind === "bact" ? buildPatch(d.R, d.seg, -d.seg * 0.35 - d.R * 0.1, d.R * 0.58, d.R * 1.15, d.R * 0.5) : buildPatch(d.R, 0, -d.R * 0.42, d.R * 0.56, d.R * 0.8, d.R * 0.4),
+      ),
+    [kind, d.R, d.seg, key],
   );
   if (t < at) {
     return null;
@@ -441,13 +487,32 @@ export const Toy: React.FC<ToyProps> = ({
   const sx = (1 + sq * 0.7) * p;
   const sy = (1 - sq) * p;
   const pivot: [number, number, number] = [wx(cx), wy(baseY), z];
-  const euler = new THREE.Euler(0, (yaw * Math.PI) / 180, (rot * Math.PI) / 180, "XYZ");
+  const euler = new THREE.Euler(0, (yaw * Math.PI) / 180, (-rot * Math.PI) / 180, "ZYX");
   const quat = new THREE.Quaternion().setFromEuler(euler);
   const M = new THREE.Matrix4().compose(new THREE.Vector3(...pivot), quat, new THREE.Vector3(sx, sy, (sx + sy) / 2));
   const open = blinkOpen(t, phase);
   const tex = faceTexture(kind, mood, open, look);
+  const armR = size * 0.045;
   const inv = M.clone().invert();
+  const half = d.R + d.seg / 2;
+  const surfZ = (x: number, y: number) => {
+    const dxo = Math.max(0, Math.abs(x) - d.seg / 2);
+    return Math.sqrt(Math.max(0, d.R * d.R - y * y - dxo * dxo));
+  };
   const reach = (side: "l" | "r") => {
+    const dir = side === "l" ? -1 : 1;
+    if (grip) {
+      const span = grip.span ?? 0.45;
+      // bahu di sisi bawah-depan badan
+      const sxl = dir * half * 0.62;
+      const syl = -d.R * 0.2;
+      const a: [number, number, number] = [sxl, syl, surfZ(sxl, syl) + armR * 0.9];
+      // titik tangan: x mengikuti badan (setelah miring), y dan z dikunci ke tali
+      const probe = new THREE.Vector3(dir * half * span, d.R * (1 - 0.78), 0).applyMatrix4(M);
+      const px = probe.x + W / 2;
+      const tgt = new THREE.Vector3(probe.x, wy(grip.ropeY(px)), grip.z).applyMatrix4(inv).sub(new THREE.Vector3(0, d.R, 0));
+      return { a, b: [tgt.x, tgt.y, tgt.z] as [number, number, number] };
+    }
     const tgt = armTo?.[side];
     if (tgt) {
       const base = armPoints(kind, size, side, 90);
@@ -459,31 +524,38 @@ export const Toy: React.FC<ToyProps> = ({
   };
   const la = reach("l");
   const ra = reach("r");
-  const armR = size * 0.045;
   return (
     <>
-      {shadow ? <SoftShadow x={pivot[0]} y={pivot[1] - d.R * 0.12} w={d.R * (kind === "bact" ? 4.2 : 3.2) * p} op={Math.min(1, p)} z={z - 60} /> : null}
+      {shadow ? (
+        <SoftShadow
+          x={pivot[0]}
+          y={wy(top + d.cyBox + d.R + dx * 0) - d.R * 0.12}
+          w={d.R * (kind === "bact" ? 4.2 : 3.2) * shadowW * Math.min(1.1, p) * (1 + dy * 0.005)}
+          op={Math.min(1, p) * (1 + dy * 0.01)}
+          z={z - 60}
+        />
+      ) : null}
       <group position={pivot} quaternion={quat} scale={[sx, sy, (sx + sy) / 2]}>
         <group position={[0, d.R, 0]}>
           {kind === "bact" ? (
             <>
               <mesh rotation={[0, 0, Math.PI / 2]}>
-                <capsuleGeometry args={[d.R, d.seg, 14, 40]} />
+                <capsuleGeometry args={[d.R, d.seg, 10, 36]} />
                 <meshPhysicalMaterial color={color} roughness={0.55} metalness={0} clearcoat={1} clearcoatRoughness={0.22} />
               </mesh>
               <mesh rotation={[0, 0, Math.PI / 2]}>
-                <capsuleGeometry args={[d.R + ow, d.seg, 14, 40]} />
+                <capsuleGeometry args={[d.R + ow, d.seg, 10, 36]} />
                 <Hullmat />
               </mesh>
             </>
           ) : (
             <>
               <mesh>
-                <sphereGeometry args={[d.R, 64, 48]} />
+                <sphereGeometry args={[d.R, 48, 32]} />
                 <meshPhysicalMaterial color={color} roughness={0.55} metalness={0} clearcoat={1} clearcoatRoughness={0.22} />
               </mesh>
               <mesh>
-                <sphereGeometry args={[d.R + ow, 64, 48]} />
+                <sphereGeometry args={[d.R + ow, 48, 32]} />
                 <Hullmat />
               </mesh>
             </>
@@ -494,8 +566,8 @@ export const Toy: React.FC<ToyProps> = ({
           <mesh geometry={decal} renderOrder={2}>
             <meshBasicMaterial map={tex} transparent depthWrite={false} toneMapped={false} polygonOffset polygonOffsetFactor={-4} />
           </mesh>
-          {la ? <Limb a={la.a} b={la.b} r={armR} color={color} ow={ow * 0.8} hand={armR * 1.6} /> : null}
-          {ra ? <Limb a={ra.a} b={ra.b} r={armR} color={color} ow={ow * 0.8} hand={armR * 1.6} /> : null}
+          {la ? <Limb a={la.a} b={la.b} r={armR} color={color} ow={ow * 0.8} hand={armR * (grip ? 1.9 : 1.6)} /> : null}
+          {ra ? <Limb a={ra.a} b={ra.b} r={armR} color={color} ow={ow * 0.8} hand={armR * (grip ? 1.9 : 1.6)} /> : null}
         </group>
       </group>
     </>
@@ -506,9 +578,10 @@ export const Toy: React.FC<ToyProps> = ({
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 
 // Memantul di tempat: dy negatif = naik. Gepeng halus saat mendarat, memanjang saat di udara.
-export const hopMotion = (t: number, amp = 10, speed = 3, phase = 0) => {
+export const hopMotion = (t: number, amp = 10, speed = 3, phase = 0, from = 0) => {
+  const w = Math.min(1, Math.max(0, (t - from) / 0.4));
   const h = Math.abs(Math.sin(t * speed + phase));
-  return { dy: -amp * h, squash: 0.07 * (1 - h) ** 6 - 0.035 * h };
+  return { dy: -amp * h * w, squash: w * (0.07 * (1 - h) ** 6 - 0.035 * h) };
 };
 
 // Berayun pelan (rotasi derajat) dan menoleh (yaw).
@@ -535,3 +608,16 @@ export const standAt = (kind: Kind, size: number, bx: number, by: number) => {
   const d = dimOf(kind, size);
   return { left: bx - d.cxBox, top: by - d.cyBox - d.R };
 };
+
+// `top` agar titik 0,78 R di bawah pusat badan (bawah wajah) berada tepat di tinggi tali `ropeYc`.
+export const topForRope = (kind: Kind, size: number, ropeYc: number) => {
+  const d = dimOf(kind, size);
+  return ropeYc - d.R * 0.78 - d.cyBox;
+};
+
+// Transparansi "shot" (mirip <Sh>) sebagai pengali skala 0..1 untuk tokoh 3D: muncul cepat, hilang cepat.
+export const shotVis = (t: number, from = 0, to = 9999) =>
+  Math.min(
+    interpolate(t, [from, from + 0.18], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+    interpolate(t, [to - 0.05, to + 0.15], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+  );
