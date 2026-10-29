@@ -337,12 +337,12 @@ const S05: React.FC<V> = ({ t }) => {
     [626, 870],
   ];
   const meet = [
-    { x: 150, y: 640, side: "l" },
-    { x: 80, y: 800, side: "l" },
+    { x: 170, y: 640, side: "l" },
+    { x: 110, y: 800, side: "l" },
     { x: 170, y: 940, side: "l" },
-    { x: 820, y: 640, side: "r" },
-    { x: 880, y: 800, side: "r" },
-    { x: 800, y: 940, side: "r" },
+    { x: 780, y: 640, side: "r" },
+    { x: 830, y: 800, side: "r" },
+    { x: 770, y: 940, side: "r" },
   ];
   const showAlong = 1 - appear(t, cue("s05", "Padahal") + 0.1, 0.4);
   return (
