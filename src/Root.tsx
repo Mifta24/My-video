@@ -47,6 +47,15 @@ export const RemotionRoot: React.FC = () => {
           height={1920}
         />
         <Composition
+          id="Bakteri-Shorts-3D"
+          component={ShortsVideo}
+          durationInFrames={bakteriShortsFrames}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ variant: "3d" as const }}
+        />
+        <Composition
           id="Bakteri-YouTube-Long"
           component={BakteriLongVideo}
           durationInFrames={bakteriLongFrames}
