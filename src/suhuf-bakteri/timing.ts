@@ -28,13 +28,13 @@ export const clipDuration = (id: string) => {
 
 // Jeda antarkalimat, jeda sebelum klip pertama, dan ekor sesudah klip terakhir.
 // Script minta jeda 0,5-1 dtk di hook, hasil, dan rekap: ekor adegan itu lebih panjang.
-const GAP = { shorts: 0.3, long: 0.42 };
-const LEAD = { shorts: 0.25, long: 0.45 };
+const GAP = { shorts: 0.22, long: 0.42 };
+const LEAD = { shorts: 0.2, long: 0.45 };
 const TAIL: Record<string, number> = {
-  s01: 0.7,
-  s05: 0.9,
-  s10: 0.8,
-  s11: 1.8,
+  s01: 0.5,
+  s05: 0.6,
+  s10: 0.6,
+  s11: 1.4,
   l01: 1.0,
   l02: 1.0,
   l18: 1.6,
@@ -43,7 +43,7 @@ const TAIL: Record<string, number> = {
   l42: 1.8,
   l43: 4.5,
 };
-const DEFAULT_TAIL = { shorts: 0.3, long: 0.6 };
+const DEFAULT_TAIL = { shorts: 0.25, long: 0.6 };
 
 const kindOf = (sceneId: string) => (sceneId.startsWith("s") ? "shorts" : "long");
 

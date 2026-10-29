@@ -13,8 +13,9 @@ import sys
 from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent
-FFMPEG = "/opt/homebrew/bin/ffmpeg"
-FFPROBE = "/opt/homebrew/bin/ffprobe"
+import os
+FFMPEG = os.environ.get("FFMPEG") or "/opt/homebrew/bin/ffmpeg"
+FFPROBE = os.environ.get("FFPROBE") or "/opt/homebrew/bin/ffprobe"
 
 
 def duration(path: Path) -> float:

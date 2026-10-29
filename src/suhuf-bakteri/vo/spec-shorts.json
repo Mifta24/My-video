@@ -1,17 +1,25 @@
 {
  "voice": "id-ID-ArdiNeural",
- "rate": "+0%",
+ "rate": "-2%",
  "scenes": [
   {
    "id": "s01",
    "clips": [
     {
      "id": "s01_01",
-     "text": "Katanya bakteri di tubuhmu 10 kali lebih banyak dari selmu."
+     "text": "Katanya, di tubuhmu bakteri menang jumlah."
     },
     {
      "id": "s01_02",
-     "text": "Itu keliru."
+     "text": "Sepuluh banding satu!"
+    },
+    {
+     "id": "s01_03",
+     "text": "Dari mana angka itu datang?"
+    },
+    {
+     "id": "s01_04",
+     "text": "Dan apakah benar?"
     }
    ]
   },
@@ -29,7 +37,16 @@
    "clips": [
     {
      "id": "s03_01",
-     "text": "Angka sepuluh banding satu itu berasal dari perkiraan kasar, yang diulang terus selama puluhan tahun."
+     "text": "Ceritanya mulai tahun 1972.",
+     "say": "Ceritanya mulai tahun seribu sembilan ratus tujuh puluh dua."
+    },
+    {
+     "id": "s03_02",
+     "text": "Seorang peneliti membuat perkiraan kasar."
+    },
+    {
+     "id": "s03_03",
+     "text": "Dia tidak menghitung bakteri satu per satu."
     }
    ]
   },
@@ -38,11 +55,15 @@
    "clips": [
     {
      "id": "s04_01",
-     "text": "Ambil contoh pria dewasa rata-rata."
+     "text": "Bayangkan kamu menebak jumlah penonton di stadion."
     },
     {
      "id": "s04_02",
-     "text": "Para peneliti menghitung ulang jumlahnya."
+     "text": "Kamu kira semua kursi penuh, sampai ke pojok."
+    },
+    {
+     "id": "s04_03",
+     "text": "Tebakanmu pasti kebesaran."
     }
    ]
   },
@@ -51,19 +72,11 @@
    "clips": [
     {
      "id": "s05_01",
-     "text": "Hasilnya, sekitar 38 triliun bakteri."
+     "text": "Perkiraan lama menganggap bakteri memenuhi seluruh saluran pencernaan."
     },
     {
      "id": "s05_02",
-     "text": "Dan sekitar 30 triliun sel manusia."
-    },
-    {
-     "id": "s05_03",
-     "text": "Hampir sama banyak."
-    },
-    {
-     "id": "s05_04",
-     "text": "Kira-kira satu banding satu, bukan sepuluh banding satu."
+     "text": "Padahal sebagian besar hanya berkumpul di usus besar."
     }
    ]
   },
@@ -72,15 +85,7 @@
    "clips": [
     {
      "id": "s06_01",
-     "text": "Kenapa angka lama terlalu besar?"
-    },
-    {
-     "id": "s06_02",
-     "text": "Perkiraan kasar tahun 1972 menganggap bakteri tersebar di seluruh saluran cerna."
-    },
-    {
-     "id": "s06_03",
-     "text": "Padahal sebagian besar ada di usus besar, dengan kepadatan yang terukur lebih rendah."
+     "text": "Tapi angka itu terlanjur diulang dan diulang, puluhan tahun lamanya."
     }
    ]
   },
@@ -89,11 +94,15 @@
    "clips": [
     {
      "id": "s07_01",
-     "text": "Menariknya, kalau hanya dibandingkan dengan sel berinti, hasilnya memang sekitar sepuluh banding satu."
+     "text": "Lalu para peneliti menghitung ulang, untuk pria dewasa rata-rata."
     },
     {
      "id": "s07_02",
-     "text": "Tapi sekitar sembilan puluh persen sel manusia tidak berinti, terutama sel darah merah."
+     "text": "Hasilnya: sekitar 38 triliun bakteri."
+    },
+    {
+     "id": "s07_03",
+     "text": "Dan sekitar 30 triliun sel manusia."
     }
    ]
   },
@@ -102,7 +111,19 @@
    "clips": [
     {
      "id": "s08_01",
-     "text": "Soal bobot, seluruh bakteri itu hanya sekitar nol koma dua kilogram."
+     "text": "Hampir sama banyak!"
+    },
+    {
+     "id": "s08_02",
+     "text": "Bayangkan dua tim tarik tambang dengan anggota hampir sama banyak."
+    },
+    {
+     "id": "s08_03",
+     "text": "Seru, seimbang."
+    },
+    {
+     "id": "s08_04",
+     "text": "Bukan sepuluh lawan satu."
     }
    ]
   },
@@ -111,11 +132,15 @@
    "clips": [
     {
      "id": "s09_01",
-     "text": "Tentu ini perkiraan."
+     "text": "Tapi ingat, ini perkiraan."
     },
     {
      "id": "s09_02",
-     "text": "Ketidakpastiannya sekitar dua puluh lima persen, dan angka tiap orang bisa sangat berbeda."
+     "text": "Tiap orang bisa berbeda."
+    },
+    {
+     "id": "s09_03",
+     "text": "Anggap saja ini gambaran, bukan angka pas."
     }
    ]
   },
@@ -124,11 +149,11 @@
    "clips": [
     {
      "id": "s10_01",
-     "text": "Kadang, angka yang sering diulang itu cuma belum dihitung ulang."
+     "text": "Pelajarannya: angka yang sering diulang belum tentu sudah dicek."
     },
     {
      "id": "s10_02",
-     "text": "Kini hitungannya sudah diperbarui."
+     "text": "Kadang, perlu dihitung ulang."
     }
    ]
   },
@@ -137,8 +162,8 @@
    "clips": [
     {
      "id": "s11_01",
-     "text": "@suhufpengetahuan",
-     "say": "Suhuf Pengetahuan"
+     "text": "Ikuti @suhufpengetahuan.",
+     "say": "Ikuti Suhuf Pengetahuan."
     }
    ]
   }
