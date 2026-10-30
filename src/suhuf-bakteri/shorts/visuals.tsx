@@ -73,6 +73,61 @@ export const LogoSheet: React.FC<{ readonly w: number }> = ({ w }) => (
   </div>
 );
 
+// Kartu info kanal YouTube untuk penutup: lencana play, nama kanal, kalimat khas, tombol SUBSCRIBE.
+// Tombol berdenyut pelan setelah kartu muncul supaya menarik mata tanpa suara tambahan.
+export const YtChannelCard: React.FC<{ readonly w: number; readonly t: number; readonly at: number }> = ({ w, t, at }) => {
+  const pulse = 1 + 0.045 * Math.max(0, Math.sin((t - at - 0.9) * 5)) * appear(t, at + 0.9, 0.2);
+  return (
+    <div
+      style={{
+        width: w,
+        boxSizing: "border-box",
+        padding: `${w * 0.04}px ${w * 0.05}px ${w * 0.05}px`,
+        background: "#fff",
+        border: `${Math.max(5, w * 0.008)}px solid ${INK}`,
+        borderRadius: w * 0.07,
+        boxShadow: `0 ${w * 0.014}px 0 ${INK}`,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: w * 0.035,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: w * 0.04 }}>
+        <svg width={w * 0.17} height={w * 0.12} viewBox="0 0 68 48" style={{ flex: "none" }}>
+          <rect x={2} y={2} width={64} height={44} rx={13} fill="#EF2B2B" stroke={INK} strokeWidth={3.5} />
+          <path d="M27,14 L27,34 L45,24 Z" fill="#fff" stroke={INK} strokeWidth={2.5} strokeLinejoin="round" />
+        </svg>
+        <div style={{ display: "flex", flexDirection: "column", gap: w * 0.006 }}>
+          <div style={{ fontFamily: toonFont(), fontWeight: 700, fontSize: w * 0.066, lineHeight: 1.05, color: INK, whiteSpace: "nowrap" }}>
+            Suhuf Pengetahuan
+          </div>
+          <div style={{ fontFamily: toonFont(), fontWeight: 600, fontSize: w * 0.042, lineHeight: 1.1, color: toon.orangeDark, whiteSpace: "nowrap" }}>
+            Satu lembar, satu cerita.
+          </div>
+        </div>
+      </div>
+      <div
+        style={{
+          fontFamily: toonFont(),
+          fontWeight: 700,
+          fontSize: w * 0.052,
+          letterSpacing: w * 0.006,
+          color: "#fff",
+          background: "#EF2B2B",
+          border: `${Math.max(4, w * 0.007)}px solid ${INK}`,
+          borderRadius: 999,
+          boxShadow: `0 ${w * 0.01}px 0 ${INK}`,
+          padding: `${w * 0.006}px ${w * 0.07}px ${w * 0.014}px`,
+          transform: `scale(${pulse})`,
+        }}
+      >
+        SUBSCRIBE
+      </div>
+    </div>
+  );
+};
+
 export const Cloud: React.FC<{ readonly x: number; readonly y: number; readonly s: number }> = ({ x, y, s }) => (
   <svg width={260 * s} height={130 * s} viewBox="0 0 260 130" style={{ position: "absolute", left: x, top: y }}>
     <path d="M50,110 Q10,110 14,80 Q18,56 46,58 Q52,24 96,24 Q132,6 160,34 Q204,22 214,62 Q250,66 244,96 Q240,112 210,110 Z" fill="#fff" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
@@ -734,21 +789,24 @@ const S10: React.FC<V> = ({ t }) => {
 // ---------- S-11 Penutup ----------
 const S11: React.FC<V> = ({ t }) => (
   <>
-    <Place x={420} y={380} t={t} at={0.05} dy={bob(t, 6, 3)} origin="50% 50%">
+    <Place x={420} y={240} t={t} at={0.05} dy={bob(t, 6, 3)} origin="50% 50%">
       <LogoSheet w={240} />
     </Place>
-    <div style={{ position: "absolute", left: 0, right: 0, top: 710, textAlign: "center", opacity: appear(t, 0.3, 0.3), fontFamily: toonFont(), fontWeight: 700, fontSize: 56, letterSpacing: 5, color: INK }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top: 570, textAlign: "center", opacity: appear(t, 0.3, 0.3), fontFamily: toonFont(), fontWeight: 700, fontSize: 56, letterSpacing: 5, color: INK }}>
       SUHUF PENGETAHUAN
     </div>
-    <BigWord text="@suhufpengetahuan" t={t} at={0.3} y={820} size={84} color={toon.orange} width={1040} />
-    <Place x={70} y={1010} t={t} at={0.4} dy={bob(t, 6, 4)} rot={-6}>
-      <Bacteria size={290} t={t} mood="laugh" arms={{ l: 160 + 14 * Math.sin(t * 9) }} />
+    <BigWord text="@suhufpengetahuan" t={t} at={0.3} y={670} size={84} color={toon.orange} width={1040} />
+    <Place x={150} y={830} t={t} at={0.6} origin="50% 50%">
+      <YtChannelCard w={780} t={t} at={0.6} />
     </Place>
-    <Place x={770} y={990} t={t} at={0.5} dy={bob(t, 6, 4, 2)} rot={6}>
-      <Cell size={240} t={t} mood="laugh" arms={{ r: 160 + 14 * Math.sin(t * 9 + 1) }} />
+    <Place x={70} y={1130} t={t} at={0.4} dy={bob(t, 6, 4)} rot={-6}>
+      <Bacteria size={250} t={t} mood="laugh" arms={{ l: 160 + 14 * Math.sin(t * 9) }} />
     </Place>
-    <Sparkle x={150} y={500} t={t} size={64} />
-    <Sparkle x={850} y={520} t={t} size={70} phase={2} />
+    <Place x={780} y={1110} t={t} at={0.5} dy={bob(t, 6, 4, 2)} rot={6}>
+      <Cell size={210} t={t} mood="laugh" arms={{ r: 160 + 14 * Math.sin(t * 9 + 1) }} />
+    </Place>
+    <Sparkle x={150} y={400} t={t} size={64} />
+    <Sparkle x={850} y={420} t={t} size={70} phase={2} />
   </>
 );
 

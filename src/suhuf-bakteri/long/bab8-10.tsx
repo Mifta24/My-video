@@ -5,7 +5,7 @@ import { bob, Place, Sh, Sparkle, slide, toonFont } from "../elements/ToonKit";
 import { Bacteria, Cell, Stadium } from "../shorts/characters";
 import { toon } from "../theme";
 import { cue } from "../timing";
-import { LogoSheet, Paper } from "../shorts/visuals";
+import { LogoSheet, Paper, YtChannelCard } from "../shorts/visuals";
 import { Big, Board, Det, INK, Pill, Pinned, Stamp, Str, TeamScale, ToiletDoor, wig } from "./kit";
 
 type V = { readonly t: number };
@@ -205,21 +205,24 @@ const L45: React.FC<V> = ({ t }) => {
   return (
     <>
       <div style={{ position: "absolute", inset: 0, transform: `scaleY(${1 - closeP * 0.93})`, transformOrigin: "50% 100%", opacity: 1 - closeP * 0.3 }}>
-        <Place x={960 - 140} y={120} t={t} at={0.2} dy={bob(t, 6, 2)}>
-          <LogoSheet w={280} />
+        <Place x={960 - 120} y={70} t={t} at={0.2} dy={bob(t, 6, 2)}>
+          <LogoSheet w={240} />
         </Place>
-        <div style={{ position: "absolute", left: 0, right: 0, top: 480, textAlign: "center", fontFamily: toonFont(), fontWeight: 700, fontSize: 72, letterSpacing: 10, color: INK, opacity: appearT(t) }}>SUHUF PENGETAHUAN</div>
-        <Place x={960 - 360} y={590} t={t} at={tHandle} origin="50% 50%">
+        <div style={{ position: "absolute", left: 0, right: 0, top: 380, textAlign: "center", fontFamily: toonFont(), fontWeight: 700, fontSize: 72, letterSpacing: 10, color: INK, opacity: appearT(t) }}>SUHUF PENGETAHUAN</div>
+        <Place x={960 - 360} y={485} t={t} at={tHandle} origin="50% 50%">
           <div style={{ fontFamily: toonFont(), fontWeight: 700, fontSize: 68, color: toon.orangeDark, background: "#fff", border: `6px solid ${INK}`, boxShadow: `0 7px 0 ${INK}`, borderRadius: 999, padding: "4px 36px 12px" }}>@suhufpengetahuan</div>
         </Place>
-        <div style={{ position: "absolute", left: 200 - 120 * (1 - k), top: 330, opacity: k }}>
+        <Place x={960 - 340} y={640} t={t} at={tHandle + 0.25} origin="50% 50%">
+          <YtChannelCard w={680} t={t} at={tHandle + 0.25} />
+        </Place>
+        <div style={{ position: "absolute", left: 250 - 120 * (1 - k), top: 640, opacity: k }}>
           <Bacteria size={250} t={t} mood="laugh" arms={{ r: wave(0) }} />
         </div>
-        <div style={{ position: "absolute", left: 1470 + 120 * (1 - k), top: 340, opacity: k }}>
+        <div style={{ position: "absolute", left: 1420 + 120 * (1 - k), top: 640, opacity: k }}>
           <Cell size={240} t={t} phase={1} mood="laugh" arms={{ l: wave(1.4) }} />
         </div>
-        <Sparkle x={700} y={170} t={t} size={60} />
-        <Sparkle x={1250} y={190} t={t} size={70} phase={3} />
+        <Sparkle x={700} y={140} t={t} size={60} />
+        <Sparkle x={1250} y={160} t={t} size={70} phase={3} />
       </div>
     </>
   );
