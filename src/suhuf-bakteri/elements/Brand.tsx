@@ -1,22 +1,8 @@
 import type React from "react";
 import { interpolate } from "remotion";
+import { SuhufLogo } from "../../brand/SuhufLogo";
 import { colors, fonts } from "../theme";
 import { clamp, easeOut, rise } from "./common";
-
-// Tanda "lembar": kertas kecil dengan sudut terlipat dan tiga baris teks. Pengganti logo resmi.
-export const SheetMark: React.FC<{ readonly size: number; readonly ink?: string }> = ({
-  size,
-  ink = colors.bg,
-}) => (
-  <svg width={size} height={size * 1.2} viewBox="0 0 100 120">
-    <path d="M10,6 L68,6 L90,28 L90,114 L10,114 Z" fill={colors.cream} />
-    <path d="M68,6 L68,28 L90,28 Z" fill="#D9C9A8" />
-    <rect x={22} y={44} width={56} height={7} rx={3.5} fill={colors.orange} />
-    <rect x={22} y={62} width={48} height={6} rx={3} fill={ink} opacity={0.75} />
-    <rect x={22} y={78} width={52} height={6} rx={3} fill={ink} opacity={0.75} />
-    <rect x={22} y={94} width={34} height={6} rx={3} fill={ink} opacity={0.75} />
-  </svg>
-);
 
 // Lembar kertas terbuka (lipatan atas berputar turun), lalu wordmark dan kalimat khas.
 // `t` = detik lokal; `taglineAt` = detik kalimat "Satu lembar, satu cerita." diucapkan.
@@ -147,7 +133,7 @@ export const SheetOpen: React.FC<{
         }}
       >
         <div style={{ opacity: mark, scale: String(0.8 + 0.2 * mark) }}>
-          <SheetMark size={w * 0.1} />
+          <SuhufLogo size={w * 0.12} />
         </div>
         <div
           style={{

@@ -1,10 +1,11 @@
 import type React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
+import { SuhufLogo } from "../../brand/SuhufLogo";
 import { colors, fonts } from "../theme";
 import { clamp } from "./common";
 
 // Watermark kecil sepanjang video. Shorts: di luar zona UI (150 px atas, 250 px bawah).
-// Logo resmi belum ada (menunggu Dex): wordmark teks sebagai pengganti.
+// Lencana atom resmi di samping wordmark; handle di kanan-bawah (16:9).
 export const Watermark: React.FC<{
   readonly wide?: boolean;
   readonly hideAfter?: number;
@@ -29,14 +30,18 @@ export const Watermark: React.FC<{
           style={{
             ...base,
             left: 64,
-            top: 40,
-            opacity: 0.5 * o,
+            top: 32,
+            opacity: 0.55 * o,
+            display: "flex",
+            alignItems: "center",
+            gap: 14,
             fontFamily: fonts.heading,
             fontWeight: 700,
             fontSize: 22,
             letterSpacing: 6,
           }}
         >
+          <SuhufLogo size={40} />
           SUHUF PENGETAHUAN
         </div>
         <div
@@ -61,15 +66,19 @@ export const Watermark: React.FC<{
         ...base,
         left: 0,
         right: 0,
-        top: 168,
-        textAlign: "center",
-        opacity: 0.6 * o,
-        fontFamily: wide ? fonts.heading : fonts.toon,
+        top: 160,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 14,
+        opacity: 0.7 * o,
+        fontFamily: fonts.toon,
         fontWeight: 700,
         fontSize: 26,
         letterSpacing: 7,
       }}
     >
+      <SuhufLogo size={46} />
       SUHUF PENGETAHUAN
     </div>
   );

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="158 158 708 708" role="img" aria-label="Suhuf Pengetahuan">
+ <circle cx="512" cy="512" r="350" fill="#F5ECD7" stroke="#C9A35B" stroke-width="7"/>
+ <g fill="none" stroke="#0B1B2E" stroke-width="24" stroke-linecap="round">
+  <ellipse cx="512" cy="512" rx="155" ry="260"/>
+  <ellipse cx="512" cy="512" rx="155" ry="260" transform="rotate(60 512 512)"/>
+  <ellipse cx="512" cy="512" rx="155" ry="260" transform="rotate(120 512 512)"/>
+ </g>
+ <g fill="#C8553D" stroke="#F5ECD7" stroke-width="6">
+  <circle cx="400" cy="323" r="30"/><circle cx="748" cy="448" r="30"/><circle cx="425" cy="696" r="30"/>
+ </g>
+ <circle cx="512" cy="512" r="68" fill="#F5A623" stroke="#F5ECD7" stroke-width="13"/>
+ <circle cx="497" cy="493" r="14" fill="#FFD477" opacity=".85"/>
+</svg>
