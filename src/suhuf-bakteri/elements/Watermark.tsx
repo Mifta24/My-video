@@ -30,19 +30,19 @@ export const Watermark: React.FC<{
           style={{
             ...base,
             left: 64,
-            top: 32,
-            opacity: 0.55 * o,
+            top: 28,
+            opacity: o,
             display: "flex",
             alignItems: "center",
-            gap: 14,
+            gap: 16,
             fontFamily: fonts.heading,
             fontWeight: 700,
             fontSize: 22,
             letterSpacing: 6,
           }}
         >
-          <SuhufLogo size={40} />
-          SUHUF PENGETAHUAN
+          <SuhufLogo size={52} style={{ filter: "drop-shadow(0 2px 4px rgba(43,45,66,0.35))" }} />
+          <span style={{ opacity: 0.6 }}>SUHUF PENGETAHUAN</span>
         </div>
         <div
           style={{
@@ -71,15 +71,15 @@ export const Watermark: React.FC<{
         alignItems: "center",
         justifyContent: "center",
         gap: 14,
-        opacity: 0.7 * o,
+        opacity: o,
         fontFamily: fonts.toon,
         fontWeight: 700,
         fontSize: 26,
         letterSpacing: 7,
       }}
     >
-      <SuhufLogo size={46} />
-      SUHUF PENGETAHUAN
+      <SuhufLogo size={52} style={{ filter: "drop-shadow(0 2px 4px rgba(43,45,66,0.35))" }} />
+      <span style={{ opacity: 0.75 }}>SUHUF PENGETAHUAN</span>
     </div>
   );
 };

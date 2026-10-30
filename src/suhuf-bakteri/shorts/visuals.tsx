@@ -1,5 +1,6 @@
 import type React from "react";
 import { interpolate, random } from "remotion";
+import { SuhufLogo } from "../../brand/SuhufLogo";
 import type { Cue } from "../elements/Sound";
 import {
   appear,
@@ -62,16 +63,14 @@ export const Paper: React.FC<{ readonly w: number; readonly text?: string; reado
   </div>
 );
 
-// Lembar kertas dengan lipatan sudut: logo sederhana (pengganti logo resmi).
+// Logo resmi (lencana atom). Kotak w x 1.2w dipertahankan dari lembar lama supaya tata letak adegan tidak bergeser.
 export const LogoSheet: React.FC<{ readonly w: number }> = ({ w }) => (
-  <svg width={w} height={w * 1.2} viewBox="0 0 100 120" style={{ overflow: "visible", display: "block" }}>
-    <path d="M10,6 L68,6 L90,28 L90,114 L10,114 Z" fill="#fff" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
-    <path d="M68,6 L68,28 L90,28 Z" fill={toon.orangeLight} stroke={INK} strokeWidth={4} strokeLinejoin="round" />
-    <rect x={22} y={44} width={56} height={9} rx={4.5} fill={toon.orange} stroke={INK} strokeWidth={2.5} />
-    <rect x={22} y={64} width={48} height={7} rx={3.5} fill={toon.blue} />
-    <rect x={22} y={80} width={52} height={7} rx={3.5} fill={toon.blue} />
-    <rect x={22} y={96} width={34} height={7} rx={3.5} fill={toon.blue} />
-  </svg>
+  <div style={{ width: w, height: w * 1.2, display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <SuhufLogo
+      size={w * 1.12}
+      style={{ filter: `drop-shadow(0 ${w * 0.03}px ${w * 0.05}px rgba(43,45,66,0.35))` }}
+    />
+  </div>
 );
 
 export const Cloud: React.FC<{ readonly x: number; readonly y: number; readonly s: number }> = ({ x, y, s }) => (

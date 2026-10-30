@@ -99,18 +99,18 @@ const L03: React.FC<V> = ({ t }) => {
   const open = ease(t, 0.3, 1.2);
   return (
     <>
-      <div style={{ position: "absolute", left: 700, top: 150 + (1 - open) * 700, opacity: open }}>
-        <LogoSheet w={520} />
+      <div style={{ position: "absolute", left: 560, top: 130 + (1 - open) * 700, opacity: open }}>
+        <LogoSheet w={400} />
       </div>
       <Big text={"SATU LEMBAR,\nSATU CERITA"} t={t} at={cue("l03", "Satu lembar")} y={290} cx={1480} width={760} size={104} color={toon.orange} />
-      <div style={{ position: "absolute", left: 0, width: 920, top: 800, textAlign: "center", fontFamily: toonFont(), fontWeight: 700, fontSize: 56, letterSpacing: 6, color: INK, opacity: appear(t, cue("l03", "Selamat datang"), 0.3) }}>
+      <div style={{ position: "absolute", left: 360, width: 800, top: 780, textAlign: "center", fontFamily: toonFont(), fontWeight: 700, fontSize: 56, letterSpacing: 6, color: INK, opacity: appear(t, cue("l03", "Selamat datang"), 0.3) }}>
         SUHUF PENGETAHUAN
       </div>
       <Place x={150} y={380} t={t} at={cue("l03", "Hari ini")} >
         <Det x={0} y={0} size={340} t={t} mood="laugh" hand={[146, 60 + 6 * Math.sin(t * 9)]} />
       </Place>
-      <Sparkle x={620} y={190} t={t} size={60} />
-      <Sparkle x={1250} y={170} t={t} size={70} phase={2} />
+      <Sparkle x={470} y={150} t={t} size={60} />
+      <Sparkle x={1020} y={150} t={t} size={70} phase={2} />
     </>
   );
 };
