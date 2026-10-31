@@ -1,0 +1,162 @@
+{
+ "voice": "id-ID-ArdiNeural",
+ "rate": "-2%",
+ "scenes": [
+  {
+   "id": "s01",
+   "clips": [
+    {
+     "id": "s01_01",
+     "text": "Ditukar atau tidak?"
+    },
+    {
+     "id": "s01_02",
+     "text": "Manhattan dengan sebuah pulau pala."
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "clips": [
+    {
+     "id": "s02_01",
+     "text": "Satu lembar, satu cerita."
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "clips": [
+    {
+     "id": "s03_01",
+     "text": "Pulau itu bernama Run."
+    },
+    {
+     "id": "s03_02",
+     "text": "Kecil sekali, sekitar tiga kali satu kilometer."
+    },
+    {
+     "id": "s03_03",
+     "text": "Tapi pala dari sana sangat berharga."
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "clips": [
+    {
+     "id": "s04_01",
+     "text": "Dua negara berebut pulau penghasil pala itu."
+    },
+    {
+     "id": "s04_02",
+     "text": "Inggris datang di tahun 1616."
+    },
+    {
+     "id": "s04_03",
+     "text": "Belanda ingin memegang sendiri semua dagang pala."
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "clips": [
+    {
+     "id": "s05_01",
+     "text": "Di tempat lain, Inggris sudah menduduki kota Belanda di Manhattan, dan menamainya New York."
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "clips": [
+    {
+     "id": "s06_01",
+     "text": "Lalu, tahun 1667, dibuat perjanjian damai."
+    },
+    {
+     "id": "s06_02",
+     "text": "Isinya bukan tukar-menukar, ya."
+    },
+    {
+     "id": "s06_03",
+     "text": "Aturannya: yang sudah dipegang, tetap dipegang."
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "clips": [
+    {
+     "id": "s07_01",
+     "text": "Hasilnya: Manhattan tetap di tangan Inggris."
+    },
+    {
+     "id": "s07_02",
+     "text": "Run tetap di tangan Belanda."
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "clips": [
+    {
+     "id": "s08_01",
+     "text": "Keduanya memang dibahas bersamaan."
+    },
+    {
+     "id": "s08_02",
+     "text": "Jadi cerita ditukar itu tidak sepenuhnya salah."
+    },
+    {
+     "id": "s08_03",
+     "text": "Tapi bukan tukar yang tertulis."
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "clips": [
+    {
+     "id": "s09_01",
+     "text": "Bayangkan dua anak berhenti main kartu."
+    },
+    {
+     "id": "s09_02",
+     "text": "Aturannya: kartu di tangan, simpan saja."
+    },
+    {
+     "id": "s09_03",
+     "text": "Hasilnya terlihat seperti tukar, padahal tidak ada yang bilang tukar."
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "clips": [
+    {
+     "id": "s10_01",
+     "text": "Pelajarannya: cerita yang sering diulang kadang disederhanakan."
+    },
+    {
+     "id": "s10_02",
+     "text": "Cek dulu yang tertulis."
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "clips": [
+    {
+     "id": "s11_01",
+     "text": "Ikuti @suhufpengetahuan.",
+     "say": "Ikuti Suhuf Pengetahuan."
+    },
+    {
+     "id": "s11_02",
+     "text": "Sampai jumpa di lembar berikutnya."
+    }
+   ]
+  }
+ ]
+}
