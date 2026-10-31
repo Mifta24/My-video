@@ -231,9 +231,10 @@ export const RecapBoard: React.FC<{
           ),
         )}
       </svg>
+      {/* draf 2: stempel lebih rendah dan lebih datar (-2,5 deg) supaya tidak menimpa label kartu (mis. "ATURAN", "RUN") */}
       {stamp && t >= stamp.at ? (
-        <div style={{ position: "absolute", left: bx + bw / 2 - 600, width: 1200, top: by + bh - 150, display: "flex", justifyContent: "center", opacity: Math.min(1, stampP * 1.5), transform: `scale(${1 + (1 - stampP) * 0.9}) rotate(-6deg)` }}>
-          <div style={{ fontFamily: toonFont(), fontWeight: 700, fontSize: stamp.size ?? 66, letterSpacing: 3, color: INK, background: "#fff", border: `9px solid ${stamp.color}`, outline: `5px solid ${INK}`, borderRadius: 22, padding: "4px 34px 10px", whiteSpace: "nowrap", boxShadow: `0 8px 0 ${INK}` }}>
+        <div style={{ position: "absolute", left: bx + bw / 2 - 600, width: 1200, top: by + bh - 112, display: "flex", justifyContent: "center", opacity: Math.min(1, stampP * 1.5), transform: `scale(${1 + (1 - stampP) * 0.9}) rotate(-2.5deg)` }}>
+          <div style={{ fontFamily: toonFont(), fontWeight: 700, fontSize: Math.min(stamp.size ?? 66, 58), letterSpacing: 3, color: INK, background: "#fff", border: `9px solid ${stamp.color}`, outline: `5px solid ${INK}`, borderRadius: 22, padding: "2px 30px 6px", whiteSpace: "nowrap", boxShadow: `0 8px 0 ${INK}` }}>
             {stamp.text}
           </div>
         </div>
