@@ -5,6 +5,7 @@ import { appear, BigWord, pop, slide, toonFont } from "../../suhuf-bakteri/eleme
 import { Face, blinkOf } from "../../suhuf-bakteri/shorts/characters";
 import { Scale3D, panSpot, scalePose } from "../../suhuf-bakteri/shorts/scale3d";
 import { SoftShadow, Stage3D, wx, wy } from "../../suhuf-bakteri/shorts/toy3d";
+import { setStageSize } from "../../suhuf-bakteri/shorts/stage";
 import { toon } from "../../suhuf-bakteri/theme";
 import { FlagArt, FlagG, INK, RED, WOOD, WOOD_DARK } from "../shorts/kit2d";
 import { Island3D, Question3D } from "../shorts/scene3d";
@@ -265,6 +266,9 @@ export const ScaleLong3D: React.FC<{
   readonly qY?: number;
   readonly qScale?: number;
 }> = ({ t, angle, morphAt = 999, pivot = [960, 330], floor = 770, qY = 540, qScale = 1.6 }) => {
+  // wx/wy adalah fungsi modul global; Stage3D baru mengatur ukuran saat child dirender.
+  // Set lebih awal agar koordinat yang dihitung di komponen induk tidak memakai default Shorts 1080x1920.
+  setStageSize(W, H);
   const pose = scalePose(angle, pivot, 318, 236, 142);
   const vis = interpolate(t, [morphAt, morphAt + 0.5], [1, 0], { ...clamp01, easing: Easing.in(Easing.cubic) }) * interpolate(t, [0, 0.4], [0.9, 1], { ...clamp01, easing: Easing.out(Easing.back(1.6)) });
   const q = pop(t, morphAt + 0.32, 0.7);

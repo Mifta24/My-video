@@ -63,8 +63,8 @@ const NLHug: React.FC<{ readonly t: number; readonly lt: number }> = ({ t, lt })
   const hug = slide(lt, 0.4, 1.0);
   const press = hug * (0.5 + 0.5 * Math.sin(t * 2.4));
   const sx = 960;
-  const shipTop = 325 + bob(t, 6, 2.3);
-  const yb = 615 + bob(t, 6, 2.3);
+  const shipTop = 255 + bob(t, 6, 2.3);
+  const yb = 545 + bob(t, 6, 2.3);
   const pose = (d: -1 | 1) => ({
     s: [sx + d * 210, shipTop + 240] as const,
     e: [sx + d * (365 - 10 * hug), yb + 120] as const,
@@ -112,7 +112,7 @@ const L09: React.FC<V> = ({ t }) => (
         <>
           <Big text="PALANYA" t={lt} y={BIG_Y} size={133} color={toon.blue} />
           <NLHug t={t} lt={lt} />
-          <Sub text="ingin dipegang sendiri" t={lt} at={0.7} y={805} size={43} />
+          <Sub text="ingin dipegang sendiri" t={lt} at={0.7} y={325} size={43} />
         </>
       )}
     </Shot>
@@ -121,7 +121,7 @@ const L09: React.FC<V> = ({ t }) => (
         <>
           <Big text="MONOPOLI" t={lt} y={BIG_Y} size={137} color={toon.blue} />
           <NLHug t={t} lt={lt} />
-          <Sub text="hanya satu yang boleh jual" t={lt} y={805} size={43} />
+          <Sub text="hanya satu yang boleh jual" t={lt} y={325} size={43} />
         </>
       )}
     </Shot>

@@ -77,7 +77,6 @@ const L33:React.FC<V>=({t})=><>
   <ChipAt cx={960} y={730} t={t} at={0.5}><LChip text="@suhufpengetahuan" color={toon.orangeDark} size={50}/></ChipAt>
   <In x={270} y={420+bob(t,5,2)} t={t} at={0.2}><Ship kind="en" w={290} t={t} wave={30} sails={["#F0A443","#86AEE6"]}/></In>
   <In x={1360} y={420+bob(t,5,2,1)} t={t} at={0.2}><Ship kind="nl" w={290} t={t} flip wave={30} sails={["#F0A443","#86AEE6"]}/></In>
-  <Sub text="Sampai jumpa di lembar berikutnya" t={t} at={4.2} y={815} size={42}/>
 </>;
 export const BAB7_8:Record<string,React.FC<V>>={l28:L28,l29:L29,l30:L30,l31:L31,l32:L32,l33:L33};
 export const SFX7_8:Record<string,readonly Cue[]>={l28:[[0.2,"pop",0.4],[5.55,"pop",0.4]],l29:[[0.2,"scale",0.4],[3.5,"hmm",0.4]],l30:[[0.2,"whoosh",0.4],[3.4,"whoosh",0.4]],l31:[[0.2,"scale",0.3]],l32:[[0.2,"page",0.4]],l33:[[0.2,"ding",0.5]]};
