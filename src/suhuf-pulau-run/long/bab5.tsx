@@ -3,7 +3,7 @@ import { appear, bob, pop, slide } from "../../suhuf-bakteri/elements/ToonKit";
 import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
 import { CalendarYear, GraspedIsland, GRASP_CX, GRASP_FLAG_TOP, GRASP_X0, GRASP_Y0, Island, TreatySheet, ToyKid, TableTop } from "../shorts/kit2d";
-import { Big, BIG_Y, ChipAt, In, Label, LChip, Shot, Sub } from "./kitLong";
+import { Big, BIG_Y, ChipAt, In, INK, Label, LChip, Shot, Sub } from "./kitLong";
 import { BigGlass, BoardDetective, PhotoCard, QBadge, RecapBoard, StruckWord, TimerRing } from "./props";
 import { speechEnd } from "./timing";
 import type { V } from "./bab1-2";
@@ -70,6 +70,21 @@ const L19:React.FC<V>=({t})=><>
   </>}</Shot>
 </>;
 
+// draf 2: kue di piring digambar SVG (draf 1 memakai emoji 🍰 yang tampil sebagai kotak kosong karena
+// Chromium render tidak punya font emoji)
+const CakePlate:React.FC=()=><svg width={200} height={130} viewBox="0 0 200 130" style={{display:"block",overflow:"visible",marginTop:-38}}>
+  <ellipse cx={100} cy={84} rx={96} ry={40} fill="#fff" stroke={INK} strokeWidth={7}/>
+  <ellipse cx={100} cy={84} rx={64} ry={24} fill="none" stroke="#27384A" strokeWidth={3} opacity={0.25}/>
+  {/* potongan kue: sisi depan (bolu + krim), atas (krim), stroberi */}
+  <path d="M46,82 L46,46 L138,30 L154,46 L154,82 Z" fill="#F6D7A7" stroke={INK} strokeWidth={6} strokeLinejoin="round"/>
+  <path d="M46,62 L154,62" stroke="#F49AB0" strokeWidth={9}/>
+  <path d="M46,46 L138,30 L154,46 Z" fill="#FFF4E6" stroke={INK} strokeWidth={6} strokeLinejoin="round"/>
+  <path d="M46,46 L154,46" stroke={INK} strokeWidth={6}/>
+  <circle cx={118} cy={30} r={13} fill="#E5484D" stroke={INK} strokeWidth={5}/>
+  <path d="M114,18 Q118,10 124,16" fill="none" stroke="#3BA55C" strokeWidth={5} strokeLinecap="round"/>
+  <ellipse cx={74} cy={52} rx={10} ry={3} fill="#fff" opacity={0.8}/>
+</svg>;
+
 const L20:React.FC<V>=({t})=><>
   <Label text="PERUMPAMAAN - bukan data" kind="analogi" t={t}/>
   <Shot t={t} to={3.0}>{lt=><>
@@ -77,8 +92,8 @@ const L20:React.FC<V>=({t})=><>
     <In x={350} y={380+bob(t,5,2)} t={lt}><ToyKid size={265} t={t} shirt={toon.orange} hair="#5A3B27" handTo={[150,158]}/></In>
     <In x={1300} y={380+bob(t,5,2,1)} t={lt}><ToyKid size={265} t={t} shirt={toon.blue} hair="#2B2B2B" handTo={[150,158]}/></In>
     <In x={480} y={690} t={lt}><TableTop w={960} h={100}/></In>
-    <In x={640} y={566} t={lt}><div style={{width:200,height:92,background:"#fff",border:`7px solid #27384A`,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:70}}>🍰</div></In>
-    <In x={1100} y={566} t={lt}><div style={{width:200,height:92,background:"#fff",border:`7px solid #27384A`,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:70}}>🍰</div></In>
+    <In x={640} y={602} t={lt}><CakePlate/></In>
+    <In x={1100} y={602} t={lt}><CakePlate/></In>
   </>}</Shot>
   <Shot t={t} from={2.9} to={7.3}>{lt=><>
     <Big text="PIRINGMU, MILIKMU" t={lt} y={BIG_Y} size={105} color={toon.blue}/>
