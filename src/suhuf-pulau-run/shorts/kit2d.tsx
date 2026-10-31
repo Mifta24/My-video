@@ -707,7 +707,8 @@ export const Ship: React.FC<{
   readonly sway?: number; // derajat goyang (default 2,2)
   readonly belly?: number; // tambahan tinggi lambung (unit), dipakai saat memeluk keranjang di depan badan
   readonly faceDy?: number; // geser wajah (unit)
-}> = ({ kind, w, t, flip = false, mood = "happy", wave = 0, phase = 0, sway = 2.2, belly = 0, faceDy = 0 }) => {
+  readonly sails?: readonly [string, string]; // [layar depan, layar belakang]; default = warna Shorts (tidak berubah)
+}> = ({ kind, w, t, flip = false, mood = "happy", wave = 0, phase = 0, sway = 2.2, belly = 0, faceDy = 0, sails = ["#F1C47E", "#BCD3F2"] }) => {
   const b = belly;
   const hull = `M22,150 L238,150 Q230,${222 + b} 184,${232 + b} L76,${232 + b} Q30,${222 + b} 22,150 Z`;
   const c = kind === "en" ? toon.orange : toon.blue;
@@ -722,8 +723,8 @@ export const Ship: React.FC<{
       <path d="M122,56 Q66,84 62,138 L122,138 Z" transform="translate(7 7)" fill="#E3CFA6" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
       <line x1={130} y1={156} x2={130} y2={26} stroke={INK} strokeWidth={12} strokeLinecap="round" />
       <line x1={130} y1={156} x2={130} y2={26} stroke={WOOD} strokeWidth={5} strokeLinecap="round" />
-      <path d="M138,34 Q224,66 218,138 L138,138 Z" fill="#BCD3F2" stroke={INK} strokeWidth={8} strokeLinejoin="round" />
-      <path d="M122,56 Q66,84 62,138 L122,138 Z" fill="#F1C47E" stroke={INK} strokeWidth={8} strokeLinejoin="round" />
+      <path d="M138,34 Q224,66 218,138 L138,138 Z" fill={sails[1]} stroke={INK} strokeWidth={8} strokeLinejoin="round" />
+      <path d="M122,56 Q66,84 62,138 L122,138 Z" fill={sails[0]} stroke={INK} strokeWidth={8} strokeLinejoin="round" />
       <path d="M150,60 Q196,80 206,118" fill="none" stroke="#9BB4DC" strokeWidth={4} strokeLinecap="round" opacity={0.8} />
       <circle cx={186} cy={98} r={17} fill={c} stroke={INK} strokeWidth={4.5} />
       <circle cx={186} cy={98} r={7} fill="#fff" />

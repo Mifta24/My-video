@@ -31,6 +31,8 @@ import { longTotalFrames as bakteriLongFrames, sceneFrames, shortsTotalFrames as
 import { PulauRunScene } from "./suhuf-pulau-run/shorts/scenes";
 import { ShortsVideo as PulauRunShorts } from "./suhuf-pulau-run/shorts/ShortsVideo";
 import { sceneFrames as pulauRunSceneFrames, shortsTotalFrames as pulauRunShortsFrames } from "./suhuf-pulau-run/timing";
+import { LongScene as PulauRunLongScene, LongVideo as PulauRunLong } from "./suhuf-pulau-run/long/LongVideo";
+import { sceneFrames as pulauRunLongSceneFrames, longTotalFrames as pulauRunLongFrames } from "./suhuf-pulau-run/long/timing"; 
 import { ShortsTeaser } from "./suhuf-tambora/ShortsTeaser";
 import { shortsTotalFrames } from "./suhuf-tambora/timing";
 import { SpinningCube } from "./three-demo/SpinningCube";
@@ -98,6 +100,25 @@ export const RemotionRoot: React.FC = () => {
           width={1080}
           height={1920}
         />
+        <Composition
+          id="PulauRun-Long"
+          component={PulauRunLong}
+          durationInFrames={pulauRunLongFrames}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+        <Folder name="PulauRun-Adegan-Long">
+          <Composition
+            id="PulauRun-Long-Adegan"
+            component={PulauRunLongScene}
+            durationInFrames={pulauRunLongSceneFrames("l01")}
+            fps={30}
+            width={1920}
+            height={1080}
+            defaultProps={{ sceneId: "l01" }}
+          />
+        </Folder>
         <Folder name="PulauRun-Adegan-Shorts">
           <Composition
             id="PulauRun-Shorts-Adegan"
