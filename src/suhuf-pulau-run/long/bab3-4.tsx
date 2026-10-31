@@ -1,9 +1,10 @@
 import type React from "react";
+import { Easing, interpolate } from "remotion";
 import { bob, pop, slide } from "../../suhuf-bakteri/elements/ToonKit";
 import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
 import { Basket, CalendarYear, FlagPole, Island, Ship, TreatySheet, WrapHand } from "../shorts/kit2d";
-import { Big, BIG_Y, ChipAt, H, INK, In, IceShop, Label, LChip, Shot, Sub, ToyFigure, W } from "./kitLong";
+import { Big, BIG_Y, ChipAt, clamp01, H, INK, In, IceShop, Label, LChip, Shot, Sub, ToyFigure, W } from "./kitLong";
 import { BoardDetective, Glow, PhotoCard, QBadge, RecapBoard, ShipAt, WaterL } from "./props";
 import type { V } from "./bab1-2";
 
@@ -57,39 +58,69 @@ const L08: React.FC<V> = ({ t }) => (
   </>
 );
 
-// Pelukan L-09: keranjang DI DEPAN lambung. Lengan bawah dari siku bawah-luar MELENGKUNG di sisi keranjang;
-// tangan terlihat DI SISI keranjang (tidak bertaut di depan). Keranjang tetap besar, pala jelas.
-const NLHug: React.FC<{ readonly t: number; readonly lt: number }> = ({ t, lt }) => {
-  const hug = slide(lt, 0.4, 1.0);
+// Pelukan L-09 (draf 2). Tata letak (px kanvas): judul y 150-268, pil subjudul y 296-~356, puncak bendera ~394
+// (jarak >= 30 px dari pil), elemen terbawah <= ~862 (caption bawah mulai ~897, jarak >= 30 px).
+// Kapal: lambung berhaluan dan berburitan naik (siluet kapal), tanpa lingkaran lambang di layar, tanpa wajah
+// (wajah tertutup keranjang). Keranjang di depan lambung; haluan dan buritan terlihat di kiri-kanan keranjang.
+// Pelukan: lengan atas keluar dari BALIK keranjang (dari badan kapal) ke siku di luar sisi bawah keranjang; lengan
+// bawah TEBAL melengkung MELINGKARI sudut bawah ke DEPAN keranjang; dua tangan menempel di muka keranjang
+// (sepertiga bawah), jari ke arah tengah, tidak bertaut. Siluet: keranjang dirangkul ke badan kapal.
+const SX = 960;
+type Pt = readonly [number, number];
+const BW = 270;
+export const NLHug: React.FC<{ readonly t: number; readonly lt: number; readonly closed?: boolean }> = ({ t, lt, closed = false }) => {
+  const hug = closed ? 1 : slide(lt, 0.1, 0.7);
   const press = hug * (0.5 + 0.5 * Math.sin(t * 2.4));
-  const sx = 960;
-  const shipTop = 255 + bob(t, 6, 2.3);
-  const yb = 545 + bob(t, 6, 2.3);
-  const pose = (d: -1 | 1) => ({
-    s: [sx + d * 210, shipTop + 240] as const,
-    e: [sx + d * (365 - 10 * hug), yb + 120] as const,
-    c: [sx + d * (400 - 20 * hug), yb + 220] as const,
-    h: [sx + d * (218 - 18 * hug - 6 * press), yb + 226] as const,
-  });
-  const arm = (d: -1 | 1) => {
-    const { s, e, c, h } = pose(d);
-    return (
-      <g key={d}>
-        <path d={`M${s[0]},${s[1]} L${e[0]},${e[1]} Q${c[0]},${c[1]} ${h[0]},${h[1]}`} fill="none" stroke={INK} strokeWidth={69} strokeLinecap="round" strokeLinejoin="round" />
-        <path d={`M${s[0]},${s[1]} L${e[0]},${e[1]}`} fill="none" stroke={toon.blueDark} strokeWidth={52} strokeLinecap="round" />
-        <path d={`M${e[0]},${e[1]} Q${c[0]},${c[1]} ${h[0]},${h[1]}`} fill="none" stroke={toon.skin} strokeWidth={52} strokeLinecap="round" />
-        <circle cx={e[0]} cy={e[1]} r={25} fill={toon.skin} />
-        <WrapHand x={h[0]} y={h[1]} r={36} rot={d === -1 ? 16 : -16} flip={d === 1} squeeze={press} />
-      </g>
-    );
+  const bb = bob(t, 6, 2.3);
+  const SW = 460;
+  const shipTop = 404 + bb; // puncak bendera ~ shipTop - 4 (>= 30 px di bawah pil subjudul y <= 356)
+  const yb = 536 + bb; // keranjang: tepi atas badan ~ yb+95 (lebar +-100), dasar ~ yb+221 (lebar +-81)
+  const mix = (a: Pt, b: Pt): Pt => [a[0] + (b[0] - a[0]) * hug, a[1] + (b[1] - a[1]) * hug + bb];
+  const sq = 5 * press;
+  // Lengan rapat mengikuti kontur keranjang: bahu di sisi lambung (di balik keranjang), siku menempel di luar sisi
+  // bawah keranjang, lengan bawah membungkus sudut bawah lalu naik di muka keranjang; tangan di sepertiga bawah.
+  const pose = (d: -1 | 1) => {
+    const X = (dx: number) => SX + d * dx;
+    return {
+      sh: mix([X(118), 660], [X(118), 660]),
+      el: mix([X(225), 610], [X(136), 728]),
+      c1: mix([X(262), 560], [X(140), 806]),
+      c2: mix([X(262), 510], [X(104), 812]),
+      wr: mix([X(250), 476], [X(70 + sq * 0.3), 786]),
+      hd: mix([X(244), 446], [X(46 + sq), 754]),
+    };
   };
+  type Pose = ReturnType<typeof pose>;
+  const upper = (q: Pose) => `M${q.sh[0]},${q.sh[1]} L${q.el[0]},${q.el[1]}`;
+  const fore = (q: Pose) => `M${q.el[0]},${q.el[1]} C${q.c1[0]},${q.c1[1]} ${q.c2[0]},${q.c2[1]} ${q.wr[0]},${q.wr[1]}`;
+  const L = pose(-1);
+  const R = pose(1);
+  const sleeve = (q: Pose) => (
+    <>
+      <path d={upper(q)} fill="none" stroke={INK} strokeWidth={76} strokeLinecap="round" />
+      <path d={upper(q)} fill="none" stroke="#fff" strokeWidth={58} strokeLinecap="round" />
+      <path d={upper(q)} fill="none" stroke={toon.blueDark} strokeWidth={58} strokeDasharray="9 20" />
+    </>
+  );
+  const forearm = (q: Pose, d: -1 | 1) => (
+    <>
+      <path d={fore(q)} fill="none" stroke={INK} strokeWidth={74} strokeLinecap="round" />
+      <path d={fore(q)} fill="none" stroke={toon.skin} strokeWidth={56} strokeLinecap="round" />
+      <path d={fore(q)} fill="none" stroke="#EDA27A" strokeWidth={11} strokeLinecap="round" opacity={0.5} transform="translate(0 15)" />
+      <circle cx={q.el[0]} cy={q.el[1]} r={28} fill={toon.skin} />
+      <WrapHand x={q.hd[0]} y={q.hd[1]} r={44} rot={d === -1 ? -50 : 180 + 50} squeeze={press} />
+    </>
+  );
   return (
     <>
-      <In x={660} y={shipTop} t={lt}><Ship kind="nl" w={600} t={t} sway={1} belly={30} faceDy={-10} sails={["#F0A443", "#86AEE6"]} /></In>
-      <Glow cx={960} cy={680} r={450} op={0.55} id="hug" />
-      <In x={710} y={yb} t={lt}><Basket w={500} /></In>
+      <Glow cx={SX} cy={650} r={440} op={0.55} id="hug" />
+      <In x={SX - SW / 2} y={shipTop} t={lt}><Ship kind="nl" w={SW} t={t} sway={0.6} hullShape="ship" emblem={false} face={false} sails={["#F0A443", "#86AEE6"]} /></In>
       <svg width={W} height={H} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
-        {arm(-1)}{arm(1)}
+        {sleeve(L)}{sleeve(R)}
+      </svg>
+      <div style={{ position: "absolute", left: SX - BW / 2, top: yb }}><Basket w={BW} /></div>
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+        {forearm(L, -1)}{forearm(R, 1)}
       </svg>
     </>
   );
@@ -112,7 +143,7 @@ const L09: React.FC<V> = ({ t }) => (
         <>
           <Big text="PALANYA" t={lt} y={BIG_Y} size={133} color={toon.blue} />
           <NLHug t={t} lt={lt} />
-          <Sub text="ingin dipegang sendiri" t={lt} at={0.7} y={325} size={43} />
+          <Sub text="ingin dipegang sendiri" t={lt} at={0.7} y={288} size={40} />
         </>
       )}
     </Shot>
@@ -120,46 +151,73 @@ const L09: React.FC<V> = ({ t }) => (
       {(lt) => (
         <>
           <Big text="MONOPOLI" t={lt} y={BIG_Y} size={137} color={toon.blue} />
-          <NLHug t={t} lt={lt} />
-          <Sub text="hanya satu yang boleh jual" t={lt} y={325} size={43} />
+          <NLHug t={t} lt={lt} closed />
+          <Sub text="hanya satu yang boleh jual" t={lt} y={288} size={40} />
         </>
       )}
     </Shot>
   </>
 );
 
+// L-10 (draf 2): toko es krim SATU elemen yang tetap ada sepanjang adegan dan bergeser halus antar-shot
+// (draf 1: tiap shot punya toko sendiri sehingga saat silang-pudar muncul bayangan toko kedua, judul ganda dan wajah samar).
+// Elemen lain berganti dengan potongan bersih: shot lama habis TEPAT saat shot baru mulai (tanpa tumpang tindih).
+const L10_CUTS = [3.3, 6.9] as const;
+const CutShot: React.FC<{ readonly t: number; readonly from?: number; readonly to?: number; readonly children: (lt: number) => React.ReactNode }> = ({ t, from = 0, to = 9999, children }) => {
+  const inn = from <= 0 ? 1 : interpolate(t, [from, from + 0.1], [0, 1], clamp01);
+  const out = interpolate(t, [to - 0.1, to], [1, 0], clamp01);
+  const o = Math.min(inn, out);
+  if (o <= 0) {
+    return null;
+  }
+  return <div style={{ position: "absolute", inset: 0, opacity: o }}>{children(t - Math.max(0, from))}</div>;
+};
+const L10Shop: React.FC<{ readonly t: number }> = ({ t }) => {
+  // [pusat x, atas y, lebar] per shot; bergeser 0,45 dtk mulai tepat di titik potong
+  const A = [1395, 350, 370];
+  const B = [1205, 340, 390];
+  const C = [960, 340, 400];
+  const p1 = interpolate(t, [L10_CUTS[0] - 0.05, L10_CUTS[0] + 0.4], [0, 1], { ...clamp01, easing: Easing.inOut(Easing.cubic) });
+  const p2 = interpolate(t, [L10_CUTS[1] - 0.05, L10_CUTS[1] + 0.4], [0, 1], { ...clamp01, easing: Easing.inOut(Easing.cubic) });
+  const v = A.map((a, i) => a + (B[i] - a) * p1 + (C[i] - B[i]) * p2);
+  const w = v[2];
+  const s = 0.92 + 0.08 * interpolate(t, [0, 0.45], [0, 1], { ...clamp01, easing: Easing.out(Easing.back(1.8)) });
+  return (
+    <div style={{ position: "absolute", left: v[0] - w / 2, top: v[1] + bob(t, 4, 2, 2), transform: `scale(${s})`, transformOrigin: "50% 100%" }}>
+      <IceShop w={w} t={t} />
+    </div>
+  );
+};
 const L10: React.FC<V> = ({ t }) => (
   <>
     <Label text="PERUMPAMAAN - bukan data" kind="analogi" t={t} />
-    <Shot t={t} to={3.4}>
+    <CutShot t={t} to={L10_CUTS[0]}>
       {(lt) => (
         <>
           <Big text="TOKO ES KRIM" t={lt} y={BIG_Y} size={117} color={toon.orange} />
           {[0, 1, 2].map((i) => <In key={i} x={215 + i * 310} y={520 + bob(t, 4, 2, i)} t={lt} at={i * 0.22}><div style={{ fontSize: 180, lineHeight: 1 }}>⌂</div></In>)}
-          <In x={1210} y={350 + bob(t, 4, 2, 2)} t={lt}><IceShop w={370} t={t} /></In>
           <Sub text="di kompleks rumah" t={lt} at={0.5} y={778} size={45} />
         </>
       )}
-    </Shot>
-    <Shot t={t} from={3.3} to={7.0}>
+    </CutShot>
+    <CutShot t={t} from={L10_CUTS[0]} to={L10_CUTS[1]}>
       {(lt) => (
         <>
           <Big text="HANYA KAMI" t={lt} y={BIG_Y} size={133} color={toon.orange} />
-          <In x={1010} y={355 + bob(t, 4, 2)} t={lt}><IceShop w={390} t={t} /></In>
-          {[0, 1, 2].map((i) => <In key={i} x={230 + i * 230} y={605 + bob(t, 3, 2, i)} t={lt} at={0.25 + i * 0.2}><div style={{ width: 130, height: 130, borderRadius: 80, background: i % 2 ? toon.blue : toon.orange, border: `9px solid ${INK}`, boxShadow: `0 8px 0 ${INK}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 80, color: "#fff" }}>☺</div></In>)}
-          <Sub text="satu penjual saja" t={lt} at={0.5} y={792} size={46} />
+          {[0, 1, 2].map((i) => <In key={i} x={200 + i * 230} y={605 + bob(t, 3, 2, i)} t={lt} at={0.25 + i * 0.2}><div style={{ width: 130, height: 130, borderRadius: 80, background: i % 2 ? toon.blue : toon.orange, border: `9px solid ${INK}`, boxShadow: `0 8px 0 ${INK}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 80, color: "#fff" }}>☺</div></In>)}
+          <Sub text="satu penjual saja" t={lt} at={0.5} y={800} size={46} />
         </>
       )}
-    </Shot>
-    <Shot t={t} from={6.9}>
+    </CutShot>
+    <CutShot t={t} from={L10_CUTS[1]}>
       {(lt) => (
         <>
           <Big text="MONOPOLI" t={lt} y={BIG_Y} size={137} color={toon.blue} />
-          <In x={750} y={355 + bob(t, 5, 2)} t={lt}><IceShop w={420} t={t} /></In>
           <Sub text="hanya satu penjual" t={lt} y={805} size={45} />
         </>
       )}
-    </Shot>
+    </CutShot>
+    <L10Shop t={t} />
   </>
 );
 
