@@ -135,7 +135,8 @@ export const Island: React.FC<{
   readonly t?: number;
   readonly bare?: boolean; // tanpa bayangan/halo bawah (dipakai saat digenggam)
   readonly detail?: number; // pembesar rumah/pohon/kincir terhadap pulau (1 = asli)
-}> = ({ kind, w, t = 0, bare = false, detail = 1 }) => {
+  readonly detailDy?: number; // geser vertikal rumah/pohon (unit viewBox 300), negatif = ke belakang pulau
+}> = ({ kind, w, t = 0, bare = false, detail = 1, detailDy = 0 }) => {
   const angle = t * 55;
   return (
     <svg width={w} height={w * 0.74} viewBox="0 0 300 222" style={{ overflow: "visible", display: "block" }}>
@@ -151,7 +152,7 @@ export const Island: React.FC<{
       <ellipse cx={150} cy={142} rx={112} ry={36} fill={GRASS} stroke={INK} strokeWidth={4} />
       <path d="M60,138 Q80,118 112,114" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.45} />
       <path d="M30,152 Q60,118 120,111" fill="none" stroke="#FFF6DC" strokeWidth={4} strokeLinecap="round" opacity={0.9} transform="translate(-2 -5)" />
-      <g transform={detail === 1 ? undefined : `translate(150 150) scale(${detail}) translate(-150 -150)`}>
+      <g transform={detail === 1 && detailDy === 0 ? undefined : `translate(0 ${detailDy}) translate(150 150) scale(${detail}) translate(-150 -150)`}>
         {kind === "manhattan" ? (
           <>
             {house(70, 150, 40, 40, "#FFF4DE", toon.red, "h1")}
@@ -708,9 +709,15 @@ export const Ship: React.FC<{
   readonly belly?: number; // tambahan tinggi lambung (unit), dipakai saat memeluk keranjang di depan badan
   readonly faceDy?: number; // geser wajah (unit)
   readonly sails?: readonly [string, string]; // [layar depan, layar belakang]; default = warna Shorts (tidak berubah)
-}> = ({ kind, w, t, flip = false, mood = "happy", wave = 0, phase = 0, sway = 2.2, belly = 0, faceDy = 0, sails = ["#F1C47E", "#BCD3F2"] }) => {
+  readonly hullShape?: "tub" | "ship"; // "ship" = haluan dan buritan naik (siluet kapal lebih jelas); default "tub" (Shorts)
+  readonly emblem?: boolean; // lingkaran lambang di layar (default true)
+  readonly face?: boolean; // wajah di lambung (default true)
+}> = ({ kind, w, t, flip = false, mood = "happy", wave = 0, phase = 0, sway = 2.2, belly = 0, faceDy = 0, sails = ["#F1C47E", "#BCD3F2"], hullShape = "tub", emblem = true, face = true }) => {
   const b = belly;
-  const hull = `M22,150 L238,150 Q230,${222 + b} 184,${232 + b} L76,${232 + b} Q30,${222 + b} 22,150 Z`;
+  const hull =
+    hullShape === "ship"
+      ? `M4,118 Q16,146 40,150 L220,150 Q244,146 256,118 Q248,${206 + b} 196,${232 + b} L64,${232 + b} Q12,${206 + b} 4,118 Z`
+      : `M22,150 L238,150 Q230,${222 + b} 184,${232 + b} L76,${232 + b} Q30,${222 + b} 22,150 Z`;
   const c = kind === "en" ? toon.orange : toon.blue;
   const cd = kind === "en" ? toon.orangeDark : toon.blueDark;
   const cl = kind === "en" ? toon.orangeLight : toon.blueLight;
@@ -726,8 +733,12 @@ export const Ship: React.FC<{
       <path d="M138,34 Q224,66 218,138 L138,138 Z" fill={sails[1]} stroke={INK} strokeWidth={8} strokeLinejoin="round" />
       <path d="M122,56 Q66,84 62,138 L122,138 Z" fill={sails[0]} stroke={INK} strokeWidth={8} strokeLinejoin="round" />
       <path d="M150,60 Q196,80 206,118" fill="none" stroke="#9BB4DC" strokeWidth={4} strokeLinecap="round" opacity={0.8} />
-      <circle cx={186} cy={98} r={17} fill={c} stroke={INK} strokeWidth={4.5} />
-      <circle cx={186} cy={98} r={7} fill="#fff" />
+      {emblem ? (
+        <>
+          <circle cx={186} cy={98} r={17} fill={c} stroke={INK} strokeWidth={4.5} />
+          <circle cx={186} cy={98} r={7} fill="#fff" />
+        </>
+      ) : null}
       <g transform="translate(136 -2) scale(0.56)">
         <FlagG kind={kind} />
       </g>
@@ -749,7 +760,7 @@ export const Ship: React.FC<{
       <path d="M130,124 Q196,126 214,120 L214,138 L138,138 Z" fill="#DCE6F5" opacity={0.55} />
       <path d="M52,158 Q90,152 112,158" fill="none" stroke={cl} strokeWidth={9} strokeLinecap="round" opacity={0.9} />
       <circle cx={206} cy={216 + b * 0.6} r={5} fill={cd} opacity={0.5} />
-      <Face cx={130} cy={196 + faceDy} gap={24} r={11} mood={mood} look={[0.5, 0]} blink={blinkOf(t, phase)} />
+      {face ? <Face cx={130} cy={196 + faceDy} gap={24} r={11} mood={mood} look={[0.5, 0]} blink={blinkOf(t, phase)} /> : null}
     </svg>
   );
 };
@@ -1040,11 +1051,17 @@ export const GraspedIsland: React.FC<{
   readonly squeeze?: number; // 0..1: jari menutup rapat
   readonly flag?: "en" | "nl";
   readonly mirror?: boolean;
-}> = ({ kind, color, dark, k, t, squeeze = 0, flag, mirror = false }) => {
+  readonly lift?: number; // unit: rumah/pohon/bendera digeser ke belakang (naik) di atas rumput supaya jari tidak menutupi rumah (default 0)
+  readonly reach?: number; // unit: lengan diperpanjang ke luar (masuk dari tepi layar) (default 0)
+}> = ({ kind, color, dark, k, t, squeeze = 0, flag, mirror = false, lift = 0, reach = 0 }) => {
   const sq = squeeze;
   const poleX = kind === "run" ? 214 : 124;
+  // draf 2: kaki tiang tetap di rumput (y 228, tertutup jari); tiang memanjang sebesar lift supaya bendera naik
+  // bersama rumah tanpa tiang melayang. puncak bendera = GRASP_FLAG_TOP - lift. lift=0 -> sama dengan sebelumnya.
   const poleBase = 228;
-  const poleH = poleBase - GRASP_FLAG_TOP;
+  const poleH = 228 - GRASP_FLAG_TOP + lift;
+  const a0 = -420 - reach;
+  const a1 = -400 - reach;
   // jari: pangkal (di dalam telapak) -> ujung; tinggi BERBEDA (tengah paling tinggi), kelingking paling pendek
   const fingers = [
     { bx: 382, by: 352, tx: 376 - sq * 10, ty: 300 + sq * 8, cx: 392 - sq * 4, cy: 322, w: 56 }, // kelingking
@@ -1062,7 +1079,7 @@ export const GraspedIsland: React.FC<{
         <ellipse cx={218} cy={446} rx={230} ry={14} fill="#0C3140" opacity={0.26} />
         {/* pulau (dasar pasirnya terbenam di telapak) */}
         <g transform={`translate(0 ${ISL_TOP})`}>
-          <Island kind={kind} w={400} t={t} bare detail={1.12} />
+          <Island kind={kind} w={400} t={t} bare detail={1.12} detailDy={(-lift * 300) / 400} />
         </g>
         {flag ? (
           <g transform={`translate(${poleX} ${poleBase})`}>
@@ -1076,7 +1093,7 @@ export const GraspedIsland: React.FC<{
         ) : null}
         {/* --- tinta dasar (siluet menyatu) --- */}
         <g stroke={INK} fill={INK} strokeLinecap="round" strokeLinejoin="round">
-          <path d={`M-420,${wristY} L0,${wristY}`} strokeWidth={166} strokeLinecap="butt" fill="none" />
+          <path d={`M${a0},${wristY} L0,${wristY}`} strokeWidth={166} strokeLinecap="butt" fill="none" />
           <ellipse cx={218} cy={384} rx={228} ry={86} strokeWidth={14} />
           {fingers.map((f, i) => (
             <path key={`ik${i}`} d={fd(f)} fill="none" strokeWidth={f.w + 15} />
@@ -1084,7 +1101,7 @@ export const GraspedIsland: React.FC<{
           <path d={thumb} fill="none" strokeWidth={88} />
         </g>
         {/* --- warna --- */}
-        <path d={`M-420,${wristY} L0,${wristY}`} stroke={color} strokeWidth={150} fill="none" />
+        <path d={`M${a0},${wristY} L0,${wristY}`} stroke={color} strokeWidth={150} fill="none" />
         <ellipse cx={218} cy={384} rx={228} ry={86} fill={color} />
         {fingers.map((f, i) => (
           <g key={`f${i}`}>
@@ -1106,8 +1123,8 @@ export const GraspedIsland: React.FC<{
         <path d="M110,448 Q218,478 340,448" fill="none" stroke={dark} strokeWidth={14} strokeLinecap="round" opacity={0.3} />
         <path d="M96,420 Q110,402 146,398" fill="none" stroke="#fff" strokeWidth={8} strokeLinecap="round" opacity={0.45} />
         {/* lengan: sorot + bayangan */}
-        <path d={`M-400,${wristY - 44} L-80,${wristY - 44}`} fill="none" stroke="#fff" strokeWidth={10} strokeLinecap="round" opacity={0.45} />
-        <path d={`M-400,${wristY + 46} L-80,${wristY + 46}`} fill="none" stroke={dark} strokeWidth={12} strokeLinecap="round" opacity={0.4} />
+        <path d={`M${a1},${wristY - 44} L-80,${wristY - 44}`} fill="none" stroke="#fff" strokeWidth={10} strokeLinecap="round" opacity={0.45} />
+        <path d={`M${a1},${wristY + 46} L-80,${wristY + 46}`} fill="none" stroke={dark} strokeWidth={12} strokeLinecap="round" opacity={0.4} />
         {/* manset putih menempel di pergelangan, dekat tangan */}
         <rect x={-74} y={wristY - 92} width={46} height={184} rx={18} fill="#fff" stroke={INK} strokeWidth={8} />
         <path d={`M-58,${wristY - 70} L-58,${wristY + 70}`} stroke={dark} strokeWidth={5} strokeLinecap="round" opacity={0.35} />

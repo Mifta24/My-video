@@ -2,12 +2,13 @@ import type React from "react";
 import { bob } from "../../suhuf-bakteri/elements/ToonKit";
 import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
-import { FlagPole, GraspedIsland, GRASP_CX, GRASP_FLAG_TOP, GRASP_X0, GRASP_Y0, Island, Ship, TreatySheet } from "../shorts/kit2d";
+import { FlagPole, GraspedIsland, Island, Ship, TreatySheet } from "../shorts/kit2d";
 import { LogoSheet } from "../shorts/visuals";
 import { Big, BIG_Y, ChipAt, In, Label, LChip, ScaleLong3D, Shot, Sub, Tetap } from "./kitLong";
 import { BigGlass } from "./props";
 import { cue } from "./timing";
 import type { V } from "./bab1-2";
+import { GRASP_LIFT, graspBox } from "./bab5";
 
 const L28:React.FC<V>=({t})=><>
   <Label text="SKEMA" t={t}/>
@@ -38,17 +39,20 @@ const L29:React.FC<V>=({t})=>{
     </>}</Shot>
   </>;
 };
+// L-30 shot A (draf 2): kepalan sebesar L-19, lengan masuk dari luar tepi layar (reach), rumah tidak tertutup jari
+// (lift), pil subjudul di bawah judul (tidak menutupi kepalan), dasar kepalan >= 30 px di atas caption bawah.
 const L30:React.FC<V>=({t})=>{
-  const k=0.76;
-  const left=(cx:number)=>cx-(GRASP_CX-GRASP_X0)*k;
-  const top=(y:number)=>y-(GRASP_FLAG_TOP-GRASP_Y0)*k;
+  const k=1.02;
+  const A=graspBox(545,858,k);
+  const B=graspBox(1395,858,k);
+  const sq=0.6+0.25*Math.sin(t*2.4);
   return <>
     <Label text="SKEMA" t={t}/>
     <Shot t={t} to={3.5}>{lt=><>
       <Big text="YANG TERTULIS" t={lt} y={BIG_Y} size={114} color={toon.blue}/>
-      <In x={left(590)} y={top(490)} t={lt}><GraspedIsland kind="manhattan-en" color={toon.orange} dark={toon.orangeDark} k={k} t={t} squeeze={0.6} flag="en"/></In>
-      <In x={left(1370)} y={top(490)} t={lt}><GraspedIsland kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={0.6} flag="nl" mirror/></In>
-      <Sub text="yang dipegang, tetap dipegang" t={lt} y={760} size={47}/>
+      <Sub text="yang dipegang, tetap dipegang" t={lt} y={292} size={38}/>
+      <In x={A.x} y={A.y+bob(t,4,2)} t={lt}><GraspedIsland kind="manhattan-en" color={toon.orange} dark={toon.orangeDark} k={k} t={t} squeeze={sq} flag="en" lift={GRASP_LIFT} reach={260}/></In>
+      <In x={B.x} y={B.y+bob(t,4,2,1)} t={lt}><GraspedIsland kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={sq} flag="nl" mirror lift={GRASP_LIFT} reach={260}/></In>
     </>}</Shot>
     <Shot t={t} from={3.4}>{lt=><>
       <Big text="YANG TERJADI" t={lt} y={BIG_Y} size={114} color={toon.orange}/>

@@ -34,16 +34,27 @@ const L18:React.FC<V>=({t})=><>
   </>}</Shot>
 </>;
 
+// Genggam (draf 2): rumah/pohon/bendera diangkat ke belakang rumput (GRASP_LIFT) supaya ujung jari tidak menutupi rumah;
+// lengan diperpanjang (reach) sehingga selalu masuk dari luar tepi layar; dasar kepalan berjarak >= 30 px dari caption
+// bawah (tepi atas caption ~ y 900); chip INGGRIS/BELANDA di atas bendera, bukan di atas kepalan.
+export const GRASP_LIFT=66;
+const FIST_BOTTOM=477; // unit: tepi bawah telapak (termasuk garis tinta)
+export const graspBox=(cx:number,fistBottomY:number,k:number)=>({
+  x:cx-(GRASP_CX-GRASP_X0)*k,
+  y:fistBottomY-(FIST_BOTTOM-GRASP_Y0)*k,
+  flagTop:fistBottomY-(FIST_BOTTOM-(GRASP_FLAG_TOP-GRASP_LIFT))*k,
+});
 const HoldPair:React.FC<{readonly t:number;readonly at?:number}>=({t,at=0})=>{
   const sq=0.65+0.3*Math.sin(t*2.4);
-  const k=1.20;
-  const left=(cx:number)=>cx-(GRASP_CX-GRASP_X0)*k;
-  const top=(flagTop:number)=>flagTop-(GRASP_FLAG_TOP-GRASP_Y0)*k;
+  const k=1.12;
+  const L=graspBox(560,858,k);
+  const R=graspBox(1380,858,k);
+  // chip pemilik di sisi LUAR bendera (tidak di atas kepalan, tidak di bawah judul)
   return <>
-    <In x={left(550)} y={top(490)+bob(t,5,2)} t={t} at={at}><GraspedIsland kind="manhattan-en" color={toon.orange} dark={toon.orangeDark} k={k} t={t} squeeze={sq} flag="en"/></In>
-    <In x={left(1390)} y={top(490)+bob(t,5,2,1)} t={t} at={at+0.15}><GraspedIsland kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={sq} flag="nl" mirror/></In>
-    <ChipAt cx={570} y={756} t={t} at={at}><LChip text="INGGRIS" color={toon.orangeDark} size={41} flag="en"/></ChipAt>
-    <ChipAt cx={1370} y={756} t={t} at={at}><LChip text="BELANDA" color={toon.blueDark} size={41} flag="nl"/></ChipAt>
+    <In x={L.x} y={L.y+bob(t,5,2)} t={t} at={at}><GraspedIsland kind="manhattan-en" color={toon.orange} dark={toon.orangeDark} k={k} t={t} squeeze={sq} flag="en" lift={GRASP_LIFT} reach={260}/></In>
+    <In x={R.x} y={R.y+bob(t,5,2,1)} t={t} at={at+0.15}><GraspedIsland kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={sq} flag="nl" mirror lift={GRASP_LIFT} reach={260}/></In>
+    <ChipAt cx={232} y={L.flagTop+28} t={t} at={at+0.3}><LChip text="INGGRIS" color={toon.orangeDark} size={36} flag="en"/></ChipAt>
+    <ChipAt cx={1712} y={R.flagTop+28} t={t} at={at+0.45}><LChip text="BELANDA" color={toon.blueDark} size={36} flag="nl"/></ChipAt>
   </>;
 };
 
