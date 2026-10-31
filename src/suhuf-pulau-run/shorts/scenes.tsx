@@ -25,7 +25,10 @@ const ShortsSceneInner = ({ sceneId }: { readonly sceneId: string }) => {
           transformOrigin: "50% 45%",
         }}
       >
-        {Visual ? <Visual t={t} /> : null}
+        {/* draf 4: seluruh gambar dirapatkan 7% ke atas (jangkar y=300) supaya sepertiga bawah bebas untuk caption */}
+        <div style={{ position: "absolute", inset: 0, transform: "scale(0.93)", transformOrigin: "540px 300px" }}>
+          {Visual ? <Visual t={t} /> : null}
+        </div>
       </div>
       <Voice sceneId={sceneId} />
       <SfxList cues={SFX[sceneId] ?? []} />

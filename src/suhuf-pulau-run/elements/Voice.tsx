@@ -1,11 +1,11 @@
 import { Audio } from "@remotion/media";
 import type React from "react";
 import { Sequence, staticFile, useVideoConfig } from "remotion";
-import { Subtitle } from "../../suhuf-bakteri/elements/Subtitle";
+import { Caption } from "./Caption";
 import { clipDuration, clipStart, getScene } from "../timing";
 
 // Narasi satu adegan: satu <Audio> + subtitle per kalimat. Posisi dari durasi audio nyata (timing.ts).
-// Subtitle kartun: kotak putih, teks tinta, tepi oranye (kontras tinggi), di atas area UI bawah (250 px).
+// Subtitle kartun: kotak putih, teks tinta, tepi oranye (kontras tinggi), tepi bawah y ~1360, jauh di atas area UI bawah.
 export const Voice: React.FC<{ readonly sceneId: string }> = ({ sceneId }) => {
   const { fps } = useVideoConfig();
   const scene = getScene(sceneId);
@@ -20,7 +20,7 @@ export const Voice: React.FC<{ readonly sceneId: string }> = ({ sceneId }) => {
           name={`VO · ${clip.id}`}
         >
           <Audio src={staticFile(`suhuf-pulau-run/vo/${clip.id}.mp3`)} />
-          <Subtitle text={clip.text} durationSec={clipDuration(clip.id)} bottom={330} fontSize={56} maxWidth={920} maxChars={28} toonStyle />
+          <Caption text={clip.text} durationSec={clipDuration(clip.id)} />
         </Sequence>
       ))}
     </>

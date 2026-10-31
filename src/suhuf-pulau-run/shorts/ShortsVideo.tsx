@@ -1,6 +1,6 @@
 import { AbsoluteFill, interpolate, Track } from "remotion";
 import { clamp } from "../../suhuf-bakteri/elements/common";
-import { Watermark } from "../../suhuf-bakteri/elements/Watermark";
+import { Watermark } from "../elements/Watermark";
 import { toon } from "../../suhuf-bakteri/theme";
 import { MusicBed } from "../elements/Sound";
 import { sceneFrames, sceneFrom, shortsTotalFrames } from "../timing";
@@ -40,7 +40,7 @@ export const ShortsVideo = () => (
         <PulauRunScene key={id} name={NAMES[id]} sceneId={id} from={sceneFrom(id)} durationInFrames={sceneFrames(id)} />
       ))}
     </Track>
-    <Watermark hideAfter={sceneFrom("s11")} ink={toon.ink} halo="#FFF4DE" />
+    <Watermark hideAfter={sceneFrom("s11")} />
     <MusicBed level={musicLevel} file="toonbed" />
   </AbsoluteFill>
 );
