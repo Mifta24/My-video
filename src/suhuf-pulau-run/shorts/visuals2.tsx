@@ -5,7 +5,7 @@ import { SheetMark } from "../../suhuf-bakteri/elements/Brand";
 import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
 import { cue } from "../timing";
-import { Chip, CardG, FlagPole, Fist, INK, Island, RED, Speech, TableTop, ToyKid, TreatySheet, Card } from "./kit2d";
+import { Chip, CardG, GraspedIsland, INK, Island, RED, Speech, TableTop, ToyKid, TreatySheet, Card } from "./kit2d";
 import { ScaleIslands3D, scaleState } from "./scene3d";
 import { LogoSheet, type V } from "./visuals";
 
@@ -20,18 +20,13 @@ const Hold: React.FC<{ readonly lt: number; readonly kind: "manhattan" | "run"; 
   const dir = side === "l" ? -1 : 1;
   const color = who === "en" ? toon.orange : toon.blue;
   const dark = who === "en" ? toon.orangeDark : toon.blueDark;
+  const k = 1.25; // pulau 500 px = 46% lebar layar
+  const left = side === "l" ? 540 - 500 * k : 540 - 760 * k + 500 * k;
   return (
     <>
-      <div style={{ position: "absolute", left: 0, top: hover, width: 1080, transform: `translateX(${(1 - inn) * dir * 600}px)` }}>
-        <div style={{ position: "absolute", left: 540 - 360, top: 560 }}>
-          <Island kind={kind} w={720} t={lt} />
-        </div>
-        {/* tangan di DEPAN pulau: telapak dan jari melingkari dasar pulau -> terbaca menggenggam */}
-        <div style={{ position: "absolute", left: side === "l" ? 540 - 330 * 1.25 : 540 + 330 * 1.25, top: 905, transform: `${side === "l" ? "" : "scaleX(-1) "}scale(1.25)`, transformOrigin: "0 0" }}>
-          <Fist color={color} dark={dark} w={520} squeeze={sq} />
-        </div>
+      <div style={{ position: "absolute", left: left + (1 - inn) * dir * 640, top: 660 + hover }}>
+        <GraspedIsland kind={kind} color={color} dark={dark} k={k} t={lt} squeeze={sq} flag={who} mirror={side === "r"} />
       </div>
-      <FlagPole kind={who} x={side === "l" ? 840 : 215} y={915} h={300} w={150} t={lt} />
       <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", opacity: appear(lt, 0.6, 0.3), transform: `scale(${pop(lt, 0.6, 0.5)})` }}>
         <Chip text={label} color={color} size={110} />
       </div>
