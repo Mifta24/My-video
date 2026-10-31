@@ -1,6 +1,5 @@
 import type React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { splitChunks } from "../../suhuf-bakteri/elements/Subtitle";
 import { toon } from "../../suhuf-bakteri/theme";
 import { toonFont } from "../../suhuf-bakteri/elements/ToonKit";
 
@@ -25,11 +24,39 @@ const Words: React.FC<{ readonly text: string }> = ({ text }) => (
 
 export const CAPTION_BOTTOM = 556;
 
+// Pemotong teks dengan batas keras: tidak ada potongan > MAXC karakter (splitChunks lama menggabungkan sisa pendek hingga +8 karakter sehingga kotak meluap).
+const MAXC = 30;
+const splitCaption = (text: string): string[] => {
+  const phrases = text.match(/[^.,:?!]+[.,:?!]?/g) ?? [text];
+  const out: string[] = [];
+  for (const raw of phrases) {
+    const words = raw.trim().split(/\s+/).filter(Boolean);
+    let line = "";
+    for (const w of words) {
+      if (line && (line + " " + w).length > MAXC) {
+        out.push(line);
+        line = w;
+      } else {
+        line = line ? line + " " + w : w;
+      }
+    }
+    if (line) {
+      const prev = out[out.length - 1];
+      if (prev && line.length < 9 && (prev + " " + line).length <= MAXC) {
+        out[out.length - 1] = prev + " " + line;
+      } else {
+        out.push(line);
+      }
+    }
+  }
+  return out;
+};
+
 export const Caption: React.FC<{ readonly text: string; readonly durationSec: number }> = ({ text, durationSec }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
-  const chunks = splitChunks(text, 34);
+  const chunks = splitCaption(text);
   const total = chunks.reduce((a, c) => a + c.length, 0);
   let acc = 0;
   let current: { text: string; from: number } | null = null;
@@ -53,7 +80,7 @@ export const Caption: React.FC<{ readonly text: string; readonly durationSec: nu
         style={{
           fontFamily: toonFont(),
           fontWeight: 700,
-          fontSize: 58,
+          fontSize: Math.min(58, Math.floor(880 / (current.text.length * 0.56))),
           lineHeight: 1.16,
           color: toon.ink,
           background: "#fff",
