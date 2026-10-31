@@ -15,6 +15,8 @@ export const GRASS_DARK = "#5FB36A";
 export const WOOD = "#E8A35E";
 export const WOOD_DARK = "#B9774A";
 export const RED = "#E4453F";
+export const TEAL = "#1C8798";
+export const TEAL_DEEP = "#0C4F5F";
 
 // ---------------- Bendera ----------------
 // Gambar di dalam <svg> (koordinat 90 x 60). Dipakai oleh FlagArt, FlagPole, dan kapal.
@@ -131,12 +133,14 @@ export const Island: React.FC<{ readonly kind: "manhattan" | "run"; readonly w: 
   const angle = t * 55;
   return (
     <svg width={w} height={w * 0.74} viewBox="0 0 300 222" style={{ overflow: "visible", display: "block" }}>
-      <ellipse cx={150} cy={200} rx={146} ry={20} fill={toon.blue} opacity={0.3} />
-      <ellipse cx={150} cy={190} rx={136} ry={20} fill="#fff" opacity={0.7} />
+      <ellipse cx={168} cy={206} rx={146} ry={20} fill="#0C3140" opacity={0.42} />
+      <ellipse cx={150} cy={192} rx={138} ry={20} fill="#fff" opacity={0.6} />
       <path d="M18,150 Q20,196 150,198 Q280,196 282,150 Z" fill={SAND_DARK} stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+      <path d="M22,172 Q30,197 150,198 Q270,197 278,172 Q150,190 22,172 Z" fill="#C98F4E" opacity={0.7} />
       <ellipse cx={150} cy={150} rx={132} ry={46} fill={SAND} stroke={INK} strokeWidth={5} />
       <ellipse cx={150} cy={142} rx={112} ry={36} fill={GRASS} stroke={INK} strokeWidth={4} />
       <path d="M60,138 Q80,118 112,114" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.45} />
+      <path d="M30,152 Q60,118 120,111" fill="none" stroke="#FFF6DC" strokeWidth={4} strokeLinecap="round" opacity={0.9} transform="translate(-2 -5)" />
       {kind === "manhattan" ? (
         <>
           {house(70, 150, 40, 40, "#FFF4DE", toon.red, "h1")}
@@ -255,13 +259,15 @@ export const WaterBand: React.FC<{ readonly y0: number; readonly y1: number; rea
       </defs>
       <path
         d={`M30,24 Q165,${4 + Math.sin(t * 1.6) * 6} 300,24 T570,24 T840,24 T1050,24 L1050,${h - 40} Q1050,${h} 1010,${h} L70,${h} Q30,${h} 30,${h - 40} Z`}
-        fill={toon.blue}
+        fill={TEAL}
         stroke={INK}
         strokeWidth={7}
         strokeLinejoin="round"
       />
       <g clipPath={`url(#wb-${seed})`}>
-        <rect x={0} y={h * 0.55} width={1080} height={h * 0.45 + 40} fill={toon.blueDark} opacity={0.35} />
+        <rect x={0} y={h * 0.42} width={1080} height={h * 0.58 + 40} fill={TEAL_DEEP} opacity={0.6} />
+        <rect x={0} y={h * 0.2} width={1080} height={h * 0.22} fill={TEAL_DEEP} opacity={0.28} />
+        <path d={`M30,30 Q165,${10 + Math.sin(t * 1.6) * 6} 300,30 T570,30 T840,30 T1050,30`} fill="none" stroke="#BFF1EE" strokeWidth={6} strokeLinecap="round" opacity={0.55} />
       </g>
       {rows.map((r) =>
         Array.from({ length: 5 }, (_, c) => {
@@ -273,10 +279,10 @@ export const WaterBand: React.FC<{ readonly y0: number; readonly y1: number; rea
               d="M0,0 q10,-12 20,0 q10,12 20,0"
               transform={`translate(${px} ${py})`}
               fill="none"
-              stroke="#fff"
+              stroke="#D6F6F2"
               strokeWidth={5}
               strokeLinecap="round"
-              opacity={0.75}
+              opacity={0.8}
             />
           );
         }),
@@ -284,6 +290,23 @@ export const WaterBand: React.FC<{ readonly y0: number; readonly y1: number; rea
     </svg>
   );
 };
+
+// Bayangan jatuh yang TEGAS di air/lantai (tepi keras + cincin busa), digambar SETELAH WaterBand.
+export const ContactShadow: React.FC<{ readonly cx: number; readonly cy: number; readonly rx: number; readonly ry?: number; readonly op?: number }> = ({ cx, cy, rx, ry = rx * 0.14, op = 1 }) => (
+  <div
+    style={{
+      position: "absolute",
+      left: cx - rx,
+      top: cy - ry,
+      width: rx * 2,
+      height: ry * 2,
+      borderRadius: "50%",
+      background: "rgba(4,30,42,0.5)",
+      boxShadow: "0 0 0 8px #BDF3EE, 0 0 0 12px rgba(255,255,255,0.5)",
+      opacity: op,
+    }}
+  />
+);
 
 // ---------------- Buah pala terbelah dengan fuli merah ----------------
 export const Nutmeg: React.FC<{ readonly size: number; readonly rot?: number }> = ({ size, rot = 0 }) => (
@@ -574,7 +597,7 @@ export const ToyKid: React.FC<{
 
 // ---------------- Papan nama kartun ----------------
 export const SignBoard: React.FC<{ readonly w: number; readonly text: string; readonly color: string; readonly size: number; readonly post?: number; readonly t?: number }> = ({ w, text, color, size, post = 70, t = 0 }) => (
-  <div style={{ position: "relative", width: w, height: size * 1.9 + post, display: "flex", flexDirection: "column", alignItems: "center", transform: `rotate(${1.6 * Math.sin(t * 2.2)}deg) translateY(${Math.sin(t * 2.6) * 5}px)`, filter: "drop-shadow(0 18px 14px rgba(40,30,60,0.26))" }}>
+  <div style={{ position: "relative", width: w, height: size * 1.9 + post, display: "flex", flexDirection: "column", alignItems: "center", transform: `rotate(${1.6 * Math.sin(t * 2.2)}deg) translateY(${Math.sin(t * 2.6) * 5}px)`, filter: "drop-shadow(16px 26px 0 rgba(30,34,70,0.30))" }}>
     <div
       style={{
         width: w,
@@ -582,7 +605,7 @@ export const SignBoard: React.FC<{ readonly w: number; readonly text: string; re
         borderRadius: 34,
         background: color,
         border: `8px solid ${INK}`,
-        boxShadow: `0 10px 0 ${INK}, inset 0 -14px 0 rgba(0,0,0,0.14), inset 0 12px 0 rgba(255,255,255,0.28)`,
+        boxShadow: `0 12px 0 color-mix(in srgb, ${color} 52%, #000), 0 24px 0 ${INK}, inset 0 -14px 0 rgba(0,0,0,0.14), inset 0 8px 0 rgba(255,255,255,0.5)`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -623,8 +646,12 @@ export const Ship: React.FC<{
   const cd = kind === "en" ? toon.orangeDark : toon.blueDark;
   const cl = kind === "en" ? toon.orangeLight : toon.blueLight;
   return (
-    <svg width={w} height={w} viewBox="0 0 260 260" style={{ overflow: "visible", display: "block", transform: `${flip ? "scaleX(-1) " : ""}rotate(${sway * Math.sin(t * 2.1 + phase)}deg)`, transformOrigin: "50% 88%", filter: "drop-shadow(0 12px 10px rgba(30,40,80,0.28))" }}>
+    <svg width={w} height={w} viewBox="0 0 260 260" style={{ overflow: "visible", display: "block", transform: `${flip ? "scaleX(-1) " : ""}rotate(${sway * Math.sin(t * 2.1 + phase)}deg)`, transformOrigin: "50% 88%" }}>
+      {/* halo tepi tipis (kontras terhadap air gelap) */}
+      <path d="M22,150 L238,150 Q230,222 184,232 L76,232 Q30,222 22,150 Z" transform="translate(0 15)" fill="none" stroke="#fff" strokeWidth={15} strokeLinejoin="round" opacity={0.9} />
       {/* tiang dan layar */}
+      <path d="M138,34 Q224,66 218,138 L138,138 Z" transform="translate(7 7)" fill="#B9C6E2" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+      <path d="M122,56 Q66,84 62,138 L122,138 Z" transform="translate(7 7)" fill="#E3CFA6" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
       <line x1={130} y1={156} x2={130} y2={26} stroke={INK} strokeWidth={12} strokeLinecap="round" />
       <line x1={130} y1={156} x2={130} y2={26} stroke={WOOD} strokeWidth={5} strokeLinecap="round" />
       <path d="M138,34 Q224,66 218,138 L138,138 Z" fill="#fff" stroke={INK} strokeWidth={6} strokeLinejoin="round" />
@@ -641,8 +668,11 @@ export const Ship: React.FC<{
           <Arm x={226} y={186} angle={wave + 10 * Math.sin(t * 9 + phase + 1)} side="r" len={34} color={c} />
         </>
       ) : null}
-      {/* lambung */}
+      {/* lambung: ekstrusi (sisi tebal lebih gelap) lalu muka lambung */}
+      <path d="M22,150 L238,150 Q230,222 184,232 L76,232 Q30,222 22,150 Z" transform="translate(0 15)" fill={cd} stroke={INK} strokeWidth={6.5} strokeLinejoin="round" />
       <path d="M22,150 L238,150 Q230,222 184,232 L76,232 Q30,222 22,150 Z" fill={c} stroke={INK} strokeWidth={6.5} strokeLinejoin="round" />
+      <path d="M30,158 Q36,214 80,224" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.75} />
+      <path d="M34,153 L230,153" stroke="#fff" strokeWidth={4} strokeLinecap="round" opacity={0.55} />
       <path d="M28,166 L232,166" stroke="#fff" strokeWidth={8} strokeLinecap="round" opacity={0.85} />
       <path d="M40,222 Q80,232 130,232 L184,232 Q222,226 232,196 Q200,226 150,224 Z" fill={cd} opacity={0.38} />
       <path d="M150,60 Q196,80 206,118" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.7} />
@@ -674,9 +704,10 @@ export const Basket: React.FC<{ readonly w: number }> = ({ w }) => {
       ))}
       {nuts.map(([x, y], i) => (
         <g key={i}>
-          <circle cx={x} cy={y} r={22} fill={toon.orange} stroke={INK} strokeWidth={5} />
+          <circle cx={x} cy={y} r={22} fill="#A8693A" stroke={INK} strokeWidth={5} />
+          <path d={`M${x - 14},${y + 6} Q${x - 4},${y + 22} ${x + 14},${y + 8} L${x + 18},${y - 2} Q${x + 4},${y + 10} ${x - 16},${y - 2} Z`} fill={RED} opacity={0.9} />
           <path d={`M${x - 14},${y - 8} Q${x - 10},${y - 15} ${x - 2},${y - 17}`} fill="none" stroke="#fff" strokeWidth={4.5} strokeLinecap="round" opacity={0.7} />
-          {i % 2 === 0 ? <circle cx={x + 7} cy={y + 8} r={5} fill={RED} stroke={INK} strokeWidth={2} /> : null}
+          <circle cx={x} cy={y} r={22} fill="none" stroke={INK} strokeWidth={5} />
         </g>
       ))}
       <path d="M26,70 L174,70" stroke={INK} strokeWidth={9} strokeLinecap="round" />
@@ -703,14 +734,14 @@ export const Speech: React.FC<{
   readonly strike?: number; // 0..1 coretan merah
   readonly t?: number; // waktu untuk goyang
 }> = ({ text, size = 84, color = toon.ink, tail = "down", strike = 0, t = 0 }) => (
-  <div style={{ position: "relative", display: "inline-block", transform: `rotate(${2 * Math.sin(t * 2.4)}deg) translateY(${Math.sin(t * 3.1) * 5}px)`, transformOrigin: "50% 100%", filter: "drop-shadow(0 14px 10px rgba(40,30,60,0.24))" }}>
+  <div style={{ position: "relative", display: "inline-block", transform: `rotate(${2 * Math.sin(t * 2.4)}deg) translateY(${Math.sin(t * 3.1) * 5}px)`, transformOrigin: "50% 100%", filter: "drop-shadow(14px 24px 0 rgba(30,34,70,0.26))" }}>
     <div
       style={{
         padding: "14px 40px 20px",
         background: "#fff",
         border: `8px solid ${INK}`,
         borderRadius: 70,
-        boxShadow: `0 8px 0 ${INK}, inset 0 -10px 0 rgba(120,130,170,0.18)`,
+        boxShadow: `0 10px 0 #A9B7E0, 0 20px 0 ${INK}, inset 0 -10px 0 rgba(120,130,170,0.18), inset 0 6px 0 rgba(255,255,255,0.9)`,
         fontFamily: toonFont(),
         fontWeight: 700,
         fontSize: size,
@@ -856,5 +887,143 @@ export const Ruler: React.FC<{
         </>
       ) : null}
     </g>
+  );
+};
+
+// ---------------- Lengan memeluk (dua segmen + siku) dan tangan mitten besar ----------------
+// Lengan: bahu -> siku -> tangan. Lengan baju putih (atas) menyambung ke lengan bawah berwarna kulit; siku bulat jelas.
+export const ElbowArm: React.FC<{
+  readonly s: readonly [number, number];
+  readonly e: readonly [number, number];
+  readonly h: readonly [number, number];
+  readonly thick?: number;
+  readonly sleeve?: string;
+  readonly sleeveDark?: string;
+  readonly cuff: string;
+}> = ({ s, e, h, thick = 56, sleeve = toon.blueLight, sleeveDark = "#86B4E8", cuff }) => {
+  const up = `M${s[0]},${s[1]} L${e[0]},${e[1]}`;
+  const fo = `M${e[0]},${e[1]} L${h[0]},${h[1]}`;
+  const ang = (Math.atan2(h[1] - e[1], h[0] - e[0]) * 180) / Math.PI;
+  const cx = e[0] + (h[0] - e[0]) * 0.74;
+  const cy = e[1] + (h[1] - e[1]) * 0.74;
+  const nx = -(h[1] - e[1]);
+  const ny = h[0] - e[0];
+  const nl = Math.hypot(nx, ny) || 1;
+  const ox = (nx / nl) * thick * 0.28;
+  const oy = (ny / nl) * thick * 0.28;
+  return (
+    <g>
+      <path d={`${up} L${h[0]},${h[1]}`} fill="none" stroke={INK} strokeWidth={thick + 16} strokeLinecap="round" strokeLinejoin="round" />
+      {/* lengan atas: lengan baju putih belang biru (gaya pelaut); lengan bawah: kulit */}
+      <path d={up} fill="none" stroke="#fff" strokeWidth={thick} strokeLinecap="round" />
+      <path d={`M${s[0] + (e[0] - s[0]) * 0.12},${s[1] + (e[1] - s[1]) * 0.12} L${e[0]},${e[1]}`} fill="none" stroke={cuff} strokeWidth={thick} strokeDasharray="9 26" />
+      <path d={fo} fill="none" stroke={toon.skin} strokeWidth={thick} strokeLinecap="round" />
+      <path d={`M${e[0] + ox},${e[1] + oy} L${h[0] + ox},${h[1] + oy}`} fill="none" stroke="#EDA27A" strokeWidth={thick * 0.28} strokeLinecap="round" />
+      <path d={`M${e[0] - ox * 0.9},${e[1] - oy * 0.9} L${h[0] - ox * 0.9},${h[1] - oy * 0.9}`} fill="none" stroke="#fff" strokeWidth={6} strokeLinecap="round" opacity={0.55} />
+      {/* siku: tekukan bulat (sambungan lengan baju ke lengan bawah) + lipatan di sisi dalam tekukan */}
+      <circle cx={e[0]} cy={e[1]} r={thick / 2 - 1} fill={toon.skin} />
+      <path d={`M${e[0] + ox * 1.1},${e[1] + oy * 1.1} m${-thick * 0.18},${thick * 0.02} q${thick * 0.18},${thick * 0.2} ${thick * 0.36},0`} fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" />
+      <ellipse cx={e[0] - ox * 0.9} cy={e[1] - oy * 0.9 - thick * 0.05} rx={thick * 0.15} ry={thick * 0.07} fill="#fff" opacity={0.75} />
+      {/* manset di pergelangan */}
+      <g transform={`translate(${cx} ${cy}) rotate(${ang})`}>
+        <rect x={-14} y={-(thick / 2 + 7)} width={28} height={thick + 14} rx={11} fill={cuff} stroke={INK} strokeWidth={6} />
+      </g>
+    </g>
+  );
+};
+
+// Tangan mitten besar yang MELINGKAR: telapak bulat, tiga garis jari, jempol melintang di depan jari.
+export const WrapHand: React.FC<{ readonly x: number; readonly y: number; readonly r: number; readonly rot?: number; readonly flip?: boolean; readonly squeeze?: number }> = ({ x, y, r, rot = 0, flip = false, squeeze = 0 }) => (
+  <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${flip ? -1 : 1} 1)`}>
+    <ellipse cx={0} cy={0} rx={r} ry={r * 0.88} fill={toon.skin} stroke={INK} strokeWidth={r * 0.14} />
+    {[-0.36, 0, 0.36].map((k, i) => (
+      <path key={i} d={`M${r * 0.18 - squeeze * 2},${r * k - r * 0.12} Q${r * 0.55},${r * k + r * 0.12} ${r * 0.86},${r * k - r * 0.04}`} fill="none" stroke={INK} strokeWidth={r * 0.085} strokeLinecap="round" />
+    ))}
+    <ellipse cx={-r * 0.12} cy={r * 0.36} rx={r * 0.52} ry={r * 0.25} transform={`rotate(-12 ${-r * 0.12} ${r * 0.36})`} fill={toon.skin} stroke={INK} strokeWidth={r * 0.1} />
+    <ellipse cx={-r * 0.3} cy={-r * 0.55} rx={r * 0.3} ry={r * 0.1} fill="#fff" opacity={0.65} />
+  </g>
+);
+
+// ---------------- Pulau DIGENGGAM: lengan menekuk (siku), telapak di bawah pulau, jari melingkar di DEPAN tepi pulau ----------------
+// Koordinat unit: pulau 400 lebar di (0,0). viewBox x -300..460, y 0..520. Tangan dari kiri; mirror=true untuk dari kanan.
+export const GRASP_W = 760;
+export const GRASP_X0 = -300;
+export const GraspedIsland: React.FC<{
+  readonly kind: "manhattan" | "run";
+  readonly color: string;
+  readonly dark: string;
+  readonly k: number; // skala (1 unit = k px)
+  readonly t: number;
+  readonly squeeze?: number;
+  readonly flag?: "en" | "nl";
+  readonly mirror?: boolean;
+}> = ({ kind, color, dark, k, t, squeeze = 0, flag, mirror = false }) => {
+  const sh: [number, number] = [-300, 330];
+  const el: [number, number] = [-110, 425];
+  const wr: [number, number] = [60, 342];
+  const thick = 96;
+  const ang = (Math.atan2(wr[1] - el[1], wr[0] - el[0]) * 180) / Math.PI;
+  const cuffX = el[0] + (wr[0] - el[0]) * 0.74;
+  const cuffY = el[1] + (wr[1] - el[1]) * 0.74;
+  const armD = `M${sh[0]},${sh[1]} L${el[0]},${el[1]} L${wr[0]},${wr[1]}`;
+  const fx = [78, 140, 202, 264];
+  const fy0 = [186, 168, 160, 176];
+  const fh = (i: number) => [96, 118, 124, 106][i] - squeeze * (i % 2 ? 8 : 5);
+  const fingerShift = squeeze * 4;
+  return (
+    <svg
+      width={GRASP_W * k}
+      height={520 * k}
+      viewBox={`${GRASP_X0} 0 ${GRASP_W} 520`}
+      style={{ overflow: "visible", display: "block", transform: mirror ? "scaleX(-1)" : undefined }}
+    >
+      {/* bayangan jatuh tegas di bawah tangan + pulau */}
+      <ellipse cx={150} cy={478} rx={250} ry={20} fill="#0C3140" opacity={0.3} />
+      {/* lengan menekuk: bahu (luar layar) -> siku -> pergelangan */}
+      <path d={armD} fill="none" stroke={INK} strokeWidth={thick + 18} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={armD} fill="none" stroke={color} strokeWidth={thick} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={`M${el[0]},${el[1] + thick * 0.3} L${wr[0]},${wr[1] + thick * 0.3}`} fill="none" stroke={dark} strokeWidth={16} strokeLinecap="round" opacity={0.55} />
+      <path d={`M${sh[0] + 40},${sh[1] - thick * 0.28} L${el[0] + 8},${el[1] - thick * 0.28}`} fill="none" stroke="#fff" strokeWidth={9} strokeLinecap="round" opacity={0.5} />
+      <path d={`M${el[0] + 40},${el[1] - thick * 0.3} L${wr[0] - 70},${wr[1] - thick * 0.3}`} fill="none" stroke="#fff" strokeWidth={9} strokeLinecap="round" opacity={0.5} />
+      {/* siku */}
+      <path d={`M${el[0] - 26},${el[1] + 8} Q${el[0] - 4},${el[1] + 40} ${el[0] + 30},${el[1] + 14}`} fill="none" stroke={INK} strokeWidth={6} strokeLinecap="round" />
+      {/* manset */}
+      <g transform={`translate(${cuffX} ${cuffY}) rotate(${ang})`}>
+        <rect x={-20} y={-(thick / 2 + 8)} width={40} height={thick + 16} rx={16} fill="#fff" stroke={INK} strokeWidth={7} />
+        <path d="M-6,-30 L-6,30" stroke={dark} strokeWidth={5} strokeLinecap="round" opacity={0.35} />
+      </g>
+      {/* punggung tangan / telapak di BELAKANG-BAWAH pulau */}
+      <ellipse cx={190} cy={322} rx={176} ry={74} fill={color} stroke={INK} strokeWidth={8} />
+      <path d="M90,306 Q190,262 290,306" fill="none" stroke={dark} strokeWidth={8} strokeLinecap="round" opacity={0.35} />
+      {/* pulau */}
+      <g>
+        <Island kind={kind} w={400} t={t} />
+      </g>
+      {flag ? (
+        <g transform={`translate(${kind === "manhattan" ? 44 : 352} 196)`}>
+          <line x1={0} y1={0} x2={0} y2={-190} stroke={INK} strokeWidth={13} strokeLinecap="round" />
+          <line x1={0} y1={0} x2={0} y2={-190} stroke="#fff" strokeWidth={5.5} strokeLinecap="round" />
+          <circle cx={0} cy={-192} r={9} fill={toon.yellow} stroke={INK} strokeWidth={4} />
+          <g transform={`translate(0 -184) scale(${mirror ? -1 : 1} 1)`}>
+            <g transform={`translate(6 0) skewY(${5 * Math.sin(t * 5)}) scale(1.35)`}>
+              <FlagG kind={flag} />
+            </g>
+          </g>
+        </g>
+      ) : null}
+      {/* jari melingkar di DEPAN tepi pulau */}
+      <g transform={`translate(0 ${-fingerShift})`}>
+        {fx.map((x, i) => (
+          <g key={x}>
+            <rect x={x} y={fy0[i]} width={66} height={fh(i)} rx={33} fill={color} stroke={INK} strokeWidth={7} />
+            <ellipse cx={x + 33} cy={fy0[i] + 22} rx={14} ry={6} fill="#fff" opacity={0.55} />
+            <path d={`M${x + 14},${fy0[i] + fh(i) - 14} Q${x + 33},${fy0[i] + fh(i) - 2} ${x + 52},${fy0[i] + fh(i) - 14}`} fill="none" stroke={dark} strokeWidth={4} strokeLinecap="round" opacity={0.5} />
+          </g>
+        ))}
+        {/* jempol: naik di sisi pulau, melintang di DEPAN tepi kiri pulau */}
+        <rect x={14} y={150} width={70} height={150} rx={35} transform={`rotate(14 49 225)`} fill={color} stroke={INK} strokeWidth={7} />
+        <ellipse cx={42} cy={178} rx={13} ry={7} transform={`rotate(14 42 178)`} fill="#fff" opacity={0.55} />
+      </g>
+    </svg>
   );
 };
