@@ -69,7 +69,7 @@ for i,(_,frame,vol) in enumerate(clips+sfx):
 mb=len(clips+sfx)
 filters.append(f'[{mb}:a]aresample=48000,volume=0.063,afade=t=in:st=0:d=1,afade=t=out:st={(scene_frame/FPS)-4:.3f}:d=4,atrim=duration={scene_frame/FPS:.3f}[bed]')
 ins=''.join(f'[a{i}]' for i in range(mb))+'[bed]'
-filters.append(f'{ins}amix=inputs={mb+1}:duration=longest:normalize=0,alimiter=limit=0.95,apad=whole_dur={scene_frame/FPS:.3f},atrim=duration={scene_frame/FPS:.3f}[out]')
+filters.append(f'{ins}amix=inputs={mb+1}:duration=longest:normalize=0,alimiter=limit=0.95:latency=1,apad=whole_dur={scene_frame/FPS:.3f},atrim=duration={scene_frame/FPS:.3f}[out]')
 args+=['-filter_complex',';'.join(filters),'-map','[out]','-c:a','aac','-b:a','192k','-ar','48000','-t',f'{scene_frame/FPS:.3f}',str(out)]
 print(f'Mixing {len(clips)} VO + {len(sfx)} SFX + bed, {scene_frame} frames ({scene_frame/FPS:.3f}s)',flush=True)
 subprocess.run(args,check=True)
