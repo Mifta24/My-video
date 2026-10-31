@@ -409,34 +409,105 @@ export const TreatySheet: React.FC<{ readonly w: number; readonly stampP?: numbe
 );
 
 // ---------------- Tangan mainan menggenggam (datang dari kiri; cermin untuk kanan) ----------------
-// viewBox 0 0 520 300; pusat kepalan (330, 150); bagian atas kepalan di y = 70.
+// viewBox 0 0 520 300; pusat kepalan (330, 150); bagian atas kepalan di y = 62.
+// Semua bentuk (lengan, telapak, jari, jempol) digambar sebagai SATU siluet (tepi tinta di bawah, warna di atas)
+// sehingga tidak ada sambungan pergelangan yang terputus. Manset menutupi pergelangan.
 export const FIST_CX = 330;
-export const FIST_TOP = 70;
+export const FIST_TOP = 62;
 export const Fist: React.FC<{ readonly color: string; readonly dark: string; readonly w: number; readonly squeeze?: number }> = ({ color, dark, w, squeeze = 0 }) => {
-  const fingers = [74, 112, 150, 188];
-  return (
-    <svg width={w} height={(w * 300) / 520} viewBox="0 0 520 300" style={{ overflow: "visible", display: "block" }}>
-      {/* lengan + manset */}
-      <rect x={-300} y={104} width={470} height={92} rx={30} fill={color} stroke={INK} strokeWidth={7} />
-      <rect x={176} y={112} width={86} height={76} fill={color} stroke={INK} strokeWidth={7} />
-      <rect x={176} y={116} width={86} height={68} fill={color} />
-      <rect x={150} y={92} width={40} height={116} rx={14} fill="#fff" stroke={INK} strokeWidth={7} />
-      {/* telapak */}
-      <rect x={236} y={66} width={120} height={162} rx={42} fill={color} stroke={INK} strokeWidth={7} />
-      {/* jari */}
-      {fingers.map((y, i) => (
-        <g key={y} transform={`translate(${-squeeze * 6 * (i % 2 ? 1 : 0.6)} 0)`}>
-          <rect x={262} y={y} width={146} height={38} rx={19} fill={color} stroke={INK} strokeWidth={6.5} />
-          <ellipse cx={382} cy={y + 12} rx={12} ry={5} fill="#fff" opacity={0.4} />
-          <line x1={300} y1={y + 24} x2={330} y2={y + 24} stroke={dark} strokeWidth={4} strokeLinecap="round" opacity={0.6} />
-        </g>
+  const fingerY = [94, 134, 174, 212];
+  const body = (
+    <>
+      {/* lengan: lekuk halus (otot lengan bawah) mengecil mulus ke pergelangan */}
+      <path d="M-300,108 C-110,106 40,78 215,112 L285,118 L285,184 L215,190 C40,232 -110,196 -300,194 Z" />
+      {/* telapak bulat */}
+      <ellipse cx={318} cy={152} rx={86} ry={96} />
+      {/* jari bulat (mitten) */}
+      {fingerY.map((y, i) => (
+        <ellipse key={y} cx={376 - squeeze * 9 * (i % 2 ? 1 : 0.6)} cy={y} rx={60} ry={24} />
       ))}
-      {/* ibu jari di atas */}
-      <g transform="rotate(-8 330 60)">
-        <rect x={270} y={34} width={104} height={40} rx={20} fill={color} stroke={INK} strokeWidth={6.5} />
-        <ellipse cx={346} cy={46} rx={12} ry={5} fill="#fff" opacity={0.4} />
+      {/* jempol */}
+      <ellipse cx={322} cy={54} rx={58} ry={27} transform="rotate(-8 322 54)" />
+    </>
+  );
+  return (
+    <svg width={w} height={(w * 300) / 520} viewBox="0 0 520 300" style={{ overflow: "visible", display: "block", filter: "drop-shadow(0 10px 10px rgba(40,30,60,0.22))" }}>
+      <g fill={INK} stroke={INK} strokeWidth={16} strokeLinejoin="round">
+        {body}
       </g>
+      <g fill={color}>{body}</g>
+      {/* bayangan lembut telapak + sorot lengan */}
+      <path d="M-280,120 C-120,118 20,98 150,116" fill="none" stroke="#fff" strokeWidth={9} strokeLinecap="round" opacity={0.4} />
+      {/* garis antarjari */}
+      {[114, 154, 193].map((y) => (
+        <path key={y} d={`M${352 - squeeze * 6},${y} Q${392 - squeeze * 6},${y + 4} ${428 - squeeze * 8},${y - 1}`} fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" />
+      ))}
+      {fingerY.map((y, i) => (
+        <ellipse key={`h${y}`} cx={398 - squeeze * 9 * (i % 2 ? 1 : 0.6)} cy={y - 9} rx={14} ry={5} fill="#fff" opacity={0.45} />
+      ))}
+      {/* jempol melingkup */}
+      <path d="M268,70 Q320,86 384,64" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" />
+      <ellipse cx={338} cy={42} rx={18} ry={5.5} fill="#fff" opacity={0.5} transform="rotate(-8 338 42)" />
+      {/* manset menyatu dengan lengan (sedikit melebar, dengan lipatan) */}
+      <rect x={174} y={92} width={66} height={116} rx={22} fill="#fff" stroke={INK} strokeWidth={7} />
+      <path d="M186,106 L186,194" stroke={dark} strokeWidth={6} strokeLinecap="round" opacity={0.35} />
+      <path d="M222,108 Q230,150 222,192" fill="none" stroke={color} strokeWidth={5} strokeLinecap="round" opacity={0.7} />
     </svg>
+  );
+};
+
+// ---------------- Tangan mitten kecil (untuk lengan kapal) ----------------
+// Digambar di koordinat halaman (di dalam <svg>): pusat (x, y), jari-jari r, putar rot derajat.
+export const Mitten: React.FC<{ readonly x: number; readonly y: number; readonly r: number; readonly rot?: number; readonly color?: string; readonly flip?: boolean }> = ({ x, y, r, rot = 0, color = toon.skin, flip = false }) => {
+  // bola tangan + jempol kecil mengarah ke bawah-dalam (bukan thumbs-up)
+  const parts = (
+    <>
+      <ellipse cx={0} cy={0} rx={r} ry={r * 0.9} />
+      <ellipse cx={-r * 0.55} cy={r * 0.62} rx={r * 0.42} ry={r * 0.3} transform={`rotate(35 ${-r * 0.55} ${r * 0.62})`} />
+    </>
+  );
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${flip ? -1 : 1} 1)`}>
+      <g fill={INK} stroke={INK} strokeWidth={r * 0.3} strokeLinejoin="round">
+        {parts}
+      </g>
+      <g fill={color}>{parts}</g>
+      <path d={`M${r * 0.18},${-r * 0.35} L${r * 0.62},${-r * 0.3}`} fill="none" stroke={INK} strokeWidth={r * 0.11} strokeLinecap="round" />
+      <path d={`M${r * 0.2},${r * 0.02} L${r * 0.66},${r * 0.08}`} fill="none" stroke={INK} strokeWidth={r * 0.11} strokeLinecap="round" />
+      <ellipse cx={r * 0.2} cy={-r * 0.62} rx={r * 0.3} ry={r * 0.11} fill="#fff" opacity={0.6} />
+    </g>
+  );
+};
+
+// Lengan tebal dari bahu (sx, sy) ke tangan: lengan baju putih di pangkal, kulit, manset biru tua tepat
+// sebelum tangan mitten. pts = kurva cubic [c1x, c1y, c2x, c2y, ex, ey]. Seluruh lengan digambar di depan.
+export const HugArm: React.FC<{
+  readonly sx: number;
+  readonly sy: number;
+  readonly pts: readonly [number, number, number, number, number, number];
+  readonly thick?: number;
+  readonly cuff: string;
+  readonly handRot?: number;
+  readonly part?: "arm" | "hand" | "both";
+}> = ({ sx, sy, pts, thick = 48, cuff, handRot = 0, part = "both" }) => {
+  const d = `M${sx},${sy} C${pts[0]},${pts[1]} ${pts[2]},${pts[3]} ${pts[4]},${pts[5]}`;
+  const hand = <Mitten x={pts[4]} y={pts[5]} r={thick * 0.85} rot={handRot} flip={handRot > 0} />;
+  if (part === "hand") {
+    return hand;
+  }
+  return (
+    <g>
+      <path d={d} fill="none" stroke={INK} strokeWidth={thick + 16} strokeLinecap="round" />
+      <path d={d} fill="none" stroke={toon.skin} strokeWidth={thick} strokeLinecap="round" />
+      <path d={d} fill="none" stroke="#fff" strokeWidth={5} pathLength={1} strokeDasharray="0.25 0.35 0.2 2" opacity={0.55} transform="translate(-4 -9)" />
+      {/* lengan baju putih di pangkal (bahu) */}
+      <path d={d} fill="none" stroke={INK} strokeWidth={thick + 16} strokeLinecap="round" pathLength={1} strokeDasharray="0.2 2" />
+      <path d={d} fill="none" stroke={toon.blue} strokeWidth={thick + 2} strokeLinecap="round" pathLength={1} strokeDasharray="0.185 2" />
+      {/* manset biru tua tepat sebelum tangan */}
+      <path d={d} fill="none" stroke={INK} strokeWidth={thick + 14} pathLength={1} strokeDasharray="0 0.8 0.17 2" />
+      <path d={d} fill="none" stroke={cuff} strokeWidth={thick + 2} pathLength={1} strokeDasharray="0 0.805 0.16 2" />
+      {part === "both" ? hand : null}
+    </g>
   );
 };
 
@@ -502,8 +573,8 @@ export const ToyKid: React.FC<{
 };
 
 // ---------------- Papan nama kartun ----------------
-export const SignBoard: React.FC<{ readonly w: number; readonly text: string; readonly color: string; readonly size: number; readonly post?: number }> = ({ w, text, color, size, post = 70 }) => (
-  <div style={{ position: "relative", width: w, height: size * 1.9 + post, display: "flex", flexDirection: "column", alignItems: "center" }}>
+export const SignBoard: React.FC<{ readonly w: number; readonly text: string; readonly color: string; readonly size: number; readonly post?: number; readonly t?: number }> = ({ w, text, color, size, post = 70, t = 0 }) => (
+  <div style={{ position: "relative", width: w, height: size * 1.9 + post, display: "flex", flexDirection: "column", alignItems: "center", transform: `rotate(${1.6 * Math.sin(t * 2.2)}deg) translateY(${Math.sin(t * 2.6) * 5}px)`, filter: "drop-shadow(0 18px 14px rgba(40,30,60,0.26))" }}>
     <div
       style={{
         width: w,
@@ -511,7 +582,7 @@ export const SignBoard: React.FC<{ readonly w: number; readonly text: string; re
         borderRadius: 34,
         background: color,
         border: `8px solid ${INK}`,
-        boxShadow: `0 10px 0 ${INK}`,
+        boxShadow: `0 10px 0 ${INK}, inset 0 -14px 0 rgba(0,0,0,0.14), inset 0 12px 0 rgba(255,255,255,0.28)`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -524,9 +595,13 @@ export const SignBoard: React.FC<{ readonly w: number; readonly text: string; re
         paintOrder: "stroke fill",
         whiteSpace: "nowrap",
         boxSizing: "border-box",
+        position: "relative",
       }}
     >
       {text}
+      <div style={{ position: "absolute", left: 38, top: 16, width: 90, height: 12, borderRadius: 6, background: "#fff", opacity: 0.55 }} />
+      <div style={{ position: "absolute", left: 24, top: 18, width: 12, height: 12, borderRadius: 6, background: INK, opacity: 0.8 }} />
+      <div style={{ position: "absolute", right: 24, top: 18, width: 12, height: 12, borderRadius: 6, background: INK, opacity: 0.8 }} />
     </div>
     {post > 0 ? <div style={{ width: 26, flex: 1, background: WOOD_DARK, border: `6px solid ${INK}`, borderTop: "none", boxSizing: "border-box" }} /> : null}
   </div>
@@ -542,12 +617,13 @@ export const Ship: React.FC<{
   readonly mood?: "happy" | "laugh" | "oh";
   readonly wave?: number; // 0 = tanpa lengan; >0 = sudut lengan yang melambai (derajat, 0..180)
   readonly phase?: number;
-}> = ({ kind, w, t, flip = false, mood = "happy", wave = 0, phase = 0 }) => {
+  readonly sway?: number; // derajat goyang (default 2,2)
+}> = ({ kind, w, t, flip = false, mood = "happy", wave = 0, phase = 0, sway = 2.2 }) => {
   const c = kind === "en" ? toon.orange : toon.blue;
   const cd = kind === "en" ? toon.orangeDark : toon.blueDark;
   const cl = kind === "en" ? toon.orangeLight : toon.blueLight;
   return (
-    <svg width={w} height={w} viewBox="0 0 260 260" style={{ overflow: "visible", display: "block", transform: flip ? "scaleX(-1)" : undefined }}>
+    <svg width={w} height={w} viewBox="0 0 260 260" style={{ overflow: "visible", display: "block", transform: `${flip ? "scaleX(-1) " : ""}rotate(${sway * Math.sin(t * 2.1 + phase)}deg)`, transformOrigin: "50% 88%", filter: "drop-shadow(0 12px 10px rgba(30,40,80,0.28))" }}>
       {/* tiang dan layar */}
       <line x1={130} y1={156} x2={130} y2={26} stroke={INK} strokeWidth={12} strokeLinecap="round" />
       <line x1={130} y1={156} x2={130} y2={26} stroke={WOOD} strokeWidth={5} strokeLinecap="round" />
@@ -568,6 +644,9 @@ export const Ship: React.FC<{
       {/* lambung */}
       <path d="M22,150 L238,150 Q230,222 184,232 L76,232 Q30,222 22,150 Z" fill={c} stroke={INK} strokeWidth={6.5} strokeLinejoin="round" />
       <path d="M28,166 L232,166" stroke="#fff" strokeWidth={8} strokeLinecap="round" opacity={0.85} />
+      <path d="M40,222 Q80,232 130,232 L184,232 Q222,226 232,196 Q200,226 150,224 Z" fill={cd} opacity={0.38} />
+      <path d="M150,60 Q196,80 206,118" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.7} />
+      <path d="M130,124 Q196,126 214,120 L214,138 L138,138 Z" fill="#DCE6F5" opacity={0.55} />
       <path d="M52,158 Q90,152 112,158" fill="none" stroke={cl} strokeWidth={9} strokeLinecap="round" opacity={0.9} />
       <circle cx={206} cy={216} r={5} fill={cd} opacity={0.5} />
       <Face cx={130} cy={196} gap={24} r={11} mood={mood} look={[0.5, 0]} blink={blinkOf(t, phase)} />
@@ -622,15 +701,16 @@ export const Speech: React.FC<{
   readonly color?: string;
   readonly tail?: "left" | "right" | "down";
   readonly strike?: number; // 0..1 coretan merah
-}> = ({ text, size = 84, color = toon.ink, tail = "down", strike = 0 }) => (
-  <div style={{ position: "relative", display: "inline-block" }}>
+  readonly t?: number; // waktu untuk goyang
+}> = ({ text, size = 84, color = toon.ink, tail = "down", strike = 0, t = 0 }) => (
+  <div style={{ position: "relative", display: "inline-block", transform: `rotate(${2 * Math.sin(t * 2.4)}deg) translateY(${Math.sin(t * 3.1) * 5}px)`, transformOrigin: "50% 100%", filter: "drop-shadow(0 14px 10px rgba(40,30,60,0.24))" }}>
     <div
       style={{
         padding: "14px 40px 20px",
         background: "#fff",
         border: `8px solid ${INK}`,
         borderRadius: 70,
-        boxShadow: `0 8px 0 ${INK}`,
+        boxShadow: `0 8px 0 ${INK}, inset 0 -10px 0 rgba(120,130,170,0.18)`,
         fontFamily: toonFont(),
         fontWeight: 700,
         fontSize: size,
@@ -638,9 +718,13 @@ export const Speech: React.FC<{
         color,
         whiteSpace: "nowrap",
         textAlign: "center",
+        position: "relative",
       }}
     >
       {text}
+      <div style={{ position: "absolute", left: 46, top: 14, width: 70, height: 10, borderRadius: 5, background: "#fff", boxShadow: "0 0 0 2px rgba(120,130,170,0.25)", opacity: 0.0 }} />
+      <div style={{ position: "absolute", left: 50, top: 14, width: 80, height: 12, borderRadius: 6, background: "#BFD2F3" }} />
+      <div style={{ position: "absolute", left: 140, top: 14, width: 14, height: 12, borderRadius: 6, background: "#BFD2F3" }} />
     </div>
     <div
       style={{

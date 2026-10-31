@@ -31,6 +31,7 @@ import {
   TreatySheet,
   WaterBand,
   Fist,
+  HugArm,
   FlagPole,
   Speech,
   RED,
@@ -282,42 +283,37 @@ const S04: React.FC<V> = ({ t }) => {
           );
         }}
       </Sh>
-      {/* shot C: kapal Belanda memeluk keranjang pala */}
+      {/* shot C: kapal Belanda memeluk keranjang pala dengan dua lengan tebal melingkar */}
       <Sh t={t} from={5.45}>
         {(lt) => {
           const slideIn = slide(lt, 0.0, 0.7);
-          const hug = slide(lt, 0.6, 0.7);
+          const hug = slide(lt, 0.55, 0.8);
+          const squeeze = lt > 1.4 ? 0.5 + 0.5 * Math.sin((lt - 1.4) * 3.2) : 0;
           const shipX = 540 - 240;
           const shipTop = 690 + bobY(1);
+          const shipLeft = lerp(1100, shipX, slideIn);
+          const sx = (side: 1 | -1) => 540 + side * 205;
+          const sy = shipTop + 322;
+          // Dua lengan tebal dari bahu di sisi lambung, naik lalu MENYILANG DI DEPAN badan keranjang;
+          // mitten bertemu di tengah (kanan di atas kiri), terjepit sedikit saat "memeluk".
           const arm = (side: 1 | -1) => {
-            const sx = 540 + side * 215;
-            const sy = shipTop + 335;
-            const ex = lerp(540 + side * 150, 540 + side * 28, hug);
-            const ey = lerp(shipTop + 300, shipTop + 238, hug);
-            const cx = 540 + side * lerp(215, 170, hug);
-            const cy = lerp(shipTop + 330, shipTop + 215, hug);
-            return { d: `M${sx},${sy} Q${cx},${cy} ${ex},${ey}`, ex, ey };
+            const open: [number, number, number, number, number, number] = [540 + side * 330, shipTop + 300, 540 + side * 380, shipTop + 200, 540 + side * 330, shipTop + 110];
+            const closed: [number, number, number, number, number, number] = [540 + side * 330, shipTop + 290, 540 + side * 215, shipTop + 215, 540 + side * (38 - squeeze * 8) + (side === 1 ? 14 : -14), shipTop + 232 + (side === 1 ? 6 : -4)];
+            return open.map((o, i) => lerp(o, closed[i], hug)) as unknown as [number, number, number, number, number, number];
           };
-          const l = arm(-1);
-          const r = arm(1);
           return (
             <>
-              <div style={{ position: "absolute", left: lerp(1100, shipX, slideIn), top: shipTop }}>
-                <Ship kind="nl" w={480} t={t} mood="laugh" phase={1} />
+              <div style={{ position: "absolute", left: shipLeft, top: shipTop }}>
+                <Ship kind="nl" w={480} t={t} mood="laugh" phase={1} sway={0} />
               </div>
-              <Place x={415} y={shipTop + 55 + bob(lt, 5, 3)} t={lt} at={0.5} origin="50% 100%">
+              <Place x={415} y={shipTop + 70 + bob(lt, 4, 3)} t={lt} at={0.5} origin="50% 100%">
                 <Basket w={250} />
               </Place>
-              <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
-                {[l, r].map((a, i) => (
-                  <g key={i}>
-                    <path d={a.d} fill="none" stroke={INK} strokeWidth={38} strokeLinecap="round" />
-                    <path d={a.d} fill="none" stroke={toon.skin} strokeWidth={24} strokeLinecap="round" />
-                  </g>
-                ))}
-                {[l, r].map((a, i) => (
-                  <circle key={i} cx={a.ex} cy={a.ey} r={27} fill={toon.skin} stroke={INK} strokeWidth={6.5} opacity={hug} />
-                ))}
+              <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0, overflow: "visible", transform: `translateX(${shipLeft - shipX}px)` }}>
+                <g style={{ filter: "drop-shadow(0 8px 6px rgba(30,40,80,0.3))" }}>
+                  <HugArm sx={sx(-1)} sy={sy} pts={arm(-1)} thick={46} cuff={toon.blueDark} handRot={20} />
+                  <HugArm sx={sx(1)} sy={sy} pts={arm(1)} thick={46} cuff={toon.blueDark} handRot={-20} />
+                </g>
               </svg>
               <WaterBand y0={1110} y1={1400} t={t} seed="s04c" />
               <BigWord text={"HANYA\nKAMI"} t={lt} at={cue("s04", "Belanda ingin") - 5.45 + 0.1} y={330} size={140} color={toon.blue} width={900} />
@@ -346,7 +342,7 @@ const S05: React.FC<V> = ({ t }) => {
         <FlagPole kind={old ? "nl" : "en"} x={285} y={950} h={240} w={160} t={t} />
         <div style={{ position: "absolute", left: 540 - 400, top: 360, width: 800, display: "flex", justifyContent: "center", opacity: appear(t, 0.5, 0.2), transform: `scale(${pop(t, 0.5, 0.5)})`, perspective: 1200 }}>
           <div style={{ transform: `rotateX(${rot}deg)` }}>
-            {old ? <SignBoard w={780} text="NEW AMSTERDAM" color={toon.blue} size={74} post={0} /> : <SignBoard w={780} text="NEW YORK" color={toon.orange} size={110} post={0} />}
+            {old ? <SignBoard w={780} text="NEW AMSTERDAM" color={toon.blue} size={74} post={0} t={t} /> : <SignBoard w={780} text="NEW YORK" color={toon.orange} size={110} post={0} t={t} />}
           </div>
         </div>
         <CenterX cx={540} y={1230} op={appear(t, 0.8, 0.3)}>
@@ -417,7 +413,7 @@ const S06: React.FC<V> = ({ t }) => {
                 <TreatySheet w={380} stampP={1} rot={2 + bob(lt, 1.2, 2)} />
               </div>
               <Place x={190} y={360} t={lt} at={0.15} origin="50% 100%">
-                <Speech text="kita tukar ya" size={92} tail="down" strike={strike} />
+                <Speech text="kita tukar ya" size={92} tail="down" strike={strike} t={lt} />
               </Place>
               {strike > 0.8 ? <Sparkle x={860} y={470} t={t} size={70} phase={1} /> : null}
             </>
@@ -433,18 +429,18 @@ const S06: React.FC<V> = ({ t }) => {
           return (
             <>
               <div style={{ position: "absolute", left: 0, top: hover, transform: `translateX(${(1 - inn) * -520}px)` }}>
-                <div style={{ position: "absolute", left: 10, top: 790 }}>
-                  <Island kind="manhattan" w={440} t={lt} />
+                <div style={{ position: "absolute", left: 20, top: 700 }}>
+                  <Island kind="manhattan" w={540} t={lt} />
                 </div>
-                <div style={{ position: "absolute", left: -120, top: 970 }}>
+                <div style={{ position: "absolute", left: -120, top: 930 }}>
                   <Fist color={toon.orange} dark={toon.orangeDark} w={520} squeeze={sq} />
                 </div>
               </div>
               <div style={{ position: "absolute", left: 0, top: hover, transform: `translateX(${(1 - inn) * 520}px)` }}>
-                <div style={{ position: "absolute", left: 630, top: 790 }}>
-                  <Island kind="run" w={440} t={lt} />
+                <div style={{ position: "absolute", left: 520, top: 700 }}>
+                  <Island kind="run" w={540} t={lt} />
                 </div>
-                <div style={{ position: "absolute", left: 680, top: 970, transform: "scaleX(-1)" }}>
+                <div style={{ position: "absolute", left: 680, top: 930, transform: "scaleX(-1)" }}>
                   <Fist color={toon.blue} dark={toon.blueDark} w={520} squeeze={sq} />
                 </div>
               </div>

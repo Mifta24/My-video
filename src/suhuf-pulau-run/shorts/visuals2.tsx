@@ -23,14 +23,15 @@ const Hold: React.FC<{ readonly lt: number; readonly kind: "manhattan" | "run"; 
   return (
     <>
       <div style={{ position: "absolute", left: 0, top: hover, width: 1080, transform: `translateX(${(1 - inn) * dir * 600}px)` }}>
-        <div style={{ position: "absolute", left: 540 - 320, top: 620 }}>
-          <Island kind={kind} w={640} t={lt} />
+        <div style={{ position: "absolute", left: 540 - 360, top: 560 }}>
+          <Island kind={kind} w={720} t={lt} />
         </div>
-        <div style={{ position: "absolute", left: side === "l" ? 210 : 350, top: 960, transform: side === "l" ? undefined : "scaleX(-1)" }}>
+        {/* tangan di DEPAN pulau: telapak dan jari melingkari dasar pulau -> terbaca menggenggam */}
+        <div style={{ position: "absolute", left: side === "l" ? 540 - 330 * 1.25 : 540 + 330 * 1.25, top: 905, transform: `${side === "l" ? "" : "scaleX(-1) "}scale(1.25)`, transformOrigin: "0 0" }}>
           <Fist color={color} dark={dark} w={520} squeeze={sq} />
         </div>
       </div>
-      <FlagPole kind={who} x={700} y={900} h={230} w={150} t={lt} />
+      <FlagPole kind={who} x={side === "l" ? 840 : 215} y={915} h={300} w={150} t={lt} />
       <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", opacity: appear(lt, 0.6, 0.3), transform: `scale(${pop(lt, 0.6, 0.5)})` }}>
         <Chip text={label} color={color} size={110} />
       </div>
@@ -170,7 +171,7 @@ const S09: React.FC<V> = ({ t }) => (
               </svg>
             </div>
             <Place x={330} y={370} t={lt} at={0.4} origin="50% 100%">
-              <Speech text="tukar" size={110} tail="down" strike={strike} />
+              <Speech text="tukar" size={110} tail="down" strike={strike} t={lt} />
             </Place>
           </>
         );
@@ -199,7 +200,7 @@ const S10: React.FC<V> = ({ t }) => (
               <BigWord text="DIPERSINGKAT" t={lt} at={cue("s10", "disederhanakan") - 0.9} y={300} size={110} color={toon.orange} width={1040} />
             )}
             <Place x={160} y={1120} t={lt} at={1.0} origin="50% 100%">
-              <Speech text="ditukar!" size={90} tail="left" />
+              <Speech text="ditukar!" size={90} tail="left" t={lt} />
             </Place>
           </>
         );
