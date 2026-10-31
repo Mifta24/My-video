@@ -125,9 +125,11 @@ export const NLHug: React.FC<{ readonly t: number; readonly lt: number; readonly
     </>
   );
 };
+// L-09 (draf 2): potongan bersih (CutShot, tanpa silang-pudar 0,3 dtk yang di draf 1 memunculkan judul ganda dan
+// kapal bayangan). Kapal-peluk SATU elemen persisten dari 2,5 dtk sampai akhir; hanya judul + pil yang berganti di 8,4.
 const L09: React.FC<V> = ({ t }) => (
   <>
-    <Shot t={t} to={2.6}>
+    <CutShot t={t} to={2.5}>
       {(lt) => (
         <>
           <Big text="BELANDA DATANG" t={lt} y={BIG_Y} size={114} color={toon.blue} />
@@ -137,25 +139,26 @@ const L09: React.FC<V> = ({ t }) => (
           <ChipAt cx={960} y={772} t={lt}><LChip text="VOC" color={toon.blueDark} size={45} flag="nl" /></ChipAt>
         </>
       )}
-    </Shot>
-    <Shot t={t} from={2.5} to={8.5}>
+    </CutShot>
+    <CutShot t={t} from={2.5} to={8.4}>
       {(lt) => (
         <>
           <Big text="PALANYA" t={lt} y={BIG_Y} size={133} color={toon.blue} />
-          <NLHug t={t} lt={lt} />
           <Sub text="ingin dipegang sendiri" t={lt} at={0.7} y={288} size={40} />
         </>
       )}
-    </Shot>
-    <Shot t={t} from={8.4}>
+    </CutShot>
+    <CutShot t={t} from={8.4}>
       {(lt) => (
         <>
           <Big text="MONOPOLI" t={lt} y={BIG_Y} size={137} color={toon.blue} />
-          <NLHug t={t} lt={lt} closed />
           <Sub text="hanya satu yang boleh jual" t={lt} y={288} size={40} />
         </>
       )}
-    </Shot>
+    </CutShot>
+    <CutShot t={t} from={2.5}>
+      {(lt) => <NLHug t={t} lt={lt} />}
+    </CutShot>
   </>
 );
 
@@ -164,8 +167,9 @@ const L09: React.FC<V> = ({ t }) => (
 // Elemen lain berganti dengan potongan bersih: shot lama habis TEPAT saat shot baru mulai (tanpa tumpang tindih).
 const L10_CUTS = [3.3, 6.9] as const;
 const CutShot: React.FC<{ readonly t: number; readonly from?: number; readonly to?: number; readonly children: (lt: number) => React.ReactNode }> = ({ t, from = 0, to = 9999, children }) => {
-  const inn = from <= 0 ? 1 : interpolate(t, [from, from + 0.1], [0, 1], clamp01);
-  const out = interpolate(t, [to - 0.1, to], [1, 0], clamp01);
+  // potongan keras: frame terakhir shot lama tepat sebelum `to`, shot baru penuh 1 frame setelah `from` (tanpa frame kosong)
+  const inn = from <= 0 ? 1 : interpolate(t, [from, from + 1 / 30], [0, 1], clamp01);
+  const out = interpolate(t, [to, to + 1 / 30], [1, 0], clamp01);
   const o = Math.min(inn, out);
   if (o <= 0) {
     return null;
