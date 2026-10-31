@@ -1,0 +1,535 @@
+{
+ "voice": "id-ID-ArdiNeural",
+ "rate": "-2%",
+ "scenes": [
+  {
+   "id": "l01",
+   "title": "Pertanyaan",
+   "bab": 1,
+   "babTitle": "HOOK MISTERI",
+   "clips": [
+    {
+     "id": "l01_01",
+     "text": "Katanya, kota New York pernah ditukar dengan sebuah pulau kecil penghasil pala."
+    },
+    {
+     "id": "l01_02",
+     "text": "Ditukar, atau tidak?"
+    },
+    {
+     "id": "l01_03",
+     "text": "Cerita ini punya satu kejutan di ujung."
+    }
+   ]
+  },
+  {
+   "id": "l02",
+   "title": "Salam pembuka",
+   "bab": 1,
+   "babTitle": "HOOK MISTERI",
+   "clips": [
+    {
+     "id": "l02_01",
+     "text": "Satu lembar, satu cerita."
+    },
+    {
+     "id": "l02_02",
+     "text": "Selamat datang di Suhuf Pengetahuan."
+    },
+    {
+     "id": "l02_03",
+     "text": "Hari ini kita jadi detektif sejarah."
+    }
+   ]
+  },
+  {
+   "id": "l03",
+   "title": "Pulau mungil",
+   "bab": 2,
+   "babTitle": "SIAPA PULAU RUN?",
+   "clips": [
+    {
+     "id": "l03_01",
+     "text": "Mari kenalan dengan pulau Run."
+    },
+    {
+     "id": "l03_02",
+     "text": "Pulaunya kecil sekali, sekitar tiga kali satu kilometer."
+    },
+    {
+     "id": "l03_03",
+     "text": "Kalau dilihat di peta, hampir tidak kelihatan."
+    }
+   ]
+  },
+  {
+   "id": "l04",
+   "title": "Letaknya",
+   "bab": 2,
+   "babTitle": "SIAPA PULAU RUN?",
+   "clips": [
+    {
+     "id": "l04_01",
+     "text": "Letaknya di Kepulauan Banda, Maluku."
+    },
+    {
+     "id": "l04_02",
+     "text": "Run adalah pulau yang paling barat di sana."
+    }
+   ]
+  },
+  {
+   "id": "l05",
+   "title": "Pala dan fuli",
+   "bab": 2,
+   "babTitle": "SIAPA PULAU RUN?",
+   "clips": [
+    {
+     "id": "l05_01",
+     "text": "Pada masa itu, pulau mungil ini sangat berharga."
+    },
+    {
+     "id": "l05_02",
+     "text": "Sebabnya, di sana tumbuh pala dan fuli, dua hasil kebun yang sangat dicari."
+    }
+   ]
+  },
+  {
+   "id": "l06",
+   "title": "Rekap bab 2",
+   "bab": 2,
+   "babTitle": "SIAPA PULAU RUN?",
+   "clips": [
+    {
+     "id": "l06_01",
+     "text": "Jadi, Run itu pulau mungil di Maluku yang berharga karena palanya."
+    }
+   ]
+  },
+  {
+   "id": "l07",
+   "title": "Inggris datang",
+   "bab": 3,
+   "babTitle": "KENAPA DIREBUT?",
+   "clips": [
+    {
+     "id": "l07_01",
+     "text": "Di tahun 1616, seorang kapten Inggris bernama Nathaniel Courthope tiba di Run."
+    },
+    {
+     "id": "l07_02",
+     "text": "Dia datang atas nama Perusahaan Hindia Timur Inggris."
+    }
+   ]
+  },
+  {
+   "id": "l08",
+   "title": "Surat",
+   "bab": 3,
+   "babTitle": "KENAPA DIREBUT?",
+   "clips": [
+    {
+     "id": "l08_01",
+     "text": "Penduduk pulau menandatangani sebuah surat."
+    },
+    {
+     "id": "l08_02",
+     "text": "Isinya, mereka mengakui Raja James dari Inggris."
+    }
+   ]
+  },
+  {
+   "id": "l09",
+   "title": "Belanda ingin sendiri",
+   "bab": 3,
+   "babTitle": "KENAPA DIREBUT?",
+   "clips": [
+    {
+     "id": "l09_01",
+     "text": "Tapi Belanda punya keinginan lain."
+    },
+    {
+     "id": "l09_02",
+     "text": "Lewat perusahaan dagangnya, VOC, Belanda ingin memegang sendiri semua perdagangan pala."
+    },
+    {
+     "id": "l09_03",
+     "text": "Itu namanya monopoli."
+    }
+   ]
+  },
+  {
+   "id": "l10",
+   "title": "Perumpamaan toko",
+   "bab": 3,
+   "babTitle": "KENAPA DIREBUT?",
+   "clips": [
+    {
+     "id": "l10_01",
+     "text": "Bayangkan di kompleks rumahmu ada satu toko es krim."
+    },
+    {
+     "id": "l10_02",
+     "text": "Pemilik toko ingin hanya dialah yang boleh jualan es krim di sana."
+    },
+    {
+     "id": "l10_03",
+     "text": "Begitulah monopoli."
+    }
+   ]
+  },
+  {
+   "id": "l11",
+   "title": "Rebutan",
+   "bab": 3,
+   "babTitle": "KENAPA DIREBUT?",
+   "clips": [
+    {
+     "id": "l11_01",
+     "text": "Maka Run jadi pulau yang diperebutkan."
+    },
+    {
+     "id": "l11_02",
+     "text": "Dua negara berebut pulau penghasil pala."
+    }
+   ]
+  },
+  {
+   "id": "l12",
+   "title": "Rekap bab 3",
+   "bab": 3,
+   "babTitle": "KENAPA DIREBUT?",
+   "clips": [
+    {
+     "id": "l12_01",
+     "text": "Jadi, Run diperebutkan karena palanya, dan Belanda ingin memegang semua dagang pala."
+    }
+   ]
+  },
+  {
+   "id": "l13",
+   "title": "Manhattan",
+   "bab": 4,
+   "babTitle": "DI PULAU LAIN",
+   "clips": [
+    {
+     "id": "l13_01",
+     "text": "Sekarang pindah ke pulau lain, yaitu Manhattan."
+    },
+    {
+     "id": "l13_02",
+     "text": "Di sana ada kota milik Belanda bernama New Amsterdam."
+    }
+   ]
+  },
+  {
+   "id": "l14",
+   "title": "New York",
+   "bab": 4,
+   "babTitle": "DI PULAU LAIN",
+   "clips": [
+    {
+     "id": "l14_01",
+     "text": "Lalu Inggris menduduki kota itu dan menamainya New York."
+    }
+   ]
+  },
+  {
+   "id": "l15",
+   "title": "Dua pulau",
+   "bab": 4,
+   "babTitle": "DI PULAU LAIN",
+   "clips": [
+    {
+     "id": "l15_01",
+     "text": "Jadi sekarang ada dua pulau kecil dalam cerita ini: Manhattan dan Run."
+    },
+    {
+     "id": "l15_02",
+     "text": "Nanti, keduanya akan dibicarakan bersamaan."
+    }
+   ]
+  },
+  {
+   "id": "l16",
+   "title": "Rekap bab 4",
+   "bab": 4,
+   "babTitle": "DI PULAU LAIN",
+   "clips": [
+    {
+     "id": "l16_01",
+     "text": "Jadi, Inggris memegang Manhattan, dan pulau pala Run jadi bahan rebutan."
+    }
+   ]
+  },
+  {
+   "id": "l17",
+   "title": "Pertanyaan untukmu",
+   "bab": 5,
+   "babTitle": "PERTANYAAN DAN PERJANJIAN 1667",
+   "clips": [
+    {
+     "id": "l17_01",
+     "text": "Sekarang giliranmu menebak."
+    },
+    {
+     "id": "l17_02",
+     "text": "Menurutmu, di surat perjanjian itu, apakah tertulis kata tukar?"
+    }
+   ]
+  },
+  {
+   "id": "l18",
+   "title": "Perjanjian damai",
+   "bab": 5,
+   "babTitle": "PERTANYAAN DAN PERJANJIAN 1667",
+   "clips": [
+    {
+     "id": "l18_01",
+     "text": "Kita lihat jawabannya."
+    },
+    {
+     "id": "l18_02",
+     "text": "Tahun 1667, dibuat Perjanjian Breda."
+    },
+    {
+     "id": "l18_03",
+     "text": "Perjanjian itu mengakhiri perang antara Inggris dan Belanda."
+    }
+   ]
+  },
+  {
+   "id": "l19",
+   "title": "Aturan pasal",
+   "bab": 5,
+   "babTitle": "PERTANYAAN DAN PERJANJIAN 1667",
+   "clips": [
+    {
+     "id": "l19_01",
+     "text": "Teks aslinya ditulis dalam bahasa Latin."
+    },
+    {
+     "id": "l19_02",
+     "text": "Aturannya sederhana: masing-masing pihak tetap memegang apa yang sudah dikuasainya."
+    }
+   ]
+  },
+  {
+   "id": "l20",
+   "title": "Perumpamaan kue",
+   "bab": 5,
+   "babTitle": "PERTANYAAN DAN PERJANJIAN 1667",
+   "clips": [
+    {
+     "id": "l20_01",
+     "text": "Bayangkan dua anak membagi kue di piring."
+    },
+    {
+     "id": "l20_02",
+     "text": "Aturannya: kue yang sudah ada di piringmu, tetap jadi milikmu."
+    },
+    {
+     "id": "l20_03",
+     "text": "Tidak ada yang bilang tukar."
+    }
+   ]
+  },
+  {
+   "id": "l21",
+   "title": "Nama tidak ada",
+   "bab": 5,
+   "babTitle": "PERTANYAAN DAN PERJANJIAN 1667",
+   "clips": [
+    {
+     "id": "l21_01",
+     "text": "Di pasal itu, nama Run dan nama Manhattan tidak disebut sama sekali."
+    },
+    {
+     "id": "l21_02",
+     "text": "Tidak ada kata tukar."
+    }
+   ]
+  },
+  {
+   "id": "l22",
+   "title": "Rekap bab 5",
+   "bab": 5,
+   "babTitle": "PERTANYAAN DAN PERJANJIAN 1667",
+   "clips": [
+    {
+     "id": "l22_01",
+     "text": "Jadi, perjanjiannya hanya berkata: yang dipegang, tetap dipegang."
+    }
+   ]
+  },
+  {
+   "id": "l23",
+   "title": "Penengah",
+   "bab": 6,
+   "babTitle": "DI BALIK MEJA PERUNDINGAN",
+   "clips": [
+    {
+     "id": "l23_01",
+     "text": "Tapi sebelum perjanjian itu jadi, ada usul dari seorang penengah dari Prancis."
+    },
+    {
+     "id": "l23_02",
+     "text": "Dia mengusulkan agar Inggris boleh menyimpan wilayah yang berisi Manhattan, sambil melepas Run."
+    }
+   ]
+  },
+  {
+   "id": "l24",
+   "title": "Ditolak",
+   "bab": 6,
+   "babTitle": "DI BALIK MEJA PERUNDINGAN",
+   "clips": [
+    {
+     "id": "l24_01",
+     "text": "Saat itu, Raja Inggris menolak usul itu."
+    },
+    {
+     "id": "l24_02",
+     "text": "Jadi pembicaraan terus berlanjut."
+    }
+   ]
+  },
+  {
+   "id": "l25",
+   "title": "Tekanan di sungai",
+   "bab": 6,
+   "babTitle": "DI BALIK MEJA PERUNDINGAN",
+   "clips": [
+    {
+     "id": "l25_01",
+     "text": "Lalu Belanda mengirim kapal-kapalnya masuk ke sungai dekat London, tempat kapal-kapal Inggris berada."
+    },
+    {
+     "id": "l25_02",
+     "text": "Setelah itu, Inggris mau mengalah soal Run."
+    }
+   ]
+  },
+  {
+   "id": "l26",
+   "title": "Kesepakatan",
+   "bab": 6,
+   "babTitle": "DI BALIK MEJA PERUNDINGAN",
+   "clips": [
+    {
+     "id": "l26_01",
+     "text": "Hasilnya, disepakati bahwa Run tetap di tangan Belanda, dan kedua pihak menyimpan apa yang mereka pegang."
+    }
+   ]
+  },
+  {
+   "id": "l27",
+   "title": "Rekap bab 6",
+   "bab": 6,
+   "babTitle": "DI BALIK MEJA PERUNDINGAN",
+   "clips": [
+    {
+     "id": "l27_01",
+     "text": "Jadi, soal Run dan Manhattan memang dibicarakan bersamaan di meja perundingan."
+    }
+   ]
+  },
+  {
+   "id": "l28",
+   "title": "Dua hasil",
+   "bab": 7,
+   "babTitle": "HASIL AKHIR",
+   "clips": [
+    {
+     "id": "l28_01",
+     "text": "Hasil akhirnya: Inggris tetap memegang Manhattan, yang kemudian dikenal sebagai New York."
+    },
+    {
+     "id": "l28_02",
+     "text": "Belanda tetap memegang Run."
+    }
+   ]
+  },
+  {
+   "id": "l29",
+   "title": "Jadi ditukar?",
+   "bab": 7,
+   "babTitle": "HASIL AKHIR",
+   "clips": [
+    {
+     "id": "l29_01",
+     "text": "Jadi, benarkah Manhattan ditukar dengan Run?"
+    },
+    {
+     "id": "l29_02",
+     "text": "Jawabannya: tidak sepenuhnya salah."
+    },
+    {
+     "id": "l29_03",
+     "text": "Hasilnya memang mirip tukar."
+    },
+    {
+     "id": "l29_04",
+     "text": "Tapi di perjanjian tidak tertulis tukar."
+    }
+   ]
+  },
+  {
+   "id": "l30",
+   "title": "Dua kalimat",
+   "bab": 7,
+   "babTitle": "HASIL AKHIR",
+   "clips": [
+    {
+     "id": "l30_01",
+     "text": "Yang tertulis: yang dipegang tetap dipegang."
+    },
+    {
+     "id": "l30_02",
+     "text": "Yang terjadi: Manhattan ke Inggris dan Run ke Belanda."
+    }
+   ]
+  },
+  {
+   "id": "l31",
+   "title": "Rekap bab 7",
+   "bab": 7,
+   "babTitle": "HASIL AKHIR",
+   "clips": [
+    {
+     "id": "l31_01",
+     "text": "Jadi, ceritanya tidak sepenuhnya salah, tetapi bukan tukar yang tertulis."
+    }
+   ]
+  },
+  {
+   "id": "l32",
+   "title": "Pelajaran",
+   "bab": 8,
+   "babTitle": "PELAJARAN DAN PENUTUP",
+   "clips": [
+    {
+     "id": "l32_01",
+     "text": "Pelajarannya: cerita yang sering diulang kadang disederhanakan, jadi cek dulu apa yang tertulis."
+    }
+   ]
+  },
+  {
+   "id": "l33",
+   "title": "Penutup",
+   "bab": 8,
+   "babTitle": "PELAJARAN DAN PENUTUP",
+   "clips": [
+    {
+     "id": "l33_01",
+     "text": "Kalau kamu suka cerita seperti ini, ikuti @suhufpengetahuan.",
+     "say": "Kalau kamu suka cerita seperti ini, ikuti Suhuf Pengetahuan."
+    },
+    {
+     "id": "l33_02",
+     "text": "Sampai jumpa di lembar berikutnya."
+    }
+   ]
+  }
+ ]
+}
