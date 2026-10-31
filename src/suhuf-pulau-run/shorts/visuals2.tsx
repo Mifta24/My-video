@@ -5,7 +5,7 @@ import { SheetMark } from "../../suhuf-bakteri/elements/Brand";
 import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
 import { cue } from "../timing";
-import { Chip, CardG, GraspedIsland, INK, Island, RED, Speech, TableTop, ToyKid, TreatySheet, Card } from "./kit2d";
+import { Chip, CardG, GRASP_CX, GRASP_FLAG_TOP, GRASP_X0, GRASP_Y0, GraspedIsland, INK, Island, RED, Speech, TableTop, ToyKid, TreatySheet, Card } from "./kit2d";
 import { ScaleIslands3D, scaleState } from "./scene3d";
 import { LogoSheet, type V } from "./visuals";
 
@@ -13,22 +13,26 @@ const clamp01 = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 
 // ---------------- S-07 Hasilnya ----------------
-const Hold: React.FC<{ readonly lt: number; readonly kind: "manhattan" | "run"; readonly side: "l" | "r"; readonly label: string; readonly who: "en" | "nl" }> = ({ lt, kind, side, label, who }) => {
+// Draf 4: pulau 1,8x (720 px = 67% lebar layar), tangan menggenggam sungguhan, kepalan menekuk pelan terus-menerus.
+const Hold: React.FC<{ readonly lt: number; readonly kind: "manhattan-en" | "run"; readonly side: "l" | "r"; readonly label: string; readonly who: "en" | "nl" }> = ({ lt, kind, side, label, who }) => {
   const inn = slide(lt, 0.0, 0.7);
-  const sq = interpolate(lt, [0.7, 1.1, 1.4], [0, 1, 0.7], clamp01);
-  const hover = bob(lt, 5, 2.4);
+  const flex = 0.55 + 0.45 * Math.sin(lt * 2.4);
+  const sq = interpolate(lt, [0.5, 1.0], [0, 1], clamp01) * flex;
+  const hover = bob(lt, 7, 2.1);
   const dir = side === "l" ? -1 : 1;
   const color = who === "en" ? toon.orange : toon.blue;
   const dark = who === "en" ? toon.orangeDark : toon.blueDark;
-  const k = 1.25; // pulau 500 px = 46% lebar layar
-  const left = side === "l" ? 540 - 500 * k : 540 - 760 * k + 500 * k;
+  const k = 1.85;
+  const left = 540 - (GRASP_CX - GRASP_X0) * k;
+  const top = 548 - (GRASP_FLAG_TOP - GRASP_Y0) * k; // puncak tiang bendera di y ~545
+  const tilt = Math.sin(lt * 1.7) * 1.3 * dir;
   return (
     <>
-      <div style={{ position: "absolute", left: left + (1 - inn) * dir * 640, top: 660 + hover }}>
+      <div style={{ position: "absolute", left: left + (1 - inn) * dir * 900, top: top + hover, transform: `rotate(${tilt}deg) scale(${1 + 0.01 * Math.sin(lt * 2.4)})`, transformOrigin: "540px 760px" }}>
         <GraspedIsland kind={kind} color={color} dark={dark} k={k} t={lt} squeeze={sq} flag={who} mirror={side === "r"} />
       </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", opacity: appear(lt, 0.6, 0.3), transform: `scale(${pop(lt, 0.6, 0.5)})` }}>
-        <Chip text={label} color={color} size={110} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: 330, display: "flex", justifyContent: "center", opacity: appear(lt, 0.6, 0.3), transform: `scale(${pop(lt, 0.6, 0.5)})` }}>
+        <Chip text={label} color={color} size={104} />
       </div>
     </>
   );
@@ -37,7 +41,7 @@ const Hold: React.FC<{ readonly lt: number; readonly kind: "manhattan" | "run"; 
 const S07: React.FC<V> = ({ t }) => (
   <>
     <Sh t={t} to={3.2}>
-      {(lt) => <Hold lt={lt} kind="manhattan" side="l" label="INGGRIS" who="en" />}
+      {(lt) => <Hold lt={lt} kind="manhattan-en" side="l" label="INGGRIS" who="en" />}
     </Sh>
     <Sh t={t} from={3.1}>
       {(lt) => <Hold lt={lt} kind="run" side="r" label="BELANDA" who="nl" />}
@@ -54,7 +58,7 @@ const S08: React.FC<V> = ({ t }) => (
         const together = appear(lt, 0.4, 0.4);
         return (
           <>
-            <Tag text="SKEMA" kind="skema" t={lt} />
+            <Tag text="SKEMA" kind="skema" t={lt} y={175} />
             <div style={{ position: "absolute", inset: 0, opacity: together }}>
               <BigWord text={"DIBAHAS\nBERSAMAAN"} t={lt} at={0.4} y={330} size={130} color={toon.blue} width={980} />
             </div>
@@ -74,9 +78,9 @@ const S08: React.FC<V> = ({ t }) => (
         const strike = slide(lt, 0.7, 0.4);
         return (
           <>
-            <BigWord text="TIDAK TERTULIS" t={lt} at={0.15} y={300} size={118} color={toon.orange} width={1040} />
-            <Place x={310} y={520} t={lt} at={0.05} dy={bob(lt, 6, 2.4)} origin="50% 100%">
-              <TreatySheet w={460} stampP={1} rot={-3 + bob(lt, 1.2, 1.9)} />
+            <BigWord text="TIDAK TERTULIS" t={lt} at={0.15} y={338} size={118} color={toon.orange} width={1040} />
+            <Place x={310} y={540} t={lt} at={0.05} dy={bob(lt, 6, 2.4)} origin="50% 100%">
+              <TreatySheet w={440} stampP={1} rot={-3 + bob(lt, 1.2, 1.9)} />
             </Place>
             <div style={{ position: "absolute", left: 540 - 380, top: 1090, width: 760, display: "flex", justifyContent: "center", transform: `scale(${pop(lt, 0.4, 0.5)})` }}>
               <svg width={760} height={220} viewBox="0 0 760 220" style={{ overflow: "visible" }}>
@@ -96,20 +100,26 @@ const S08: React.FC<V> = ({ t }) => (
 );
 
 // ---------------- S-09 Perumpamaan: dua anak main kartu ----------------
+// Pemukiman halus: tidak pernah hilang/kosong di frame mana pun (draf 3 sempat kosong < 0,2 s karena pop dari skala 0).
+const Settle: React.FC<{ readonly t: number; readonly x: number; readonly y: number; readonly dy?: number; readonly delay?: number; readonly children: React.ReactNode }> = ({ t, x, y, dy = 0, delay = 0, children }) => {
+  const p = interpolate(t, [delay, delay + 0.35], [0, 1], { ...clamp01, easing: Easing.out(Easing.cubic) });
+  return <div style={{ position: "absolute", left: x, top: y + dy + (1 - p) * 16, transform: `scale(${0.94 + 0.06 * p})`, transformOrigin: "50% 100%" }}>{children}</div>;
+};
+
 const kidPair = (lt: number, t: number, aHand: readonly [number, number], bHand: readonly [number, number], cardsHeld: boolean) => (
   <>
-    <Place x={70} y={620} t={lt} at={0.1} dy={bob(t, 5, 2.6)} origin="50% 100%">
+    <Settle t={lt} x={70} y={620} dy={bob(t, 5, 2.6)} delay={0}>
       <ToyKid size={400} t={t} shirt={toon.orange} hair="#5A3B27" handTo={aHand} mood="happy" phase={0} nod={3.5 * Math.sin(t * 2.3)}>
         {cardsHeld ? <CardG x={aHand[0] + 4} y={aHand[1] - 28} w={44} tint={toon.blue} rot={-8} /> : null}
       </ToyKid>
-    </Place>
-    <Place x={610} y={620} t={lt} at={0.2} dy={bob(t, 5, 2.6, 1.4)} origin="50% 100%">
+    </Settle>
+    <Settle t={lt} x={610} y={620} dy={bob(t, 5, 2.6, 1.4)} delay={0.05}>
       <div style={{ transform: "scaleX(-1)" }}>
         <ToyKid size={400} t={t} shirt={toon.blue} hair="#2B2B2B" handTo={bHand} mood="happy" phase={1.5} nod={3.5 * Math.sin(t * 2.3 + 1.6)}>
           {cardsHeld ? <CardG x={bHand[0] + 4} y={bHand[1] - 28} w={44} tint={toon.orange} rot={-8} /> : null}
         </ToyKid>
       </div>
-    </Place>
+    </Settle>
   </>
 );
 
@@ -118,20 +128,21 @@ const S09: React.FC<V> = ({ t }) => {
   const hand: readonly [number, number] = [lerp(150, 146, appear(t, 2.5, 0.4)), lerp(150, 160, appear(t, 2.5, 0.4))];
   return (
     <>
-      <Tag text="PERUMPAMAAN - bukan data" kind="analogi" t={t} />
+      <Tag text="PERUMPAMAAN - bukan data" kind="analogi" t={t} y={175} />
       {kidPair(t, t, hand, hand, true)}
-      <Place x={140} y={1010} t={t} at={0.0} origin="50% 100%">
+      <Settle t={t} x={140} y={1010} delay={0}>
         <TableTop w={800} h={120} />
-      </Place>
+      </Settle>
       {/* A: berhenti main */}
       <Sh t={t} to={2.65}>
         {(lt) => {
           const fall = interpolate(lt, [0.3, 1.0], [0, 1], { ...clamp01, easing: Easing.in(Easing.quad) });
-          const land = interpolate(lt, [1.0, 1.25, 1.5], [0, 1, 0], clamp01);
+          const land = interpolate(lt, [1.0, 1.2, 1.4], [0, 1, 0], clamp01);
+          // kartu mendarat DI ATAS permukaan meja (bidang atas meja y ~1014-1055): alas kartu ~1040, tidak menimpa tepi depan meja
           return (
             <>
               {[0, 1, 2].map((i) => (
-                <div key={i} style={{ position: "absolute", left: 360 + i * 110, top: lerp(580, 940, fall) - i * 14 - land * 14 * Math.sin(i + 1), opacity: appear(lt, 0.1, 0.2), transform: `rotate(${(i - 1) * 24 + fall * 30}deg)` }}>
+                <div key={i} style={{ position: "absolute", left: 360 + i * 110, top: lerp(580, 912 - i * 4, fall) - land * 16 * Math.sin(i + 1.2), opacity: 1, transform: `rotate(${(i - 1) * 14 + (1 - fall) * (i - 1) * 40}deg)` }}>
                   <Card w={90} tint={i % 2 ? toon.orange : toon.blue} />
                 </div>
               ))}
@@ -183,9 +194,9 @@ const S10: React.FC<V> = ({ t }) => (
               <path d={`M360,120 L${360 + 220 * shrink},120`} stroke={INK} strokeWidth={16} strokeLinecap="round" opacity={shrink > 0 ? 1 : 0} />
             </svg>
             {lt < cue("s10", "disederhanakan") - 0.9 ? (
-              <BigWord text="PELAJARAN" t={lt} at={0.25} y={300} size={130} color={toon.blue} width={1040} />
+              <BigWord text="PELAJARAN" t={lt} at={0.25} y={338} size={130} color={toon.blue} width={1040} />
             ) : (
-              <BigWord text="DIPERSINGKAT" t={lt} at={cue("s10", "disederhanakan") - 0.9} y={300} size={110} color={toon.orange} width={1040} />
+              <BigWord text="DIPERSINGKAT" t={lt} at={cue("s10", "disederhanakan") - 0.9} y={338} size={110} color={toon.orange} width={1040} />
             )}
             <Place x={160} y={1120} t={lt} at={1.0} origin="50% 100%">
               <Speech text="ditukar!" size={90} tail="left" t={lt} />
@@ -211,7 +222,7 @@ const S10: React.FC<V> = ({ t }) => (
                 <line x1={86} y1={86} x2={210} y2={210} stroke={toon.orangeDark} strokeWidth={18} strokeLinecap="round" />
               </g>
             </svg>
-            <BigWord text={"CEK DULU"} t={lt} at={0.3} y={290} size={150} color={toon.blue} width={980} />
+            <BigWord text={"CEK DULU"} t={lt} at={0.3} y={338} size={150} color={toon.blue} width={980} />
             {lt > 1.0 ? <Sparkle x={820} y={640} t={t} size={70} /> : null}
           </>
         );
@@ -231,7 +242,7 @@ const S11: React.FC<V> = ({ t }) => (
     </div>
     <BigWord text="@suhufpengetahuan" t={t} at={0.3} y={850} size={84} color={toon.orange} width={1040} />
     <Place x={60} y={1030} t={t} at={0.4} dy={bob(t, 6, 4)} rot={-5}>
-      <Island kind="manhattan" w={420} t={t} />
+      <Island kind="manhattan-en" w={420} t={t} />
     </Place>
     <Place x={600} y={1040} t={t} at={0.5} dy={bob(t, 6, 4, 2)} rot={5}>
       <Island kind="run" w={420} t={t} />

@@ -30,9 +30,15 @@ import {
   SignBoard,
   TreatySheet,
   WaterBand,
+  WaterLip,
+  aboveWaterClip,
   ElbowArm,
   WrapHand,
   GraspedIsland,
+  GRASP_CX,
+  GRASP_X0,
+  GRASP_Y0,
+  GRASP_FLAG_TOP,
   ContactShadow,
   FlagPole,
   Speech,
@@ -65,7 +71,7 @@ const S01: React.FC<V> = ({ t }) => {
   const labelOp = fade(t, morphAt - 0.15, morphAt + 0.25);
   return (
     <>
-      <Tag text="SKEMA" kind="skema" t={t} />
+      <Tag text="SKEMA" kind="skema" t={t} y={175} />
       <div style={{ position: "absolute", inset: 0, opacity: labelOp }}>
         <BigWord text="DITUKAR?" t={t} at={cue("s01", "Ditukar") - 0.05} y={330} size={158} color={toon.orange} width={980} />
       </div>
@@ -148,7 +154,7 @@ export const LogoSheet: React.FC<{ readonly w: number }> = ({ w }) => (
 // ---------------- S-03 Pulau Run ----------------
 const S03: React.FC<V> = ({ t }) => (
   <>
-    <Tag text="SKEMA" kind="skema" t={t} />
+    <Tag text="SKEMA" kind="skema" t={t} y={175} />
     {/* shot A: peta, pulau mungil muncul di laut */}
     <Sh t={t} to={1.95}>
       {(lt) => {
@@ -217,7 +223,7 @@ const S03: React.FC<V> = ({ t }) => (
             <div style={{ position: "absolute", left: 540 - 150, top: 480 + drop - bounce, opacity: appear(lt, 0.05, 0.12), transform: `rotate(${interpolate(lt, [0.1, 0.85], [-80, 8], clamp01)}deg)` }}>
               <Nutmeg size={300} />
             </div>
-            <BigWord text="PALA BERHARGA" t={lt} at={0.7} y={310} size={112} color={toon.orange} width={1040} />
+            <BigWord text="PALA BERHARGA" t={lt} at={0.7} y={338} size={112} color={toon.orange} width={1040} />
             {glow > 0.3 ? (
               <>
                 <Sparkle x={250} y={560} t={t} size={80} />
@@ -238,6 +244,7 @@ const S04: React.FC<V> = ({ t }) => {
   const bobY = (ph: number) => Math.sin(t * 2.4 + ph) * 7;
   return (
     <>
+      <div style={{ position: "absolute", inset: 0, transform: "scale(0.88)", transformOrigin: "540px 300px" }}>
       {/* shot A: dua kapal berlayar ke Run */}
       <Sh t={t} to={2.75}>
         {(lt) => {
@@ -288,46 +295,66 @@ const S04: React.FC<V> = ({ t }) => {
           );
         }}
       </Sh>
-      {/* shot C: kapal Belanda memeluk keranjang pala: dua lengan tebal BERSIKU, mitten besar di sisi depan keranjang */}
+      </div>
+      {/* shot C (draf 4): kapal Belanda memeluk keranjang pala. Keranjang di DEPAN badan kapal (bukan di atas kepala);
+          dua lengan bersiku (lengan atas turun di sisi lambung, lengan bawah melingkari keranjang) dan mitten kecil
+          bertemu di depan keranjang. Lambung dan keranjang "tenggelam" di balik riak air bergaris tinta. */}
       <Sh t={t} from={5.45}>
         {(lt) => {
           const smooth = (a: number, b: number) => interpolate(lt, [a, b], [0, 1], { ...clamp01, easing: Easing.inOut(Easing.cubic) });
           const slideIn = smooth(0.0, 0.85);
           const hug = smooth(0.55, 1.5);
-          const squeeze = lt > 1.4 ? 0.5 + 0.5 * Math.sin((lt - 1.4) * 3.2) : 0;
-          const shipX = 540 - 240;
-          const shipTop = 670 + bobY(1);
-          const shipLeft = lerp(1100, shipX, slideIn);
-          const dx = shipLeft - shipX;
-          const mix = (a: number[], b: number[]) => a.map((v, i) => lerp(v, b[i], hug));
-          // [bahu | siku | tangan] relatif sumbu tengah kapal (540) dan shipTop; side = -1 kiri, +1 kanan
+          // setelah pelukan selesai: lengan menekan pelan (nadi lambat) + kapal naik-turun + miring halus, tidak pernah diam
+          const press = hug * (0.5 + 0.5 * Math.sin((lt - 1.2) * 2.6));
+          const bobC = Math.sin(lt * 2.4 + 1) * 8;
+          const rock = 2.2 * Math.sin(lt * 2.1) * slideIn;
+          const dx = lerp(820, 0, slideIn);
+          const SW = 450;
+          const shipTop = 597 + bobC;
+          const WY0 = 1150; // garis air (y0 WaterBand)
+          const BW = 270;
+          const basketTop = 944 + bobC + Math.sin(lt * 2.4 + 1.6) * 3;
+          const mix = (a2: number[], b2: number[]) => a2.map((v, i) => lerp(v, b2[i], hug));
+          // [bahu x, bahu y | siku x, siku y | tangan x, tangan y] relatif sumbu tengah (540) dan shipTop; side = -1 kiri, +1 kanan.
+          // Terbuka: lengan terangkat ke samping. Tertutup: lengan atas turun di sisi lambung, siku jelas di bawah-luar keranjang,
+          // lengan bawah naik-melengkung ke dalam, tangan bertemu di tengah-depan keranjang.
           const pose = (side: 1 | -1) => {
-            const open = [side * 176, 288, side * 300, 200, side * 330, 70];
-            const closed = [side * 176, 288, side * 236, 392, side * (58 - squeeze * 8), 262];
+            const open = [side * 170, 330, side * 262, 420, side * 322, 300];
+            const closed = [side * 170, 330, side * (196 - press * 4), 505, side * (38 - press * 8), 452 + press * 3];
             const m = mix(open, closed);
             return { sh: [540 + m[0], shipTop + m[1]] as const, el: [540 + m[2], shipTop + m[3]] as const, hd: [540 + m[4], shipTop + m[5]] as const };
           };
           const L = pose(-1);
           const R = pose(1);
+          const rig = (extra?: React.CSSProperties): React.CSSProperties => ({ position: "absolute", inset: 0, transform: `translateX(${dx}px) rotate(${rock}deg)`, transformOrigin: `540px ${WY0 + 4}px`, ...extra });
           return (
             <>
-              <WaterBand y0={1095} y1={1400} t={t} seed="s04c" />
-              <ContactShadow cx={540 + dx} cy={1116 + bobY(1)} rx={225} ry={22} />
-              <div style={{ position: "absolute", left: shipLeft, top: shipTop }}>
-                <Ship kind="nl" w={480} t={t} mood="laugh" phase={1} sway={0} />
+              <WaterBand y0={WY0} y1={1244} t={t} seed="s04c" />
+              {/* lambung dipotong tepat di garis air: kapal "duduk di dalam air" */}
+              <div style={{ position: "absolute", inset: 0, clipPath: aboveWaterClip(WY0, t) }}>
+                <div style={rig()}>
+                  <div style={{ position: "absolute", left: 540 - SW / 2, top: shipTop }}>
+                    <Ship kind="nl" w={SW} t={t} mood="happy" phase={1} sway={0} belly={90} faceDy={-14} />
+                  </div>
+                </div>
               </div>
-              <Place x={400} y={shipTop + 30 + bob(lt, 4, 3)} t={lt} at={0.5} origin="50% 100%">
-                <Basket w={280} />
-              </Place>
-              <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0, overflow: "visible", transform: `translateX(${dx}px)` }}>
-                <g style={{ filter: "drop-shadow(6px 10px 0 rgba(8,40,52,0.35))" }}>
-                  <ElbowArm s={L.sh} e={L.el} h={L.hd} thick={52} cuff={toon.blueDark} />
-                  <ElbowArm s={R.sh} e={R.el} h={R.hd} thick={52} cuff={toon.blueDark} />
-                  <WrapHand x={L.hd[0]} y={L.hd[1]} r={56} rot={14} squeeze={squeeze} />
-                  <WrapHand x={R.hd[0]} y={R.hd[1]} r={56} rot={-14} flip squeeze={squeeze} />
+              <div style={{ position: "absolute", inset: 0, clipPath: aboveWaterClip(WY0, t) }}>
+                <div style={rig()}>
+                  <div style={{ position: "absolute", left: 540 - BW / 2, top: basketTop }}>
+                    <Basket w={BW} />
+                  </div>
+                </div>
+              </div>
+              <WaterLip cx={540 + dx} y0={WY0} rx={196} t={t} />
+              <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0, overflow: "visible", transform: `translateX(${dx}px) rotate(${rock}deg)`, transformOrigin: `540px ${WY0 + 4}px` }}>
+                <g style={{ filter: "drop-shadow(5px 8px 0 rgba(8,40,52,0.35))" }}>
+                  <ElbowArm s={L.sh} e={L.el} h={L.hd} thick={50} cuff={toon.blueDark} handR={40} />
+                  <ElbowArm s={R.sh} e={R.el} h={R.hd} thick={50} cuff={toon.blueDark} handR={40} />
+                  <WrapHand x={L.hd[0]} y={L.hd[1]} r={40} rot={8} squeeze={press} />
+                  <WrapHand x={R.hd[0]} y={R.hd[1]} r={40} rot={-8} flip squeeze={press} />
                 </g>
               </svg>
-              <BigWord text={"HANYA\nKAMI"} t={lt} at={cue("s04", "Belanda ingin") - 5.45 + 0.1} y={330} size={140} color={toon.blue} width={900} />
+              <BigWord text={"HANYA\nKAMI"} t={lt} at={cue("s04", "Belanda ingin") - 5.45 + 0.1} y={330} size={112} color={toon.blue} width={900} />
             </>
           );
         }}
@@ -345,7 +372,7 @@ const S05: React.FC<V> = ({ t }) => {
   const zoom = 1 + 0.07 * slide(t, flipAt, 1.4);
   return (
     <>
-      <Tag text="SKEMA" kind="skema" t={t} />
+      <Tag text="SKEMA" kind="skema" t={t} y={175} />
       <div style={{ position: "absolute", inset: 0, transform: `scale(${zoom})`, transformOrigin: "540px 900px" }}>
         <Place x={160} y={640} t={t} at={0.15} dy={bob(t, 7, 2.2)} origin="50% 100%">
           <Island kind="manhattan" w={760} t={t} />
@@ -391,7 +418,12 @@ const S06: React.FC<V> = ({ t }) => {
           const mv = slide(lt, 4.3, 0.55);
           const cx = lerp(540 + 330 * (1 - inP), 540, 1) + shake;
           const cy = lerp(800, 883, inP);
-          const scl = lerp(0.7, 1, inP) * lerp(1, 380 / 440, mv);
+          // gerak idle pelan (sama persis dengan shot B, dari waktu adegan t) supaya lembar tidak pernah kaku
+          const idleOn = slide(lt, IN_AT + 0.6, 0.5);
+          const idleY = Math.sin(t * 2.3) * 5 * idleOn;
+          const idleR = Math.sin(t * 1.9) * 1.3 * idleOn;
+          const idleS = 1 + 0.012 * Math.sin(t * 2.7) * idleOn;
+          const scl = lerp(0.7, 1, inP) * lerp(1, 380 / 440, mv) * idleS;
           return (
             <>
               <div style={{ position: "absolute", left: 270, top: lerp(380, 300, calOut), opacity: 1 - calOut, transform: `scale(${lerp(1, 0.86, calOut)})` }}>
@@ -401,9 +433,9 @@ const S06: React.FC<V> = ({ t }) => {
                 style={{
                   position: "absolute",
                   left: cx - 220,
-                  top: cy - 281,
+                  top: cy - 281 + idleY,
                   opacity: appear(lt, IN_AT, 0.15),
-                  transform: `scale(${scl}) rotate(${lerp(swing, 2, mv)}deg)`,
+                  transform: `scale(${scl}) rotate(${lerp(swing, 2, mv) + idleR}deg)`,
                   transformOrigin: "50% 50%",
                   filter: "drop-shadow(0 14px 14px rgba(40,30,60,0.22))",
                 }}
@@ -420,8 +452,8 @@ const S06: React.FC<V> = ({ t }) => {
           const strike = slide(t, strikeAt, 0.4);
           return (
             <>
-              <div style={{ position: "absolute", left: 540 - 190, top: 640 + bob(lt, 6, 2.5), opacity: 1, filter: "drop-shadow(0 14px 14px rgba(40,30,60,0.22))" }}>
-                <TreatySheet w={380} stampP={1} rot={2 + bob(lt, 1.2, 2)} />
+              <div style={{ position: "absolute", left: 540 - 190, top: 640 + Math.sin(t * 2.3) * 5, opacity: 1, filter: "drop-shadow(0 14px 14px rgba(40,30,60,0.22))", transform: `scale(${1 + 0.012 * Math.sin(t * 2.7)})` }}>
+                <TreatySheet w={380} stampP={1} rot={2 + Math.sin(t * 1.9) * 1.3} />
               </div>
               <Place x={190} y={360} t={lt} at={0.15} origin="50% 100%">
                 <Speech text="kita tukar ya" size={92} tail="down" strike={strike} t={lt} />
@@ -431,26 +463,32 @@ const S06: React.FC<V> = ({ t }) => {
           );
         }}
       </Sh>
-      {/* shot C: dua tangan (lengan menekuk, jari di DEPAN tepi pulau) menggenggam pulau masing-masing */}
+      {/* shot C (draf 4): dua kepalan menggenggam pulau; pulau DI DALAM genggaman (telapak melengkung naik, empat jari di depan, ibu jari di tepi).
+          Zig-zag vertikal agar dua pulau bisa 1,3x lebih besar tanpa saling menimpa. */}
       <Sh t={t} from={7.3}>
         {(lt) => {
           const inn = slide(lt, 0.0, 0.7);
-          const sq = interpolate(lt, [0.8, 1.2, 1.5], [0, 1, 0.7], clamp01);
-          const hover = bob(lt, 5, 2.4);
-          const k = 1.1;
+          const flex = 0.55 + 0.45 * Math.sin(lt * 2.6);
+          const sq = interpolate(lt, [0.7, 1.2], [0, 1], clamp01) * flex;
+          const hoverL = bob(lt, 6, 2.2);
+          const hoverR = bob(lt, 6, 2.2, 1.7);
+          const k = 1.32;
+          // tengah pulau di layar = cx; puncak tiang bendera di layar = flagTop
+          const gx = (cx: number) => cx - (GRASP_CX - GRASP_X0) * k;
+          const gy = (flagTop: number) => flagTop - (GRASP_FLAG_TOP - GRASP_Y0) * k;
           return (
             <>
-              <div style={{ position: "absolute", left: -250 + (1 - inn) * -600, top: 680 + hover }}>
-                <GraspedIsland kind="manhattan" color={toon.orange} dark={toon.orangeDark} k={k} t={lt} squeeze={sq} flag="en" />
+              <div style={{ position: "absolute", left: gx(285) + (1 - inn) * -700, top: gy(600) + hoverL }}>
+                <GraspedIsland kind="manhattan-en" color={toon.orange} dark={toon.orangeDark} k={k} t={lt} squeeze={sq} flag="en" />
               </div>
-              <div style={{ position: "absolute", left: 494 + (1 - inn) * 600, top: 680 + hover }}>
+              <div style={{ position: "absolute", left: gx(795) + (1 - inn) * 700, top: gy(715) + hoverR }}>
                 <GraspedIsland kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={lt} squeeze={sq} flag="nl" mirror />
               </div>
               <BigWord text={"YANG DIPEGANG,\nTETAP DIPEGANG"} t={t - 7.3} at={tHeld - 7.3 + 0.55} y={330} size={104} color={toon.orange} width={1040} />
               {lt > 1.2 ? (
                 <>
-                  <Sparkle x={490} y={620} t={t} size={60} />
-                  <Sparkle x={560} y={1240} t={t} size={50} phase={3} />
+                  <Sparkle x={905} y={580} t={t} size={56} />
+                  <Sparkle x={110} y={1130} t={t} size={46} phase={3} />
                 </>
               ) : null}
             </>

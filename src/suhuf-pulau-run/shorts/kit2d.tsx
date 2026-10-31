@@ -129,40 +129,59 @@ const house = (x: number, base: number, w: number, h: number, body: string, roof
   </g>
 );
 
-export const Island: React.FC<{ readonly kind: "manhattan" | "run"; readonly w: number; readonly t?: number }> = ({ kind, w, t = 0 }) => {
+export const Island: React.FC<{
+  readonly kind: "manhattan" | "manhattan-en" | "run";
+  readonly w: number;
+  readonly t?: number;
+  readonly bare?: boolean; // tanpa bayangan/halo bawah (dipakai saat digenggam)
+  readonly detail?: number; // pembesar rumah/pohon/kincir terhadap pulau (1 = asli)
+}> = ({ kind, w, t = 0, bare = false, detail = 1 }) => {
   const angle = t * 55;
   return (
     <svg width={w} height={w * 0.74} viewBox="0 0 300 222" style={{ overflow: "visible", display: "block" }}>
-      <ellipse cx={168} cy={206} rx={146} ry={20} fill="#0C3140" opacity={0.42} />
-      <ellipse cx={150} cy={192} rx={138} ry={20} fill="#fff" opacity={0.6} />
+      {bare ? null : (
+        <>
+          <ellipse cx={168} cy={206} rx={146} ry={20} fill="#0C3140" opacity={0.42} />
+          <ellipse cx={150} cy={192} rx={138} ry={20} fill="#fff" opacity={0.6} />
+        </>
+      )}
       <path d="M18,150 Q20,196 150,198 Q280,196 282,150 Z" fill={SAND_DARK} stroke={INK} strokeWidth={5} strokeLinejoin="round" />
       <path d="M22,172 Q30,197 150,198 Q270,197 278,172 Q150,190 22,172 Z" fill="#C98F4E" opacity={0.7} />
       <ellipse cx={150} cy={150} rx={132} ry={46} fill={SAND} stroke={INK} strokeWidth={5} />
       <ellipse cx={150} cy={142} rx={112} ry={36} fill={GRASS} stroke={INK} strokeWidth={4} />
       <path d="M60,138 Q80,118 112,114" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.45} />
       <path d="M30,152 Q60,118 120,111" fill="none" stroke="#FFF6DC" strokeWidth={4} strokeLinecap="round" opacity={0.9} transform="translate(-2 -5)" />
-      {kind === "manhattan" ? (
-        <>
-          {house(70, 150, 40, 40, "#FFF4DE", toon.red, "h1")}
-          {house(116, 156, 46, 56, toon.blueLight, toon.orange, "h2")}
-          {/* kincir angin kecil */}
-          <path d="M196,152 L204,96 L222,96 L230,152 Z" fill="#FFF4DE" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
-          <path d="M198,98 L213,72 L228,98 Z" fill={toon.red} stroke={INK} strokeWidth={4} strokeLinejoin="round" />
-          <g transform={`rotate(${angle} 213 98)`}>
-            {[0, 90, 180, 270].map((a) => (
-              <g key={a} transform={`rotate(${a} 213 98)`}>
-                <rect x={209} y={52} width={8} height={46} rx={3} fill="#fff" stroke={INK} strokeWidth={3} />
-              </g>
-            ))}
-          </g>
-          <circle cx={213} cy={98} r={6} fill={toon.yellow} stroke={INK} strokeWidth={3} />
-        </>
-      ) : (
-        <>
-          {tree(110, 150, 0.9, "t1")}
-          {tree(192, 154, 1.15, "t2")}
-        </>
-      )}
+      <g transform={detail === 1 ? undefined : `translate(150 150) scale(${detail}) translate(-150 -150)`}>
+        {kind === "manhattan" ? (
+          <>
+            {house(70, 150, 40, 40, "#FFF4DE", toon.red, "h1")}
+            {house(116, 156, 46, 56, toon.blueLight, toon.orange, "h2")}
+            {/* kincir angin kecil: hanya Manhattan versi New Amsterdam (Belanda) */}
+            <path d="M196,152 L204,96 L222,96 L230,152 Z" fill="#FFF4DE" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+            <path d="M198,98 L213,72 L228,98 Z" fill={toon.red} stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+            <g transform={`rotate(${angle} 213 98)`}>
+              {[0, 90, 180, 270].map((a) => (
+                <g key={a} transform={`rotate(${a} 213 98)`}>
+                  <rect x={209} y={52} width={8} height={46} rx={3} fill="#fff" stroke={INK} strokeWidth={3} />
+                </g>
+              ))}
+            </g>
+            <circle cx={213} cy={98} r={6} fill={toon.yellow} stroke={INK} strokeWidth={3} />
+          </>
+        ) : kind === "manhattan-en" ? (
+          <>
+            {/* versi Inggris: rumah + pohon pala (elemen netral, tanpa kincir) */}
+            {house(84, 152, 42, 42, "#FFF4DE", toon.red, "h1")}
+            {house(130, 158, 46, 56, toon.blueLight, toon.orange, "h2")}
+            {tree(212, 156, 0.95, "t1")}
+          </>
+        ) : (
+          <>
+            {tree(110, 150, 0.9, "t1")}
+            {tree(192, 154, 1.15, "t2")}
+          </>
+        )}
+      </g>
     </svg>
   );
 };
@@ -247,46 +266,91 @@ export const SeaPanel: React.FC<{
 };
 
 // Air untuk diorama (tanpa bingkai): pita biru dengan garis ombak, dari y0 sampai y1.
-export const WaterBand: React.FC<{ readonly y0: number; readonly y1: number; readonly t: number; readonly seed?: string }> = ({ y0, y1, t, seed = "wb" }) => {
+// inset = margin kiri-kanan (draf 4: >= 80 px supaya tidak menempel tepi layar).
+export const WaterBand: React.FC<{ readonly y0: number; readonly y1: number; readonly t: number; readonly seed?: string; readonly inset?: number }> = ({ y0, y1, t, seed = "wb", inset = 84 }) => {
   const h = y1 - y0;
-  const rows = Array.from({ length: 7 }, (_, i) => i);
+  const x0 = inset;
+  const x1 = 1080 - inset;
+  const W = x1 - x0;
+  const q = W / 4;
+  const wob = 4 + Math.sin(t * 1.6) * 6;
+  const top = `M${x0},24 Q${x0 + q / 2},${wob} ${x0 + q},24 T${x0 + 2 * q},24 T${x0 + 3 * q},24 T${x1},24`;
+  const shape = `${top} L${x1},${h - 40} Q${x1},${h} ${x1 - 40},${h} L${x0 + 40},${h} Q${x0},${h} ${x0},${h - 40} Z`;
+  const nRows = Math.max(2, Math.round(h / 52));
+  const rows = Array.from({ length: nRows }, (_, i) => i);
   return (
     <svg width={1080} height={h + 40} viewBox={`0 0 1080 ${h + 40}`} style={{ position: "absolute", left: 0, top: y0 - 20, overflow: "visible" }}>
       <defs>
         <clipPath id={`wb-${seed}`}>
-          <path d={`M30,24 Q165,${4 + Math.sin(t * 1.6) * 6} 300,24 T570,24 T840,24 T1050,24 L1050,${h - 40} Q1050,${h} 1010,${h} L70,${h} Q30,${h} 30,${h - 40} Z`} />
+          <path d={shape} />
         </clipPath>
       </defs>
-      <path
-        d={`M30,24 Q165,${4 + Math.sin(t * 1.6) * 6} 300,24 T570,24 T840,24 T1050,24 L1050,${h - 40} Q1050,${h} 1010,${h} L70,${h} Q30,${h} 30,${h - 40} Z`}
-        fill={TEAL}
-        stroke={INK}
-        strokeWidth={7}
-        strokeLinejoin="round"
-      />
+      <path d={shape} fill={TEAL} stroke={INK} strokeWidth={7} strokeLinejoin="round" />
       <g clipPath={`url(#wb-${seed})`}>
         <rect x={0} y={h * 0.42} width={1080} height={h * 0.58 + 40} fill={TEAL_DEEP} opacity={0.6} />
         <rect x={0} y={h * 0.2} width={1080} height={h * 0.22} fill={TEAL_DEEP} opacity={0.28} />
-        <path d={`M30,30 Q165,${10 + Math.sin(t * 1.6) * 6} 300,30 T570,30 T840,30 T1050,30`} fill="none" stroke="#BFF1EE" strokeWidth={6} strokeLinecap="round" opacity={0.55} />
+        <path d={`M${x0},30 Q${x0 + q / 2},${10 + Math.sin(t * 1.6) * 6} ${x0 + q},30 T${x0 + 2 * q},30 T${x0 + 3 * q},30 T${x1},30`} fill="none" stroke="#BFF1EE" strokeWidth={6} strokeLinecap="round" opacity={0.55} />
+        {rows.map((r) =>
+          Array.from({ length: 5 }, (_, c) => {
+            const span = W - 80;
+            const px = x0 + 20 + ((((c * 190 + r * 90 + t * 30 * (r % 2 ? 1 : -1)) % span) + span) % span);
+            const py = 56 + r * ((h - 80) / nRows) + random(`${seed}-${r}-${c}`) * 12;
+            return (
+              <path key={`${r}-${c}`} d="M0,0 q10,-12 20,0 q10,12 20,0" transform={`translate(${px} ${py})`} fill="none" stroke="#D6F6F2" strokeWidth={5} strokeLinecap="round" opacity={0.8} />
+            );
+          }),
+        )}
       </g>
-      {rows.map((r) =>
-        Array.from({ length: 5 }, (_, c) => {
-          const px = 50 + ((((c * 190 + r * 90 + t * 30 * (r % 2 ? 1 : -1)) % 900) + 900) % 900) - 20;
-          const py = 70 + r * ((h - 90) / 7) + random(`${seed}-${r}-${c}`) * 20;
-          return (
-            <path
-              key={`${r}-${c}`}
-              d="M0,0 q10,-12 20,0 q10,12 20,0"
-              transform={`translate(${px} ${py})`}
-              fill="none"
-              stroke="#D6F6F2"
-              strokeWidth={5}
-              strokeLinecap="round"
-              opacity={0.8}
-            />
-          );
-        }),
-      )}
+    </svg>
+  );
+};
+
+// Garis permukaan air (sama persis dengan tepi atas WaterBand): y absolut pada x tertentu.
+export const waterSurfaceY = (x: number, y0: number, t: number, inset = 84): number => {
+  const q = (1080 - 2 * inset) / 4;
+  const node = y0 + 4;
+  const amp = 4 + Math.sin(t * 1.6) * 6 - 24; // ctrl0 - node
+  const rel = Math.min(4 * q - 0.001, Math.max(0, x - inset));
+  const i = Math.floor(rel / q);
+  const u = (rel - i * q) / q;
+  return node + amp * (i % 2 === 0 ? 1 : -1) * 2 * u * (1 - u);
+};
+
+// Path clip: area DI ATAS permukaan air (kapal "tenggelam" tepat di garis air). Koordinat halaman.
+export const aboveWaterClip = (y0: number, t: number, inset = 84): string => {
+  const pts: string[] = [];
+  for (let x = 0; x <= 1080; x += 12) {
+    pts.push(`${x},${waterSurfaceY(x, y0, t, inset).toFixed(1)}`);
+  }
+  return `path('M0,0 L1080,0 L1080,${waterSurfaceY(1080, y0, t, inset).toFixed(1)} ${pts.reverse().map((p) => `L${p}`).join(" ")} Z')`;
+};
+
+// Tepi air di DEPAN dasar lambung: garis tinta mengikuti permukaan + busa putus-putus + dua riak yang melebar.
+// Lambung jadi jelas terpisah dari garis air (tidak menempel di atasnya).
+export const WaterLip: React.FC<{ readonly cx: number; readonly y0: number; readonly rx: number; readonly t: number; readonly phase?: number }> = ({ cx, y0, rx, t, phase = 0 }) => {
+  const ext = rx + 90;
+  const pts: string[] = [];
+  for (let x = Math.max(84, cx - ext); x <= Math.min(996, cx + ext); x += 10) {
+    pts.push(`${x},${waterSurfaceY(x, y0, t).toFixed(1)}`);
+  }
+  const d = `M${pts.join(" L")}`;
+  const base = waterSurfaceY(cx, y0, t);
+  return (
+    <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0, overflow: "visible", pointerEvents: "none" }}>
+      {[0.0, 0.5].map((k) => {
+        const r = (((t * 0.55 + k + phase) % 1) + 1) % 1;
+        const op = Math.min(1, (1 - r) * 1.4);
+        const rxx = rx - 6 + r * 110;
+        const ryy = 12 + r * 26;
+        return (
+          <g key={k} opacity={op}>
+            <path d={`M${cx - rxx},${base + 16} A${rxx},${ryy} 0 0 0 ${cx + rxx},${base + 16}`} fill="none" stroke={INK} strokeWidth={7} strokeLinecap="round" />
+            <path d={`M${cx - rxx},${base + 16} A${rxx},${ryy} 0 0 0 ${cx + rxx},${base + 16}`} fill="none" stroke="#E6FBF8" strokeWidth={3.6} strokeLinecap="round" />
+          </g>
+        );
+      })}
+      <path d={d} fill="none" stroke={INK} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={d} transform="translate(0 7)" fill="none" stroke="#E6FBF8" strokeWidth={5} strokeLinecap="round" strokeDasharray="30 22" opacity={0.95} />
     </svg>
   );
 };
@@ -641,21 +705,26 @@ export const Ship: React.FC<{
   readonly wave?: number; // 0 = tanpa lengan; >0 = sudut lengan yang melambai (derajat, 0..180)
   readonly phase?: number;
   readonly sway?: number; // derajat goyang (default 2,2)
-}> = ({ kind, w, t, flip = false, mood = "happy", wave = 0, phase = 0, sway = 2.2 }) => {
+  readonly belly?: number; // tambahan tinggi lambung (unit), dipakai saat memeluk keranjang di depan badan
+  readonly faceDy?: number; // geser wajah (unit)
+}> = ({ kind, w, t, flip = false, mood = "happy", wave = 0, phase = 0, sway = 2.2, belly = 0, faceDy = 0 }) => {
+  const b = belly;
+  const hull = `M22,150 L238,150 Q230,${222 + b} 184,${232 + b} L76,${232 + b} Q30,${222 + b} 22,150 Z`;
   const c = kind === "en" ? toon.orange : toon.blue;
   const cd = kind === "en" ? toon.orangeDark : toon.blueDark;
   const cl = kind === "en" ? toon.orangeLight : toon.blueLight;
   return (
     <svg width={w} height={w} viewBox="0 0 260 260" style={{ overflow: "visible", display: "block", transform: `${flip ? "scaleX(-1) " : ""}rotate(${sway * Math.sin(t * 2.1 + phase)}deg)`, transformOrigin: "50% 88%" }}>
       {/* halo tepi tipis (kontras terhadap air gelap) */}
-      <path d="M22,150 L238,150 Q230,222 184,232 L76,232 Q30,222 22,150 Z" transform="translate(0 15)" fill="none" stroke="#fff" strokeWidth={15} strokeLinejoin="round" opacity={0.9} />
+      <path d={hull} transform="translate(0 15)" fill="none" stroke="#fff" strokeWidth={15} strokeLinejoin="round" opacity={0.9} />
       {/* tiang dan layar */}
       <path d="M138,34 Q224,66 218,138 L138,138 Z" transform="translate(7 7)" fill="#B9C6E2" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
       <path d="M122,56 Q66,84 62,138 L122,138 Z" transform="translate(7 7)" fill="#E3CFA6" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
       <line x1={130} y1={156} x2={130} y2={26} stroke={INK} strokeWidth={12} strokeLinecap="round" />
       <line x1={130} y1={156} x2={130} y2={26} stroke={WOOD} strokeWidth={5} strokeLinecap="round" />
-      <path d="M138,34 Q224,66 218,138 L138,138 Z" fill="#fff" stroke={INK} strokeWidth={6} strokeLinejoin="round" />
-      <path d="M122,56 Q66,84 62,138 L122,138 Z" fill="#FFF4DE" stroke={INK} strokeWidth={6} strokeLinejoin="round" />
+      <path d="M138,34 Q224,66 218,138 L138,138 Z" fill="#BCD3F2" stroke={INK} strokeWidth={8} strokeLinejoin="round" />
+      <path d="M122,56 Q66,84 62,138 L122,138 Z" fill="#F1C47E" stroke={INK} strokeWidth={8} strokeLinejoin="round" />
+      <path d="M150,60 Q196,80 206,118" fill="none" stroke="#9BB4DC" strokeWidth={4} strokeLinecap="round" opacity={0.8} />
       <circle cx={186} cy={98} r={17} fill={c} stroke={INK} strokeWidth={4.5} />
       <circle cx={186} cy={98} r={7} fill="#fff" />
       <g transform="translate(136 -2) scale(0.56)">
@@ -669,17 +738,17 @@ export const Ship: React.FC<{
         </>
       ) : null}
       {/* lambung: ekstrusi (sisi tebal lebih gelap) lalu muka lambung */}
-      <path d="M22,150 L238,150 Q230,222 184,232 L76,232 Q30,222 22,150 Z" transform="translate(0 15)" fill={cd} stroke={INK} strokeWidth={6.5} strokeLinejoin="round" />
-      <path d="M22,150 L238,150 Q230,222 184,232 L76,232 Q30,222 22,150 Z" fill={c} stroke={INK} strokeWidth={6.5} strokeLinejoin="round" />
-      <path d="M30,158 Q36,214 80,224" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.75} />
+      <path d={hull} transform="translate(0 15)" fill={cd} stroke={INK} strokeWidth={6.5} strokeLinejoin="round" />
+      <path d={hull} fill={c} stroke={INK} strokeWidth={6.5} strokeLinejoin="round" />
+      <path d={`M30,158 Q36,${214 + b} 80,${224 + b}`} fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.75} />
       <path d="M34,153 L230,153" stroke="#fff" strokeWidth={4} strokeLinecap="round" opacity={0.55} />
       <path d="M28,166 L232,166" stroke="#fff" strokeWidth={8} strokeLinecap="round" opacity={0.85} />
-      <path d="M40,222 Q80,232 130,232 L184,232 Q222,226 232,196 Q200,226 150,224 Z" fill={cd} opacity={0.38} />
+      <path d={`M40,${222 + b} Q80,${232 + b} 130,${232 + b} L184,${232 + b} Q222,${226 + b} 232,${196 + b * 0.6} Q200,${226 + b} 150,${224 + b} Z`} fill={cd} opacity={0.38} />
       <path d="M150,60 Q196,80 206,118" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.7} />
       <path d="M130,124 Q196,126 214,120 L214,138 L138,138 Z" fill="#DCE6F5" opacity={0.55} />
       <path d="M52,158 Q90,152 112,158" fill="none" stroke={cl} strokeWidth={9} strokeLinecap="round" opacity={0.9} />
-      <circle cx={206} cy={216} r={5} fill={cd} opacity={0.5} />
-      <Face cx={130} cy={196} gap={24} r={11} mood={mood} look={[0.5, 0]} blink={blinkOf(t, phase)} />
+      <circle cx={206} cy={216 + b * 0.6} r={5} fill={cd} opacity={0.5} />
+      <Face cx={130} cy={196 + faceDy} gap={24} r={11} mood={mood} look={[0.5, 0]} blink={blinkOf(t, phase)} />
     </svg>
   );
 };
@@ -897,15 +966,16 @@ export const ElbowArm: React.FC<{
   readonly e: readonly [number, number];
   readonly h: readonly [number, number];
   readonly thick?: number;
-  readonly sleeve?: string;
-  readonly sleeveDark?: string;
   readonly cuff: string;
-}> = ({ s, e, h, thick = 56, sleeve = toon.blueLight, sleeveDark = "#86B4E8", cuff }) => {
+  readonly handR?: number; // jari-jari tangan: manset diletakkan tepat di luar tepi tangan
+}> = ({ s, e, h, thick = 56, cuff, handR = 48 }) => {
   const up = `M${s[0]},${s[1]} L${e[0]},${e[1]}`;
   const fo = `M${e[0]},${e[1]} L${h[0]},${h[1]}`;
   const ang = (Math.atan2(h[1] - e[1], h[0] - e[0]) * 180) / Math.PI;
-  const cx = e[0] + (h[0] - e[0]) * 0.74;
-  const cy = e[1] + (h[1] - e[1]) * 0.74;
+  const fl = Math.hypot(h[0] - e[0], h[1] - e[1]) || 1;
+  const cd = Math.min(0.9, (handR + 6) / fl); // jarak manset dari tangan (fraksi panjang lengan bawah)
+  const cx = h[0] - (h[0] - e[0]) * cd;
+  const cy = h[1] - (h[1] - e[1]) * cd;
   const nx = -(h[1] - e[1]);
   const ny = h[0] - e[0];
   const nl = Math.hypot(nx, ny) || 1;
@@ -922,7 +992,6 @@ export const ElbowArm: React.FC<{
       <path d={`M${e[0] - ox * 0.9},${e[1] - oy * 0.9} L${h[0] - ox * 0.9},${h[1] - oy * 0.9}`} fill="none" stroke="#fff" strokeWidth={6} strokeLinecap="round" opacity={0.55} />
       {/* siku: tekukan bulat (sambungan lengan baju ke lengan bawah) + lipatan di sisi dalam tekukan */}
       <circle cx={e[0]} cy={e[1]} r={thick / 2 - 1} fill={toon.skin} />
-      <path d={`M${e[0] + ox * 1.1},${e[1] + oy * 1.1} m${-thick * 0.18},${thick * 0.02} q${thick * 0.18},${thick * 0.2} ${thick * 0.36},0`} fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" />
       <ellipse cx={e[0] - ox * 0.9} cy={e[1] - oy * 0.9 - thick * 0.05} rx={thick * 0.15} ry={thick * 0.07} fill="#fff" opacity={0.75} />
       {/* manset di pergelangan */}
       <g transform={`translate(${cx} ${cy}) rotate(${ang})`}>
@@ -932,97 +1001,115 @@ export const ElbowArm: React.FC<{
   );
 };
 
-// Tangan mitten besar yang MELINGKAR: telapak bulat, tiga garis jari, jempol melintang di depan jari.
+// Mitten kecil dengan ibu jari: telapak bulat, tiga garis jari di ujung, ibu jari terpisah di sisi atas mengarah ke tengah.
+// Titik (x, y) = pusat telapak; ujung jari mengarah ke +x (cermin dengan flip).
 export const WrapHand: React.FC<{ readonly x: number; readonly y: number; readonly r: number; readonly rot?: number; readonly flip?: boolean; readonly squeeze?: number }> = ({ x, y, r, rot = 0, flip = false, squeeze = 0 }) => (
   <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${flip ? -1 : 1} 1)`}>
-    <ellipse cx={0} cy={0} rx={r} ry={r * 0.88} fill={toon.skin} stroke={INK} strokeWidth={r * 0.14} />
-    {[-0.36, 0, 0.36].map((k, i) => (
-      <path key={i} d={`M${r * 0.18 - squeeze * 2},${r * k - r * 0.12} Q${r * 0.55},${r * k + r * 0.12} ${r * 0.86},${r * k - r * 0.04}`} fill="none" stroke={INK} strokeWidth={r * 0.085} strokeLinecap="round" />
+    <ellipse cx={0} cy={0} rx={r} ry={r * 0.86} fill={toon.skin} stroke={INK} strokeWidth={r * 0.15} />
+    {[-0.34, 0, 0.34].map((k, i) => (
+      <path key={i} d={`M${r * 0.3 - squeeze * 3},${r * k - r * 0.08} Q${r * 0.62},${r * k + r * 0.1} ${r * 0.9},${r * k - r * 0.02}`} fill="none" stroke={INK} strokeWidth={r * 0.095} strokeLinecap="round" />
     ))}
-    <ellipse cx={-r * 0.12} cy={r * 0.36} rx={r * 0.52} ry={r * 0.25} transform={`rotate(-12 ${-r * 0.12} ${r * 0.36})`} fill={toon.skin} stroke={INK} strokeWidth={r * 0.1} />
-    <ellipse cx={-r * 0.3} cy={-r * 0.55} rx={r * 0.3} ry={r * 0.1} fill="#fff" opacity={0.65} />
+    {/* ibu jari: kapsul terpisah di sisi atas, melengkung ke dalam */}
+    <ellipse cx={r * 0.02} cy={-r * 0.78} rx={r * 0.56} ry={r * 0.27} transform={`rotate(14 ${r * 0.02} ${-r * 0.78})`} fill={toon.skin} stroke={INK} strokeWidth={r * 0.13} />
+    <ellipse cx={-r * 0.1} cy={-r * 0.8} rx={r * 0.2} ry={r * 0.07} transform={`rotate(14 ${-r * 0.1} ${-r * 0.8})`} fill="#fff" opacity={0.7} />
+    <ellipse cx={-r * 0.35} cy={r * 0.3} rx={r * 0.22} ry={r * 0.09} fill="#EDA27A" opacity={0.6} />
   </g>
 );
 
-// ---------------- Pulau DIGENGGAM: lengan menekuk (siku), telapak di bawah pulau, jari melingkar di DEPAN tepi pulau ----------------
-// Koordinat unit: pulau 400 lebar di (0,0). viewBox x -300..460, y 0..520. Tangan dari kiri; mirror=true untuk dari kanan.
-export const GRASP_W = 760;
-export const GRASP_X0 = -300;
+// ---------------- Pulau DIGENGGAM (draf 4, tangan merangkul) ----------------
+// Satu siluet menyatu (tinta di bawah, warna di atas): telapak bulat di bawah dan di BELAKANG-DEPAN dasar pulau, empat jari
+// BERBEDA tinggi (ujung membulat, sedikit melengkung ke tengah) naik MERANGKUL bagian depan dasar pulau, ibu jari besar
+// naik di atas tepi kiri pulau. Pulau terbenam di telapak (dasar pasirnya tersembunyi); rumah/pohon/bendera tetap terbaca.
+// Koordinat unit: pulau 400 lebar (x 0..400), tangan datang dari kiri; mirror=true untuk dari kanan (cermin terhadap x=200).
+export const GRASP_X0 = -400;
+export const GRASP_Y0 = -70;
+export const GRASP_W = 880;
+export const GRASP_H = 600;
+export const GRASP_CX = 200;
+export const GRASP_FLAG_TOP = 84; // y unit puncak tiang bendera
+
+const ISL_TOP = 60;
+
 export const GraspedIsland: React.FC<{
-  readonly kind: "manhattan" | "run";
+  readonly kind: "manhattan" | "manhattan-en" | "run";
   readonly color: string;
   readonly dark: string;
   readonly k: number; // skala (1 unit = k px)
   readonly t: number;
-  readonly squeeze?: number;
+  readonly squeeze?: number; // 0..1: jari menutup rapat
   readonly flag?: "en" | "nl";
   readonly mirror?: boolean;
 }> = ({ kind, color, dark, k, t, squeeze = 0, flag, mirror = false }) => {
-  const sh: [number, number] = [-300, 330];
-  const el: [number, number] = [-110, 425];
-  const wr: [number, number] = [60, 342];
-  const thick = 96;
-  const ang = (Math.atan2(wr[1] - el[1], wr[0] - el[0]) * 180) / Math.PI;
-  const cuffX = el[0] + (wr[0] - el[0]) * 0.74;
-  const cuffY = el[1] + (wr[1] - el[1]) * 0.74;
-  const armD = `M${sh[0]},${sh[1]} L${el[0]},${el[1]} L${wr[0]},${wr[1]}`;
-  const fx = [78, 140, 202, 264];
-  const fy0 = [186, 168, 160, 176];
-  const fh = (i: number) => [96, 118, 124, 106][i] - squeeze * (i % 2 ? 8 : 5);
-  const fingerShift = squeeze * 4;
+  const sq = squeeze;
+  const poleX = kind === "run" ? 214 : 124;
+  const poleBase = 228;
+  const poleH = poleBase - GRASP_FLAG_TOP;
+  // jari: pangkal (di dalam telapak) -> ujung; tinggi BERBEDA (tengah paling tinggi), kelingking paling pendek
+  const fingers = [
+    { bx: 382, by: 352, tx: 376 - sq * 10, ty: 300 + sq * 8, cx: 392 - sq * 4, cy: 322, w: 56 }, // kelingking
+    { bx: 322, by: 352, tx: 314 - sq * 14, ty: 262 + sq * 10, cx: 330 - sq * 6, cy: 316, w: 62 }, // manis
+    { bx: 260, by: 352, tx: 250 - sq * 14, ty: 238 + sq * 10, cx: 266 - sq * 4, cy: 308, w: 64 }, // tengah
+    { bx: 198, by: 352, tx: 190 - sq * 8, ty: 262 + sq * 8, cx: 196, cy: 314, w: 60 }, // telunjuk
+  ];
+  const fd = (f: (typeof fingers)[number]) => `M${f.bx},${f.by} Q${f.cx},${f.cy} ${f.tx},${f.ty}`;
+  const thumb = `M50,420 Q2,350 46,298 Q62,278 ${100 + sq * 12},${258 + sq * 6}`;
+  const wristY = 380;
   return (
-    <svg
-      width={GRASP_W * k}
-      height={520 * k}
-      viewBox={`${GRASP_X0} 0 ${GRASP_W} 520`}
-      style={{ overflow: "visible", display: "block", transform: mirror ? "scaleX(-1)" : undefined }}
-    >
-      {/* bayangan jatuh tegas di bawah tangan + pulau */}
-      <ellipse cx={150} cy={478} rx={250} ry={20} fill="#0C3140" opacity={0.3} />
-      {/* lengan menekuk: bahu (luar layar) -> siku -> pergelangan */}
-      <path d={armD} fill="none" stroke={INK} strokeWidth={thick + 18} strokeLinecap="round" strokeLinejoin="round" />
-      <path d={armD} fill="none" stroke={color} strokeWidth={thick} strokeLinecap="round" strokeLinejoin="round" />
-      <path d={`M${el[0]},${el[1] + thick * 0.3} L${wr[0]},${wr[1] + thick * 0.3}`} fill="none" stroke={dark} strokeWidth={16} strokeLinecap="round" opacity={0.55} />
-      <path d={`M${sh[0] + 40},${sh[1] - thick * 0.28} L${el[0] + 8},${el[1] - thick * 0.28}`} fill="none" stroke="#fff" strokeWidth={9} strokeLinecap="round" opacity={0.5} />
-      <path d={`M${el[0] + 40},${el[1] - thick * 0.3} L${wr[0] - 70},${wr[1] - thick * 0.3}`} fill="none" stroke="#fff" strokeWidth={9} strokeLinecap="round" opacity={0.5} />
-      {/* siku */}
-      <path d={`M${el[0] - 26},${el[1] + 8} Q${el[0] - 4},${el[1] + 40} ${el[0] + 30},${el[1] + 14}`} fill="none" stroke={INK} strokeWidth={6} strokeLinecap="round" />
-      {/* manset */}
-      <g transform={`translate(${cuffX} ${cuffY}) rotate(${ang})`}>
-        <rect x={-20} y={-(thick / 2 + 8)} width={40} height={thick + 16} rx={16} fill="#fff" stroke={INK} strokeWidth={7} />
-        <path d="M-6,-30 L-6,30" stroke={dark} strokeWidth={5} strokeLinecap="round" opacity={0.35} />
-      </g>
-      {/* punggung tangan / telapak di BELAKANG-BAWAH pulau */}
-      <ellipse cx={190} cy={322} rx={176} ry={74} fill={color} stroke={INK} strokeWidth={8} />
-      <path d="M90,306 Q190,262 290,306" fill="none" stroke={dark} strokeWidth={8} strokeLinecap="round" opacity={0.35} />
-      {/* pulau */}
-      <g>
-        <Island kind={kind} w={400} t={t} />
-      </g>
-      {flag ? (
-        <g transform={`translate(${kind === "manhattan" ? 44 : 352} 196)`}>
-          <line x1={0} y1={0} x2={0} y2={-190} stroke={INK} strokeWidth={13} strokeLinecap="round" />
-          <line x1={0} y1={0} x2={0} y2={-190} stroke="#fff" strokeWidth={5.5} strokeLinecap="round" />
-          <circle cx={0} cy={-192} r={9} fill={toon.yellow} stroke={INK} strokeWidth={4} />
-          <g transform={`translate(0 -184) scale(${mirror ? -1 : 1} 1)`}>
-            <g transform={`translate(6 0) skewY(${5 * Math.sin(t * 5)}) scale(1.35)`}>
+    <svg width={GRASP_W * k} height={GRASP_H * k} viewBox={`${GRASP_X0} ${GRASP_Y0} ${GRASP_W} ${GRASP_H}`} style={{ overflow: "visible", display: "block" }}>
+      <g transform={mirror ? "translate(400 0) scale(-1 1)" : undefined}>
+        {/* bayangan jatuh tegas */}
+        <ellipse cx={218} cy={446} rx={230} ry={14} fill="#0C3140" opacity={0.26} />
+        {/* pulau (dasar pasirnya terbenam di telapak) */}
+        <g transform={`translate(0 ${ISL_TOP})`}>
+          <Island kind={kind} w={400} t={t} bare detail={1.12} />
+        </g>
+        {flag ? (
+          <g transform={`translate(${poleX} ${poleBase})`}>
+            <line x1={0} y1={0} x2={0} y2={-poleH} stroke={INK} strokeWidth={14} strokeLinecap="round" />
+            <line x1={0} y1={0} x2={0} y2={-poleH} stroke="#fff" strokeWidth={6} strokeLinecap="round" />
+            <circle cx={0} cy={-poleH - 2} r={9.5} fill={toon.yellow} stroke={INK} strokeWidth={4.5} />
+            <g transform={`translate(${mirror ? -7 : 7} ${-poleH + 5}) scale(${mirror ? -1 : 1} 1) skewY(${5 * Math.sin(t * 5)}) scale(1.4)`}>
               <FlagG kind={flag} />
             </g>
           </g>
+        ) : null}
+        {/* --- tinta dasar (siluet menyatu) --- */}
+        <g stroke={INK} fill={INK} strokeLinecap="round" strokeLinejoin="round">
+          <path d={`M-420,${wristY} L0,${wristY}`} strokeWidth={166} strokeLinecap="butt" fill="none" />
+          <ellipse cx={218} cy={384} rx={228} ry={86} strokeWidth={14} />
+          {fingers.map((f, i) => (
+            <path key={`ik${i}`} d={fd(f)} fill="none" strokeWidth={f.w + 15} />
+          ))}
+          <path d={thumb} fill="none" strokeWidth={88} />
         </g>
-      ) : null}
-      {/* jari melingkar di DEPAN tepi pulau */}
-      <g transform={`translate(0 ${-fingerShift})`}>
-        {fx.map((x, i) => (
-          <g key={x}>
-            <rect x={x} y={fy0[i]} width={66} height={fh(i)} rx={33} fill={color} stroke={INK} strokeWidth={7} />
-            <ellipse cx={x + 33} cy={fy0[i] + 22} rx={14} ry={6} fill="#fff" opacity={0.55} />
-            <path d={`M${x + 14},${fy0[i] + fh(i) - 14} Q${x + 33},${fy0[i] + fh(i) - 2} ${x + 52},${fy0[i] + fh(i) - 14}`} fill="none" stroke={dark} strokeWidth={4} strokeLinecap="round" opacity={0.5} />
+        {/* --- warna --- */}
+        <path d={`M-420,${wristY} L0,${wristY}`} stroke={color} strokeWidth={150} fill="none" />
+        <ellipse cx={218} cy={384} rx={228} ry={86} fill={color} />
+        {fingers.map((f, i) => (
+          <g key={`f${i}`}>
+            <path d={fd(f)} fill="none" stroke={color} strokeWidth={f.w} strokeLinecap="round" />
+            {/* garis pemisah jari (tinta) di sisi kanan */}
+            <path d={`M${f.tx + f.w * 0.5 + 1},${f.ty + 26} Q${f.cx + f.w * 0.5 + 1},${f.cy + 6} ${f.bx + f.w * 0.5 + 1},${f.by - 6}`} fill="none" stroke={INK} strokeWidth={5.5} strokeLinecap="round" opacity={i === 0 ? 0 : 0.85} />
+            {/* ruas jari */}
+            <path d={`M${f.tx - f.w * 0.26},${f.ty + 38} Q${f.tx},${f.ty + 48} ${f.tx + f.w * 0.26},${f.ty + 38}`} fill="none" stroke={INK} strokeWidth={4.5} strokeLinecap="round" opacity={0.6} />
+            <ellipse cx={f.tx - f.w * 0.14} cy={f.ty - f.w * 0.1} rx={f.w * 0.12} ry={f.w * 0.2} fill="#fff" opacity={0.55} transform={`rotate(14 ${f.tx} ${f.ty})`} />
           </g>
         ))}
-        {/* jempol: naik di sisi pulau, melintang di DEPAN tepi kiri pulau */}
-        <rect x={14} y={150} width={70} height={150} rx={35} transform={`rotate(14 49 225)`} fill={color} stroke={INK} strokeWidth={7} />
-        <ellipse cx={42} cy={178} rx={13} ry={7} transform={`rotate(14 42 178)`} fill="#fff" opacity={0.55} />
+        {/* pemisah jari paling kiri (telunjuk) terhadap ibu jari tidak perlu: ibu jari di depan */}
+        <path d={`M-10,${wristY - 40} Q40,300 60,330`} fill="none" stroke="none" />
+        <path d={thumb} fill="none" stroke={color} strokeWidth={72} strokeLinecap="round" strokeLinejoin="round" />
+        <path d={`M42,410 Q8,350 50,308`} transform="translate(22 4)" fill="none" stroke={dark} strokeWidth={13} strokeLinecap="round" opacity={0.3} />
+        <path d={`M18,364 Q50,372 84,356`} fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.6} />
+        <ellipse cx={88 + sq * 12} cy={262 + sq * 6} rx={12} ry={18} fill="#fff" opacity={0.5} transform={`rotate(20 ${88 + sq * 12} ${262 + sq * 6})`} />
+        {/* bayangan lembut telapak + sorot */}
+        <path d="M110,448 Q218,478 340,448" fill="none" stroke={dark} strokeWidth={14} strokeLinecap="round" opacity={0.3} />
+        <path d="M96,420 Q110,402 146,398" fill="none" stroke="#fff" strokeWidth={8} strokeLinecap="round" opacity={0.45} />
+        {/* lengan: sorot + bayangan */}
+        <path d={`M-400,${wristY - 44} L-80,${wristY - 44}`} fill="none" stroke="#fff" strokeWidth={10} strokeLinecap="round" opacity={0.45} />
+        <path d={`M-400,${wristY + 46} L-80,${wristY + 46}`} fill="none" stroke={dark} strokeWidth={12} strokeLinecap="round" opacity={0.4} />
+        {/* manset putih menempel di pergelangan, dekat tangan */}
+        <rect x={-74} y={wristY - 92} width={46} height={184} rx={18} fill="#fff" stroke={INK} strokeWidth={8} />
+        <path d={`M-58,${wristY - 70} L-58,${wristY + 70}`} stroke={dark} strokeWidth={5} strokeLinecap="round" opacity={0.35} />
       </g>
     </svg>
   );
