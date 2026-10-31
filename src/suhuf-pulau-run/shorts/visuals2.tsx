@@ -80,8 +80,8 @@ const S08: React.FC<V> = ({ t }) => (
         return (
           <>
             <BigWord text="TIDAK TERTULIS" t={lt} at={0.15} y={300} size={118} color={toon.orange} width={1040} />
-            <Place x={310} y={520} t={lt} at={0.05} origin="50% 100%">
-              <TreatySheet w={460} stampP={1} rot={-3} />
+            <Place x={310} y={520} t={lt} at={0.05} dy={bob(lt, 6, 2.4)} origin="50% 100%">
+              <TreatySheet w={460} stampP={1} rot={-3 + bob(lt, 1.2, 1.9)} />
             </Place>
             <div style={{ position: "absolute", left: 540 - 380, top: 1090, width: 760, display: "flex", justifyContent: "center", transform: `scale(${pop(lt, 0.4, 0.5)})` }}>
               <svg width={760} height={220} viewBox="0 0 760 220" style={{ overflow: "visible" }}>
@@ -103,14 +103,14 @@ const S08: React.FC<V> = ({ t }) => (
 // ---------------- S-09 Perumpamaan: dua anak main kartu ----------------
 const kidPair = (lt: number, t: number, aHand: readonly [number, number], bHand: readonly [number, number], cardsHeld: boolean) => (
   <>
-    <Place x={70} y={620} t={lt} at={0.1} origin="50% 100%">
-      <ToyKid size={400} t={t} shirt={toon.orange} hair="#5A3B27" handTo={aHand} mood="happy" phase={0}>
+    <Place x={70} y={620} t={lt} at={0.1} dy={bob(t, 5, 2.6)} origin="50% 100%">
+      <ToyKid size={400} t={t} shirt={toon.orange} hair="#5A3B27" handTo={aHand} mood="happy" phase={0} nod={3.5 * Math.sin(t * 2.3)}>
         {cardsHeld ? <CardG x={aHand[0] + 4} y={aHand[1] - 28} w={44} tint={toon.blue} rot={-8} /> : null}
       </ToyKid>
     </Place>
-    <Place x={610} y={620} t={lt} at={0.2} origin="50% 100%">
+    <Place x={610} y={620} t={lt} at={0.2} dy={bob(t, 5, 2.6, 1.4)} origin="50% 100%">
       <div style={{ transform: "scaleX(-1)" }}>
-        <ToyKid size={400} t={t} shirt={toon.blue} hair="#2B2B2B" handTo={bHand} mood="happy" phase={1.5}>
+        <ToyKid size={400} t={t} shirt={toon.blue} hair="#2B2B2B" handTo={bHand} mood="happy" phase={1.5} nod={3.5 * Math.sin(t * 2.3 + 1.6)}>
           {cardsHeld ? <CardG x={bHand[0] + 4} y={bHand[1] - 28} w={44} tint={toon.orange} rot={-8} /> : null}
         </ToyKid>
       </div>
@@ -188,8 +188,8 @@ const S10: React.FC<V> = ({ t }) => (
         const shrink = slide(lt, 1.0, 1.2);
         return (
           <>
-            <Place x={330} y={500} t={lt} at={0.05} origin="50% 100%">
-              <TreatySheet w={420} stampP={1} rot={-3} />
+            <Place x={330} y={500} t={lt} at={0.05} dy={bob(lt, 7, 2.2)} rot={-3 + bob(lt, 1.5, 1.8)} origin="50% 100%">
+              <TreatySheet w={420} stampP={1} rot={0} />
             </Place>
             <svg width={1080} height={300} style={{ position: "absolute", left: 0, top: 1050, overflow: "visible" }}>
               <path d={`M360,120 L${360 + 220 * shrink},120`} stroke={INK} strokeWidth={16} strokeLinecap="round" opacity={shrink > 0 ? 1 : 0} />
@@ -212,8 +212,8 @@ const S10: React.FC<V> = ({ t }) => (
         const mx = lerp(250, 520, move) + Math.sin(lt * 2) * 12;
         return (
           <>
-            <Place x={270} y={540} t={lt} at={0.0} origin="50% 100%">
-              <TreatySheet w={540} stampP={1} rot={1} />
+            <Place x={270} y={540} t={lt} at={0.0} dy={bob(lt, 6, 2)} origin="50% 100%">
+              <TreatySheet w={540} stampP={1} rot={1 + bob(lt, 1.2, 1.7)} />
             </Place>
             <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
               <g transform={`translate(${mx} ${lerp(860, 960, move)})`}>

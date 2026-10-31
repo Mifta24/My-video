@@ -336,7 +336,7 @@ const S05: React.FC<V> = ({ t }) => {
     <>
       <Tag text="SKEMA" kind="skema" t={t} />
       <div style={{ position: "absolute", inset: 0, transform: `scale(${zoom})`, transformOrigin: "540px 900px" }}>
-        <Place x={160} y={640} t={t} at={0.15} origin="50% 100%">
+        <Place x={160} y={640} t={t} at={0.15} dy={bob(t, 7, 2.2)} origin="50% 100%">
           <Island kind="manhattan" w={760} t={t} />
         </Place>
         <FlagPole kind={old ? "nl" : "en"} x={285} y={950} h={240} w={160} t={t} />
@@ -351,8 +351,8 @@ const S05: React.FC<V> = ({ t }) => {
       </div>
       {fp >= 0.5 ? (
         <>
-          <Sparkle x={150} y={560} t={t} size={70} />
-          <Sparkle x={900} y={520} t={t} size={80} phase={2} />
+          <Sparkle x={18} y={470} t={t} size={60} />
+          <Sparkle x={985} y={450} t={t} size={60} phase={2} />
         </>
       ) : null}
     </>
@@ -415,7 +415,7 @@ const S06: React.FC<V> = ({ t }) => {
               <Place x={190} y={360} t={lt} at={0.15} origin="50% 100%">
                 <Speech text="kita tukar ya" size={92} tail="down" strike={strike} t={lt} />
               </Place>
-              {strike > 0.8 ? <Sparkle x={860} y={470} t={t} size={70} phase={1} /> : null}
+              {strike > 0.8 ? <Sparkle x={900} y={300} t={t} size={64} phase={1} /> : null}
             </>
           );
         }}

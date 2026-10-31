@@ -3,7 +3,7 @@ import specShorts from "./vo/spec-shorts.json";
 
 // Timing Shorts Suhuf #03 (Pulau Run) dari DURASI AUDIO NYATA (vo/durations-shorts.json).
 // Durasi adegan = lead + klip + jeda antarklip + ekor. Ekor lebih panjang di hook (S-01: timbangan
-// berhenti di tanda tanya), S-05 (papan nama), dan penutup.
+// berhenti di tanda tanya) dan penutup. Draf 2: ekor dipangkas ~0.7 dtk total (narasi tidak berubah).
 export const FPS = 30;
 
 export type Clip = { id: string; text: string; say?: string };
@@ -22,17 +22,17 @@ export const clipDuration = (id: string) => {
 const GAP = 0.22;
 const LEAD = 0.2;
 const TAIL: Record<string, number> = {
-  s01: 1.9,
+  s01: 1.65,
   s02: 0.4,
   s03: 0.6,
   s04: 0.6,
-  s05: 0.6,
+  s05: 0.45,
   s06: 0.5,
-  s07: 0.7,
-  s08: 0.9,
+  s07: 0.6,
+  s08: 0.7,
   s09: 0.35,
   s10: 0.6,
-  s11: 1.1,
+  s11: 0.95,
 };
 const DEFAULT_TAIL = 0.4;
 

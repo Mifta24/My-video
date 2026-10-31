@@ -16,7 +16,17 @@ const ShortsSceneInner = ({ sceneId }: { readonly sceneId: string }) => {
   return (
     <>
       <ToonBackdrop seed={sceneId} />
-      {Visual ? <Visual t={t} /> : null}
+      {/* kamera mengambang pelan: adegan "diam" tetap hidup (subtitle & watermark tidak ikut bergerak) */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          transform: `translate(${Math.sin(t * 0.7) * 7}px, ${Math.cos(t * 0.55) * 9}px) scale(${1 + 0.014 * (0.5 + 0.5 * Math.sin(t * 0.8 + 1))})`,
+          transformOrigin: "50% 45%",
+        }}
+      >
+        {Visual ? <Visual t={t} /> : null}
+      </div>
       <Voice sceneId={sceneId} />
       <SfxList cues={SFX[sceneId] ?? []} />
     </>
