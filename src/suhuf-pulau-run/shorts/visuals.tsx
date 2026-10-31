@@ -195,7 +195,7 @@ const S03: React.FC<V> = ({ t }) => (
     {/* shot C: pala jatuh, bersinar */}
     <Sh t={t} from={4.95}>
       {(lt) => {
-        const drop = interpolate(lt, [0.15, 0.85], [-560, 0], { ...clamp01, easing: (x) => x * x });
+        const drop = interpolate(lt, [0.1, 0.85], [-120, 0], { ...clamp01, easing: (x) => x * x });
         const bounce = lt > 0.85 ? Math.abs(Math.sin((lt - 0.85) * 7)) * 46 * Math.exp(-(lt - 0.85) * 3.2) : 0;
         const glow = appear(lt, 0.9, 0.4) * (0.75 + 0.25 * Math.sin(lt * 6));
         return (
@@ -212,7 +212,7 @@ const S03: React.FC<V> = ({ t }) => (
               </defs>
               <circle cx={540} cy={640} r={330} fill="url(#pr-glow)" />
             </svg>
-            <div style={{ position: "absolute", left: 540 - 150, top: 480 + drop - bounce, transform: `rotate(${interpolate(lt, [0.15, 0.85], [-80, 8], clamp01)}deg)` }}>
+            <div style={{ position: "absolute", left: 540 - 150, top: 480 + drop - bounce, opacity: appear(lt, 0.05, 0.12), transform: `rotate(${interpolate(lt, [0.1, 0.85], [-80, 8], clamp01)}deg)` }}>
               <Nutmeg size={300} />
             </div>
             <BigWord text="PALA BERHARGA" t={lt} at={0.7} y={310} size={112} color={toon.orange} width={1040} />
@@ -240,8 +240,8 @@ const S04: React.FC<V> = ({ t }) => {
       <Sh t={t} to={2.75}>
         {(lt) => {
           const pe = slide(lt, 0.15, 2.0);
-          const xe = lerp(-340, -20, pe);
-          const xn = lerp(1100, 780, pe);
+          const xe = lerp(-340, 40, pe);
+          const xn = lerp(1100, 715, pe);
           return (
             <>
               <Place x={320} y={720} t={lt} at={0.02} origin="50% 100%">
