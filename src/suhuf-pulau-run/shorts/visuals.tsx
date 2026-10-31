@@ -369,21 +369,39 @@ const S06: React.FC<V> = ({ t }) => {
   const strikeAt = cue("s06", "tukar-menukar") + 0.15;
   return (
     <>
-      {/* shot A: kalender 1667, lembar perjanjian turun dan distempel */}
+      {/* shot A: kalender 1667, lembar perjanjian meluncur dari samping ke tengah (selalu di zona aman) dan distempel */}
       <Sh t={t} to={4.95}>
         {(lt) => {
           const reveal = pop(lt, 0.95, 0.5);
-          const calOut = slide(lt, 2.6, 0.6);
-          const drop = slide(lt, 2.65, 0.8);
+          const calOut = slide(lt, 2.5, 0.6);
+          const IN_AT = 2.6;
+          const x = Math.max(0, lt - IN_AT);
+          const inP = slide(lt, IN_AT, 0.75);
+          const swing = lt < IN_AT ? 0 : -16 * Math.exp(-4.5 * x) * Math.cos(11 * x);
           const stamp = slide(lt, 3.85, 0.22);
           const shake = lt > 3.85 && lt < 4.2 ? 6 * Math.sin(lt * 70) * (4.2 - lt) : 0;
+          // Setelah distempel, lembar mengecil halus ke pose shot B (sama persis saat cut).
+          const mv = slide(lt, 4.3, 0.55);
+          const cx = lerp(540 + 330 * (1 - inP), 540, 1) + shake;
+          const cy = lerp(800, 883, inP);
+          const scl = lerp(0.7, 1, inP) * lerp(1, 380 / 440, mv);
           return (
             <>
-              <div style={{ position: "absolute", left: 270, top: lerp(380, 120, calOut), opacity: 1 - calOut }}>
+              <div style={{ position: "absolute", left: 270, top: lerp(380, 300, calOut), opacity: 1 - calOut, transform: `scale(${lerp(1, 0.86, calOut)})` }}>
                 <CalendarYear w={540} t={lt} flipAt={0.05} step={0.25} reveal={reveal} year="1667" />
               </div>
-              <div style={{ position: "absolute", left: 540 - 220 + shake, top: lerp(-700, 390, drop) }}>
-                <TreatySheet w={440} stampP={stamp} rot={lerp(-8, 2, drop)} />
+              <div
+                style={{
+                  position: "absolute",
+                  left: cx - 220,
+                  top: cy - 281,
+                  opacity: appear(lt, IN_AT, 0.15),
+                  transform: `scale(${scl}) rotate(${lerp(swing, 2, mv)}deg)`,
+                  transformOrigin: "50% 50%",
+                  filter: "drop-shadow(0 14px 14px rgba(40,30,60,0.22))",
+                }}
+              >
+                <TreatySheet w={440} stampP={stamp} rot={0} />
               </div>
             </>
           );
@@ -395,8 +413,8 @@ const S06: React.FC<V> = ({ t }) => {
           const strike = slide(t, strikeAt, 0.4);
           return (
             <>
-              <div style={{ position: "absolute", left: 540 - 190, top: 640 + bob(lt, 6, 2.5), opacity: 1 }}>
-                <TreatySheet w={380} stampP={1} rot={2} />
+              <div style={{ position: "absolute", left: 540 - 190, top: 640 + bob(lt, 6, 2.5), opacity: 1, filter: "drop-shadow(0 14px 14px rgba(40,30,60,0.22))" }}>
+                <TreatySheet w={380} stampP={1} rot={2 + bob(lt, 1.2, 2)} />
               </div>
               <Place x={190} y={360} t={lt} at={0.15} origin="50% 100%">
                 <Speech text="kita tukar ya" size={92} tail="down" strike={strike} />
