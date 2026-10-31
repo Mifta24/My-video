@@ -1,5 +1,5 @@
 import type React from "react";
-import { interpolate } from "remotion";
+import { Easing, interpolate } from "remotion";
 import {
   appear,
   bob,
@@ -291,8 +291,9 @@ const S04: React.FC<V> = ({ t }) => {
       {/* shot C: kapal Belanda memeluk keranjang pala: dua lengan tebal BERSIKU, mitten besar di sisi depan keranjang */}
       <Sh t={t} from={5.45}>
         {(lt) => {
-          const slideIn = slide(lt, 0.0, 0.7);
-          const hug = slide(lt, 0.55, 0.8);
+          const smooth = (a: number, b: number) => interpolate(lt, [a, b], [0, 1], { ...clamp01, easing: Easing.inOut(Easing.cubic) });
+          const slideIn = smooth(0.0, 0.85);
+          const hug = smooth(0.55, 1.5);
           const squeeze = lt > 1.4 ? 0.5 + 0.5 * Math.sin((lt - 1.4) * 3.2) : 0;
           const shipX = 540 - 240;
           const shipTop = 670 + bobY(1);

@@ -1,5 +1,5 @@
 import type React from "react";
-import { interpolate } from "remotion";
+import { Easing, interpolate } from "remotion";
 import { appear, bob, BigWord, Place, pop, Sh, Sparkle, slide, Tag, toonFont } from "../../suhuf-bakteri/elements/ToonKit";
 import { SheetMark } from "../../suhuf-bakteri/elements/Brand";
 import { toon } from "../../suhuf-bakteri/theme";
@@ -113,67 +113,60 @@ const kidPair = (lt: number, t: number, aHand: readonly [number, number], bHand:
   </>
 );
 
-const S09: React.FC<V> = ({ t }) => (
-  <>
-    <Tag text="PERUMPAMAAN - bukan data" kind="analogi" t={t} />
-    {/* A: berhenti main */}
-    <Sh t={t} to={2.65}>
-      {(lt) => {
-        const fall = slide(lt, 0.3, 0.6);
-        return (
-          <>
-            {kidPair(lt, t, [150, 150], [150, 150], true)}
-            <Place x={140} y={1010} t={lt} at={0.0} origin="50% 100%">
-              <TableTop w={800} h={120} />
-            </Place>
-            {[0, 1, 2].map((i) => (
-              <div key={i} style={{ position: "absolute", left: 360 + i * 110, top: lerp(260, 940, fall) - i * 14, opacity: 1 - 0.0, transform: `rotate(${(i - 1) * 24 + fall * 30}deg)` }}>
-                <Card w={90} tint={i % 2 ? toon.orange : toon.blue} />
+const S09: React.FC<V> = ({ t }) => {
+  // Anak + meja DIGAMBAR SEKALI di tingkat adegan (pop hanya di awal) supaya tidak "melompat" tiap ganti shot.
+  const hand: readonly [number, number] = [lerp(150, 146, appear(t, 2.5, 0.4)), lerp(150, 160, appear(t, 2.5, 0.4))];
+  return (
+    <>
+      <Tag text="PERUMPAMAAN - bukan data" kind="analogi" t={t} />
+      {kidPair(t, t, hand, hand, true)}
+      <Place x={140} y={1010} t={t} at={0.0} origin="50% 100%">
+        <TableTop w={800} h={120} />
+      </Place>
+      {/* A: berhenti main */}
+      <Sh t={t} to={2.65}>
+        {(lt) => {
+          const fall = interpolate(lt, [0.3, 1.0], [0, 1], { ...clamp01, easing: Easing.in(Easing.quad) });
+          const land = interpolate(lt, [1.0, 1.25, 1.5], [0, 1, 0], clamp01);
+          return (
+            <>
+              {[0, 1, 2].map((i) => (
+                <div key={i} style={{ position: "absolute", left: 360 + i * 110, top: lerp(580, 940, fall) - i * 14 - land * 14 * Math.sin(i + 1), opacity: appear(lt, 0.1, 0.2), transform: `rotate(${(i - 1) * 24 + fall * 30}deg)` }}>
+                  <Card w={90} tint={i % 2 ? toon.orange : toon.blue} />
+                </div>
+              ))}
+              <BigWord text="BERHENTI" t={lt} at={0.25} y={330} size={140} color={toon.orange} width={980} />
+            </>
+          );
+        }}
+      </Sh>
+      {/* B: kartu di tangan, simpan saja */}
+      <Sh t={t} from={2.5} to={5.85}>
+        {(lt) => <BigWord text="SIMPAN SAJA" t={lt} at={0.35} y={330} size={128} color={toon.blue} width={1040} />}
+      </Sh>
+      {/* C: terlihat seperti tukar, padahal tidak ada yang bilang */}
+      <Sh t={t} from={5.75}>
+        {(lt) => {
+          const strike = slide(t, cue("s09", "padahal") + 0.1, 0.4);
+          const swap = 0.5 + 0.5 * Math.sin(lt * 3);
+          return (
+            <>
+              <div style={{ position: "absolute", left: 540 - 105, top: 880 + bob(lt, 6, 2.5), opacity: 0.55 + 0.45 * swap, transform: "scale(0.75)", transformOrigin: "50% 50%" }}>
+                <svg width={280} height={120} viewBox="0 0 280 120" style={{ overflow: "visible" }}>
+                  <path d="M30,40 L230,40 M200,16 L232,40 L200,64" fill="none" stroke={INK} strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M250,92 L50,92 M80,68 L48,92 L80,116" fill="none" stroke={toon.blueDark} strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </div>
-            ))}
-            <BigWord text="BERHENTI" t={lt} at={0.25} y={330} size={140} color={toon.orange} width={980} />
-          </>
-        );
-      }}
-    </Sh>
-    {/* B: kartu di tangan, simpan saja */}
-    <Sh t={t} from={2.5} to={5.85}>
-      {(lt) => (
-        <>
-          {kidPair(lt, t, [146, 160], [146, 160], true)}
-          <Place x={140} y={1010} t={lt} at={0.0} origin="50% 100%">
-            <TableTop w={800} h={120} />
-          </Place>
-          <BigWord text="SIMPAN SAJA" t={lt} at={0.35} y={330} size={128} color={toon.blue} width={1040} />
-        </>
-      )}
-    </Sh>
-    {/* C: terlihat seperti tukar, padahal tidak ada yang bilang */}
-    <Sh t={t} from={5.75}>
-      {(lt) => {
-        const strike = slide(t, cue("s09", "padahal") + 0.1, 0.4);
-        const swap = 0.5 + 0.5 * Math.sin(lt * 3);
-        return (
-          <>
-            {kidPair(lt, t, [146, 160], [146, 160], true)}
-            <Place x={140} y={1010} t={lt} at={0.0} origin="50% 100%">
-              <TableTop w={800} h={120} />
-            </Place>
-            <div style={{ position: "absolute", left: 540 - 105, top: 880 + bob(lt, 6, 2.5), opacity: 0.55 + 0.45 * swap, transform: "scale(0.75)", transformOrigin: "50% 50%" }}>
-              <svg width={280} height={120} viewBox="0 0 280 120" style={{ overflow: "visible" }}>
-                <path d="M30,40 L230,40 M200,16 L232,40 L200,64" fill="none" stroke={INK} strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M250,92 L50,92 M80,68 L48,92 L80,116" fill="none" stroke={toon.blueDark} strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <Place x={330} y={370} t={lt} at={0.4} origin="50% 100%">
-              <Speech text="tukar" size={110} tail="down" strike={strike} t={lt} />
-            </Place>
-          </>
-        );
-      }}
-    </Sh>
-  </>
-);
+              <Place x={330} y={370} t={lt} at={0.4} origin="50% 100%">
+                <Speech text="tukar" size={110} tail="down" strike={strike} t={lt} />
+              </Place>
+            </>
+          );
+        }}
+      </Sh>
+    </>
+  );
+};
 
 // ---------------- S-10 Pelajaran: cek dulu yang tertulis ----------------
 const S10: React.FC<V> = ({ t }) => (
