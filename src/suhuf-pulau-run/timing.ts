@@ -22,17 +22,17 @@ export const clipDuration = (id: string) => {
 const GAP = 0.22;
 const LEAD = 0.2;
 const TAIL: Record<string, number> = {
-  s01: 2.3,
-  s02: 0.6,
-  s03: 0.9,
-  s04: 0.9,
-  s05: 0.9,
-  s06: 0.7,
-  s07: 1.0,
-  s08: 1.2,
-  s09: 0.5,
-  s10: 0.9,
-  s11: 1.4,
+  s01: 1.9,
+  s02: 0.4,
+  s03: 0.6,
+  s04: 0.6,
+  s05: 0.6,
+  s06: 0.5,
+  s07: 0.7,
+  s08: 0.9,
+  s09: 0.35,
+  s10: 0.6,
+  s11: 1.1,
 };
 const DEFAULT_TAIL = 0.4;
 
