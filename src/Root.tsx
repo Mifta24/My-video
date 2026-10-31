@@ -28,6 +28,9 @@ import { ShortsVideo } from "./suhuf-bakteri/shorts/ShortsVideo";
 import { LongScene } from "./suhuf-bakteri/long/LongScene";
 import { LongVideo as BakteriLongVideo } from "./suhuf-bakteri/long/LongVideo";
 import { longTotalFrames as bakteriLongFrames, sceneFrames, shortsTotalFrames as bakteriShortsFrames } from "./suhuf-bakteri/timing";
+import { PulauRunScene } from "./suhuf-pulau-run/shorts/scenes";
+import { ShortsVideo as PulauRunShorts } from "./suhuf-pulau-run/shorts/ShortsVideo";
+import { sceneFrames as pulauRunSceneFrames, shortsTotalFrames as pulauRunShortsFrames } from "./suhuf-pulau-run/timing";
 import { ShortsTeaser } from "./suhuf-tambora/ShortsTeaser";
 import { shortsTotalFrames } from "./suhuf-tambora/timing";
 import { SpinningCube } from "./three-demo/SpinningCube";
@@ -79,6 +82,27 @@ export const RemotionRoot: React.FC = () => {
             id="Bakteri-Shorts-Adegan"
             component={ShortsScene}
             durationInFrames={sceneFrames("s01")}
+            fps={30}
+            width={1080}
+            height={1920}
+            defaultProps={{ sceneId: "s01" }}
+          />
+        </Folder>
+      </Folder>
+      <Folder name="Suhuf-Pengetahuan-03-Pulau-Run">
+        <Composition
+          id="PulauRun-Shorts"
+          component={PulauRunShorts}
+          durationInFrames={pulauRunShortsFrames}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Folder name="PulauRun-Adegan-Shorts">
+          <Composition
+            id="PulauRun-Shorts-Adegan"
+            component={PulauRunScene}
+            durationInFrames={pulauRunSceneFrames("s01")}
             fps={30}
             width={1080}
             height={1920}

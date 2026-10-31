@@ -248,17 +248,24 @@ export const WaterBand: React.FC<{ readonly y0: number; readonly y1: number; rea
   const rows = Array.from({ length: 7 }, (_, i) => i);
   return (
     <svg width={1080} height={h + 40} viewBox={`0 0 1080 ${h + 40}`} style={{ position: "absolute", left: 0, top: y0 - 20, overflow: "visible" }}>
+      <defs>
+        <clipPath id={`wb-${seed}`}>
+          <path d={`M30,24 Q165,${4 + Math.sin(t * 1.6) * 6} 300,24 T570,24 T840,24 T1050,24 L1050,${h - 40} Q1050,${h} 1010,${h} L70,${h} Q30,${h} 30,${h - 40} Z`} />
+        </clipPath>
+      </defs>
       <path
-        d={`M0,24 Q135,${4 + Math.sin(t * 1.6) * 6} 270,24 T540,24 T810,24 T1080,24 L1080,${h + 40} L0,${h + 40} Z`}
+        d={`M30,24 Q165,${4 + Math.sin(t * 1.6) * 6} 300,24 T570,24 T840,24 T1050,24 L1050,${h - 40} Q1050,${h} 1010,${h} L70,${h} Q30,${h} 30,${h - 40} Z`}
         fill={toon.blue}
         stroke={INK}
         strokeWidth={7}
         strokeLinejoin="round"
       />
-      <rect x={0} y={h * 0.55} width={1080} height={h * 0.45 + 40} fill={toon.blueDark} opacity={0.35} />
+      <g clipPath={`url(#wb-${seed})`}>
+        <rect x={0} y={h * 0.55} width={1080} height={h * 0.45 + 40} fill={toon.blueDark} opacity={0.35} />
+      </g>
       {rows.map((r) =>
         Array.from({ length: 5 }, (_, c) => {
-          const px = ((c * 250 + r * 90 + t * 30 * (r % 2 ? 1 : -1)) % 1200) - 60;
+          const px = 50 + ((((c * 190 + r * 90 + t * 30 * (r % 2 ? 1 : -1)) % 900) + 900) % 900) - 20;
           const py = 70 + r * ((h - 90) / 7) + random(`${seed}-${r}-${c}`) * 20;
           return (
             <path
@@ -314,7 +321,8 @@ export const CalendarYear: React.FC<{
   readonly flipAt: number;
   readonly reveal: number;
   readonly year: string;
-}> = ({ w, t, flipAt, reveal, year }) => {
+  readonly step?: number;
+}> = ({ w, t, flipAt, reveal, year, step = 0.5 }) => {
   const h = w * 0.92;
   const pages = [2, 1, 0];
   return (
@@ -340,7 +348,7 @@ export const CalendarYear: React.FC<{
         <rect x={140} y={290} width={120} height={10} rx={5} fill={toon.orange} opacity={reveal} />
       </svg>
       {pages.map((i) => {
-        const p = Math.min(1, Math.max(0, (t - (flipAt + i * 0.5)) / 0.5));
+        const p = Math.min(1, Math.max(0, (t - (flipAt + i * step)) / 0.45));
         if (p >= 1) {
           return null;
         }
@@ -410,6 +418,8 @@ export const Fist: React.FC<{ readonly color: string; readonly dark: string; rea
     <svg width={w} height={(w * 300) / 520} viewBox="0 0 520 300" style={{ overflow: "visible", display: "block" }}>
       {/* lengan + manset */}
       <rect x={-300} y={104} width={470} height={92} rx={30} fill={color} stroke={INK} strokeWidth={7} />
+      <rect x={176} y={112} width={86} height={76} fill={color} stroke={INK} strokeWidth={7} />
+      <rect x={176} y={116} width={86} height={68} fill={color} />
       <rect x={150} y={92} width={40} height={116} rx={14} fill="#fff" stroke={INK} strokeWidth={7} />
       {/* telapak */}
       <rect x={236} y={66} width={120} height={162} rx={42} fill={color} stroke={INK} strokeWidth={7} />
@@ -492,8 +502,8 @@ export const ToyKid: React.FC<{
 };
 
 // ---------------- Papan nama kartun ----------------
-export const SignBoard: React.FC<{ readonly w: number; readonly text: string; readonly color: string; readonly size: number }> = ({ w, text, color, size }) => (
-  <div style={{ position: "relative", width: w, height: size * 1.9 + 70, display: "flex", flexDirection: "column", alignItems: "center" }}>
+export const SignBoard: React.FC<{ readonly w: number; readonly text: string; readonly color: string; readonly size: number; readonly post?: number }> = ({ w, text, color, size, post = 70 }) => (
+  <div style={{ position: "relative", width: w, height: size * 1.9 + post, display: "flex", flexDirection: "column", alignItems: "center" }}>
     <div
       style={{
         width: w,
@@ -518,7 +528,7 @@ export const SignBoard: React.FC<{ readonly w: number; readonly text: string; re
     >
       {text}
     </div>
-    <div style={{ width: 26, flex: 1, background: WOOD_DARK, border: `6px solid ${INK}`, borderTop: "none", boxSizing: "border-box" }} />
+    {post > 0 ? <div style={{ width: 26, flex: 1, background: WOOD_DARK, border: `6px solid ${INK}`, borderTop: "none", boxSizing: "border-box" }} /> : null}
   </div>
 );
 
@@ -719,3 +729,48 @@ export const Chip: React.FC<{ readonly text: string; readonly color: string; rea
     {text}
   </div>
 );
+
+// Kartu di dalam <svg> (pusat di x, y; lebar w dalam satuan svg).
+export const CardG: React.FC<{ readonly x: number; readonly y: number; readonly w: number; readonly tint: string; readonly rot?: number }> = ({ x, y, w, tint, rot = 0 }) => {
+  const k = w / 50;
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${k}) translate(-25 -35)`}>
+      <rect x={2} y={2} width={46} height={66} rx={7} fill="#fff" stroke={INK} strokeWidth={3.4} />
+      <rect x={8} y={8} width={34} height={54} rx={4} fill={tint} />
+      <circle cx={25} cy={35} r={9} fill="#fff" opacity={0.85} />
+      <circle cx={25} cy={35} r={4.4} fill={tint} />
+    </g>
+  );
+};
+
+// Penggaris/pengukur kartun (garis dengan ujung tegak). Gambar dalam <svg> koordinat halaman.
+export const Ruler: React.FC<{
+  readonly x1: number;
+  readonly y1: number;
+  readonly x2: number;
+  readonly y2: number;
+  readonly p: number; // 0..1 digambar
+  readonly color?: string;
+}> = ({ x1, y1, x2, y2, p, color = toon.orangeDark }) => {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.hypot(dx, dy);
+  const nx = (-dy / len) * 22;
+  const ny = (dx / len) * 22;
+  const ex = x1 + dx * p;
+  const ey = y1 + dy * p;
+  return (
+    <g strokeLinecap="round">
+      <line x1={x1} y1={y1} x2={ex} y2={ey} stroke={INK} strokeWidth={17} />
+      <line x1={x1} y1={y1} x2={ex} y2={ey} stroke={color} strokeWidth={8} />
+      <line x1={x1 - nx} y1={y1 - ny} x2={x1 + nx} y2={y1 + ny} stroke={INK} strokeWidth={17} />
+      <line x1={x1 - nx} y1={y1 - ny} x2={x1 + nx} y2={y1 + ny} stroke={color} strokeWidth={8} />
+      {p > 0.98 ? (
+        <>
+          <line x1={x2 - nx} y1={y2 - ny} x2={x2 + nx} y2={y2 + ny} stroke={INK} strokeWidth={17} />
+          <line x1={x2 - nx} y1={y2 - ny} x2={x2 + nx} y2={y2 + ny} stroke={color} strokeWidth={8} />
+        </>
+      ) : null}
+    </g>
+  );
+};
