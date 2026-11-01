@@ -3,7 +3,7 @@ import { Easing, interpolate } from "remotion";
 import { bob, pop, slide } from "../../suhuf-bakteri/elements/ToonKit";
 import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
-import { Basket, CalendarYear, FlagPole, Island, Ship, TreatySheet, WrapHand } from "../shorts/kit2d";
+import { CalendarYear, FlagG, FlagPole, Island, Ship, TreatySheet, WOOD, WOOD_DARK } from "../shorts/kit2d";
 import { Big, BIG_Y, ChipAt, clamp01, H, INK, In, IceShop, Label, LChip, Shot, Sub, ToyFigure, W } from "./kitLong";
 import { BoardDetective, Glow, PhotoCard, QBadge, RecapBoard, ShipAt, WaterL } from "./props";
 import type { V } from "./bab1-2";
@@ -58,70 +58,203 @@ const L08: React.FC<V> = ({ t }) => (
   </>
 );
 
-// Pelukan L-09 (draf 2). Tata letak (px kanvas): judul y 150-268, pil subjudul y 296-~356, puncak bendera ~394
-// (jarak >= 30 px dari pil), elemen terbawah <= ~862 (caption bawah mulai ~897, jarak >= 30 px).
-// Kapal: lambung berhaluan dan berburitan naik (siluet kapal), tanpa lingkaran lambang di layar, tanpa wajah
-// (wajah tertutup keranjang). Keranjang di depan lambung; haluan dan buritan terlihat di kiri-kanan keranjang.
-// Pelukan: lengan atas keluar dari BALIK keranjang (dari badan kapal) ke siku di luar sisi bawah keranjang; lengan
-// bawah TEBAL melengkung MELINGKARI sudut bawah ke DEPAN keranjang; dua tangan menempel di muka keranjang
-// (sepertiga bawah), jari ke arah tengah, tidak bertaut. Siluet: keranjang dirangkul ke badan kapal.
+// Pelukan L-09 (draf 3). Tata letak (px kanvas): judul y 150-268, pil subjudul y 288-~354, puncak bendera ~398
+// (jarak >= 30 px dari pil), elemen terbawah <= ~830 (caption bawah mulai ~897).
+// Draf 2 terbaca "menyangga dari bawah" + layar seperti kubah/helm + dua bulatan merah seperti kacamata. Draf 3:
+// - kapal digambar khusus Long: lambung LEBAR (+-345 px) berhaluan/berburitan naik, DUA tiang dengan dua layar
+//   segi empat TERPISAH (celah ~90 px), bendera Belanda di puncak tiang depan, tanpa wajah;
+// - keranjang pala dengan FULI: biji cokelat dibungkus jaring merah tipis (bukan bulatan merah padat), tumpukan
+//   asimetris 7 biji (tidak membentuk pasangan mata);
+// - pelukan: lengan atas turun di sisi kapal, siku di luar sisi keranjang, lengan bawah MELINTANG di depan badan
+//   keranjang (dua lapis, bersilang), tangan mencengkeram sisi seberang dengan ibu jari terpisah + empat jari.
 const SX = 960;
 type Pt = readonly [number, number];
-const BW = 270;
+const SKIN = toon.skin;
+const SKIN_D = "#EDA27A";
+
+const MaceNut: React.FC<{ readonly x: number; readonly y: number; readonly r: number; readonly mace?: number; readonly rot?: number }> = ({ x, y, r, mace = 0, rot = 0 }) => (
+  <g transform={`translate(${x} ${y}) rotate(${rot})`}>
+    <ellipse cx={0} cy={0} rx={r} ry={r * 0.88} fill="#9A5B30" stroke={INK} strokeWidth={5} />
+    <ellipse cx={-r * 0.35} cy={-r * 0.38} rx={r * 0.28} ry={r * 0.14} fill="#fff" opacity={0.45} transform={`rotate(-25 ${-r * 0.35} ${-r * 0.38})`} />
+    {mace > 0 ? (
+      // fuli: jaring merah bercabang melilit biji (tali bergaris tinta supaya tetap terbaca saat kecil; biji cokelat tetap terlihat di sela)
+      <g fill="none" strokeLinecap="round">
+        {[0, 1].map((layer) => (
+          <g key={layer} stroke={layer === 0 ? "#5A1E14" : "#E8392C"} strokeWidth={layer === 0 ? 5.5 : 3}>
+            <path d={`M${-r * 0.1},${r * 0.86} Q${-r * 0.8},${r * 0.3} ${-r * 0.55},${-r * 0.62}`} />
+            <path d={`M${r * 0.05},${r * 0.88} Q${-r * 0.1},${0} ${r * 0.18},${-r * 0.8}`} />
+            <path d={`M${r * 0.2},${r * 0.82} Q${r * 0.9},${r * 0.25} ${r * 0.7},${-r * 0.45}`} />
+            <path d={`M${-r * 0.66},${r * 0.1} Q${0},${-r * 0.12} ${r * 0.78},${r * 0.12}`} strokeWidth={layer === 0 ? 4.5 : 2.4} />
+          </g>
+        ))}
+      </g>
+    ) : null}
+  </g>
+);
+
+const HugBasket: React.FC<{ readonly cx: number; readonly top: number }> = ({ cx, top }) => {
+  const bw = 150; // setengah lebar bibir
+  const bb = 112; // setengah lebar dasar
+  const h = 150;
+  const nuts: readonly [number, number, number, number, number][] = [
+    // dx, dy (relatif bibir), r, fuli, rot
+    [-108, -12, 27, 1, -20],
+    [-60, -40, 32, 1, -12],
+    [-4, -62, 33, 1, 4],
+    [50, -38, 31, 0, 0],
+    [100, -14, 28, 1, 22],
+    [-28, -8, 27, 0, 0],
+    [62, -4, 24, 1, 10],
+  ];
+  return (
+    <g>
+      {nuts.map(([dx, dy, r, m, rot], i) => <MaceNut key={i} x={cx + dx} y={top + dy} r={r} mace={m} rot={rot} />)}
+      <path d={`M${cx - bw},${top} L${cx + bw},${top} L${cx + bb},${top + h - 12} Q${cx + bb - 2},${top + h} ${cx + bb - 16},${top + h} L${cx - bb + 16},${top + h} Q${cx - bb + 2},${top + h} ${cx - bb},${top + h - 12} Z`} fill={WOOD} stroke={INK} strokeWidth={6.5} strokeLinejoin="round" />
+      {[0.28, 0.55, 0.8].map((f) => {
+        const hw = bw + (bb - bw) * f;
+        return <path key={f} d={`M${cx - hw + 8},${top + h * f} L${cx + hw - 8},${top + h * f}`} stroke={WOOD_DARK} strokeWidth={5} strokeLinecap="round" />;
+      })}
+      {[-0.5, 0, 0.5].map((f) => <path key={f} d={`M${cx + f * bw},${top + 4} L${cx + f * bb},${top + h - 4}`} stroke={WOOD_DARK} strokeWidth={4} opacity={0.55} />)}
+      <path d={`M${cx - bw - 6},${top} L${cx + bw + 6},${top}`} stroke={INK} strokeWidth={14} strokeLinecap="round" />
+      <path d={`M${cx - bw},${top} L${cx + bw},${top}`} stroke={WOOD_DARK} strokeWidth={5} strokeLinecap="round" />
+    </g>
+  );
+};
+
+// Kapal Belanda khusus pelukan: lambung lebar, dua tiang, dua layar segi empat terpisah.
+const HugShip: React.FC<{ readonly cx: number; readonly deck: number; readonly t: number }> = ({ cx, deck, t }) => {
+  const hw = 345;
+  const hull = `M${cx - hw},${deck - 52} Q${cx - hw + 30},${deck - 2} ${cx - hw + 90},${deck} L${cx + hw - 90},${deck} Q${cx + hw - 30},${deck - 2} ${cx + hw},${deck - 52} Q${cx + hw - 40},${deck + 130} ${cx + 240},${deck + 172} L${cx - 240},${deck + 172} Q${cx - hw + 40},${deck + 130} ${cx - hw},${deck - 52} Z`;
+  // layar segi empat (sisi lurus, sedikit mengembang ke bawah karena angin), digantung di yard; bukan bentuk kubah/pot
+  const sail = (mx: number, y0: number, y1: number, hw2: number, fill: string, ph: number) => {
+    const bel = 18 + 4 * Math.sin(t * 2.2 + ph);
+    return (
+      <g>
+        <path d={`M${mx - hw2},${y0} L${mx + hw2},${y0} L${mx + hw2 + 8},${y1} Q${mx},${y1 + bel} ${mx - hw2 - 8},${y1} Z`} fill={fill} stroke={INK} strokeWidth={7} strokeLinejoin="round" />
+        <path d={`M${mx - hw2 + 14},${y0 + 18} L${mx - hw2 + 18},${y1 - 10}`} fill="none" stroke="#fff" strokeWidth={6} strokeLinecap="round" opacity={0.5} />
+        <path d={`M${mx - hw2 + 6},${(y0 + y1) / 2} Q${mx},${(y0 + y1) / 2 + bel * 0.5} ${mx + hw2 - 6},${(y0 + y1) / 2}`} fill="none" stroke={INK} strokeWidth={3.5} opacity={0.3} />
+        <path d={`M${mx - hw2 - 12},${y0} L${mx + hw2 + 12},${y0}`} stroke={INK} strokeWidth={12} strokeLinecap="round" />
+        <path d={`M${mx - hw2 - 12},${y0} L${mx + hw2 + 12},${y0}`} stroke={WOOD} strokeWidth={5} strokeLinecap="round" />
+      </g>
+    );
+  };
+  // tiang di LUAR lebar keranjang supaya terlihat menapak di geladak
+  const mA = cx - 225;
+  const mB = cx + 222;
+  return (
+    <g>
+      {/* cucur haluan (bowsprit) + tali: penanda kapal */}
+      <path d={`M${cx - hw + 6},${deck - 48} L${cx - hw - 70},${deck - 96}`} stroke={INK} strokeWidth={14} strokeLinecap="round" />
+      <path d={`M${cx - hw + 6},${deck - 48} L${cx - hw - 70},${deck - 96}`} stroke={WOOD} strokeWidth={6} strokeLinecap="round" />
+      <path d={`M${cx - hw - 66},${deck - 94} L${mA},${430}`} stroke={INK} strokeWidth={3.5} opacity={0.6} />
+      <path d={`M${mB},${448} L${cx + hw - 6},${deck - 48}`} stroke={INK} strokeWidth={3.5} opacity={0.6} />
+      {/* tiang */}
+      {[[mA, 420], [mB, 446]].map(([x, y]) => (
+        <g key={x}>
+          <line x1={x} y1={deck} x2={x} y2={y} stroke={INK} strokeWidth={17} strokeLinecap="round" />
+          <line x1={x} y1={deck} x2={x} y2={y} stroke={WOOD} strokeWidth={7} strokeLinecap="round" />
+        </g>
+      ))}
+      {sail(mA, 466, 566, 74, "#F0A443", 0)}
+      {sail(mB, 484, 566, 66, "#86AEE6", 1.3)}
+      {/* bendera Belanda di puncak tiang depan */}
+      <circle cx={mA} cy={418} r={9} fill={toon.yellow} stroke={INK} strokeWidth={4} />
+      <g transform={`translate(${mA + 6} ${423}) skewY(${4 * Math.sin(t * 5)}) scale(0.78)`}><FlagG kind="nl" /></g>
+      {/* pagar geladak kayu (dek kapal, bukan bak): tiang kecil + rel */}
+      <path d={`M${cx - hw + 70},${deck - 26} L${cx + hw - 70},${deck - 26}`} stroke={INK} strokeWidth={13} strokeLinecap="round" />
+      <path d={`M${cx - hw + 70},${deck - 26} L${cx + hw - 70},${deck - 26}`} stroke={WOOD} strokeWidth={6} strokeLinecap="round" />
+      {Array.from({ length: 9 }, (_, i) => cx - hw + 90 + i * ((2 * hw - 180) / 8)).map((x) => <line key={x} x1={x} y1={deck - 26} x2={x} y2={deck} stroke={INK} strokeWidth={6} />)}
+      {/* lambung: ekstrusi lalu muka */}
+      <path d={hull} transform="translate(0 16)" fill={toon.blueDark} stroke={INK} strokeWidth={7} strokeLinejoin="round" />
+      <path d={hull} fill={toon.blue} stroke={INK} strokeWidth={7} strokeLinejoin="round" />
+      <path d={`M${cx - hw + 60},${deck + 14} L${cx + hw - 60},${deck + 14}`} stroke="#fff" strokeWidth={8} strokeLinecap="round" opacity={0.8} />
+      <path d={`M${cx - hw + 40},${deck - 30} Q${cx - hw + 60},${deck + 100} ${cx - 220},${deck + 150}`} fill="none" stroke="#fff" strokeWidth={6} strokeLinecap="round" opacity={0.55} />
+      {/* draf 3: tanpa jendela bulat (dua bulatan simetris + manset terbaca seperti wajah) */}
+      <path d={`M${cx - hw + 80},${deck + 70} L${cx + hw - 80},${deck + 70}`} stroke={toon.blueDark} strokeWidth={6} strokeLinecap="round" opacity={0.45} />
+    </g>
+  );
+};
+
+// Tangan mencengkeram sisi keranjang: telapak + empat jari (panjang berbeda) melengkung ke sisi, ibu jari terpisah ke atas.
+const GripHand: React.FC<{ readonly x: number; readonly y: number; readonly dir: -1 | 1; readonly sq: number }> = ({ x, y, dir, sq }) => {
+  const lens = [30, 36, 33, 24];
+  const fingers = lens.map((L, i) => {
+    const fy = y - 21 + i * 14;
+    const x0 = x + dir * 8;
+    const x1 = x + dir * (24 + L - sq * 4);
+    return `M${x0},${fy} Q${x1},${fy - 4} ${x1 - dir * 4},${fy + 9}`;
+  });
+  // ibu jari miring menekan sisi keranjang (bukan jempol tegak / "thumbs up")
+  const thumb = `M${x - dir * 16},${y - 14} Q${x - dir * 8},${y - 46} ${x + dir * (30 + sq * 3)},${y - 44}`;
+  return (
+    <g strokeLinecap="round" strokeLinejoin="round" fill="none" transform={`translate(${x} ${y}) scale(1.45) translate(${-x} ${-y})`}>
+      <ellipse cx={x} cy={y} rx={33} ry={30} fill={INK} stroke={INK} strokeWidth={9} />
+      {fingers.map((d, i) => <path key={`o${i}`} d={d} stroke={INK} strokeWidth={i === 3 ? 22 : 25} />)}
+      <path d={thumb} stroke={INK} strokeWidth={30} />
+      <ellipse cx={x} cy={y} rx={33} ry={30} fill={SKIN} />
+      {fingers.map((d, i) => <path key={`f${i}`} d={d} stroke={SKIN} strokeWidth={i === 3 ? 13 : 16} />)}
+      <path d={thumb} stroke={SKIN} strokeWidth={20} />
+      <ellipse cx={x + dir * (26 + sq * 3)} cy={y - 44} rx={6.5} ry={5} fill="#fff" opacity={0.75} />
+      <path d={`M${x - dir * 30},${y - 30} Q${x - dir * 22},${y - 24} ${x - dir * 20},${y - 14}`} stroke={INK} strokeWidth={3.5} opacity={0.55} />
+      {fingers.slice(1).map((_, i) => <path key={`g${i}`} d={`M${x + dir * 12},${y - 14 + i * 14} L${x + dir * 34},${y - 15 + i * 14}`} stroke={INK} strokeWidth={4.5} opacity={0.75} />)}
+      <ellipse cx={x - dir * 10} cy={y + 12} rx={12} ry={6} fill={SKIN_D} opacity={0.55} />
+    </g>
+  );
+};
+
 export const NLHug: React.FC<{ readonly t: number; readonly lt: number; readonly closed?: boolean }> = ({ t, lt, closed = false }) => {
   const hug = closed ? 1 : slide(lt, 0.1, 0.7);
   const press = hug * (0.5 + 0.5 * Math.sin(t * 2.4));
   const bb = bob(t, 6, 2.3);
-  const SW = 460;
-  const shipTop = 404 + bb; // puncak bendera ~ shipTop - 4 (>= 30 px di bawah pil subjudul y <= 356)
-  const yb = 536 + bb; // keranjang: tepi atas badan ~ yb+95 (lebar +-100), dasar ~ yb+221 (lebar +-81)
-  const mix = (a: Pt, b: Pt): Pt => [a[0] + (b[0] - a[0]) * hug, a[1] + (b[1] - a[1]) * hug + bb];
-  const sq = 5 * press;
-  // Lengan rapat mengikuti kontur keranjang: bahu di sisi lambung (di balik keranjang), siku menempel di luar sisi
-  // bawah keranjang, lengan bawah membungkus sudut bawah lalu naik di muka keranjang; tangan di sepertiga bawah.
+  const sway = 1.2 * Math.sin(t * 2.1);
+  const deck = 612;
+  const btop = 612; // bibir keranjang (dasar ~762, lambung bawah ~784)
+  const mix = (a: Pt, b: Pt): Pt => [a[0] + (b[0] - a[0]) * hug, a[1] + (b[1] - a[1]) * hug];
+  const sq = 4 * press;
+  // d=-1 lengan kiri (bawah, menyilang ke kanan), d=1 lengan kanan (atas, menyilang ke kiri)
   const pose = (d: -1 | 1) => {
     const X = (dx: number) => SX + d * dx;
+    const low = d === -1;
     return {
-      sh: mix([X(118), 660], [X(118), 660]),
-      el: mix([X(225), 610], [X(136), 728]),
-      c1: mix([X(262), 560], [X(140), 806]),
-      c2: mix([X(262), 510], [X(104), 812]),
-      wr: mix([X(250), 476], [X(70 + sq * 0.3), 786]),
-      hd: mix([X(244), 446], [X(46 + sq), 754]),
+      sh: [X(204), 650] as Pt,
+      el: mix([X(300), 610], [X(184), low ? 730 : 690]),
+      c1: mix([X(330), 560], [X(100), low ? 744 : 700]),
+      hd: mix([X(330), 500], [X(-128 + sq), low ? 706 : 662]),
     };
   };
   type Pose = ReturnType<typeof pose>;
   const upper = (q: Pose) => `M${q.sh[0]},${q.sh[1]} L${q.el[0]},${q.el[1]}`;
-  const fore = (q: Pose) => `M${q.el[0]},${q.el[1]} C${q.c1[0]},${q.c1[1]} ${q.c2[0]},${q.c2[1]} ${q.wr[0]},${q.wr[1]}`;
+  const fore = (q: Pose) => `M${q.el[0]},${q.el[1]} Q${q.c1[0]},${q.c1[1]} ${q.hd[0]},${q.hd[1]}`;
   const L = pose(-1);
   const R = pose(1);
   const sleeve = (q: Pose) => (
     <>
-      <path d={upper(q)} fill="none" stroke={INK} strokeWidth={76} strokeLinecap="round" />
-      <path d={upper(q)} fill="none" stroke="#fff" strokeWidth={58} strokeLinecap="round" />
-      <path d={upper(q)} fill="none" stroke={toon.blueDark} strokeWidth={58} strokeDasharray="9 20" />
+      <path d={upper(q)} fill="none" stroke={INK} strokeWidth={70} strokeLinecap="round" />
+      <path d={upper(q)} fill="none" stroke={toon.blueDark} strokeWidth={54} strokeLinecap="round" />
+      <path d={upper(q)} fill="none" stroke="#fff" strokeWidth={6} strokeLinecap="round" opacity={0.35} transform="translate(-10 -4)" />
     </>
   );
   const forearm = (q: Pose, d: -1 | 1) => (
     <>
-      <path d={fore(q)} fill="none" stroke={INK} strokeWidth={74} strokeLinecap="round" />
-      <path d={fore(q)} fill="none" stroke={toon.skin} strokeWidth={56} strokeLinecap="round" />
-      <path d={fore(q)} fill="none" stroke="#EDA27A" strokeWidth={11} strokeLinecap="round" opacity={0.5} transform="translate(0 15)" />
-      <circle cx={q.el[0]} cy={q.el[1]} r={28} fill={toon.skin} />
-      <WrapHand x={q.hd[0]} y={q.hd[1]} r={44} rot={d === -1 ? -50 : 180 + 50} squeeze={press} />
+      <path d={fore(q)} fill="none" stroke={INK} strokeWidth={66} strokeLinecap="round" />
+      <path d={fore(q)} fill="none" stroke={SKIN} strokeWidth={50} strokeLinecap="round" />
+      <path d={fore(q)} fill="none" stroke={SKIN_D} strokeWidth={10} strokeLinecap="round" opacity={0.5} transform="translate(0 14)" />
+      <circle cx={q.el[0]} cy={q.el[1]} r={26} fill={SKIN} />
+      <GripHand x={q.hd[0]} y={q.hd[1]} dir={(-d) as -1 | 1} sq={press} />
     </>
   );
   return (
     <>
-      <Glow cx={SX} cy={650} r={440} op={0.55} id="hug" />
-      <In x={SX - SW / 2} y={shipTop} t={lt}><Ship kind="nl" w={SW} t={t} sway={0.6} hullShape="ship" emblem={false} face={false} sails={["#F0A443", "#86AEE6"]} /></In>
-      <svg width={W} height={H} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+      <Glow cx={SX} cy={640} r={460} op={0.55} id="hug" />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0, overflow: "visible", transform: `translateY(${bb}px) rotate(${sway}deg)`, transformOrigin: "960px 760px" }}>
+        <HugShip cx={SX} deck={deck} t={t} />
         {sleeve(L)}{sleeve(R)}
+        <HugBasket cx={SX} top={btop} />
+        {forearm(R, 1)}
+        {forearm(L, -1)}
       </svg>
-      <div style={{ position: "absolute", left: SX - BW / 2, top: yb }}><Basket w={BW} /></div>
-      <svg width={W} height={H} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
-        {forearm(L, -1)}{forearm(R, 1)}
-      </svg>
+      {/* air laut di depan dasar lambung: kapal terapung (bukan bak mandi) */}
+      <WaterL x0={300} x1={1620} y0={808} y1={866} t={t} seed="pr-l09hug" />
     </>
   );
 };
@@ -144,7 +277,7 @@ const L09: React.FC<V> = ({ t }) => (
       {(lt) => (
         <>
           <Big text="PALANYA" t={lt} y={BIG_Y} size={133} color={toon.blue} />
-          <Sub text="ingin dipegang sendiri" t={lt} at={0.7} y={288} size={40} />
+          <Sub text="ingin dipegang sendiri" t={lt} at={0.7} y={310} size={40} />
         </>
       )}
     </CutShot>
@@ -152,7 +285,7 @@ const L09: React.FC<V> = ({ t }) => (
       {(lt) => (
         <>
           <Big text="MONOPOLI" t={lt} y={BIG_Y} size={137} color={toon.blue} />
-          <Sub text="hanya satu yang boleh jual" t={lt} y={288} size={40} />
+          <Sub text="hanya satu yang boleh jual" t={lt} y={310} size={40} />
         </>
       )}
     </CutShot>
