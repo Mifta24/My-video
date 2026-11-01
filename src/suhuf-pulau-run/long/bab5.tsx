@@ -63,8 +63,8 @@ const HoldPair:React.FC<{readonly t:number;readonly at?:number}>=({t,at=0})=>{
 const L19:React.FC<V>=({t})=><>
   <Shot t={t} to={3.35}>{lt=><>
     <Big text="BAHASA LATIN" t={lt} y={BIG_Y} size={120} color={toon.blue}/>
-    <In x={780} y={305+bob(t,5,2)} t={lt}><TreatySheet w={360}/></In>
-    <Sub text="teks asli" t={lt} at={0.5} y={790} size={44}/>
+    <In x={780} y={292+bob(t,5,2)} t={lt}><TreatySheet w={360}/></In>
+    <Sub text="teks asli" t={lt} at={0.5} y={774} size={44}/>
   </>}</Shot>
   <Shot t={t} from={3.25}>{lt=><>
     {/* draf 3: judul lengkap sesuai naskah L-19 (draf 2 hanya "TETAP DIPEGANG") */}

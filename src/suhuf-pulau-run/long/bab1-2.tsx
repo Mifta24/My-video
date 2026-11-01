@@ -158,17 +158,17 @@ const L05: React.FC<V> = ({ t }) => (
         <>
           <Big text="DICARI" t={lt} y={BIG_Y} size={135} color={toon.orange} />
           <Glow cx={960} cy={570} r={390} op={0.8} id="pala-b" />
-          <In x={770} y={535} t={lt}><Basket w={380} /></In>
+          <In x={770} y={518} t={lt}><Basket w={380} /></In>
           {[0, 1, 2].map((i) => {
             const fall = interpolate(lt, [0.2 + i * 0.3, 1.1 + i * 0.3], [-150, 0], { ...clamp01, easing: Easing.in(Easing.quad) });
             const bounce = lt > 1.1 + i * 0.3 ? Math.abs(Math.sin((lt - 1.1 - i * 0.3) * 7)) * 22 * Math.exp(-(lt - 1.1 - i * 0.3) * 3) : 0;
             return (
-              <In key={i} x={715 + i * 170} y={350 + fall - bounce} t={lt} at={0.2 + i * 0.3} rot={-15 + i * 15}>
+              <In key={i} x={715 + i * 170} y={333 + fall - bounce} t={lt} at={0.2 + i * 0.3} rot={-15 + i * 15}>
                 <Nutmeg size={140} />
               </In>
             );
           })}
-          <Sub text="hasil kebun dari Run" t={lt} at={1.5} y={787} size={43} />
+          <Sub text="hasil kebun dari Run" t={lt} at={1.5} y={770} size={43} />
         </>
       )}
     </Shot>
