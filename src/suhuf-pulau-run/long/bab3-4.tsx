@@ -326,9 +326,11 @@ const CutShot: React.FC<{ readonly t: number; readonly from?: number; readonly t
 };
 const L10Shop: React.FC<{ readonly t: number }> = ({ t }) => {
   // [pusat x, atas y, lebar] per shot; bergeser 0,45 dtk mulai tepat di titik potong
-  const A = [1395, 350, 370];
-  const B = [1205, 340, 390];
-  const C = [960, 340, 400];
+  // draf 3b: judul turun 30 px (badge PERUMPAMAAN >= 46 px) -> toko turun 22 px + 6 % lebih kecil (dasar tetap),
+  // ceri di puncak kerucut >= ~40 px di bawah judul
+  const A = [1395, 372, 350];
+  const B = [1205, 362, 368];
+  const C = [960, 362, 376];
   const p1 = interpolate(t, [L10_CUTS[0] - 0.05, L10_CUTS[0] + 0.4], [0, 1], { ...clamp01, easing: Easing.inOut(Easing.cubic) });
   const p2 = interpolate(t, [L10_CUTS[1] - 0.05, L10_CUTS[1] + 0.4], [0, 1], { ...clamp01, easing: Easing.inOut(Easing.cubic) });
   const v = A.map((a, i) => a + (B[i] - a) * p1 + (C[i] - B[i]) * p2);
