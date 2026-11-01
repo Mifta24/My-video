@@ -67,7 +67,8 @@ const L19:React.FC<V>=({t})=><>
     <Sub text="teks asli" t={lt} at={0.5} y={780} size={48}/>
   </>}</Shot>
   <Shot t={t} from={3.25}>{lt=><>
-    <Big text="TETAP DIPEGANG" t={lt} y={BIG_Y} size={110} color={toon.orange}/>
+    {/* draf 3: judul lengkap sesuai naskah L-19 (draf 2 hanya "TETAP DIPEGANG") */}
+    <Big text="YANG DIPEGANG, TETAP DIPEGANG" t={lt} y={BIG_Y+8} size={86} color={toon.orange}/>
     <HoldPair t={lt}/>
   </>}</Shot>
 </>;

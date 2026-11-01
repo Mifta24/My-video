@@ -169,8 +169,20 @@ export const splitCaption = (text: string): string[] => {
       }
     }
   }
+  // draf 3: potongan tidak boleh berakhir di kata sambung ("... memegang apa yang" | "sudah dikuasainya.");
+  // kata itu dipindah ke awal potongan berikutnya. Teks narasi tetap sama, hanya titik potong tampilan.
+  for (let i = 0; i < out.length - 1; i++) {
+    let words = out[i].split(" ");
+    let next = out[i + 1];
+    while (words.length > 2 && DANGLING.has(words[words.length - 1].toLowerCase()) && (words[words.length - 1] + " " + next).length <= MAXC) {
+      next = words.pop() + " " + next;
+    }
+    out[i] = words.join(" ");
+    out[i + 1] = next;
+  }
   return out;
 };
+const DANGLING = new Set(["yang", "apa", "dan", "di", "ke", "dari", "untuk", "dengan", "pada", "atau", "tapi", "para", "si"]);
 
 const Words: React.FC<{ readonly text: string }> = ({ text }) => (
   <>
