@@ -5,7 +5,7 @@ import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
 import { Basket, Island, MapIsland, Nutmeg, Ruler, SeaPanel, TreatySheet } from "../shorts/kit2d";
 import { LogoSheet } from "../shorts/visuals";
-import { BoardDetective, BigGlass, Glow, PhotoCard, RecapBoard } from "./props";
+import { BoardDetective, BigGlass, Glow, PhotoCard, RecapBoard, RECAP_TITLE_Y } from "./props";
 import { Big, BIG_Y, ChipAt, In, Label, LChip, ScaleLong3D, Shot, Sub, W, H, clamp01 } from "./kitLong";
 import { cue } from "./timing"; 
 
@@ -175,7 +175,7 @@ const L05: React.FC<V> = ({ t }) => (
 
 const L06: React.FC<V> = ({ t }) => (
   <>
-    <Big text="CATATAN" t={t} y={BIG_Y} size={115} color={toon.blue} />
+    <Big text="CATATAN" t={t} y={RECAP_TITLE_Y} size={96} color={toon.blue} />
     <RecapBoard
       t={t}
       items={[

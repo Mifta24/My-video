@@ -5,7 +5,7 @@ import type { Cue } from "../elements/Sound";
 import { CalendarYear, GRASP_CX, GRASP_FLAG_TOP, GRASP_X0, GRASP_Y0, Island, TreatySheet, ToyKid, TableTop } from "../shorts/kit2d";
 import { GraspIslandL, GRASP_BOTTOM } from "./grasp";
 import { Big, BIG_Y, ChipAt, In, INK, Label, LChip, Shot, Sub } from "./kitLong";
-import { BigGlass, BoardDetective, PhotoCard, QBadge, RecapBoard, StruckWord, TimerRing } from "./props";
+import { BigGlass, BoardDetective, PhotoCard, QBadge, RecapBoard, RECAP_TITLE_Y, StruckWord, TimerRing } from "./props";
 import { speechEnd } from "./timing";
 import type { V } from "./bab1-2";
 
@@ -30,8 +30,8 @@ const L18:React.FC<V>=({t})=><>
   </>}</Shot>
   <Shot t={t} from={3.7}>{lt=><>
     <Big text="PERJANJIAN BREDA" t={lt} y={BIG_Y} size={110} color={toon.blue}/>
-    <In x={730} y={320+bob(t,6,2)} t={lt}><TreatySheet w={460} stampP={slide(lt,1.1,0.25)}/></In>
-    <Sub text="perjanjian damai" t={lt} at={0.8} y={785} size={46}/>
+    <In x={780} y={305+bob(t,6,2)} t={lt}><TreatySheet w={360} stampP={slide(lt,1.1,0.25)}/></In>
+    <Sub text="perjanjian damai" t={lt} at={0.8} y={790} size={44}/>
   </>}</Shot>
 </>;
 
@@ -63,8 +63,8 @@ const HoldPair:React.FC<{readonly t:number;readonly at?:number}>=({t,at=0})=>{
 const L19:React.FC<V>=({t})=><>
   <Shot t={t} to={3.35}>{lt=><>
     <Big text="BAHASA LATIN" t={lt} y={BIG_Y} size={120} color={toon.blue}/>
-    <In x={745} y={325+bob(t,5,2)} t={lt}><TreatySheet w={430}/></In>
-    <Sub text="teks asli" t={lt} at={0.5} y={780} size={48}/>
+    <In x={780} y={305+bob(t,5,2)} t={lt}><TreatySheet w={360}/></In>
+    <Sub text="teks asli" t={lt} at={0.5} y={790} size={44}/>
   </>}</Shot>
   <Shot t={t} from={3.25}>{lt=><>
     {/* draf 3: judul lengkap sesuai naskah L-19 (draf 2 hanya "TETAP DIPEGANG") */}
@@ -91,23 +91,23 @@ const CakePlate:React.FC=()=><svg width={200} height={130} viewBox="0 0 200 130"
 const L20:React.FC<V>=({t})=><>
   <Label text="PERUMPAMAAN - bukan data" kind="analogi" t={t}/>
   <Shot t={t} to={3.0}>{lt=><>
-    <Big text="KUE DI PIRING" t={lt} y={BIG_Y} size={115} color={toon.orange}/>
+    <Big text="KUE DI PIRING" t={lt} y={BIG_Y+14} size={115} color={toon.orange}/>
     <In x={350} y={380+bob(t,5,2)} t={lt}><ToyKid size={265} t={t} shirt={toon.orange} hair="#5A3B27" handTo={[150,158]}/></In>
     <In x={1300} y={380+bob(t,5,2,1)} t={lt}><ToyKid size={265} t={t} shirt={toon.blue} hair="#2B2B2B" handTo={[150,158]}/></In>
-    <In x={480} y={690} t={lt}><TableTop w={960} h={100}/></In>
+    <In x={480} y={690} t={lt}><TableTop w={960} h={100} legs={100}/></In>
     <In x={640} y={602} t={lt}><CakePlate/></In>
     <In x={1100} y={602} t={lt}><CakePlate/></In>
   </>}</Shot>
   <Shot t={t} from={2.9} to={7.3}>{lt=><>
-    <Big text="PIRINGMU, MILIKMU" t={lt} y={BIG_Y} size={105} color={toon.blue}/>
+    <Big text="PIRINGMU, MILIKMU" t={lt} y={BIG_Y+14} size={105} color={toon.blue}/>
     <In x={420} y={380} t={lt}><ToyKid size={250} t={t} shirt={toon.orange} hair="#5A3B27" handTo={[150,158]}/></In>
     <In x={1240} y={380} t={lt}><ToyKid size={250} t={t} shirt={toon.blue} hair="#2B2B2B" handTo={[150,158]}/></In>
-    <In x={480} y={690} t={lt}><TableTop w={960} h={100}/></In>
+    <In x={480} y={690} t={lt}><TableTop w={960} h={100} legs={100}/></In>
     <ChipAt cx={760} y={550} t={lt}><LChip text="KUE" color={toon.orangeDark} size={45}/></ChipAt>
     <ChipAt cx={1160} y={550} t={lt}><LChip text="KUE" color={toon.blueDark} size={45}/></ChipAt>
   </>}</Shot>
   <Shot t={t} from={7.2}>{lt=><>
-    <Big text="BUKAN TUKAR" t={lt} y={BIG_Y} size={123} color={toon.orange}/>
+    <Big text="BUKAN TUKAR" t={lt} y={BIG_Y+14} size={123} color={toon.orange}/>
     <In x={775} y={455} t={lt}><StruckWord text="TUKAR" w={370} strike={slide(lt,0.35,0.4)} size={99}/></In>
     <Sub text="yang ada di piringmu tetap" t={lt} y={665} size={47}/>
   </>}</Shot>
@@ -116,21 +116,21 @@ const L20:React.FC<V>=({t})=><>
 const L21:React.FC<V>=({t})=><>
   <Shot t={t} to={4.75}>{lt=><>
     <Big text="TIDAK DISEBUT" t={lt} y={BIG_Y} size={118} color={toon.blue}/>
-    <In x={720} y={335+bob(t,4,2)} t={lt}><TreatySheet w={435} stampP={1}/></In>
-    <BigGlass x={930+80*Math.sin(lt*1.4)} y={570+20*Math.sin(lt*2)} r={112}/>
+    <In x={780} y={305+bob(t,4,2)} t={lt}><TreatySheet w={360} stampP={1}/></In>
+    <BigGlass x={930+80*Math.sin(lt*1.4)} y={535+20*Math.sin(lt*2)} r={112}/>
     <ChipAt cx={480} y={635} t={lt} at={0.8}><LChip text="RUN" color={toon.blueDark} size={44}/></ChipAt>
     <ChipAt cx={1460} y={635} t={lt} at={1.2}><LChip text="MANHATTAN" color={toon.orangeDark} size={42}/></ChipAt>
-    <Sub text="nama tidak ada di pasal" t={lt} at={1.4} y={790} size={43}/>
+    <Sub text="nama tidak ada di pasal" t={lt} at={1.4} y={790} size={42}/>
   </>}</Shot>
   <Shot t={t} from={4.65}>{lt=><>
     <Big text="TAK ADA KATA TUKAR" t={lt} y={BIG_Y} size={103} color={toon.orange}/>
-    <In x={735} y={345} t={lt}><TreatySheet w={450} stampP={1}/></In>
+    <In x={775} y={310} t={lt}><TreatySheet w={370} stampP={1}/></In>
     <In x={785} y={565} t={lt}><StruckWord text="TUKAR" w={350} strike={slide(lt,0.1,0.4)} size={85}/></In>
   </>}</Shot>
 </>;
 
 const L22:React.FC<V>=({t})=><>
-  <Big text="CATATAN" t={t} y={BIG_Y} size={115} color={toon.blue}/>
+  <Big text="CATATAN" t={t} y={RECAP_TITLE_Y} size={96} color={toon.blue}/>
   <RecapBoard t={t} items={[
     {x:390,y:95,at:0,node:<PhotoCard w={400} h={220} label="PERJANJIAN"><TreatySheet w={155} stampP={1}/></PhotoCard>,rot:-3},
     {x:895,y:95,at:0.8,node:<PhotoCard w={400} h={220} label="ATURAN"><div style={{fontSize:85,color:toon.orangeDark,fontWeight:700}}>✓</div></PhotoCard>,rot:3},

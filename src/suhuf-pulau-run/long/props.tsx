@@ -169,6 +169,8 @@ export const PhotoCard: React.FC<{ readonly w: number; readonly h: number; reado
 
 // ---------------- Papan investigasi detektif (rekap tiap bab) ----------------
 export const BOARD = { x: 470, y: 292, w: 1270, h: 560 } as const;
+// draf 3: judul "CATATAN" di atas papan lebih kecil + naik (draf 2: size 115 di y 150 menempel tab "CATATAN DETEKTIF" y 262)
+export const RECAP_TITLE_Y = 124;
 export type PinItem = { readonly x: number; readonly y: number; readonly at: number; readonly node: React.ReactNode; readonly rot?: number };
 
 export const RecapBoard: React.FC<{

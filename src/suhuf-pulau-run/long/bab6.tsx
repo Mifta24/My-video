@@ -4,14 +4,14 @@ import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
 import { Island, TableTop, TreatySheet } from "../shorts/kit2d";
 import { Big, BIG_Y, ChipAt, Handshake, In, Label, LChip, Shot, Sub, ToyFigure } from "./kitLong";
-import { BoardDetective, DashArrow, PhotoCard, RecapBoard, ShipAt, WaterL } from "./props";
+import { BoardDetective, DashArrow, PhotoCard, RecapBoard, RECAP_TITLE_Y, ShipAt, WaterL } from "./props";
 import type { V } from "./bab1-2";
 
 const L23:React.FC<V>=({t})=><>
   <Shot t={t} to={5.1}>{lt=><>
     <Big text="USUL PENENGAH" t={lt} y={BIG_Y} size={112} color={toon.blue}/>
     <In x={670} y={345+bob(t,5,2)} t={lt}><ToyFigure size={330} t={t} hat="feather" coat="#7B5AA6" mood="happy" lHand={[26,142]} rHand={[134,145]}/></In>
-    <In x={425} y={760} t={lt}><TableTop w={1070} h={80}/></In>
+    <In x={425} y={760} t={lt}><TableTop w={1070} h={80} legs={52}/></In>
     <ChipAt cx={960} y={713} t={lt} at={1}><LChip text="PENENGAH PRANCIS" color="#7B5AA6" size={42}/></ChipAt>
   </>}</Shot>
   <Shot t={t} from={5.0}>{lt=><>
@@ -34,8 +34,8 @@ const L24:React.FC<V>=({t})=><>
   </>}</Shot>
   <Shot t={t} from={3.35}>{lt=><>
     <Big text="DIBAHAS LAGI" t={lt} y={BIG_Y} size={119} color={toon.blue}/>
-    <In x={760} y={330+bob(t,5,2)} t={lt}><TreatySheet w={420}/></In>
-    <Sub text="pembicaraan berlanjut" t={lt} y={790} size={45}/>
+    <In x={780} y={305+bob(t,5,2)} t={lt}><TreatySheet w={360}/></In>
+    <Sub text="pembicaraan berlanjut" t={lt} y={790} size={42}/>
   </>}</Shot>
 </>;
 const L25:React.FC<V>=({t})=><>
@@ -59,12 +59,12 @@ const L25:React.FC<V>=({t})=><>
 </>;
 const L26:React.FC<V>=({t})=><>
   <Big text="SEPAKAT" t={t} y={BIG_Y} size={128} color={toon.orange}/>
-  <In x={420} y={720} t={t}><TableTop w={1080} h={75}/></In>
+  <In x={420} y={720} t={t}><TableTop w={1080} h={75} legs={100}/></In>
   <Handshake cx={960} cy={520} t={t} shake={slide(t,1.3,0.5)}/>
   <ChipAt cx={960} y={745} t={t} at={1.7}><LChip text="RUN TETAP DI BELANDA" color={toon.blueDark} size={49} flag="nl"/></ChipAt>
 </>;
 const L27:React.FC<V>=({t})=><>
-  <Big text="CATATAN" t={t} y={BIG_Y} size={115} color={toon.blue}/>
+  <Big text="CATATAN" t={t} y={RECAP_TITLE_Y} size={96} color={toon.blue}/>
   <RecapBoard t={t} items={[
     {x:285,y:100,at:0,node:<PhotoCard w={315} h={210} label="MANHATTAN"><Island kind="manhattan-en" w={245} t={t}/></PhotoCard>,rot:-3},
     {x:630,y:120,at:0.6,node:<PhotoCard w={315} h={210} label="PERUNDINGAN"><TreatySheet w={150} stampP={1}/></PhotoCard>},

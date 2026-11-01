@@ -73,9 +73,9 @@ const L31:React.FC<V>=({t})=><>
 </>;
 const L32:React.FC<V>=({t})=><>
   <Big text="CEK YANG TERTULIS" t={t} y={BIG_Y} size={108} color={toon.blue}/>
-  <In x={735} y={325+bob(t,5,2)} t={t}><TreatySheet w={450} stampP={1}/></In>
-  <BigGlass x={930+60*Math.sin(t*1.5)} y={530+12*Math.cos(t*2)} r={133}/>
-  <Sub text="jangan hanya mengulang cerita" t={t} at={1.5} y={800} size={45}/>
+  <In x={780} y={305+bob(t,5,2)} t={t}><TreatySheet w={360} stampP={1}/></In>
+  <BigGlass x={930+60*Math.sin(t*1.5)} y={500+12*Math.cos(t*2)} r={120}/>
+  <Sub text="jangan hanya mengulang cerita" t={t} at={1.5} y={790} size={42}/>
 </>;
 const L33:React.FC<V>=({t})=><>
   <Big text="SUHUF PENGETAHUAN" t={t} y={BIG_Y} size={103} color={toon.blue}/>

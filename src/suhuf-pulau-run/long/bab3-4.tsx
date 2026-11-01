@@ -5,7 +5,7 @@ import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
 import { CalendarYear, FlagG, FlagPole, Island, Ship, TreatySheet, WOOD, WOOD_DARK } from "../shorts/kit2d";
 import { Big, BIG_Y, ChipAt, clamp01, H, INK, In, IceShop, Label, LChip, Shot, Sub, ToyFigure, W } from "./kitLong";
-import { BoardDetective, Glow, PhotoCard, QBadge, RecapBoard, ShipAt, WaterL } from "./props";
+import { BoardDetective, Glow, PhotoCard, QBadge, RecapBoard, RECAP_TITLE_Y, ShipAt, WaterL } from "./props";
 import type { V } from "./bab1-2";
 
 // L-07: kedatangan kapten Inggris. Kapal tetap berada di laut, kapten ramah (tanpa aksi perang).
@@ -40,8 +40,8 @@ const L08: React.FC<V> = ({ t }) => (
       {(lt) => (
         <>
           <Big text="SURAT" t={lt} y={BIG_Y} size={134} color={toon.blue} />
-          <In x={755} y={292 + bob(t, 7, 2)} t={lt}><TreatySheet w={410} stampP={slide(lt, 1.4, 0.35)} /></In>
-          <Sub text="ditandatangani penduduk" t={lt} at={0.45} y={779} size={43} />
+          <In x={780} y={312 + bob(t, 7, 2)} t={lt}><TreatySheet w={360} stampP={slide(lt, 1.4, 0.35)} /></In>
+          <Sub text="ditandatangani penduduk" t={lt} at={0.45} y={798} size={42} />
         </>
       )}
     </Shot>
@@ -371,7 +371,7 @@ const L11: React.FC<V> = ({ t }) => (
 
 const L12: React.FC<V> = ({ t }) => (
   <>
-    <Big text="CATATAN" t={t} y={BIG_Y} size={115} color={toon.blue} />
+    <Big text="CATATAN" t={t} y={RECAP_TITLE_Y} size={96} color={toon.blue} />
     <RecapBoard t={t} items={[
       { x: 300, y: 100, at: 0, node: <PhotoCard w={290} h={210} label="INGGRIS" tint="#FFDCB8"><Ship kind="en" w={190} t={t} sails={["#F0A443", "#86AEE6"]} /></PhotoCard>, rot: -3 },
       { x: 635, y: 130, at: 0.6, node: <PhotoCard w={290} h={210} label="RUN"><Island kind="run" w={220} t={t} /></PhotoCard> },
@@ -441,7 +441,7 @@ const L15: React.FC<V> = ({ t }) => (
 const L16: React.FC<V> = ({ t }) => (
   <>
     <Label text="SKEMA" t={t} />
-    <Big text="CATATAN" t={t} y={BIG_Y} size={115} color={toon.blue} />
+    <Big text="CATATAN" t={t} y={RECAP_TITLE_Y} size={96} color={toon.blue} />
     <RecapBoard t={t} items={[
       { x: 315, y: 100, at: 0, node: <PhotoCard w={390} h={230} label="MANHATTAN"><Island kind="manhattan-en" w={315} t={t} /></PhotoCard>, rot: -3 },
       { x: 905, y: 100, at: 0.8, node: <PhotoCard w={390} h={230} label="RUN"><Island kind="run" w={315} t={t} /></PhotoCard>, rot: 3 },
