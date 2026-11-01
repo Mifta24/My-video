@@ -58,10 +58,10 @@ const L30:React.FC<V>=({t})=>{
     </>}</Shot>
     <Shot t={t} from={3.4}>{lt=><>
       <Big text="YANG TERJADI" t={lt} y={BIG_Y} size={114} color={toon.orange}/>
-      <In x={230} y={380+bob(t,4,2)} t={lt}><Island kind="manhattan-en" w={650} t={t}/></In>
-      <In x={1070} y={380+bob(t,4,2,1)} t={lt}><Island kind="run" w={650} t={t}/></In>
-      <ChipAt cx={550} y={760} t={lt}><LChip text="INGGRIS" color={toon.orangeDark} size={41} flag="en"/></ChipAt>
-      <ChipAt cx={1390} y={760} t={lt}><LChip text="BELANDA" color={toon.blueDark} size={41} flag="nl"/></ChipAt>
+      <In x={230} y={362+bob(t,4,2)} t={lt}><Island kind="manhattan-en" w={650} t={t}/></In>
+      <In x={1070} y={362+bob(t,4,2,1)} t={lt}><Island kind="run" w={650} t={t}/></In>
+      <ChipAt cx={550} y={742} t={lt}><LChip text="INGGRIS" color={toon.orangeDark} size={41} flag="en"/></ChipAt>
+      <ChipAt cx={1390} y={742} t={lt}><LChip text="BELANDA" color={toon.blueDark} size={41} flag="nl"/></ChipAt>
     </>}</Shot>
   </>;
 };
