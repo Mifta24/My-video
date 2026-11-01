@@ -147,6 +147,9 @@ export const Shot: React.FC<{ readonly t: number; readonly from?: number; readon
 // ---------------- Caption (landscape) ----------------
 const MAXC = 44;
 export const splitCaption = (text: string): string[] => {
+  if (text.includes("|")) {
+    return text.split("|").map((x) => x.trim()).filter(Boolean);
+  }
   const phrases = text.match(/[^.,:?!]+[.,:?!]?/g) ?? [text];
   const out: string[] = [];
   for (const raw of phrases) {
@@ -250,7 +253,7 @@ export const LongVoice: React.FC<{ readonly sceneId: string }> = ({ sceneId }) =
       {getScene(sceneId).clips.map((c) => (
         <Sequence key={c.id} from={Math.round(clipStart(sceneId, c.id) * fps)} durationInFrames={Math.max(1, Math.round(clipDuration(c.id) * fps))} layout="none" name={`VO · ${c.id}`}>
           <Audio src={staticFile(`suhuf-pulau-run/vo-long/${c.id}.mp3`)} />
-          <LongCaption text={c.text} durationSec={clipDuration(c.id)} />
+          <LongCaption text={c.caption ?? c.text} durationSec={clipDuration(c.id)} />
         </Sequence>
       ))}
     </>

@@ -54,7 +54,7 @@ const L30:React.FC<V>=({t})=>{
       <Big text="YANG TERTULIS" t={lt} y={BIG_Y} size={114} color={toon.blue}/>
       <Sub text="yang dipegang, tetap dipegang" t={lt} y={292} size={38}/>
       <In x={A.x} y={A.y+bob(t,4,2)} t={lt}><GraspIslandL kind="manhattan-en" color={toon.orange} dark={toon.orangeDark} k={k} t={t} squeeze={sq} flag="en" lift={GRASP_LIFT} reach={260}/></In>
-      <In x={B.x} y={B.y+bob(t,4,2,1)} t={lt}><GraspIslandL kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={sq} flag="nl" mirror lift={GRASP_LIFT} reach={260}/></In>
+      <In x={B.x} y={B.y+bob(t,4,2,1)} t={lt}><GraspIslandL kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={sq} flag="nl" mirror thumbColor="#7DB8F2" lift={GRASP_LIFT} reach={260}/></In>
     </>}</Shot>
     <Shot t={t} from={3.4}>{lt=><>
       <Big text="YANG TERJADI" t={lt} y={BIG_Y} size={114} color={toon.orange}/>

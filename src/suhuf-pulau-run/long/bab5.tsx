@@ -54,7 +54,7 @@ const HoldPair:React.FC<{readonly t:number;readonly at?:number}>=({t,at=0})=>{
   // chip pemilik di sisi LUAR bendera (tidak di atas kepalan, tidak di bawah judul)
   return <>
     <In x={L.x} y={L.y+bob(t,5,2)} t={t} at={at}><GraspIslandL kind="manhattan-en" color={toon.orange} dark={toon.orangeDark} k={k} t={t} squeeze={sq} flag="en" lift={GRASP_LIFT} reach={260}/></In>
-    <In x={R.x} y={R.y+bob(t,5,2,1)} t={t} at={at+0.15}><GraspIslandL kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={sq} flag="nl" mirror lift={GRASP_LIFT} reach={260}/></In>
+    <In x={R.x} y={R.y+bob(t,5,2,1)} t={t} at={at+0.15}><GraspIslandL kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={sq} flag="nl" mirror thumbColor="#7DB8F2" lift={GRASP_LIFT} reach={260}/></In>
     <ChipAt cx={232} y={L.flagTop+28} t={t} at={at+0.3}><LChip text="INGGRIS" color={toon.orangeDark} size={36} flag="en"/></ChipAt>
     <ChipAt cx={1712} y={R.flagTop+28} t={t} at={at+0.45}><LChip text="BELANDA" color={toon.blueDark} size={36} flag="nl"/></ChipAt>
   </>;

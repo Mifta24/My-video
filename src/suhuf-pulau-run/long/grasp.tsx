@@ -25,7 +25,8 @@ export const GraspIslandL: React.FC<{
   readonly mirror?: boolean;
   readonly lift?: number;
   readonly reach?: number;
-}> = ({ kind, color, dark, k, t, squeeze = 0, flag, mirror = false, lift = 0, reach = 0 }) => {
+  readonly thumbColor?: string; // draf 3b: warna ibu jari sedikit lebih terang (tangan biru: jempol menyatu dengan jari)
+}> = ({ kind, color, dark, k, t, squeeze = 0, flag, mirror = false, lift = 0, reach = 0, thumbColor }) => {
   const sq = squeeze;
   // tiang di luar rumah (draf 2: tiang Inggris membelah rumah kecil)
   const poleX = 232;
@@ -44,7 +45,8 @@ export const GraspIslandL: React.FC<{
   ];
   const fd = (f: F) => `M${f.bx},${f.by} Q${f.cx},${f.cy} ${f.tx},${f.ty}`;
   // ibu jari di atas pulau: keluar dari atas punggung tangan, rebah di rumput, ujung menekan
-  const thumb = `M10,250 Q30,196 ${112 + sq * 3},${214 + sq * 4}`;
+  // draf 3b: ibu jari diangkat 12 unit -> celah nyata ke telunjuk (draf 3: tepi tinta ibu jari & telunjuk bersentuhan)
+  const thumb = `M8,238 Q28,182 ${112 + sq * 3},${202 + sq * 4}`;
   const ang = (f: F) => Math.atan2(f.ty - f.cy, f.tx - f.cx);
   return (
     <svg width={GRASP_W * k} height={GRASP_H * k} viewBox={`${GRASP_X0} ${GRASP_Y0} ${GRASP_W} ${GRASP_H}`} style={{ overflow: "visible", display: "block" }}>
@@ -60,7 +62,9 @@ export const GraspIslandL: React.FC<{
             <line x1={0} y1={0} x2={0} y2={-poleH} stroke="#fff" strokeWidth={6} strokeLinecap="round" />
             <ellipse cx={0} cy={2} rx={12} ry={5} fill="#0C3140" opacity={0.3} />
             <circle cx={0} cy={-poleH - 2} r={9.5} fill={toon.yellow} stroke={INK} strokeWidth={4.5} />
-            <g transform={`translate(${mirror ? -7 : 7} ${-poleH + 5}) scale(${mirror ? -1 : 1} 1) skewY(${5 * Math.sin(t * 5)}) scale(1.4)`}>
+            {/* draf 3b: bendera Belanda (mirror) berkibar ke TENGAH layar, menjauh dari rumah (draf 3: menutupi atap).
+                Belang horizontal simetris, jadi ikut dicerminkan tanpa salah gambar. */}
+            <g transform={`translate(${mirror && flag !== "nl" ? -7 : 7} ${-poleH + 5}) scale(${mirror && flag !== "nl" ? -1 : 1} 1) skewY(${5 * Math.sin(t * 5)}) scale(1.4)`}>
               <FlagG kind={flag} />
             </g>
           </g>
@@ -96,12 +100,16 @@ export const GraspIslandL: React.FC<{
             </g>
           );
         })}
-        {/* ibu jari di atas pulau */}
+        {/* ibu jari di atas pulau. draf 3b: celah terang (krem) di antara ibu jari dan telunjuk + bayangan gelap di
+            bawah ibu jari supaya ibu jari terbaca sebagai digit TERPISAH (bukan jari kelima), juga pada warna biru */}
+        <path d="M34,240 Q66,228 108,232" fill="none" stroke="#FFF4DE" strokeWidth={12} strokeLinecap="round" />
+        <path d={thumb} transform="translate(0 6)" fill="none" stroke={INK} strokeWidth={58} strokeLinecap="round" />
         <path d={thumb} fill="none" stroke={INK} strokeWidth={52} strokeLinecap="round" />
-        <path d={thumb} fill="none" stroke={color} strokeWidth={38} strokeLinecap="round" />
-        <path d="M20,236 Q40,206 80,204" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.4} />
-        <ellipse cx={104 + sq * 3} cy={213 + sq * 4} rx={12} ry={9} transform={`rotate(8 ${104 + sq * 3} ${213 + sq * 4})`} fill="#fff" opacity={0.65} stroke={INK} strokeWidth={3} strokeOpacity={0.45} />
-        <path d="M52,206 Q58,218 54,230" fill="none" stroke={INK} strokeWidth={3.6} strokeLinecap="round" opacity={0.5} />
+        <path d={thumb} fill="none" stroke={thumbColor ?? color} strokeWidth={38} strokeLinecap="round" />
+        <path d={`M22,242 Q44,212 ${100 + sq * 3},${214 + sq * 4}`} fill="none" stroke={dark} strokeWidth={8} strokeLinecap="round" opacity={0.55} />
+        <path d="M18,224 Q38,194 80,192" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.4} />
+        <ellipse cx={104 + sq * 3} cy={201 + sq * 4} rx={12} ry={9} transform={`rotate(8 ${104 + sq * 3} ${201 + sq * 4})`} fill="#fff" opacity={0.65} stroke={INK} strokeWidth={3} strokeOpacity={0.45} />
+        <path d="M52,194 Q58,206 54,218" fill="none" stroke={INK} strokeWidth={3.6} strokeLinecap="round" opacity={0.5} />
         {/* manset putih di pergelangan */}
         <rect x={-74} y={wristY + 10 - 70} width={44} height={140} rx={18} fill="#fff" stroke={INK} strokeWidth={8} />
         <path d={`M-58,${wristY + 10 - 50} L-58,${wristY + 10 + 50}`} stroke={dark} strokeWidth={5} strokeLinecap="round" opacity={0.35} />

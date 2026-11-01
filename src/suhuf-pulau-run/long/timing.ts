@@ -6,7 +6,8 @@ import specLong from "../vo/spec-long.json";
 // L-01 (timbangan berubah jadi tanda tanya), L-17 (JEDA 2 DETIK untuk menebak) dan penutup.
 export const FPS = 30;
 
-export type Clip = { id: string; text: string; say?: string };
+// caption (opsional, draf 3b): teks tampilan caption saja; "|" = titik potong eksplisit. Narasi/audio tetap dari text/say.
+export type Clip = { id: string; text: string; say?: string; caption?: string };
 export type SceneSpec = { id: string; title: string; bab: number; babTitle: string; clips: Clip[] };
 
 const dur = durLong as Record<string, number>;
