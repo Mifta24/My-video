@@ -35,14 +35,15 @@ const L02: React.FC<V> = ({ t }) => (
     <Shot t={t} to={3.8}>
       {(lt) => (
         <>
-          <div style={{ position: "absolute", left: 680, top: 250 + bob(lt, 7, 2.5), transform: `perspective(1600px) rotateX(${-20 * (1 - slide(lt, 0, 0.8))}deg)` }}>
-            <TreatySheet w={560} />
+          <div style={{ position: "absolute", left: 755, top: 300 + bob(lt, 7, 2.5), transform: `perspective(1600px) rotateX(${-20 * (1 - slide(lt, 0, 0.8))}deg)` }}>
+            {/* draf 3b: dokumen 410 lebar, dasar <= ~832 (>= 30 px di atas caption y 895) */}
+            <TreatySheet w={410} />
           </div>
-          <In x={890} y={360} t={lt} at={0.3}>
-            <LogoSheet w={165} />
+          <In x={895} y={378} t={lt} at={0.3}>
+            <LogoSheet w={145} />
           </In>
           <Big text="SATU LEMBAR" t={lt} y={160} size={123} color={toon.orange} />
-          <Sub text="satu cerita" t={lt} at={0.6} y={746} size={54} />
+          <Sub text="satu cerita" t={lt} at={0.6} y={700} size={50} />
         </>
       )}
     </Shot>
@@ -146,8 +147,9 @@ const L05: React.FC<V> = ({ t }) => (
         <>
           <Big text="PALA & FULI" t={lt} y={BIG_Y} size={132} color={toon.orange} />
           <Glow cx={960} cy={545} r={470} op={0.75} id="pala-a" />
-          <In x={510} y={325 + bob(t, 5, 2.1)} t={lt}><Island kind="run" w={900} t={t} /></In>
-          <ChipAt cx={960} y={775} t={lt}><LChip text="RUN" color={toon.orangeDark} size={42} /></ChipAt>
+          {/* draf 3b: dasar bayangan = y + 0,753 w <= ~832 (>= 30 px dari caption, termasuk bob + goyang kamera) */}
+          <In x={580} y={252 + bob(t, 5, 2.1)} t={lt}><Island kind="run" w={760} t={t} /></In>
+          <ChipAt cx={960} y={696} t={lt}><LChip text="RUN" color={toon.orangeDark} size={42} /></ChipAt>
         </>
       )}
     </Shot>

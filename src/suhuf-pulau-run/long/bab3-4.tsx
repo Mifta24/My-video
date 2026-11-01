@@ -211,15 +211,27 @@ export const NLHug: React.FC<{ readonly t: number; readonly lt: number; readonly
   const btop = 612; // bibir keranjang (dasar ~762, lambung bawah ~784)
   const mix = (a: Pt, b: Pt): Pt => [a[0] + (b[0] - a[0]) * hug, a[1] + (b[1] - a[1]) * hug];
   const sq = 4 * press;
-  // d=-1 lengan kiri (bawah, menyilang ke kanan), d=1 lengan kanan (atas, menyilang ke kiri)
+  // draf 3b (Kim: dua lengan menyilang datar = terbaca "menahan"). Sekarang pelukan asimetris:
+  // - lengan KANAN (d=1) di DEPAN: siku rendah di luar sisi kanan keranjang, lengan bawah naik miring melintang di
+  //   depan badan keranjang, tangan mencengkeram sisi kiri;
+  // - lengan KIRI (d=-1) MENGGAPAI ke BELAKANG: siku menekuk ke atas-kiri di luar sisi kiri, lengan bawah lewat di
+  //   BELAKANG tumpukan pala, tangan muncul di sisi JAUH (kanan) keranjang memegang bibirnya dari belakang.
   const pose = (d: -1 | 1) => {
     const X = (dx: number) => SX + d * dx;
-    const low = d === -1;
+    if (d === 1) {
+      return {
+        sh: [X(204), 650] as Pt,
+        el: mix([X(300), 610], [X(196), 742]),
+        c1: mix([X(330), 560], [X(40), 744]),
+        hd: mix([X(330), 500], [X(-132 + sq), 676]),
+      };
+    }
     return {
       sh: [X(204), 650] as Pt,
-      el: mix([X(300), 610], [X(184), low ? 730 : 690]),
-      c1: mix([X(330), 560], [X(100), low ? 744 : 700]),
-      hd: mix([X(330), 500], [X(-128 + sq), low ? 706 : 662]),
+      // lengan bawah lewat SETINGGI tumpukan pala (y ~570) supaya biji pala menutupinya -> terbaca di belakang
+      el: mix([X(300), 610], [X(286), 548]),
+      c1: mix([X(330), 560], [X(60), 566]),
+      hd: mix([X(330), 500], [X(-172 + sq), 600]),
     };
   };
   type Pose = ReturnType<typeof pose>;
@@ -248,10 +260,13 @@ export const NLHug: React.FC<{ readonly t: number; readonly lt: number; readonly
       <Glow cx={SX} cy={640} r={460} op={0.55} id="hug" />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0, overflow: "visible", transform: `translateY(${bb}px) rotate(${sway}deg)`, transformOrigin: "960px 760px" }}>
         <HugShip cx={SX} deck={deck} t={t} />
-        {sleeve(L)}{sleeve(R)}
+        {/* lengan kiri: seluruhnya di BELAKANG keranjang (tumpukan pala menutupi lengan bawah); tangan di sisi jauh */}
+        {sleeve(L)}
+        {forearm(L, 1)}
         <HugBasket cx={SX} top={btop} />
+        {/* lengan kanan: di DEPAN keranjang */}
+        {sleeve(R)}
         {forearm(R, 1)}
-        {forearm(L, -1)}
       </svg>
       {/* air laut di depan dasar lambung: kapal terapung (bukan bak mandi) */}
       <WaterL x0={300} x1={1620} y0={808} y1={866} t={t} seed="pr-l09hug" />
@@ -331,7 +346,7 @@ const L10: React.FC<V> = ({ t }) => (
     <CutShot t={t} to={L10_CUTS[0]}>
       {(lt) => (
         <>
-          <Big text="TOKO ES KRIM" t={lt} y={BIG_Y} size={117} color={toon.orange} />
+          <Big text="TOKO ES KRIM" t={lt} y={BIG_Y + 46} size={117} color={toon.orange} />
           {[0, 1, 2].map((i) => <In key={i} x={215 + i * 310} y={520 + bob(t, 4, 2, i)} t={lt} at={i * 0.22}><div style={{ fontSize: 180, lineHeight: 1 }}>⌂</div></In>)}
           <Sub text="di kompleks rumah" t={lt} at={0.5} y={778} size={45} />
         </>
@@ -340,17 +355,17 @@ const L10: React.FC<V> = ({ t }) => (
     <CutShot t={t} from={L10_CUTS[0]} to={L10_CUTS[1]}>
       {(lt) => (
         <>
-          <Big text="HANYA KAMI" t={lt} y={BIG_Y} size={133} color={toon.orange} />
+          <Big text="HANYA KAMI" t={lt} y={BIG_Y + 46} size={133} color={toon.orange} />
           {[0, 1, 2].map((i) => <In key={i} x={200 + i * 230} y={605 + bob(t, 3, 2, i)} t={lt} at={0.25 + i * 0.2}><div style={{ width: 130, height: 130, borderRadius: 80, background: i % 2 ? toon.blue : toon.orange, border: `9px solid ${INK}`, boxShadow: `0 8px 0 ${INK}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 80, color: "#fff" }}>☺</div></In>)}
-          <Sub text="satu penjual saja" t={lt} at={0.5} y={800} size={46} />
+          <Sub text="satu penjual saja" t={lt} at={0.5} y={786} size={46} />
         </>
       )}
     </CutShot>
     <CutShot t={t} from={L10_CUTS[1]}>
       {(lt) => (
         <>
-          <Big text="MONOPOLI" t={lt} y={BIG_Y} size={137} color={toon.blue} />
-          <Sub text="hanya satu penjual" t={lt} y={805} size={45} />
+          <Big text="MONOPOLI" t={lt} y={BIG_Y + 46} size={137} color={toon.blue} />
+          <Sub text="hanya satu penjual" t={lt} y={786} size={45} />
         </>
       )}
     </CutShot>
@@ -388,8 +403,8 @@ const L13: React.FC<V> = ({ t }) => (
       {(lt) => (
         <>
           <Big text="MANHATTAN" t={lt} y={BIG_Y} size={131} color={toon.blue} />
-          <In x={585} y={375 + bob(t, 6, 2)} t={lt}><Island kind="manhattan" w={750} t={t} /></In>
-          <ChipAt cx={960} y={764} t={lt}><LChip text="MANHATTAN" color={toon.blueDark} size={46} /></ChipAt>
+          <In x={605} y={268 + bob(t, 6, 2)} t={lt}><Island kind="manhattan" w={710} t={t} /></In>
+          <ChipAt cx={960} y={660} t={lt}><LChip text="MANHATTAN" color={toon.blueDark} size={46} /></ChipAt>
         </>
       )}
     </Shot>
@@ -397,9 +412,9 @@ const L13: React.FC<V> = ({ t }) => (
       {(lt) => (
         <>
           <Big text="NEW AMSTERDAM" t={lt} y={BIG_Y} size={113} color={toon.blue} />
-          <In x={585} y={390 + bob(t, 6, 2)} t={lt}><Island kind="manhattan" w={750} t={t} /></In>
-          <FlagPole kind="nl" x={910} y={680} h={170} w={110} t={t} />
-          <ChipAt cx={960} y={775} t={lt}><LChip text="BELANDA" color={toon.blueDark} size={46} flag="nl" /></ChipAt>
+          <In x={605} y={268 + bob(t, 6, 2)} t={lt}><Island kind="manhattan" w={710} t={t} /></In>
+          <FlagPole kind="nl" x={912} y={552} h={160} w={104} t={t} />
+          <ChipAt cx={960} y={660} t={lt}><LChip text="BELANDA" color={toon.blueDark} size={46} flag="nl" /></ChipAt>
         </>
       )}
     </Shot>
@@ -410,9 +425,10 @@ const L14: React.FC<V> = ({ t }) => (
   <>
     <Label text="SKEMA" t={t} />
     <Big text="NEW YORK" t={t} y={BIG_Y} size={139} color={toon.orange} />
-    <In x={570} y={425 + bob(t, 5, 2)} t={t}><Island kind="manhattan-en" w={780} t={t} /></In>
-    <FlagPole kind="en" x={910} y={740} h={200} w={135} t={t} />
-    <ChipAt cx={960} y={790} t={t} at={0.5}><LChip text="INGGRIS" color={toon.orangeDark} size={45} flag="en" /></ChipAt>
+    {/* draf 3b: pulau 700 lebar, dasar bayangan <= ~832 (draf 3: bayangan masuk ke bawah caption) */}
+    <In x={610} y={300 + bob(t, 5, 2)} t={t}><Island kind="manhattan-en" w={700} t={t} /></In>
+    <FlagPole kind="en" x={914} y={587} h={184} w={124} t={t} />
+    <ChipAt cx={960} y={641} t={t} at={0.5}><LChip text="INGGRIS" color={toon.orangeDark} size={45} flag="en" /></ChipAt>
   </>
 );
 
