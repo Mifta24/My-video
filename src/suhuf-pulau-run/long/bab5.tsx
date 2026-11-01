@@ -2,7 +2,8 @@ import type React from "react";
 import { appear, bob, pop, slide } from "../../suhuf-bakteri/elements/ToonKit";
 import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
-import { CalendarYear, GraspedIsland, GRASP_CX, GRASP_FLAG_TOP, GRASP_X0, GRASP_Y0, Island, TreatySheet, ToyKid, TableTop } from "../shorts/kit2d";
+import { CalendarYear, GRASP_CX, GRASP_FLAG_TOP, GRASP_X0, GRASP_Y0, Island, TreatySheet, ToyKid, TableTop } from "../shorts/kit2d";
+import { GraspIslandL, GRASP_BOTTOM } from "./grasp";
 import { Big, BIG_Y, ChipAt, In, INK, Label, LChip, Shot, Sub } from "./kitLong";
 import { BigGlass, BoardDetective, PhotoCard, QBadge, RecapBoard, StruckWord, TimerRing } from "./props";
 import { speechEnd } from "./timing";
@@ -38,7 +39,8 @@ const L18:React.FC<V>=({t})=><>
 // lengan diperpanjang (reach) sehingga selalu masuk dari luar tepi layar; dasar kepalan berjarak >= 30 px dari caption
 // bawah (tepi atas caption ~ y 900); chip INGGRIS/BELANDA di atas bendera, bukan di atas kepalan.
 export const GRASP_LIFT=66;
-const FIST_BOTTOM=477; // unit: tepi bawah telapak (termasuk garis tinta)
+// draf 3: tangan Long (GraspIslandL) - genggaman samping: ibu jari di atas pulau, empat jari beda panjang di depan tepi, dasar pasir tetap terlihat
+const FIST_BOTTOM=GRASP_BOTTOM; // unit: tepi bawah telapak (termasuk garis tinta)
 export const graspBox=(cx:number,fistBottomY:number,k:number)=>({
   x:cx-(GRASP_CX-GRASP_X0)*k,
   y:fistBottomY-(FIST_BOTTOM-GRASP_Y0)*k,
@@ -46,13 +48,13 @@ export const graspBox=(cx:number,fistBottomY:number,k:number)=>({
 });
 const HoldPair:React.FC<{readonly t:number;readonly at?:number}>=({t,at=0})=>{
   const sq=0.65+0.3*Math.sin(t*2.4);
-  const k=1.12;
-  const L=graspBox(560,858,k);
-  const R=graspBox(1380,858,k);
+  const k=1.22;
+  const L=graspBox(600,800,k);
+  const R=graspBox(1320,800,k);
   // chip pemilik di sisi LUAR bendera (tidak di atas kepalan, tidak di bawah judul)
   return <>
-    <In x={L.x} y={L.y+bob(t,5,2)} t={t} at={at}><GraspedIsland kind="manhattan-en" color={toon.orange} dark={toon.orangeDark} k={k} t={t} squeeze={sq} flag="en" lift={GRASP_LIFT} reach={260}/></In>
-    <In x={R.x} y={R.y+bob(t,5,2,1)} t={t} at={at+0.15}><GraspedIsland kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={sq} flag="nl" mirror lift={GRASP_LIFT} reach={260}/></In>
+    <In x={L.x} y={L.y+bob(t,5,2)} t={t} at={at}><GraspIslandL kind="manhattan-en" color={toon.orange} dark={toon.orangeDark} k={k} t={t} squeeze={sq} flag="en" lift={GRASP_LIFT} reach={260}/></In>
+    <In x={R.x} y={R.y+bob(t,5,2,1)} t={t} at={at+0.15}><GraspIslandL kind="run" color={toon.blue} dark={toon.blueDark} k={k} t={t} squeeze={sq} flag="nl" mirror lift={GRASP_LIFT} reach={260}/></In>
     <ChipAt cx={232} y={L.flagTop+28} t={t} at={at+0.3}><LChip text="INGGRIS" color={toon.orangeDark} size={36} flag="en"/></ChipAt>
     <ChipAt cx={1712} y={R.flagTop+28} t={t} at={at+0.45}><LChip text="BELANDA" color={toon.blueDark} size={36} flag="nl"/></ChipAt>
   </>;

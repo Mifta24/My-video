@@ -136,7 +136,9 @@ export const Island: React.FC<{
   readonly bare?: boolean; // tanpa bayangan/halo bawah (dipakai saat digenggam)
   readonly detail?: number; // pembesar rumah/pohon/kincir terhadap pulau (1 = asli)
   readonly detailDy?: number; // geser vertikal rumah/pohon (unit viewBox 300), negatif = ke belakang pulau
-}> = ({ kind, w, t = 0, bare = false, detail = 1, detailDy = 0 }) => {
+  readonly longLayout?: boolean; // Long draf 3 (genggam): Run diberi rumah kecil (dinding krem, atap oranye); rumah Inggris digeser kiri
+  // supaya tiang bendera berdiri di celah rumah-pohon. default false (Shorts tidak berubah)
+}> = ({ kind, w, t = 0, bare = false, detail = 1, detailDy = 0, longLayout = false }) => {
   const angle = t * 55;
   return (
     <svg width={w} height={w * 0.74} viewBox="0 0 300 222" style={{ overflow: "visible", display: "block" }}>
@@ -169,12 +171,24 @@ export const Island: React.FC<{
             </g>
             <circle cx={213} cy={98} r={6} fill={toon.yellow} stroke={INK} strokeWidth={3} />
           </>
+        ) : kind === "manhattan-en" && longLayout ? (
+          <>
+            {house(58, 152, 42, 42, "#FFF4DE", toon.red, "h1")}
+            {house(104, 158, 46, 56, toon.blueLight, toon.orange, "h2")}
+            {tree(238, 156, 0.95, "t1")}
+          </>
         ) : kind === "manhattan-en" ? (
           <>
             {/* versi Inggris: rumah + pohon pala (elemen netral, tanpa kincir) */}
             {house(84, 152, 42, 42, "#FFF4DE", toon.red, "h1")}
             {house(130, 158, 46, 56, toon.blueLight, toon.orange, "h2")}
             {tree(212, 156, 0.95, "t1")}
+          </>
+        ) : longLayout ? (
+          <>
+            {tree(60, 150, 0.84, "t1")}
+            {tree(242, 154, 1.0, "t2")}
+            {house(96, 156, 46, 46, "#FFF1D6", "#E8692A", "h1")}
           </>
         ) : (
           <>
@@ -894,10 +908,11 @@ export const ArrowBadge: React.FC<{ readonly text: string; readonly color: strin
 );
 
 // ---------------- Meja ----------------
-export const TableTop: React.FC<{ readonly w: number; readonly h?: number }> = ({ w, h = 120 }) => (
+// legs: panjang kaki (px); default h + 100 (Shorts tidak berubah). Long draf 3 memendekkan kaki agar tidak menyentuh caption.
+export const TableTop: React.FC<{ readonly w: number; readonly h?: number; readonly legs?: number }> = ({ w, h = 120, legs }) => (
   <svg width={w} height={h + 150} viewBox={`0 0 ${w} ${h + 150}`} style={{ overflow: "visible", display: "block" }}>
-    <rect x={w * 0.1} y={h * 0.5} width={34} height={h + 100} fill={WOOD_DARK} stroke={INK} strokeWidth={6} />
-    <rect x={w * 0.9 - 34} y={h * 0.5} width={34} height={h + 100} fill={WOOD_DARK} stroke={INK} strokeWidth={6} />
+    <rect x={w * 0.1} y={h * 0.5} width={34} height={legs ?? h + 100} fill={WOOD_DARK} stroke={INK} strokeWidth={6} />
+    <rect x={w * 0.9 - 34} y={h * 0.5} width={34} height={legs ?? h + 100} fill={WOOD_DARK} stroke={INK} strokeWidth={6} />
     <rect x={4} y={4} width={w - 8} height={h * 0.34} rx={16} fill="#F7C985" stroke={INK} strokeWidth={6.5} />
     <rect x={14} y={h * 0.34 + 4} width={w - 28} height={h * 0.66} rx={14} fill={WOOD} stroke={INK} strokeWidth={6.5} />
     <path d={`M30,${h * 0.14} L${w * 0.4},${h * 0.14}`} stroke="#fff" strokeWidth={5} strokeLinecap="round" opacity={0.5} />
