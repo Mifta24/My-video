@@ -1,7 +1,6 @@
 import type React from "react";
 import { Easing, interpolate } from "remotion";
 import { appear, bob, BigWord, Place, pop, Sh, Sparkle, slide, Tag, toonFont } from "../../suhuf-bakteri/elements/ToonKit";
-import { SheetMark } from "../../suhuf-bakteri/elements/Brand";
 import { toon } from "../../suhuf-bakteri/theme";
 import type { Cue } from "../elements/Sound";
 import { cue } from "../timing";
@@ -287,4 +286,3 @@ export const SFX2: Record<string, readonly Cue[]> = {
   ],
 };
 
-export { SheetMark };
